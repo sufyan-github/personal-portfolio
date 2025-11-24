@@ -28,7 +28,7 @@ const Academic: React.FC = () => {
     {
       id: 2,
       title: "Higher Secondary Certificate (HSC)",
-      institution: "New Govt. Degree College",
+      institution: "Gurudoyal Govt College",
       location: "Kishorganj, Bangladesh",
       period: "2016 - 2018",
       description: "Completed HSC in Science with focus on Mathematics, Physics, Chemistry, Biology, and ICT, establishing a strong foundation for advanced studies in technology and engineering.",
@@ -38,7 +38,7 @@ const Academic: React.FC = () => {
     {
       id: 3,
       title: "Secondary School Certificate (SSC)",
-      institution: "Sardha Govt. Pilot High School",
+      institution: "Alhaj Amir Uddin High School",
       location: "Kishorganj, Bangladesh",
       period: "2014 - 2016",
       description: "Completed secondary education with strong fundamentals in Mathematics, Science, and technology subjects, preparing for advanced studies in engineering and computer science.",
