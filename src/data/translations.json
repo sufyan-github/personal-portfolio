@@ -1,0 +1,198 @@
+{
+  "en": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "academic": "Academic",
+      "experience": "Experience",
+      "industrial": "Industrial Training",
+      "skills": "Skills",
+      "projects": "Projects",
+      "research": "Research",
+      "certifications": "Certifications",
+      "achievements": "Achievements",
+      "memberships": "Memberships",
+      "coding": "Coding",
+      "gallery": "Gallery",
+      "contact": "Contact"
+    },
+    "hero": {
+      "greeting": "Hi, I'm",
+      "name": "Md. Abu Sufyan",
+      "title": "Machine Learning & AI Instructor | Computer Science & Engineering Student",
+      "subtitle": "Driven by a passion for technology and innovation, I specialize in Machine Learning, Deep Learning, and Computer Vision.",
+      "cta": "View My Work",
+      "downloadCV": "Download Resume"
+    },
+    "about": {
+      "title": "About Me",
+      "subtitle": "Passionate about AI, Innovation, and Technology",
+      "interests": "Research Interests",
+      "languages": "Languages",
+      "softSkills": "Soft Skills"
+    },
+    "academic": {
+      "title": "Academic Background",
+      "subtitle": "Educational journey in Computer Science & Engineering",
+      "bsc": {
+        "title": "Bachelor of Science in Computer Science & Engineering",
+        "institution": "Rajshahi University of Engineering & Technology (RUET)",
+        "location": "Rajshahi-6204, Bangladesh",
+        "description": "Specialized in Machine Learning, Deep Learning, and Computer Vision. Core competencies include algorithms, data structures, operating systems, computer networks, image processing, neural networks, signal processing, computer security, VLSI design, and hardware architecture."
+      },
+      "hsc": {
+        "title": "Higher Secondary Certificate (HSC)",
+        "institution": "Gurudoyal Govt College",
+        "location": "Kishorganj, Bangladesh",
+        "description": "Completed HSC in Science with focus on Mathematics, Physics, Chemistry, Biology, and ICT, establishing a strong foundation for advanced studies in technology and engineering."
+      },
+      "ssc": {
+        "title": "Secondary School Certificate (SSC)",
+        "institution": "Alhaj Amir Uddin High School",
+        "location": "Kishorganj, Bangladesh",
+        "description": "Completed secondary education with strong fundamentals in Mathematics, Science, and technology subjects, preparing for advanced studies in engineering and computer science."
+      }
+    },
+    "experience": {
+      "title": "Professional Experience",
+      "subtitle": "Leading roles in AI education, research, and community initiatives"
+    },
+    "skills": {
+      "title": "Skills & Expertise",
+      "subtitle": "Technical proficiency across multiple domains with a focus on Artificial Intelligence and Full-Stack Development",
+      "technicalSkills": "Technical Skills",
+      "avgProficiency": "Avg Proficiency",
+      "certifications": "Certifications",
+      "coreDomains": "Core Domains",
+      "endorsed": "Endorsed",
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "proficient": "Proficient",
+      "intermediate": "Intermediate"
+    },
+    "projects": {
+      "title": "Projects",
+      "subtitle": "Innovative solutions in AI/ML and Full-Stack Development",
+      "viewGithub": "View on GitHub",
+      "viewDemo": "Live Demo",
+      "allProjects": "All Projects"
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "subtitle": "Let's discuss your next project or collaboration",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "footer": {
+      "about": "Machine Learning & AI Instructor | Computer Science Engineer specializing in AI research, full-stack development, and innovative technology solutions. Passionate about leveraging technology for social impact and education.",
+      "quickNav": "Quick Navigation",
+      "getInTouch": "Get In Touch",
+      "openForCollab": "Open for collaboration and opportunities",
+      "copyright": "Crafted with precision for innovation.",
+      "builtWith": "Built with React & TypeScript",
+      "poweredBy": "Powered by Supabase"
+    }
+  },
+  "bn": {
+    "nav": {
+      "home": "হোম",
+      "about": "সম্পর্কে",
+      "academic": "শিক্ষাগত",
+      "experience": "অভিজ্ঞতা",
+      "industrial": "শিল্প প্রশিক্ষণ",
+      "skills": "দক্ষতা",
+      "projects": "প্রজেক্ট",
+      "research": "গবেষণা",
+      "certifications": "সার্টিফিকেট",
+      "achievements": "অর্জন",
+      "memberships": "সদস্যপদ",
+      "coding": "কোডিং",
+      "gallery": "গ্যালারি",
+      "contact": "যোগাযোগ"
+    },
+    "hero": {
+      "greeting": "হ্যালো, আমি",
+      "name": "মো. আবু সুফিয়ান",
+      "title": "মেশিন লার্নিং ও এআই প্রশিক্ষক | কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং শিক্ষার্থী",
+      "subtitle": "প্রযুক্তি ও উদ্ভাবনের প্রতি আগ্রহী, আমি মেশিন লার্নিং, ডিপ লার্নিং এবং কম্পিউটার ভিশনে বিশেষজ্ঞ।",
+      "cta": "আমার কাজ দেখুন",
+      "downloadCV": "জীবনবৃত্তান্ত ডাউনলোড"
+    },
+    "about": {
+      "title": "আমার সম্পর্কে",
+      "subtitle": "এআই, উদ্ভাবন এবং প্রযুক্তির প্রতি আগ্রহী",
+      "interests": "গবেষণা আগ্রহ",
+      "languages": "ভাষা",
+      "softSkills": "সফট স্কিল"
+    },
+    "academic": {
+      "title": "শিক্ষাগত পটভূমি",
+      "subtitle": "কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিংয়ে শিক্ষাগত যাত্রা",
+      "bsc": {
+        "title": "কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিংয়ে স্নাতক",
+        "institution": "রাজশাহী প্রকৌশল ও প্রযুক্তি বিশ্ববিদ্যালয় (রুয়েট)",
+        "location": "রাজশাহী-৬২০৪, বাংলাদেশ",
+        "description": "মেশিন লার্নিং, ডিপ লার্নিং এবং কম্পিউটার ভিশনে বিশেষীকরণ। মূল দক্ষতায় রয়েছে অ্যালগরিদম, ডেটা স্ট্রাকচার, অপারেটিং সিস্টেম, কম্পিউটার নেটওয়ার্ক, ইমেজ প্রসেসিং, নিউরাল নেটওয়ার্ক, সিগন্যাল প্রসেসিং, কম্পিউটার সিকিউরিটি, ভিএলএসআই ডিজাইন এবং হার্ডওয়্যার আর্কিটেকচার।"
+      },
+      "hsc": {
+        "title": "উচ্চ মাধ্যমিক সার্টিফিকেট (এইচএসসি)",
+        "institution": "গুরুদয়াল সরকারি কলেজ",
+        "location": "কিশোরগঞ্জ, বাংলাদেশ",
+        "description": "গণিত, পদার্থবিজ্ঞান, রসায়ন, জীববিজ্ঞান এবং আইসিটিতে মনোনিবেশ সহ বিজ্ঞানে এইচএসসি সম্পন্ন করেছি, যা প্রযুক্তি এবং প্রকৌশলে উন্নত অধ্যয়নের জন্য একটি শক্তিশালী ভিত্তি স্থাপন করেছে।"
+      },
+      "ssc": {
+        "title": "মাধ্যমিক স্কুল সার্টিফিকেট (এসএসসি)",
+        "institution": "আলহাজ আমির উদ্দিন হাই স্কুল",
+        "location": "কিশোরগঞ্জ, বাংলাদেশ",
+        "description": "গণিত, বিজ্ঞান এবং প্রযুক্তি বিষয়ে শক্তিশালী মৌলিক জ্ঞান নিয়ে মাধ্যমিক শিক্ষা সম্পন্ন করেছি, যা প্রকৌশল এবং কম্পিউটার সায়েন্সে উন্নত অধ্যয়নের জন্য প্রস্তুতি নিয়েছে।"
+      }
+    },
+    "experience": {
+      "title": "পেশাগত অভিজ্ঞতা",
+      "subtitle": "এআই শিক্ষা, গবেষণা এবং কমিউনিটি উদ্যোগে নেতৃত্বের ভূমিকা"
+    },
+    "skills": {
+      "title": "দক্ষতা ও বিশেষজ্ঞতা",
+      "subtitle": "কৃত্রিম বুদ্ধিমত্তা এবং ফুল-স্ট্যাক ডেভেলপমেন্টে ফোকাস সহ একাধিক ডোমেইনে প্রযুক্তিগত দক্ষতা",
+      "technicalSkills": "প্রযুক্তিগত দক্ষতা",
+      "avgProficiency": "গড় দক্ষতা",
+      "certifications": "সার্টিফিকেট",
+      "coreDomains": "মূল ডোমেইন",
+      "endorsed": "অনুমোদিত",
+      "expert": "বিশেষজ্ঞ",
+      "advanced": "উন্নত",
+      "proficient": "দক্ষ",
+      "intermediate": "মধ্যবর্তী"
+    },
+    "projects": {
+      "title": "প্রজেক্ট",
+      "subtitle": "এআই/এমএল এবং ফুল-স্ট্যাক ডেভেলপমেন্টে উদ্ভাবনী সমাধান",
+      "viewGithub": "গিটহাবে দেখুন",
+      "viewDemo": "লাইভ ডেমো",
+      "allProjects": "সব প্রজেক্ট"
+    },
+    "contact": {
+      "title": "যোগাযোগ করুন",
+      "subtitle": "আপনার পরবর্তী প্রকল্প বা সহযোগিতা নিয়ে আলোচনা করি",
+      "name": "নাম",
+      "email": "ইমেইল",
+      "subject": "বিষয়",
+      "message": "বার্তা",
+      "send": "বার্তা পাঠান",
+      "sending": "পাঠানো হচ্ছে..."
+    },
+    "footer": {
+      "about": "মেশিন লার্নিং ও এআই প্রশিক্ষক | কম্পিউটার সায়েন্স ইঞ্জিনিয়ার যিনি এআই গবেষণা, ফুল-স্ট্যাক ডেভেলপমেন্ট এবং উদ্ভাবনী প্রযুক্তি সমাধানে বিশেষজ্ঞ। সামাজিক প্রভাব এবং শিক্ষার জন্য প্রযুক্তি ব্যবহারে আগ্রহী।",
+      "quickNav": "দ্রুত নেভিগেশন",
+      "getInTouch": "যোগাযোগ করুন",
+      "openForCollab": "সহযোগিতা এবং সুযোগের জন্য উন্মুক্ত",
+      "copyright": "উদ্ভাবনের জন্য নিখুঁততার সাথে তৈরি।",
+      "builtWith": "রিঅ্যাক্ট ও টাইপস্ক্রিপ্ট দিয়ে তৈরি",
+      "poweredBy": "সুপাবেস দ্বারা চালিত"
+    }
+  }
+}

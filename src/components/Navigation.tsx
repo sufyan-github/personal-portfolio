@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Menu, X, Download, Cpu } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations.json";
 
 // =====================================================
 // JSON‑DRIVEN NAVIGATION WITH QUALITY‑OF‑LIFE UPGRADES
@@ -26,10 +29,31 @@ const prefersReducedMotion = () =>
 
 const Navigation: React.FC = () => {
   const cfg = navData as NavConfig;
+  const { language } = useLanguage();
+  const t = (translations as any)[language];
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeHash, setActiveHash] = useState<string>("#home");
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Navigation items with translations
+  const navItems = [
+    { name: t.nav.home, href: "#home" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.academic, href: "#academic" },
+    { name: t.nav.experience, href: "#experience" },
+    { name: t.nav.industrial, href: "#industrial-attachment" },
+    { name: t.nav.skills, href: "#skills" },
+    { name: t.nav.projects, href: "#projects" },
+    { name: t.nav.research, href: "#research" },
+    { name: t.nav.certifications, href: "#certifications" },
+    { name: t.nav.achievements, href: "#achievements" },
+    { name: t.nav.memberships, href: "#memberships" },
+    { name: t.nav.coding, href: "#coding" },
+    { name: t.nav.gallery, href: "#gallery" },
+    { name: t.nav.contact, href: "#contact" }
+  ];
 
   // Scroll style
   useEffect(() => {
@@ -104,7 +128,7 @@ const Navigation: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Professional Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1 flex-1">
-            {(cfg.items || []).map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
@@ -123,14 +147,16 @@ const Navigation: React.FC = () => {
               </button>
             ))}
             
-            {/* Theme Toggle */}
-            <div className="ml-2 pl-2 border-l border-border">
+            {/* Theme Toggle & Language Switcher */}
+            <div className="ml-2 pl-2 border-l border-border flex items-center gap-2">
+              <LanguageSwitcher />
               <ThemeToggle />
             </div>
           </div>
 
           {/* Professional Mobile Menu Button & Theme Toggle */}
           <div className="lg:hidden flex items-center gap-2 ml-auto">
+            <LanguageSwitcher />
             <ThemeToggle />
             <Button
               aria-expanded={isMobileMenuOpen}
@@ -156,7 +182,7 @@ const Navigation: React.FC = () => {
             aria-modal="true"
           >
             <div className="px-6 py-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-              {(cfg.items || []).map((item) => (
+              {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}

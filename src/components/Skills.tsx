@@ -2,6 +2,8 @@ import React, { useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Code, Database, Brain, Wrench, Sparkles, Award, TrendingUp, CheckCircle2, Trophy, Cpu } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations.json";
 import skills from "@/data/skills.json" assert { type: "json" };
 import certifications from "@/data/certifications.json" assert { type: "json" };
 
@@ -109,6 +111,8 @@ const TechLogo = ({ name }: { name: string }) => {
 const Skills: React.FC = () => {
   const skillCategories = skills as SkillCategory[];
   const certs = certifications as Certification[];
+  const { language } = useLanguage();
+  const t = (translations as any)[language].skills;
 
   // Calculate certification counts for each skill
   const skillCertCount = useMemo(() => {
@@ -140,10 +144,10 @@ const Skills: React.FC = () => {
 
   // Get proficiency label
   const getProficiencyLabel = (level: number): string => {
-    if (level >= 90) return "Expert";
-    if (level >= 80) return "Advanced";
-    if (level >= 70) return "Proficient";
-    if (level >= 60) return "Intermediate";
+    if (level >= 90) return t.expert;
+    if (level >= 80) return t.advanced;
+    if (level >= 70) return t.proficient;
+    if (level >= 60) return t.intermediate;
     return "Beginner";
   };
 
@@ -183,14 +187,12 @@ const Skills: React.FC = () => {
           <div className="inline-flex items-center justify-center space-x-2 mb-4">
             <Sparkles className="h-8 w-8 text-primary animate-pulse" />
             <h2 className="text-5xl font-extrabold gradient-text font-display">
-              Skills & Expertise
+              {t.title}
             </h2>
             <Sparkles className="h-8 w-8 text-accent animate-pulse" />
           </div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Technical proficiency across multiple domains with a focus on{" "}
-            <span className="text-primary font-semibold">Artificial Intelligence</span> and{" "}
-            <span className="text-accent font-semibold">Full-Stack Development</span>
+            {t.subtitle}
           </p>
         </div>
 
@@ -200,28 +202,28 @@ const Skills: React.FC = () => {
             <CardContent className="p-6">
               <Code className="h-10 w-10 mx-auto mb-3 text-primary" />
               <div className="text-3xl font-bold gradient-text mb-1">{totalSkills}+</div>
-              <div className="text-sm text-muted-foreground font-medium">Technical Skills</div>
+              <div className="text-sm text-muted-foreground font-medium">{t.technicalSkills}</div>
             </CardContent>
           </Card>
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-accent/20">
             <CardContent className="p-6">
               <TrendingUp className="h-10 w-10 mx-auto mb-3 text-accent" />
               <div className="text-3xl font-bold gradient-text mb-1">{avgLevel}%</div>
-              <div className="text-sm text-muted-foreground font-medium">Avg Proficiency</div>
+              <div className="text-sm text-muted-foreground font-medium">{t.avgProficiency}</div>
             </CardContent>
           </Card>
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-green-500/20">
             <CardContent className="p-6">
               <Trophy className="h-10 w-10 mx-auto mb-3 text-green-500" />
               <div className="text-3xl font-bold gradient-text mb-1">{totalCertifications}</div>
-              <div className="text-sm text-muted-foreground font-medium">Certifications</div>
+              <div className="text-sm text-muted-foreground font-medium">{t.certifications}</div>
             </CardContent>
           </Card>
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-primary/20">
             <CardContent className="p-6">
               <Award className="h-10 w-10 mx-auto mb-3 text-primary" />
               <div className="text-3xl font-bold gradient-text mb-1">{skillCategories.length}</div>
-              <div className="text-sm text-muted-foreground font-medium">Core Domains</div>
+              <div className="text-sm text-muted-foreground font-medium">{t.coreDomains}</div>
             </CardContent>
           </Card>
         </div>
@@ -330,7 +332,7 @@ const Skills: React.FC = () => {
                             <div className="flex items-center gap-1.5 pt-1">
                               <Trophy className="h-3 w-3 text-yellow-500" />
                               <span className="text-xs text-yellow-600 dark:text-yellow-400 font-medium">
-                                Endorsed
+                                {t.endorsed}
                               </span>
                             </div>
                           )}
