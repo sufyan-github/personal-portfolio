@@ -3,8 +3,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Users, Award } from "lucide-react";
 import membershipData from "@/data/memberships.json";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Memberships: React.FC = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="memberships" className="py-20 bg-gradient-to-b from-background via-background to-muted/20">
       <div className="container mx-auto px-6">
@@ -12,14 +15,14 @@ const Memberships: React.FC = () => {
           <div className="inline-block">
             <Badge variant="outline" className="mb-4 px-4 py-2 text-sm">
               <Users className="h-4 w-4 mr-2" />
-              Professional Network
+              {t('memberships.title')}
             </Badge>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold gradient-text font-display">
-            {membershipData.title}
+            {t('memberships.title')}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {membershipData.subtitle}
+            {t('memberships.subtitle')}
           </p>
         </div>
 
@@ -63,7 +66,7 @@ const Memberships: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20">
             <Users className="h-5 w-5 text-primary" />
             <span className="text-sm font-medium text-foreground">
-              Active in {membershipData.memberships.length} Professional Organizations
+              {t('memberships.active')} {membershipData.memberships.length} {t('memberships.organization')}
             </span>
           </div>
         </div>

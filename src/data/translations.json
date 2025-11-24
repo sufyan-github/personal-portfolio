@@ -112,7 +112,7 @@
       "issuer": "Issued By",
       "date": "Date",
       "credentialId": "Credential ID",
-      "verify": "Verify",
+      "verify": "Verify Certificate",
       "skills": "Skills",
       "viewAll": "View All Certifications"
     },
@@ -200,7 +200,8 @@
       "viewMore": "View More",
       "readLess": "Read Less",
       "download": "Download",
-      "share": "Share"
+      "share": "Share",
+      "of": "of"
     }
   },
   "bn": {
@@ -316,7 +317,7 @@
       "issuer": "প্রদানকারী",
       "date": "তারিখ",
       "credentialId": "শংসাপত্র আইডি",
-      "verify": "যাচাই করুন",
+      "verify": "সার্টিফিকেট যাচাই করুন",
       "skills": "দক্ষতা",
       "viewAll": "সব সার্টিফিকেট দেখুন"
     },
@@ -404,7 +405,8 @@
       "viewMore": "আরও দেখুন",
       "readLess": "কম পড়ুন",
       "download": "ডাউনলোড",
-      "share": "শেয়ার করুন"
+      "share": "শেয়ার করুন",
+      "of": "এর"
     }
   }
 }
