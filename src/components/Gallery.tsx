@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Event {
   id: string;
@@ -39,6 +40,7 @@ const getCategoryColor = (category: string) => {
 };
 
 const Gallery = () => {
+  const { t } = useLanguage();
   const events = galleryData.events as Event[];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -214,7 +216,7 @@ const Gallery = () => {
                                   }}
                                 />
                                 <div className="absolute inset-0 flex items-center justify-center text-primary/40 font-semibold text-sm">
-                                  Photo {idx + 1} of {event.images.length}
+                                  {t('gallery.photo')} {idx + 1} {t('gallery.of')} {event.images.length}
                                 </div>
                               </div>
                             </CarouselItem>
@@ -283,7 +285,7 @@ const Gallery = () => {
         {/* Event count */}
         <div className="text-center mt-4">
           <p className="text-sm text-muted-foreground">
-            {currentIndex + 1} of {events.length} events
+            {currentIndex + 1} {t('gallery.of')} {events.length} {t('gallery.events')}
           </p>
         </div>
       </div>

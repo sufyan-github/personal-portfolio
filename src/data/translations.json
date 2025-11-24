@@ -33,7 +33,27 @@
       "languages": "Languages",
       "softSkills": "Soft Skills",
       "profile": "Professional Profile",
-      "description": "I'm a Computer Science & Engineering student at RUET, specializing in Machine Learning, Deep Learning, and Computer Vision. I'm passionate about leveraging technology to solve real-world problems and create innovative solutions."
+      "description": "I'm a Computer Science & Engineering student at RUET, specializing in Machine Learning, Deep Learning, and Computer Vision. I'm passionate about leveraging technology to solve real-world problems and create innovative solutions.",
+      "tagline": "Passionate technologist bridging research and real-world innovation",
+      "aiExpertise": "AI & ML Expertise",
+      "aiExpertiseDesc": "Deep Learning, Computer Vision, NLP",
+      "fullStackDev": "Full Stack Dev",
+      "fullStackDevDesc": "React, Node.js, Python, Modern Web",
+      "researchFocus": "Research Focus",
+      "researchFocusDesc": "Published papers, Active researcher",
+      "communityLeader": "Community Leader",
+      "communityLeaderDesc": "Tech education & mentorship",
+      "bio1": "I am",
+      "bio2": "a",
+      "bio3": "graduate from",
+      "bio4": "My expertise centers on",
+      "bio5": "Machine Learning",
+      "bio6": "Deep Learning",
+      "bio7": "and",
+      "bio8": "Artificial Intelligence",
+      "bio9": "—with applications in Bioinformatics, Medical Imaging, and emerging tech domains.",
+      "bio10": "Throughout my academic journey, I've engaged in research that bridges theory and practice, contributing to projects that address real-world challenges. My passion lies in leveraging AI to build innovative solutions that make a tangible impact.",
+      "bio11": "As an R&D Engineer and active community leader, I'm committed to advancing the field of AI through continuous learning, mentorship, and collaboration. I'm eager to pursue higher studies and contribute to cutting-edge research that shapes the future of technology."
     },
     "academic": {
       "title": "Academic Background",
@@ -68,7 +88,16 @@
       "subtitle": "Practical industry experience and professional development",
       "duration": "Duration",
       "skills": "Skills Acquired",
-      "achievements": "Key Achievements"
+      "achievements": "Key Achievements",
+      "attachmentTitle": "15-Day Industrial Attachment",
+      "projectTitle": "Real-Time AI Project",
+      "location": "Collaborative Office Environment with Developers & Data Scientists",
+      "description": "Developed a real-time traffic sign detection system using trained deep learning models and a web interface. Gained hands-on experience in a collaborative office setting with developers and data scientists.",
+      "keyHighlights": "Key Highlights:",
+      "highlight1": "Built a web-based application integrating YOLOv8, MobileNet, and ResNet models for live video detection",
+      "highlight2": "Explored Generative AI for auto-annotation and dataset enhancement",
+      "highlight3": "Contributed to full-cycle development: model training, frontend/backend integration, and deployment",
+      "highlight4": "Participated in daily standups, sprint reviews, and presented project outcomes as a team"
     },
     "skills": {
       "title": "Skills & Expertise",
@@ -145,7 +174,10 @@
       "event": "Event",
       "date": "Date",
       "location": "Location",
-      "viewAll": "View All"
+      "viewAll": "View All",
+      "photo": "Photo",
+      "of": "of",
+      "events": "events"
     },
     "blog": {
       "title": "Blog",
@@ -154,13 +186,21 @@
       "author": "Author",
       "published": "Published",
       "tags": "Tags",
-      "allPosts": "All Posts"
+      "allPosts": "All Posts",
+      "latestArticles": "Latest Articles",
+      "articlesSubtitle": "Insights on AI, machine learning, and technology",
+      "articlesSubtitle2": "Insights on AI, machine learning, and technology trends",
+      "comingSoon": "More articles coming soon!",
+      "minRead": "min read",
+      "viewAll": "View All Articles"
     },
     "testimonials": {
       "title": "Testimonials",
       "subtitle": "What people say about working with me",
       "company": "Company",
-      "position": "Position"
+      "position": "Position",
+      "whatPeopleSay": "What People Say",
+      "feedback": "Feedback from colleagues, mentors, and collaborators"
     },
     "contact": {
       "title": "Get In Touch",
@@ -238,7 +278,27 @@
       "languages": "ভাষা",
       "softSkills": "সফট স্কিল",
       "profile": "পেশাদার প্রোফাইল",
-      "description": "আমি রুয়েটের কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং শিক্ষার্থী, মেশিন লার্নিং, ডিপ লার্নিং এবং কম্পিউটার ভিশনে বিশেষীকরণ করছি। আমি বাস্তব সমস্যা সমাধান এবং উদ্ভাবনী সমাধান তৈরিতে প্রযুক্তি ব্যবহারে আগ্রহী।"
+      "description": "আমি রুয়েটের কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং শিক্ষার্থী, মেশিন লার্নিং, ডিপ লার্নিং এবং কম্পিউটার ভিশনে বিশেষীকরণ করছি। আমি বাস্তব সমস্যা সমাধান এবং উদ্ভাবনী সমাধান তৈরিতে প্রযুক্তি ব্যবহারে আগ্রহী।",
+      "tagline": "গবেষণা এবং বাস্তব-বিশ্ব উদ্ভাবনের সেতুবন্ধনকারী আগ্রহী প্রযুক্তিবিদ",
+      "aiExpertise": "এআই ও এমএল দক্ষতা",
+      "aiExpertiseDesc": "ডিপ লার্নিং, কম্পিউটার ভিশন, এনএলপি",
+      "fullStackDev": "ফুল স্ট্যাক ডেভ",
+      "fullStackDevDesc": "রিঅ্যাক্ট, নোড.জেএস, পাইথন, আধুনিক ওয়েব",
+      "researchFocus": "গবেষণা ফোকাস",
+      "researchFocusDesc": "প্রকাশিত পেপার, সক্রিয় গবেষক",
+      "communityLeader": "কমিউনিটি লিডার",
+      "communityLeaderDesc": "প্রযুক্তি শিক্ষা ও পরামর্শদান",
+      "bio1": "আমি",
+      "bio2": "একজন",
+      "bio3": "স্নাতক",
+      "bio4": "আমার দক্ষতা কেন্দ্রীভূত",
+      "bio5": "মেশিন লার্নিং",
+      "bio6": "ডিপ লার্নিং",
+      "bio7": "এবং",
+      "bio8": "কৃত্রিম বুদ্ধিমত্তা",
+      "bio9": "—বায়োইনফরম্যাটিক্স, মেডিকেল ইমেজিং এবং উদীয়মান প্রযুক্তি ডোমেইনে প্রয়োগ সহ।",
+      "bio10": "আমার একাডেমিক যাত্রা জুড়ে, আমি এমন গবেষণায় নিযুক্ত হয়েছি যা তত্ত্ব এবং অনুশীলনের সেতুবন্ধন করে, এমন প্রকল্পে অবদান রাখে যা বাস্তব-বিশ্বের চ্যালেঞ্জ মোকাবেলা করে। আমার আবেগ হল এআই ব্যবহার করে উদ্ভাবনী সমাধান তৈরি করা যা বাস্তব প্রভাব ফেলে।",
+      "bio11": "একজন আর অ্যান্ড ডি ইঞ্জিনিয়ার এবং সক্রিয় কমিউনিটি লিডার হিসাবে, আমি ক্রমাগত শেখা, পরামর্শদান এবং সহযোগিতার মাধ্যমে এআইয়ের ক্ষেত্রে অগ্রগতির জন্য প্রতিশ্রুতিবদ্ধ। আমি উচ্চতর অধ্যয়ন করতে এবং প্রযুক্তির ভবিষ্যত গঠনের জন্য অত্যাধুনিক গবেষণায় অবদান রাখতে আগ্রহী।"
     },
     "academic": {
       "title": "শিক্ষাগত পটভূমি",
@@ -273,7 +333,16 @@
       "subtitle": "ব্যবহারিক শিল্প অভিজ্ঞতা এবং পেশাদার উন্নয়ন",
       "duration": "সময়কাল",
       "skills": "অর্জিত দক্ষতা",
-      "achievements": "প্রধান অর্জন"
+      "achievements": "প্রধান অর্জন",
+      "attachmentTitle": "১৫ দিনের শিল্প সংযুক্তি",
+      "projectTitle": "রিয়েল-টাইম এআই প্রজেক্ট",
+      "location": "ডেভেলপার এবং ডেটা সায়েন্টিস্টদের সাথে সহযোগিতামূলক অফিস পরিবেশ",
+      "description": "প্রশিক্ষিত ডিপ লার্নিং মডেল এবং একটি ওয়েব ইন্টারফেস ব্যবহার করে রিয়েল-টাইম ট্রাফিক সাইন সনাক্তকরণ সিস্টেম তৈরি করেছি। ডেভেলপার এবং ডেটা সায়েন্টিস্টদের সাথে সহযোগিতামূলক অফিস সেটিংয়ে হ্যান্ডস-অন অভিজ্ঞতা অর্জন করেছি।",
+      "keyHighlights": "মূল হাইলাইট:",
+      "highlight1": "লাইভ ভিডিও সনাক্তকরণের জন্য YOLOv8, MobileNet এবং ResNet মডেল সংহত করে একটি ওয়েব-ভিত্তিক অ্যাপ্লিকেশন তৈরি করেছি",
+      "highlight2": "অটো-অ্যানোটেশন এবং ডেটাসেট বৃদ্ধির জন্য জেনারেটিভ এআই অন্বেষণ করেছি",
+      "highlight3": "সম্পূর্ণ-চক্র উন্নয়নে অবদান রেখেছি: মডেল ট্রেনিং, ফ্রন্টএন্ড/ব্যাকএন্ড ইন্টিগ্রেশন এবং ডিপ্লয়মেন্ট",
+      "highlight4": "দৈনিক স্ট্যান্ডআপ, স্প্রিন্ট রিভিউতে অংশগ্রহণ করেছি এবং একটি টিম হিসাবে প্রকল্পের ফলাফল উপস্থাপন করেছি"
     },
     "skills": {
       "title": "দক্ষতা ও বিশেষজ্ঞতা",
@@ -350,7 +419,10 @@
       "event": "ইভেন্ট",
       "date": "তারিখ",
       "location": "অবস্থান",
-      "viewAll": "সব দেখুন"
+      "viewAll": "সব দেখুন",
+      "photo": "ছবি",
+      "of": "এর",
+      "events": "ইভেন্ট"
     },
     "blog": {
       "title": "ব্লগ",
@@ -359,13 +431,21 @@
       "author": "লেখক",
       "published": "প্রকাশিত",
       "tags": "ট্যাগ",
-      "allPosts": "সব পোস্ট"
+      "allPosts": "সব পোস্ট",
+      "latestArticles": "সর্বশেষ নিবন্ধ",
+      "articlesSubtitle": "এআই, মেশিন লার্নিং এবং প্রযুক্তি সম্পর্কে অন্তর্দৃষ্টি",
+      "articlesSubtitle2": "এআই, মেশিন লার্নিং এবং প্রযুক্তি ট্রেন্ড সম্পর্কে অন্তর্দৃষ্টি",
+      "comingSoon": "শীঘ্রই আরও নিবন্ধ আসছে!",
+      "minRead": "মিনিট পড়া",
+      "viewAll": "সব নিবন্ধ দেখুন"
     },
     "testimonials": {
       "title": "প্রশংসাপত্র",
       "subtitle": "আমার সাথে কাজ করার বিষয়ে মানুষ যা বলে",
       "company": "কোম্পানি",
-      "position": "পদবী"
+      "position": "পদবী",
+      "whatPeopleSay": "মানুষ যা বলে",
+      "feedback": "সহকর্মী, পরামর্শদাতা এবং সহযোগীদের কাছ থেকে প্রতিক্রিয়া"
     },
     "contact": {
       "title": "যোগাযোগ করুন",
