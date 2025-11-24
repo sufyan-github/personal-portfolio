@@ -102,32 +102,8 @@ const Navigation: React.FC = () => {
 
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Professional Academic Logo */}
-          <div className="flex items-center">
-            <button
-              onClick={() => scrollToSection("#home")}
-              className="flex items-center space-x-3 group relative"
-              aria-label={`${cfg.siteTitle} — go to home`}
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300" />
-                <div className="relative bg-gradient-to-br from-primary to-accent p-2 rounded-lg shadow-lg ring-1 ring-primary/20 group-hover:ring-primary/40 transition-all">
-                  <Cpu className="h-6 w-6 text-white" />
-                </div>
-              </div>
-              <div className="flex flex-col items-start">
-                <span className="text-xl font-bold text-foreground font-display tracking-tight">
-                  Md. Abu Sufyan
-                </span>
-                <span className="text-xs text-muted-foreground font-medium tracking-wide">
-                  ML & AI Researcher
-                </span>
-              </div>
-            </button>
-          </div>
-
           {/* Professional Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 flex-1">
             {(cfg.items || []).map((item) => (
               <button
                 key={item.name}
@@ -154,7 +130,7 @@ const Navigation: React.FC = () => {
           </div>
 
           {/* Professional Mobile Menu Button & Theme Toggle */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2 ml-auto">
             <ThemeToggle />
             <Button
               aria-expanded={isMobileMenuOpen}
