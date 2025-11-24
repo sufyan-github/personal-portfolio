@@ -37,9 +37,27 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     setLanguageState(lang);
   };
 
-  // Simple translation function - will be enhanced with translation data
+  // Translation function with nested key support
   const t = (key: string): string => {
-    return key;
+    try {
+      // Import translations dynamically
+      const translations = require('@/data/translations.json');
+      const keys = key.split('.');
+      let value: any = translations[language];
+      
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = value[k];
+        } else {
+          return key; // Return key if translation not found
+        }
+      }
+      
+      return typeof value === 'string' ? value : key;
+    } catch (error) {
+      console.error('Translation error:', error);
+      return key;
+    }
   };
 
   return (
