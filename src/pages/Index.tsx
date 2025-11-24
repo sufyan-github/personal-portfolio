@@ -282,6 +282,10 @@ const Index = () => {
                   © {new Date().getFullYear()} Md. Abu Sufyan. Crafted with precision for innovation.
                 </p>
                 <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <a href="/sitemap" className="hover:text-primary transition-colors">
+                    Sitemap
+                  </a>
+                  <span>•</span>
                   <span>Built with React & TypeScript</span>
                   <span className="hidden sm:inline">•</span>
                   <span className="hidden sm:inline">Powered by Supabase</span>
