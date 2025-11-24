@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FileText, ExternalLink, Users, Calendar } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 // =====================================================
 // JSON‑DRIVEN RESEARCH SECTION
@@ -43,7 +42,6 @@ export type RAProfile = {
 };
 
 const Research: React.FC = () => {
-  const { t } = useLanguage();
   const pubs = publications as Publication[];
   const interests = researchInterests as string[];
   const ra = raInfo as RAProfile;
@@ -52,9 +50,9 @@ const Research: React.FC = () => {
     <section id="research" className="py-20 bg-gradient-secondary">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 gradient-text">{t('research.title')}</h2>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">Research & Publications</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('research.subtitle')}
+            Contributing to AI research with focus on social impact and healthcare applications
           </p>
         </div>
 
@@ -138,7 +136,7 @@ const Research: React.FC = () => {
         {/* Research Interests - Moved Below Publications */}
         <Card className="mt-12 mb-12 hover-lift glow-border bg-card/50 backdrop-blur-sm animate-slide-up">
           <CardHeader>
-            <CardTitle className="text-2xl text-center">{t('research.interests')}</CardTitle>
+            <CardTitle className="text-2xl text-center">Research Interests</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap justify-center gap-3">

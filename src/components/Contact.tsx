@@ -11,7 +11,6 @@ import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
 import contactInfoData from '@/data/contactInfo.json';
 import availabilityData from '@/data/availability.json';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, 'Name is required').max(100),
@@ -25,7 +24,6 @@ const iconsMap: Record<string, any> = {
 };
 
 const Contact = () => {
-  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '', email: '', subject: '', message: '',
   });
@@ -115,11 +113,11 @@ const Contact = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-              {t('contact.title')}
+              Get In Touch
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('contact.subtitle')}
+            Let's collaborate on exciting projects or discuss opportunities
           </p>
         </motion.div>
 
@@ -134,7 +132,7 @@ const Contact = () => {
           >
             <Card className="bg-card/80 backdrop-blur-xl border-2 border-primary/30 shadow-xl shadow-primary/10">
               <CardHeader>
-                <CardTitle className="text-xl text-foreground">{t('contact.title')}</CardTitle>
+                <CardTitle className="text-xl text-foreground">Contact Info</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {contactInfoData.map((contact, index) => {
@@ -175,7 +173,7 @@ const Contact = () => {
 
             <Card className="bg-card/80 backdrop-blur-xl border-2 border-accent/30 shadow-xl shadow-accent/10">
               <CardHeader>
-                <CardTitle className="text-xl text-foreground">{t('contact.title')}</CardTitle>
+                <CardTitle className="text-xl text-foreground">Available For</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
@@ -208,7 +206,7 @@ const Contact = () => {
           >
             <Card className="bg-card/80 backdrop-blur-xl border-2 border-primary/30 shadow-2xl shadow-primary/20">
               <CardHeader>
-                <CardTitle className="text-2xl text-foreground">{t('contact.send')}</CardTitle>
+                <CardTitle className="text-2xl text-foreground">Send a Message</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -216,13 +214,13 @@ const Contact = () => {
                     <motion.div
                       whileFocus={{ scale: 1.02 }}
                     >
-                      <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">{t('contact.name')} *</label>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">Name *</label>
                       <Input
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        placeholder={t('contact.namePlaceholder')}
+                        placeholder="Your name"
                         required
                         className="bg-background/50 border-primary/30 focus:border-primary text-foreground placeholder:text-muted-foreground"
                       />
@@ -230,14 +228,14 @@ const Contact = () => {
                     <motion.div
                       whileFocus={{ scale: 1.02 }}
                     >
-                      <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">{t('contact.email')} *</label>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">Email *</label>
                       <Input
                         id="email"
                         name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        placeholder={t('contact.emailPlaceholder')}
+                        placeholder="your@email.com"
                         required
                         className="bg-background/50 border-primary/30 focus:border-primary text-foreground placeholder:text-muted-foreground"
                       />
@@ -247,13 +245,13 @@ const Contact = () => {
                   <motion.div
                     whileFocus={{ scale: 1.02 }}
                   >
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">{t('contact.subject')} *</label>
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2 text-foreground">Subject *</label>
                     <Input
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
-                      placeholder={t('contact.subjectPlaceholder')}
+                      placeholder="What's this about?"
                       required
                       className="bg-background/50 border-primary/30 focus:border-primary text-foreground placeholder:text-muted-foreground"
                     />
@@ -262,13 +260,13 @@ const Contact = () => {
                   <motion.div
                     whileFocus={{ scale: 1.02 }}
                   >
-                    <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">{t('contact.message')} *</label>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">Message *</label>
                     <Textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder={t('contact.messagePlaceholder')}
+                      placeholder="Tell me about your project or inquiry..."
                       rows={6}
                       required
                       className="bg-background/50 border-primary/30 focus:border-primary text-foreground placeholder:text-muted-foreground resize-none"
@@ -286,7 +284,7 @@ const Contact = () => {
                       className="w-full bg-gradient-to-r from-primary to-secondary hover:shadow-2xl hover:shadow-primary/50 font-semibold border-0 text-white"
                     >
                       <Send className="h-5 w-5 mr-2" />
-                      {loading ? t('contact.sending') : t('contact.send')}
+                      {loading ? 'Sending...' : 'Send Message'}
                     </Button>
                   </motion.div>
                 </form>

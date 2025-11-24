@@ -15,7 +15,6 @@ import {
   Zap,
 } from 'lucide-react';
 import achievementsData from '@/data/achievements.json';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 // Icon map to match string names in JSON with real Lucide icons
 const iconMap: Record<string, React.ElementType> = {
@@ -30,7 +29,6 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const Achievements = () => {
-  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>('All');
   
   const achievements = achievementsData.map(a => ({
@@ -57,12 +55,13 @@ const Achievements = () => {
           <div className="inline-flex items-center justify-center space-x-3 mb-4">
             <Trophy className="h-10 w-10 text-yellow-500 animate-bounce" />
             <h2 className="text-5xl font-bold gradient-text font-display">
-              {t('achievements.title')}
+              Achievements & Milestones
             </h2>
             <Sparkles className="h-10 w-10 text-primary animate-pulse" />
           </div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            {t('achievements.subtitle')}
+            Key accomplishments and recognitions throughout my academic and
+            professional journey
           </p>
         </div>
 

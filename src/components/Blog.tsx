@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ExternalLink, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BlogPost {
   id: string;
@@ -18,7 +17,6 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const { t } = useLanguage();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -77,14 +75,14 @@ const Blog = () => {
       <section id="blog" className="py-20 bg-gradient-secondary">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 gradient-text">{t('blog.latestArticles')}</h2>
+            <h2 className="text-4xl font-bold mb-4 gradient-text">Latest Articles</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('blog.articlesSubtitle')}
+              Insights on AI, machine learning, and technology
             </p>
           </div>
           <div className="text-center">
             <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <p className="text-lg text-muted-foreground">{t('blog.comingSoon')}</p>
+            <p className="text-lg text-muted-foreground">More articles coming soon!</p>
           </div>
         </div>
       </section>
@@ -95,9 +93,9 @@ const Blog = () => {
     <section id="blog" className="py-20 bg-gradient-secondary">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 gradient-text">{t('blog.latestArticles')}</h2>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">Latest Articles</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('blog.articlesSubtitle2')}
+            Insights on AI, machine learning, and technology trends
           </p>
         </div>
 
@@ -127,7 +125,7 @@ const Blog = () => {
                     </div>
                     <div className="flex items-center">
                       <Clock className="h-4 w-4 mr-1" />
-                      {getReadingTime(post.content)} {t('blog.minRead')}
+                      {getReadingTime(post.content)} min read
                     </div>
                   </div>
                   
@@ -172,7 +170,7 @@ const Blog = () => {
                   }}
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
-                  {t('blog.readMore')}
+                  Read More
                 </Button>
               </CardContent>
             </Card>
@@ -182,7 +180,7 @@ const Blog = () => {
         <div className="text-center mt-12">
           <Button size="lg" variant="outline" className="glow-border hover-lift">
             <BookOpen className="h-5 w-5 mr-2" />
-            {t('blog.viewAll')}
+            View All Articles
           </Button>
         </div>
       </div>

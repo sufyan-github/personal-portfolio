@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Trophy, Star, Award } from "lucide-react";
 import codingData from "@/data/coding_profiles.json";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Profile {
   platform: string;
@@ -27,7 +26,6 @@ const getPlatformIcon = (platform: string) => {
 };
 
 const CodingProfiles = () => {
-  const { t } = useLanguage();
   const profiles = codingData.profiles as Profile[];
 
   const containerVariants = {
@@ -149,7 +147,7 @@ const CodingProfiles = () => {
                         rel="noreferrer"
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
-                        {t('coding.viewProfile')}
+                        View Profile
                       </a>
                     </Button>
                   </motion.div>

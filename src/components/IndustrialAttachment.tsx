@@ -3,11 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, Calendar, MapPin, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const IndustrialAttachment: React.FC = () => {
-  const { t } = useLanguage();
-  
   return (
     <section id="industrial-attachment" className="py-20 bg-gradient-secondary relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -19,9 +16,9 @@ const IndustrialAttachment: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 gradient-text">{t('industrial.title')}</h2>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">Industrial Attachment</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('industrial.subtitle')}
+            Real-world experience and hands-on training
           </p>
         </motion.div>
 
@@ -49,10 +46,10 @@ const IndustrialAttachment: React.FC = () => {
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="text-2xl font-bold gradient-text mb-2">
-                        {t('industrial.attachmentTitle')}
+                        15-Day Industrial Attachment
                       </h3>
                       <p className="text-xl text-foreground font-semibold">
-                        {t('industrial.projectTitle')}
+                        Real-Time AI Project
                       </p>
                     </div>
                     <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30 px-4 py-2">
@@ -64,40 +61,42 @@ const IndustrialAttachment: React.FC = () => {
                   {/* Location */}
                   <div className="flex items-center gap-2 text-muted-foreground mb-6">
                     <Building2 className="h-4 w-4" />
-                    <span>{t('industrial.location')}</span>
+                    <span>Collaborative Office Environment with Developers & Data Scientists</span>
                   </div>
 
                   {/* Description */}
                   <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {t('industrial.description')}
+                    Developed a real-time traffic sign detection system using trained deep learning models 
+                    and a web interface. Gained hands-on experience in a collaborative office setting with 
+                    developers and data scientists.
                   </p>
 
                   {/* Key Highlights */}
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-foreground mb-3">{t('industrial.keyHighlights')}</h4>
+                    <h4 className="font-semibold text-foreground mb-3">Key Highlights:</h4>
                     <div className="grid gap-3">
                       <div className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-border/50">
                         <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                         <p className="text-sm text-muted-foreground">
-                          {t('industrial.highlight1')}
+                          Built a web-based application integrating YOLOv8, MobileNet, and ResNet models for live video detection
                         </p>
                       </div>
                       <div className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-border/50">
                         <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                         <p className="text-sm text-muted-foreground">
-                          {t('industrial.highlight2')}
+                          Explored Generative AI for auto-annotation and dataset enhancement
                         </p>
                       </div>
                       <div className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-border/50">
                         <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                         <p className="text-sm text-muted-foreground">
-                          {t('industrial.highlight3')}
+                          Contributed to full-cycle development: model training, frontend/backend integration, and deployment
                         </p>
                       </div>
                       <div className="flex items-start gap-3 p-3 rounded-lg bg-background/50 border border-border/50">
                         <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                         <p className="text-sm text-muted-foreground">
-                          {t('industrial.highlight4')}
+                          Participated in daily standups, sprint reviews, and presented project outcomes as a team
                         </p>
                       </div>
                     </div>

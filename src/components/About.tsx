@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Brain, Code, Cpu, Zap, Sparkles } from "lucide-react";
 import aboutData from "@/data/about.json";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const highlights = [
   {
@@ -59,39 +58,7 @@ const DiamondShape = ({ className = "", delay = 0 }: { className?: string; delay
 );
 
 const About: React.FC = () => {
-  const { t } = useLanguage();
   const { personal } = aboutData;
-
-  const highlights = [
-    {
-      icon: Brain,
-      title: t('about.aiExpertise'),
-      description: t('about.aiExpertiseDesc'),
-      color: "from-blue-500 to-cyan-400",
-      iconColor: "text-blue-400",
-    },
-    {
-      icon: Code,
-      title: t('about.fullStackDev'),
-      description: t('about.fullStackDevDesc'),
-      color: "from-purple-500 to-pink-500",
-      iconColor: "text-purple-400",
-    },
-    {
-      icon: Cpu,
-      title: t('about.researchFocus'),
-      description: t('about.researchFocusDesc'),
-      color: "from-cyan-500 to-blue-500",
-      iconColor: "text-cyan-400",
-    },
-    {
-      icon: Zap,
-      title: t('about.communityLeader'),
-      description: t('about.communityLeaderDesc'),
-      color: "from-amber-500 to-orange-500",
-      iconColor: "text-amber-400",
-    },
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -148,9 +115,9 @@ const About: React.FC = () => {
           >
             <Sparkles className="h-8 w-8 text-primary mx-auto" />
           </motion.div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text font-display">{t('about.title')}</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text font-display">About Me</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('about.tagline')}
+            Passionate technologist bridging research and real-world innovation
           </p>
         </motion.div>
 
@@ -232,15 +199,15 @@ const About: React.FC = () => {
 
               <CardContent className="pt-8 space-y-6 text-foreground leading-relaxed relative z-10">
                 <p className="text-lg">
-                  {t('about.bio1')} <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">{personal.name}</span>, {t('about.bio2')} {personal.degree} {t('about.bio3')} {personal.university}. {t('about.bio4')} <span className="text-primary font-semibold">{t('about.bio5')}</span>, <span className="text-secondary font-semibold">{t('about.bio6')}</span>, {t('about.bio7')} <span className="text-accent font-semibold">{t('about.bio8')}</span>{t('about.bio9')}
+                  I am <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">{personal.name}</span>, a {personal.degree} graduate from {personal.university}. My expertise centers on <span className="text-primary font-semibold">Machine Learning</span>, <span className="text-secondary font-semibold">Deep Learning</span>, and <span className="text-accent font-semibold">Artificial Intelligence</span>—with applications in Bioinformatics, Medical Imaging, and emerging tech domains.
                 </p>
 
                 <p className="text-base text-muted-foreground">
-                  {t('about.bio10')}
+                  Throughout my academic journey, I've engaged in research that bridges theory and practice, contributing to projects that address real-world challenges. My passion lies in leveraging AI to build innovative solutions that make a tangible impact.
                 </p>
 
                 <p className="text-base text-muted-foreground">
-                  {t('about.bio11')}
+                  As an R&D Engineer and active community leader, I'm committed to advancing the field of AI through continuous learning, mentorship, and collaboration. I'm eager to pursue higher studies and contribute to cutting-edge research that shapes the future of technology.
                 </p>
               </CardContent>
             </Card>
