@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Award, Calendar, Building, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import rawCerts from "@/data/certifications.json";
 
@@ -25,6 +26,7 @@ type Cert = Omit<RawCert, "image" | "images"> & { images: { center: string } };
 const PLACEHOLDER = "/certs/placeholder.png";
 
 const Certifications: React.FC = () => {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [selectedCert, setSelectedCert] = useState<Cert | null>(null);
@@ -92,9 +94,9 @@ const Certifications: React.FC = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 gradient-text">Certifications</h2>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">{t('certifications.title')}</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Professional certifications and continuous learning achievements
+            {t('certifications.subtitle')}
           </p>
         </div>
 
@@ -231,7 +233,7 @@ const Certifications: React.FC = () => {
         {/* Certificate count */}
         <div className="text-center mt-4">
           <p className="text-sm text-muted-foreground">
-            {currentIndex + 1} of {certifications.length} certificates
+            {currentIndex + 1} {t('common.of')} {certifications.length} {t('certifications.title').toLowerCase()}
           </p>
         </div>
 
@@ -309,7 +311,7 @@ const Certifications: React.FC = () => {
                         onClick={() => window.open(selectedCert.verificationUrl!, "_blank")}
                       >
                         <ExternalLink className="h-4 w-4 mr-2" />
-                        Verify Certificate
+                        {t('certifications.verify')}
                       </Button>
                     )}
                   </div>

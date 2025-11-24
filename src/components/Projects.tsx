@@ -7,6 +7,7 @@ import { Github, ExternalLink, Calendar, Tag } from "lucide-react";
 import demoTrafficImage from "@/assets/demo-traffic.jpg";
 import demoHealthTrackerImage from "@/assets/demo-healthtracker.png";
 import projectsData from "@/data/projects.json";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Project {
   id: string;
@@ -37,6 +38,7 @@ const getTypeColor = (type: string) => {
 };
 
 const Projects: React.FC = () => {
+  const { t } = useLanguage();
   const [filter, setFilter] = useState<string>("all");
 
   const projects = useMemo(() => {
@@ -109,11 +111,11 @@ const Projects: React.FC = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Featured Projects
+              {t('projects.title')}
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real-world solutions spanning AI research, web development, and mobile applications
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -131,13 +133,13 @@ const Projects: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button
+                <Button
                 variant={filter === type ? "default" : "outline"}
                 size="sm"
                 onClick={() => setFilter(type)}
                 className={filter === type ? "bg-primary border-0 shadow-lg shadow-primary/50" : "border-primary/30 hover:border-primary"}
               >
-                {type === "all" ? "All Projects" : type}
+                {type === "all" ? t('projects.allProjects') : type}
               </Button>
             </motion.div>
           ))}
@@ -182,7 +184,7 @@ const Projects: React.FC = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                       >
                         <Badge className="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary text-white border-0 shadow-lg">
-                          ⭐ Featured
+                          ⭐ {t('projects.featured')}
                         </Badge>
                       </motion.div>
                     )}
@@ -242,7 +244,7 @@ const Projects: React.FC = () => {
                           className="border-2 border-primary/40 hover:border-primary hover:bg-primary/20"
                         >
                           <a href={project.github_url} target="_blank" rel="noreferrer">
-                            <Github className="h-4 w-4 mr-2" /> Code
+                            <Github className="h-4 w-4 mr-2" /> {t('projects.viewGithub')}
                           </a>
                         </Button>
                       </motion.div>
@@ -256,7 +258,7 @@ const Projects: React.FC = () => {
                           className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:shadow-primary/50 border-0"
                         >
                           <a href={project.demo_url} target="_blank" rel="noreferrer">
-                            <ExternalLink className="h-4 w-4 mr-2" /> Live Demo
+                            <ExternalLink className="h-4 w-4 mr-2" /> {t('projects.viewDemo')}
                           </a>
                         </Button>
                       </motion.div>
