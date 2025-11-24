@@ -3,7 +3,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, School, BookOpen } from "lucide-react";
 
 const Academic: React.FC = () => {
-  const academicData = [
+  const academicData: Array<{
+    id: number;
+    title: string;
+    institution: string;
+    location?: string;
+    period: string;
+    cgpa?: string;
+    description: string;
+    icon: typeof GraduationCap;
+    type: string;
+  }> = [
     {
       id: 1,
       title: "Bachelor of Science in Computer Science & Engineering",
