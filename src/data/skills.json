@@ -5,10 +5,10 @@
     "skills": [
       { "name": "Python", "level": 90 },
       { "name": "JavaScript", "level": 85 },
-      { "name": "React", "level": 80 },
-      { "name": "Node.js", "level": 75 },
+      { "name": "React", "level": 85 },
+      { "name": "Node.js", "level": 80 },
       { "name": "HTML5/CSS3", "level": 90 },
-      { "name": "TailwindCSS", "level": 85 }
+      { "name": "TailwindCSS", "level": 90 }
     ]
   },
   {
@@ -17,10 +17,10 @@
     "skills": [
       { "name": "Machine Learning", "level": 90 },
       { "name": "Deep Learning", "level": 85 },
-      { "name": "Computer Vision", "level": 80 },
-      { "name": "NLP", "level": 75 },
+      { "name": "Computer Vision", "level": 85 },
+      { "name": "NLP", "level": 80 },
       { "name": "TensorFlow/PyTorch", "level": 85 },
-      { "name": "Data Science", "level": 80 }
+      { "name": "Data Science", "level": 85 }
     ]
   },
   {
@@ -29,10 +29,20 @@
     "skills": [
       { "name": "MySQL", "level": 85 },
       { "name": "MongoDB", "level": 80 },
-      { "name": "Express.js", "level": 75 },
-      { "name": "PHP Laravel", "level": 70 },
+      { "name": "Express.js", "level": 80 },
+      { "name": "PHP Laravel", "level": 75 },
       { "name": "Firebase", "level": 80 },
       { "name": "REST APIs", "level": 85 }
+    ]
+  },
+  {
+    "title": "Hardware Design & VLSI",
+    "icon": "cpu",
+    "skills": [
+      { "name": "Verilog", "level": 75 },
+      { "name": "HDL", "level": 75 },
+      { "name": "ISA Design", "level": 70 },
+      { "name": "CPU Design", "level": 70 }
     ]
   },
   {
@@ -41,10 +51,10 @@
     "skills": [
       { "name": "Git/GitHub", "level": 90 },
       { "name": "VS Code", "level": 95 },
-      { "name": "Docker", "level": 60 },
       { "name": "Postman", "level": 85 },
-      { "name": "Figma", "level": 65 },
-      { "name": "Linux", "level": 75 }
+      { "name": "Firebase Console", "level": 80 },
+      { "name": "Figma", "level": 70 },
+      { "name": "Git CLI", "level": 85 }
     ]
   }
 ]

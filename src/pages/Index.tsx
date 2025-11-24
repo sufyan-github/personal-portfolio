@@ -1,3 +1,4 @@
+import IndustrialAttachment from "@/components/IndustrialAttachment";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -7,8 +8,6 @@ import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Research from "@/components/Research";
-import Blog from "@/components/Blog";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Analytics from "@/components/Analytics";
 import ParticleBackground from "@/components/ParticleBackground";
@@ -66,6 +65,9 @@ const Index = () => {
           <div id="experience">
             <Experience />
           </div>
+          <div id="industrial-attachment">
+            <IndustrialAttachment />
+          </div>
           <div id="skills">
             <Skills />
             <LanguagesSkills />
@@ -91,12 +93,6 @@ const Index = () => {
           </div>
           <div id="gallery">
             <Gallery />
-          </div>
-          <div id="articles">
-            <Blog />
-          </div>
-          <div id="testimonials">
-            <Testimonials />
           </div>
           <div id="contact">
             <Contact />

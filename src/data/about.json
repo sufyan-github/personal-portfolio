@@ -13,14 +13,14 @@
   ],
   "languages": [
     { "name": "Bangla", "level": 90 },
-    { "name": "English", "level": 75 }
+    { "name": "English", "level": 80 }
   ],
   "softSkills": [
-    "Leadership",
-    "Problem Solving",
-    "Communication",
-    "Strategic Planning",
-    "Innovation",
-    "Team Management"
+    "Team Leadership",
+    "Technical Communication",
+    "Public Speaking",
+    "Project Planning",
+    "Event Management",
+    "Problem Solving"
   ]
 }

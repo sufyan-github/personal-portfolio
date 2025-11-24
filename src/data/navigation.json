@@ -8,6 +8,7 @@
     { "name": "About", "href": "#about" },
     { "name": "Academic", "href": "#academic" },
     { "name": "Experience", "href": "#experience" },
+    { "name": "Industrial Training", "href": "#industrial-attachment" },
     { "name": "Skills", "href": "#skills" },
     { "name": "Projects", "href": "#projects" },
     { "name": "Research", "href": "#research" },
@@ -16,8 +17,6 @@
     { "name": "Memberships", "href": "#memberships" },
     { "name": "Coding", "href": "#coding" },
     { "name": "Gallery", "href": "#gallery" },
-    { "name": "Articles", "href": "#articles" },
-    { "name": "Testimonials", "href": "#testimonials" },
     { "name": "Contact", "href": "#contact" }
   ]
 }

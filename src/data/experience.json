@@ -5,12 +5,26 @@
     "logo": "/assets/logo/aibd.jpeg",
     "location": "High Tech Park, Silicon Tower, Rajshahi, Bangladesh",
     "period": "March 2024 – Present",
-    "website": "aibd.ai",
+    "website": "https://aibd.ai",
     "description": [
-      "Conducted hands-on training sessions on Machine Learning, Deep Learning, Computer Vision, and Data Science",
+      "Conducted hands-on training sessions on Machine Learning, Deep Learning, Computer Vision and Data Science for students and professionals",
       "Designed and delivered course materials covering supervised/unsupervised learning, model evaluation, and deployment workflows",
       "Mentored learners through practical projects, improving their problem-solving and coding skills in Python and ML frameworks",
-      "Collaborated with AI Bangladesh community initiatives to expand outreach and promote applied AI education"
+      "Collaborated with AI Bangladesh community initiatives to expand outreach and promote applied AI education in Bangladesh"
+    ],
+    "featured": true
+  },
+  {
+    "title": "Campus Representative",
+    "company": "FutureNation Volunteer",
+    "logo": "/assets/logo/futurenation.jpeg",
+    "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
+    "period": "June 2025 – Present",
+    "website": "https://futurenation.gov.bd",
+    "description": [
+      "Organized and facilitated FutureNation programs and workshops within the RUET campus",
+      "Led university-level initiatives to engage students in FutureNation's skill-building and youth empowerment projects",
+      "Collaborated with FutureNation teams and partner organizations to ensure impactful program execution"
     ],
     "featured": true
   },
@@ -18,39 +32,95 @@
     "title": "President",
     "company": "RUET IoT Club",
     "logo": "/assets/logo/iot_club.png",
-    "location": "Rajshahi University of Engineering & Technology, Bangladesh",
-    "period": "Feb 2025 – Present",
-    "website": "ruetiotclub.org",
+    "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
+    "period": "February 2025 – Present",
+    "website": "https://ruetiotclub.org",
     "description": [
       "Organized workshops and events on IoT and smart technologies",
       "Coordinated technical sessions focusing on innovation, automation, and advanced IoT applications",
       "Collaborated with student bodies to enhance hands-on learning and technical collaboration"
-    ]
+    ],
+    "featured": true
   },
   {
     "title": "Research Assistant",
     "company": "Machine Learning Research Group",
     "logo": "/assets/logo/research.jpeg",
-    "location": "Department of CSE, RUET, Rajshahi-6204, Bangladesh",
-    "period": "Jul 2024 – Present",
+    "location": "Department of Computer Science & Engineering, RUET, Rajshahi-6204, Bangladesh",
+    "period": "July 2024 – Present",
     "supervisor": "Assistant Prof. SM Mehedi Hasan",
+    "website": "",
     "description": [
-      "Engaged in machine learning research with focus on sentiment analysis and predictive modeling",
-      "Co-authored papers accepted at ICCIT 2024 on social media bias and time-series forecasting",
-      "Developed ML/DL models for detecting sentiment and geopolitical bias in social media text"
+      "Engaged in machine learning research with a focus on sentiment analysis and predictive modeling",
+      "Co-authored papers accepted at ICCiT 2024 on social media bias and time-series forecasting",
+      "Developed ML/DL models for detecting sentiment and geopolitical bias in social media content",
+      "Built sophisticated forecasting models using LSTM, GRU, and ensemble methods for health analytics"
+    ],
+    "featured": true
+  },
+  {
+    "title": "Executive Member, Human Resource Management",
+    "company": "Aachol Foundation",
+    "logo": "/assets/logo/research.jpeg",
+    "location": "Dhaka, Bangladesh",
+    "period": "July 2025 – Present",
+    "website": "https://aacholfoundation.com",
+    "description": [
+      "Supported human resource activities, including volunteer onboarding and member coordination",
+      "Assisted in organizing awareness campaigns and mental health support initiatives",
+      "Collaborated with the HR team to enhance operational efficiency in community-driven projects"
     ]
   },
   {
-    "title": "Campus Representative",
-    "company": "FutureNation Volunteer",
-    "logo": "/assets/logo/futurenation.jpeg",
-    "location": "RUET, Rajshahi, Bangladesh",
-    "period": "Jun 2025 – Present",
-    "website": "futurenation.gov.bd",
+    "title": "Founding Member",
+    "company": "RUET Computing Society",
+    "logo": "/assets/logo/research.jpeg",
+    "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
+    "period": "August 2025 – Present",
+    "website": "https://ruetcs.org",
     "description": [
-      "Organized and facilitated FutureNation programs and workshops within the RUET campus",
-      "Led university-level initiatives to engage students in skill-building and youth empowerment projects",
-      "Collaborated with FutureNation teams and partner organizations to ensure impactful program execution"
+      "Played a key role in establishing the Computing Society at RUET",
+      "Organized coding competitions, seminars, and collaborative projects to promote computing knowledge",
+      "Worked with fellow founding members to draft the society's structure and roadmap"
+    ]
+  },
+  {
+    "title": "Human Resource Officer",
+    "company": "Volunteer for Bangladesh (VBD)",
+    "logo": "/assets/logo/futurenation.jpeg",
+    "location": "Rajshahi District, Bangladesh",
+    "period": "September 2024 – Present",
+    "website": "https://vbd.com.bd",
+    "description": [
+      "Managed volunteer recruitment and training programs for social initiatives",
+      "Organized campaigns on public health and environmental awareness",
+      "Coordinated with NGOs and local authorities to implement SDG-aligned community projects"
+    ]
+  },
+  {
+    "title": "Campus Volunteer",
+    "company": "Manus Manusher Jonnya Foundation",
+    "logo": "/assets/logo/research.jpeg",
+    "location": "RUET Campus, Rajshahi, Bangladesh",
+    "period": "January 2021 – Present",
+    "website": "",
+    "description": [
+      "Contributed to disaster relief, education, and youth empowerment initiatives",
+      "Organized community outreach programs and awareness campaigns",
+      "Collaborated with volunteer teams on social welfare projects"
+    ]
+  },
+  {
+    "title": "Committee Member",
+    "company": "Volunteer for Bangladesh (Jagoo Foundation)",
+    "logo": "/assets/logo/futurenation.jpeg",
+    "location": "Rajshahi, Bangladesh",
+    "period": "June 2023 – Present",
+    "website": "",
+    "description": [
+      "Organized public health, environmental campaigns, and youth development projects",
+      "Participated in community service initiatives aligned with sustainable development goals",
+      "Engaged in educational programs and awareness drives"
     ]
   }
 ]
