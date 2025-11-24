@@ -6,29 +6,32 @@ const Academic: React.FC = () => {
   const academicData = [
     {
       id: 1,
-      title: "Bachelor Of Science In Engineering",
-      institution: "Rajshahi University of Engineering & Technology",
-      period: "Mar 2021 - 2025",
+      title: "Bachelor of Science in Computer Science & Engineering",
+      institution: "Rajshahi University of Engineering & Technology (RUET)",
+      location: "Rajshahi-6204, Bangladesh",
+      period: "March 2021 - 2025",
       cgpa: "3.68 / 4.00",
-      description: "Majoring in Computer Science and Engineering with strong fundamentals in algorithms, data structures, operating systems, and computer networks. Advanced skills in image processing, neural networks, signal processing, computer security, VLSI design, and hardware architecture.",
+      description: "Specialized in Machine Learning, Deep Learning, and Computer Vision. Core competencies include algorithms, data structures, operating systems, computer networks, image processing, neural networks, signal processing, computer security, VLSI design, and hardware architecture.",
       icon: GraduationCap,
       type: "university"
     },
     {
       id: 2,
-      title: "Higher Secondary Certification",
+      title: "Higher Secondary Certificate (HSC)",
       institution: "New Govt. Degree College",
-      period: "2016-2018",
-      description: "I completed my HSC in Science, gaining a deeper understanding of core subjects such as Mathematics, Physics, Chemistry, Biology, and ICT, which laid the foundation for my further studies in technology and engineering.",
+      location: "Kishorganj, Bangladesh",
+      period: "2016 - 2018",
+      description: "Completed HSC in Science with focus on Mathematics, Physics, Chemistry, Biology, and ICT, establishing a strong foundation for advanced studies in technology and engineering.",
       icon: School,
       type: "college"
     },
     {
       id: 3,
-      title: "Secondary School Certification",
+      title: "Secondary School Certificate (SSC)",
       institution: "Sardha Govt. Pilot High School",
-      period: "2014-2016",
-      description: "I completed my secondary education with strong fundamentals in Mathematics, Science, and technology subjects, which prepared me for advanced studies in engineering and computer science.",
+      location: "Kishorganj, Bangladesh",
+      period: "2014 - 2016",
+      description: "Completed secondary education with strong fundamentals in Mathematics, Science, and technology subjects, preparing for advanced studies in engineering and computer science.",
       icon: BookOpen,
       type: "school"
     }
@@ -39,9 +42,9 @@ const Academic: React.FC = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 gradient-text">ACADEMICS</h2>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">Academic Background</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            My educational journey from high school to university
+            Educational journey in Computer Science & Engineering
           </p>
         </div>
 
@@ -76,26 +79,31 @@ const Academic: React.FC = () => {
                     <div className={`w-full max-w-lg ${isLeft ? 'md:mr-8 mr-4' : 'md:ml-8 ml-4'}`}>
                       <Card className="hover-lift glow-border bg-card/50 backdrop-blur-sm animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                         <CardContent className="p-6">
-                          {/* Period badge */}
-                          <div className={`flex ${isLeft ? 'justify-start' : 'justify-end'} mb-4 gap-3 flex-wrap`}>
-                            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20">
+                          {/* Period and CGPA badges */}
+                          <div className={`flex ${isLeft ? 'justify-start' : 'justify-end'} mb-4 gap-2 flex-wrap`}>
+                            <span className="px-3 py-1.5 bg-primary/10 text-primary rounded-md text-sm font-medium border border-primary/20">
                               {item.period}
                             </span>
                             {item.cgpa && (
-                              <span className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20">
+                              <span className="px-3 py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 rounded-md text-sm font-semibold border border-green-500/20">
                                 CGPA: {item.cgpa}
                               </span>
                             )}
                           </div>
                           
                           {/* Title and Institution */}
-                          <div className={`${isLeft ? 'text-left' : 'text-right'} mb-4`}>
-                            <h3 className="text-xl font-bold mb-2 gradient-text">
+                          <div className={`${isLeft ? 'text-left' : 'text-right'} mb-3`}>
+                            <h3 className="text-xl font-bold mb-2 text-foreground leading-tight">
                               {item.title}
                             </h3>
-                            <p className="text-lg text-muted-foreground font-medium">
+                            <p className="text-base text-primary font-semibold mb-1">
                               {item.institution}
                             </p>
+                            {item.location && (
+                              <p className="text-sm text-muted-foreground">
+                                {item.location}
+                              </p>
+                            )}
                           </div>
                           
                           {/* Description */}
