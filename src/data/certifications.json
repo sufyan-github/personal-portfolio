@@ -36,12 +36,12 @@
     "id": 4,
     "title": "Basic Networking Exam",
     "issuer": "Cisco Networking Academy",
-    "date": "2023",
-    "description": "Fundamental networking concepts, protocols, and configuration principles.",
+    "date": "2024",
+    "description": "Successfully completed a fundamental networking exam covering networking concepts, protocols, and troubleshooting.",
     "image": "/certs/cisco_basic_networking.png",
     "credentialId": "",
     "verificationUrl": "#",
-    "skills": ["Networking", "TCP/IP", "Routing", "Security"]
+    "skills": ["Networking", "TCP/IP", "Routing", "Security", "Troubleshooting"]
   },
   {
     "id": 5,
@@ -67,14 +67,14 @@
   },
   {
     "id": 7,
-    "title": "Intro to Machine Learning",
+    "title": "Introduction to Machine Learning",
     "issuer": "Kaggle",
     "date": "2024-06-30",
-    "description": "Completed the Intro to Machine Learning course (Kaggle Learn).",
+    "description": "Completed an introductory course on machine learning, covering supervised and unsupervised learning techniques, algorithms, and model evaluation.",
     "image": "/certs/kaggle_intro_ml_2024-06-30.png",
     "credentialId": "",
     "verificationUrl": "#",
-    "skills": ["Machine Learning", "Modeling", "Pandas"]
+    "skills": ["Machine Learning", "Supervised Learning", "Unsupervised Learning", "Model Evaluation"]
   },
   {
     "id": 8,
@@ -125,55 +125,55 @@
     "title": "App Development with Flutter",
     "issuer": "Ostad",
     "date": "2024",
-    "description": "Comprehensive course covering Flutter framework, Dart, and mobile app development best practices.",
+    "description": "Successfully completed a hands-on course on Flutter app development, covering UI/UX design, state management, and backend integration.",
     "image": "/certs/flutter_ostad_2024.png",
     "credentialId": "C11352",
     "verificationUrl": "#",
-    "skills": ["Flutter", "Dart", "Mobile Development", "UI/UX"]
+    "skills": ["Flutter", "Dart", "Mobile Development", "UI/UX", "State Management"]
   },
   {
     "id": 13,
-    "title": "CAPM® Certification",
+    "title": "Certified Associate in Project Management (CAPM)® Certification Course",
     "issuer": "Project Management Institute (PMI)",
-    "date": "2024",
-    "description": "Certified Associate in Project Management — fundamentals and terminology.",
+    "date": "2024-12-14",
+    "description": "Completed a certification course on project management principles, methodologies, and best practices according to PMI standards.",
     "image": "/certs/capm_course_2024.png",
     "credentialId": "PMI-CAPM-2024-001",
     "verificationUrl": "#",
-    "skills": ["Project Management", "Risk Assessment", "Stakeholder Management"]
+    "skills": ["Project Management", "Risk Assessment", "Stakeholder Management", "PMI Standards"]
   },
   {
     "id": 14,
     "title": "Workplace Communication Essentials",
-    "issuer": "Generation Unlimited (P2E Bangladesh)",
+    "issuer": "Passport to Earning Bangladesh (Generation Unlimited)",
     "date": "2024-05-21",
-    "description": "Professional communication skills and collaborative work methods.",
+    "description": "Learned key skills in workplace communication, professional etiquette, and effective collaboration in business environments.",
     "image": "/certs/workplace_communication_essentials_2024.png",
     "credentialId": "",
     "verificationUrl": "#",
-    "skills": ["Communication", "Presentation", "Collaboration"]
+    "skills": ["Communication", "Professional Etiquette", "Collaboration", "Business Communication"]
   },
   {
     "id": 15,
     "title": "Art of Problem Definition",
-    "issuer": "Generation Unlimited (P2E Bangladesh)",
+    "issuer": "Passport to Earning Bangladesh (Generation Unlimited)",
     "date": "2024-12-17",
-    "description": "Strategic problem-solving methodologies and analytical thinking.",
+    "description": "Focused on problem-solving techniques, critical thinking, and structuring problems effectively for optimal solutions.",
     "image": "/certs/art_of_problem_definition_2024.png",
     "credentialId": "",
     "verificationUrl": "#",
-    "skills": ["Problem Solving", "Critical Thinking", "Analysis", "Strategy"]
+    "skills": ["Problem Solving", "Critical Thinking", "Analysis", "Strategy", "Problem Structuring"]
   },
   {
     "id": 16,
     "title": "The SDG Primer",
     "issuer": "UNDP Bangladesh",
     "date": "2025-02-05",
-    "description": "Understanding Sustainable Development Goals and their implementation.",
+    "description": "Gained knowledge about the Sustainable Development Goals (SDGs), their implementation, and impact on global development.",
     "image": "/certs/sdg_primer_2025.png",
     "credentialId": "",
     "verificationUrl": "#",
-    "skills": ["SDGs", "Policy", "Social Impact"]
+    "skills": ["SDGs", "Policy", "Social Impact", "Global Development", "Sustainability"]
   },
   {
     "id": 17,

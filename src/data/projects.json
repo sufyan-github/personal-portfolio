@@ -1,26 +1,62 @@
 [
   {
     "id": "p01",
-    "title": "Smart Traffic Management with YOLOv8",
-    "description": "Dynamic signal control using real-time object detection and queue length estimation.",
-    "technologies": ["Python", "YOLOv8", "OpenCV", "Flask"],
+    "title": "Traffic Sign Detection System",
+    "description": "Real-time detection of traffic signs using YOLOv8, MobileNet, and ResNet models deployed on a web interface with live video processing support.",
+    "technologies": ["Python", "YOLOv8", "MobileNet", "ResNet", "Flask", "OpenCV"],
     "project_type": "AI/ML",
     "year": "2025",
     "featured": true,
-    "github_url": "https://github.com/you/smart-traffic",
-    "demo_url": "https://demo.example.com/traffic",
-    "image_url": "/projects/traffic.jpg"
+    "github_url": "https://github.com/sufyan-github",
+    "demo_url": "#",
+    "image_url": "/src/assets/demo-traffic.jpg"
   },
   {
     "id": "p02",
-    "title": "HealthTracker — Flutter Mobile App",
-    "description": "Cross-platform app for activity tracking and analytics; Firebase auth and Firestore.",
-    "technologies": ["Flutter", "Dart", "Firebase"],
+    "title": "Sentiment Analysis and Bias Detection",
+    "description": "Developed ML/DL models for detecting sentiment and geopolitical bias in social media text. Supported academic research published in ICCiT 2024.",
+    "technologies": ["Python", "NLP", "TensorFlow", "Scikit-learn", "BERT"],
+    "project_type": "AI/ML",
+    "year": "2024",
+    "featured": true,
+    "github_url": "https://github.com/sufyan-github",
+    "demo_url": "#",
+    "image_url": "/projects/sentiment.jpg"
+  },
+  {
+    "id": "p03",
+    "title": "Monkeypox Outbreak Prediction",
+    "description": "Built forecasting models to predict Monkeypox outbreak trends using LSTM, GRU, and ensemble ML models to improve predictive accuracy.",
+    "technologies": ["Python", "LSTM", "GRU", "Time Series", "Data Analysis"],
+    "project_type": "AI/ML",
+    "year": "2024",
+    "featured": true,
+    "github_url": "https://github.com/sufyan-github",
+    "demo_url": "#",
+    "image_url": "/projects/monkeypox.jpg"
+  },
+  {
+    "id": "p04",
+    "title": "Attendance Management App",
+    "description": "Cross-platform mobile app built with Flutter and Dart. Integrated Firebase for authentication and real-time database with Riverpod for efficient state management.",
+    "technologies": ["Flutter", "Dart", "Firebase", "Riverpod"],
     "project_type": "Mobile",
     "year": "2024",
-    "featured": false,
-    "github_url": "https://github.com/you/healthtracker",
+    "featured": true,
+    "github_url": "https://github.com/sufyan-github",
     "demo_url": "#",
-    "image_url": "/projects/healthtracker.png"
+    "image_url": "/src/assets/demo-healthtracker.png"
+  },
+  {
+    "id": "p05",
+    "title": "Full-Stack Web Development Projects",
+    "description": "Designed responsive frontends with React, TailwindCSS, and DaisyUI. Built backends with Node.js, Express.js, MySQL, and PHP (Laravel).",
+    "technologies": ["React", "TailwindCSS", "Node.js", "Express.js", "MySQL", "PHP", "Laravel"],
+    "project_type": "Web",
+    "year": "2023",
+    "featured": false,
+    "github_url": "https://github.com/sufyan-github",
+    "demo_url": "#",
+    "image_url": "/projects/fullstack.jpg"
   }
 ]

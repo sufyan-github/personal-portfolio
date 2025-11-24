@@ -8,8 +8,9 @@ const Academic: React.FC = () => {
       id: 1,
       title: "Bachelor Of Science In Engineering",
       institution: "Rajshahi University of Engineering & Technology",
-      period: "2021 - 2025",
-      description: "I'm majoring in Computer Science and Engineering. I gained core knowledge in algorithms, data structures, operating systems, and computer networks, along with advanced skills in image processing, neural networks, signal processing, and computer security, while developing essential mathematical skills for problem-solving and computational applications.",
+      period: "Mar 2021 - 2025",
+      cgpa: "3.68 / 4.00",
+      description: "Majoring in Computer Science and Engineering with strong fundamentals in algorithms, data structures, operating systems, and computer networks. Advanced skills in image processing, neural networks, signal processing, computer security, VLSI design, and hardware architecture.",
       icon: GraduationCap,
       type: "university"
     },
@@ -76,10 +77,15 @@ const Academic: React.FC = () => {
                       <Card className="hover-lift glow-border bg-card/50 backdrop-blur-sm animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                         <CardContent className="p-6">
                           {/* Period badge */}
-                          <div className={`flex ${isLeft ? 'justify-start' : 'justify-end'} mb-4`}>
+                          <div className={`flex ${isLeft ? 'justify-start' : 'justify-end'} mb-4 gap-3 flex-wrap`}>
                             <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20">
                               {item.period}
                             </span>
+                            {item.cgpa && (
+                              <span className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium border border-accent/20">
+                                CGPA: {item.cgpa}
+                              </span>
+                            )}
                           </div>
                           
                           {/* Title and Institution */}
