@@ -85,10 +85,10 @@ const Navigation: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? "bg-background/70 backdrop-blur-xl border-b border-primary/20 shadow-[0_8px_32px_0_rgba(59,130,246,0.1)]" 
-          : "bg-gradient-to-b from-background/50 to-transparent backdrop-blur-sm"
+          ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-sm" 
+          : "bg-background/80 backdrop-blur-md"
       }`}
       aria-label="Primary"
     >
@@ -102,56 +102,58 @@ const Navigation: React.FC = () => {
 
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo with Enhanced Tech Icon */}
+          {/* Professional Academic Logo */}
           <div className="flex items-center">
             <button
               onClick={() => scrollToSection("#home")}
-              className="flex items-center space-x-3 group hover-lift relative"
+              className="flex items-center space-x-3 group relative"
               aria-label={`${cfg.siteTitle} — go to home`}
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-primary rounded-xl blur-md opacity-60 group-hover:opacity-100 transition-all duration-300 animate-pulse" />
-                <div className="relative bg-gradient-primary p-2.5 rounded-xl shadow-glow ring-2 ring-primary/30 group-hover:ring-primary/60 transition-all">
-                  <Cpu className="h-7 w-7 text-white" />
+                <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-sm opacity-50 group-hover:opacity-70 transition-all duration-300" />
+                <div className="relative bg-gradient-to-br from-primary to-accent p-2 rounded-lg shadow-lg ring-1 ring-primary/20 group-hover:ring-primary/40 transition-all">
+                  <Cpu className="h-6 w-6 text-white" />
                 </div>
               </div>
               <div className="flex flex-col items-start">
-                <span className="text-2xl font-bold gradient-text font-display tracking-wide">
-                  MASC
+                <span className="text-xl font-bold text-foreground font-display tracking-tight">
+                  Md. Abu Sufyan
                 </span>
-                <span className="text-[10px] text-muted-foreground font-medium tracking-widest uppercase">
-                  Portfolio
+                <span className="text-xs text-muted-foreground font-medium tracking-wide">
+                  ML & AI Researcher
                 </span>
               </div>
             </button>
           </div>
 
-          {/* Desktop Navigation with Glassmorphism */}
-          <div className="hidden lg:flex items-center space-x-2">
+          {/* Professional Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
             {(cfg.items || []).map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className={`relative px-3 py-2 rounded-lg transition-all duration-300 text-sm font-medium group ${
+                className={`relative px-4 py-2 rounded-md transition-all duration-200 text-sm font-medium ${
                   isActive(item.href)
-                    ? "text-primary bg-primary/10 shadow-glow"
-                    : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                    ? "text-primary bg-primary/5 border border-primary/20"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
                 }`}
                 aria-current={isActive(item.href) ? "page" : undefined}
               >
                 {item.name}
-                {/* Enhanced active indicator */}
+                {/* Clean active indicator */}
                 {isActive(item.href) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-primary rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
                 )}
               </button>
             ))}
             
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <div className="ml-2 pl-2 border-l border-border">
+              <ThemeToggle />
+            </div>
           </div>
 
-          {/* Enhanced Mobile Menu Button & Theme Toggle */}
+          {/* Professional Mobile Menu Button & Theme Toggle */}
           <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
             <Button
@@ -160,32 +162,32 @@ const Navigation: React.FC = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen((v) => !v)}
-              className="relative bg-gradient-primary/10 backdrop-blur-sm hover:bg-gradient-primary/20 border border-primary/20 rounded-lg"
+              className="relative bg-muted hover:bg-muted/80 border border-border rounded-md"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5 text-primary" /> : <Menu className="h-5 w-5 text-primary" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               <span className="sr-only">{isMobileMenuOpen ? "Close" : "Open"} menu</span>
             </Button>
           </div>
         </div>
 
-        {/* Enhanced Mobile Menu with Glassmorphism */}
+        {/* Professional Mobile Menu */}
         {isMobileMenuOpen && (
           <div
             id="primary-mobile-menu"
             ref={mobileMenuRef}
-            className="lg:hidden absolute top-16 left-0 right-0 bg-background/90 backdrop-blur-2xl border-b border-primary/20 shadow-2xl animate-slide-up"
+            className="lg:hidden absolute top-16 left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border shadow-lg animate-slide-up"
             role="dialog"
             aria-modal="true"
           >
-            <div className="px-6 py-6 space-y-2">
+            <div className="px-6 py-4 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {(cfg.items || []).map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left transition-all duration-200 py-3 px-4 rounded-lg font-medium ${
+                  className={`block w-full text-left transition-all duration-200 py-2.5 px-4 rounded-md text-sm font-medium ${
                     isActive(item.href)
-                      ? "text-primary bg-gradient-primary/10 shadow-glow border border-primary/30"
-                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                      ? "text-primary bg-primary/5 border-l-2 border-primary"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
                   }`}
                 >
                   {item.name}
