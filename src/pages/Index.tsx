@@ -23,8 +23,12 @@ import Gallery from "@/components/Gallery";
 import CodingProfiles from "@/components/CodingProfiles";
 import { Toaster } from "@/components/ui/toaster";
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations.json";
 
 const Index = () => {
+  const { language } = useLanguage();
+  const t = (translations as any)[language];
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       {/* 3D Particle Background Animation */}
@@ -107,9 +111,7 @@ const Index = () => {
               <div className="md:col-span-12 lg:col-span-4">
                 <h3 className="text-2xl font-bold gradient-text mb-4 font-display">Md. Abu Sufyan</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
-                  Machine Learning & AI Instructor | Computer Science Engineer specializing in AI research, 
-                  full-stack development, and innovative technology solutions. Passionate about leveraging 
-                  technology for social impact and education.
+                  {t.footer.about}
                 </p>
                 <div className="flex gap-3">
                   <a
@@ -142,98 +144,98 @@ const Index = () => {
 
               {/* Quick Navigation - Split into 2 columns */}
               <div className="md:col-span-6 lg:col-span-4">
-                <h3 className="text-lg font-semibold mb-4 text-foreground">Quick Navigation</h3>
+                <h3 className="text-lg font-semibold mb-4 text-foreground">{t.footer.quickNav}</h3>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
                   <a 
                     href="#home" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Home
+                    → {t.nav.home}
                   </a>
                   <a 
                     href="#about" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → About
+                    → {t.nav.about}
                   </a>
                   <a 
                     href="#academic" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Academic
+                    → {t.nav.academic}
                   </a>
                   <a 
                     href="#experience" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Experience
+                    → {t.nav.experience}
                   </a>
                   <a 
                     href="#industrial-attachment" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Training
+                    → {t.nav.industrial}
                   </a>
                   <a 
                     href="#skills" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Skills
+                    → {t.nav.skills}
                   </a>
                   <a 
                     href="#projects" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Projects
+                    → {t.nav.projects}
                   </a>
                   <a 
                     href="#research" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Research
+                    → {t.nav.research}
                   </a>
                   <a 
                     href="#certifications" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Certifications
+                    → {t.nav.certifications}
                   </a>
                   <a 
                     href="#achievements" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Achievements
+                    → {t.nav.achievements}
                   </a>
                   <a 
                     href="#memberships" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Memberships
+                    → {t.nav.memberships}
                   </a>
                   <a 
                     href="#coding" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Coding
+                    → {t.nav.coding}
                   </a>
                   <a 
                     href="#gallery" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Gallery
+                    → {t.nav.gallery}
                   </a>
                   <a 
                     href="#contact" 
                     className="text-muted-foreground hover:text-primary transition-colors py-1 hover:translate-x-1 inline-block"
                   >
-                    → Contact
+                    → {t.nav.contact}
                   </a>
                 </div>
               </div>
 
               {/* Contact Information */}
               <div className="md:col-span-6 lg:col-span-4">
-                <h3 className="text-lg font-semibold mb-4 text-foreground">Get In Touch</h3>
+                <h3 className="text-lg font-semibold mb-4 text-foreground">{t.footer.getInTouch}</h3>
                 <div className="space-y-3 text-sm">
                   <a 
                     href="mailto:abusufyan.cse20@gmail.com"
@@ -257,7 +259,7 @@ const Index = () => {
                   {/* Additional Info */}
                   <div className="pt-4 border-t border-border/50 mt-4">
                     <p className="text-xs text-muted-foreground mb-2">
-                      Open for collaboration and opportunities
+                      {t.footer.openForCollab}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md border border-primary/20">
@@ -279,16 +281,16 @@ const Index = () => {
             <div className="pt-8 border-t border-border">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-sm text-muted-foreground text-center md:text-left">
-                  © {new Date().getFullYear()} Md. Abu Sufyan. Crafted with precision for innovation.
+                  © {new Date().getFullYear()} Md. Abu Sufyan. {t.footer.copyright}
                 </p>
                 <div className="flex items-center gap-4 text-xs text-muted-foreground">
                   <a href="/sitemap" className="hover:text-primary transition-colors">
                     Sitemap
                   </a>
                   <span>•</span>
-                  <span>Built with React & TypeScript</span>
+                  <span>{t.footer.builtWith}</span>
                   <span className="hidden sm:inline">•</span>
-                  <span className="hidden sm:inline">Powered by Supabase</span>
+                  <span className="hidden sm:inline">{t.footer.poweredBy}</span>
                 </div>
               </div>
             </div>

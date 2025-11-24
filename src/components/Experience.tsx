@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin, Building } from 'lucide-react';
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations.json";
 import experienceData from '@/data/experience.json';
 
 type ExperienceItem = {
@@ -24,16 +26,18 @@ const toUrl = (site?: string) => {
 
 const Experience: React.FC = () => {
   const experiences = useMemo(() => experienceData as ExperienceItem[], []);
+  const { language } = useLanguage();
+  const t = (translations as any)[language].experience;
 
   return (
     <section id="experience" className="py-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 gradient-text">
-            Professional Experience
+            {t.title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Leading roles in AI education, research, and community initiatives
+            {t.subtitle}
           </p>
         </div>
 

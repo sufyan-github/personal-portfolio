@@ -5,6 +5,8 @@ import { ArrowDown, Github, Linkedin, Mail, Brain, Cpu, Database, Sparkles } fro
 import Lottie from "lottie-react";
 import { TypeAnimation } from "react-type-animation";
 import ResumeDownload from "@/components/ResumeDownload";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations.json";
 import heroData from "@/data/hero.json";
 
 type Social = { label: string; type: "email" | "linkedin" | "github" | "custom"; href: string };
@@ -97,22 +99,27 @@ const scrollToId = (id: string) => {
 
 const Hero: React.FC = () => {
   const cfg = useMemo(() => heroData as HeroConfig, []);
+  const { language } = useLanguage();
+  const t = (translations as any)[language].hero;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-      {/* Animated grid pattern */}
-      <motion.div 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-[size:4rem_4rem]"
-        animate={{
-          backgroundPosition: ["0px 0px", "64px 64px"],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        aria-hidden
-      />
+      {/* Enhanced Animated Grid Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
+        <motion.div 
+          className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-[size:4rem_4rem]"
+          animate={{
+            backgroundPosition: ["0px 0px", "64px 64px"],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          aria-hidden
+        />
+      </div>
 
       {/* Floating particles */}
       {!prefersReducedMotion() && (
@@ -189,8 +196,11 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
+            <span className="text-muted-foreground text-2xl sm:text-3xl lg:text-4xl font-normal block mb-2">
+              {t.greeting}
+            </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-              {cfg.name}
+              {t.name}
             </span>
           </motion.h1>
           
@@ -228,7 +238,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            {cfg.summary}
+            {t.subtitle}
           </motion.p>
 
           {/* Specialization Chips */}
@@ -266,24 +276,20 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            {cfg.ctas?.map((c, i) => (
-              <motion.div
-                key={c.label}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-base font-semibold px-8 transition-all duration-300 border-0"
+                onClick={() => scrollToId("projects")}
               >
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-base font-semibold px-8 transition-all duration-300 border-0"
-                  onClick={() => scrollToId(c.targetId)}
-                >
-                  {c.label}
-                </Button>
-              </motion.div>
-            ))}
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <ResumeDownload />
+                {t.cta}
+                <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
+              </Button>
             </motion.div>
+            <ResumeDownload />
           </motion.div>
 
           {/* Social Links - Compact */}

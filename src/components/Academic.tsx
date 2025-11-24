@@ -1,8 +1,13 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, School, BookOpen } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import translations from "@/data/translations.json";
 
 const Academic: React.FC = () => {
+  const { language } = useLanguage();
+  const t = (translations as any)[language].academic;
+  
   const academicData: Array<{
     id: number;
     title: string;
@@ -16,32 +21,32 @@ const Academic: React.FC = () => {
   }> = [
     {
       id: 1,
-      title: "Bachelor of Science in Computer Science & Engineering",
-      institution: "Rajshahi University of Engineering & Technology (RUET)",
-      location: "Rajshahi-6204, Bangladesh",
+      title: language === "bn" ? t.bsc.title : "Bachelor of Science in Computer Science & Engineering",
+      institution: language === "bn" ? t.bsc.institution : "Rajshahi University of Engineering & Technology (RUET)",
+      location: language === "bn" ? t.bsc.location : "Rajshahi-6204, Bangladesh",
       period: "March 2021 - 2025",
       cgpa: "3.68 / 4.00",
-      description: "Specialized in Machine Learning, Deep Learning, and Computer Vision. Core competencies include algorithms, data structures, operating systems, computer networks, image processing, neural networks, signal processing, computer security, VLSI design, and hardware architecture.",
+      description: language === "bn" ? t.bsc.description : "Specialized in Machine Learning, Deep Learning, and Computer Vision. Core competencies include algorithms, data structures, operating systems, computer networks, image processing, neural networks, signal processing, computer security, VLSI design, and hardware architecture.",
       icon: GraduationCap,
       type: "university"
     },
     {
       id: 2,
-      title: "Higher Secondary Certificate (HSC)",
-      institution: "Gurudoyal Govt College",
-      location: "Kishorganj, Bangladesh",
+      title: language === "bn" ? t.hsc.title : "Higher Secondary Certificate (HSC)",
+      institution: language === "bn" ? t.hsc.institution : "Gurudoyal Govt College",
+      location: language === "bn" ? t.hsc.location : "Kishorganj, Bangladesh",
       period: "2016 - 2018",
-      description: "Completed HSC in Science with focus on Mathematics, Physics, Chemistry, Biology, and ICT, establishing a strong foundation for advanced studies in technology and engineering.",
+      description: language === "bn" ? t.hsc.description : "Completed HSC in Science with focus on Mathematics, Physics, Chemistry, Biology, and ICT, establishing a strong foundation for advanced studies in technology and engineering.",
       icon: School,
       type: "college"
     },
     {
       id: 3,
-      title: "Secondary School Certificate (SSC)",
-      institution: "Alhaj Amir Uddin High School",
-      location: "Kishorganj, Bangladesh",
+      title: language === "bn" ? t.ssc.title : "Secondary School Certificate (SSC)",
+      institution: language === "bn" ? t.ssc.institution : "Alhaj Amir Uddin High School",
+      location: language === "bn" ? t.ssc.location : "Kishorganj, Bangladesh",
       period: "2014 - 2016",
-      description: "Completed secondary education with strong fundamentals in Mathematics, Science, and technology subjects, preparing for advanced studies in engineering and computer science.",
+      description: language === "bn" ? t.ssc.description : "Completed secondary education with strong fundamentals in Mathematics, Science, and technology subjects, preparing for advanced studies in engineering and computer science.",
       icon: BookOpen,
       type: "school"
     }
@@ -52,9 +57,9 @@ const Academic: React.FC = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 gradient-text">Academic Background</h2>
+          <h2 className="text-4xl font-bold mb-4 gradient-text">{t.title}</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Educational journey in Computer Science & Engineering
+            {t.subtitle}
           </p>
         </div>
 
