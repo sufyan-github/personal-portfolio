@@ -186,7 +186,7 @@ const handler = async (req: Request): Promise<Response> => {
           </div>
         </div>
       `,
-      "Portfolio Contact <onboarding@resend.dev>"
+      "Portfolio <noreply@yourdomain.com>" // TODO: Replace yourdomain.com with your verified domain
     );
 
     // Send confirmation email to the sender
@@ -227,7 +227,7 @@ const handler = async (req: Request): Promise<Response> => {
           </div>
         </div>
       `,
-      "Abu Sufyan <onboarding@resend.dev>"
+      "Abu Sufyan <noreply@yourdomain.com>" // TODO: Replace yourdomain.com with your verified domain
     );
 
     console.log("Emails sent successfully:", { emailToOwner, confirmationEmail });
