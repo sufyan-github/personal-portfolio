@@ -14,6 +14,8 @@
       "memberships": "Memberships",
       "coding": "Coding",
       "gallery": "Gallery",
+      "blog": "Blog",
+      "testimonials": "Testimonials",
       "contact": "Contact"
     },
     "hero": {
@@ -29,7 +31,9 @@
       "subtitle": "Passionate about AI, Innovation, and Technology",
       "interests": "Research Interests",
       "languages": "Languages",
-      "softSkills": "Soft Skills"
+      "softSkills": "Soft Skills",
+      "profile": "Professional Profile",
+      "description": "I'm a Computer Science & Engineering student at RUET, specializing in Machine Learning, Deep Learning, and Computer Vision. I'm passionate about leveraging technology to solve real-world problems and create innovative solutions."
     },
     "academic": {
       "title": "Academic Background",
@@ -55,7 +59,16 @@
     },
     "experience": {
       "title": "Professional Experience",
-      "subtitle": "Leading roles in AI education, research, and community initiatives"
+      "subtitle": "Leading roles in AI education, research, and community initiatives",
+      "present": "Present",
+      "duration": "Duration"
+    },
+    "industrial": {
+      "title": "Industrial Training",
+      "subtitle": "Practical industry experience and professional development",
+      "duration": "Duration",
+      "skills": "Skills Acquired",
+      "achievements": "Key Achievements"
     },
     "skills": {
       "title": "Skills & Expertise",
@@ -75,17 +88,99 @@
       "subtitle": "Innovative solutions in AI/ML and Full-Stack Development",
       "viewGithub": "View on GitHub",
       "viewDemo": "Live Demo",
-      "allProjects": "All Projects"
+      "allProjects": "All Projects",
+      "featured": "Featured Projects",
+      "technologies": "Technologies Used",
+      "year": "Year",
+      "type": "Project Type"
+    },
+    "research": {
+      "title": "Research & Publications",
+      "subtitle": "Academic contributions in Machine Learning and AI",
+      "publications": "Publications",
+      "interests": "Research Interests",
+      "conference": "Conference",
+      "year": "Year",
+      "type": "Type",
+      "keywords": "Keywords",
+      "viewPaper": "View Paper",
+      "abstract": "Abstract"
+    },
+    "certifications": {
+      "title": "Certifications",
+      "subtitle": "Professional certifications and continuous learning",
+      "issuer": "Issued By",
+      "date": "Date",
+      "credentialId": "Credential ID",
+      "verify": "Verify",
+      "skills": "Skills",
+      "viewAll": "View All Certifications"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "subtitle": "Recognition and accomplishments",
+      "category": "Category",
+      "date": "Date",
+      "viewDetails": "View Details"
+    },
+    "memberships": {
+      "title": "Professional Memberships",
+      "subtitle": "Active participation in tech communities and professional organizations",
+      "role": "Role",
+      "organization": "Organization",
+      "active": "Active Member"
+    },
+    "coding": {
+      "title": "Coding Profiles",
+      "subtitle": "Competitive programming and problem-solving journey",
+      "problems": "Problems Solved",
+      "rank": "Rank",
+      "contributions": "Contributions",
+      "viewProfile": "View Profile",
+      "github": "GitHub Activity"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "subtitle": "Moments captured from events, workshops, and achievements",
+      "event": "Event",
+      "date": "Date",
+      "location": "Location",
+      "viewAll": "View All"
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Thoughts, tutorials, and insights on technology",
+      "readMore": "Read More",
+      "author": "Author",
+      "published": "Published",
+      "tags": "Tags",
+      "allPosts": "All Posts"
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What people say about working with me",
+      "company": "Company",
+      "position": "Position"
     },
     "contact": {
       "title": "Get In Touch",
       "subtitle": "Let's discuss your next project or collaboration",
       "name": "Name",
+      "namePlaceholder": "Enter your name",
       "email": "Email",
+      "emailPlaceholder": "Enter your email",
       "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
       "message": "Message",
+      "messagePlaceholder": "Your message here...",
       "send": "Send Message",
-      "sending": "Sending..."
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again.",
+      "location": "Location",
+      "phone": "Phone",
+      "emailAddress": "Email",
+      "followMe": "Follow Me"
     },
     "footer": {
       "about": "Machine Learning & AI Instructor | Computer Science Engineer specializing in AI research, full-stack development, and innovative technology solutions. Passionate about leveraging technology for social impact and education.",
@@ -95,6 +190,17 @@
       "copyright": "Crafted with precision for innovation.",
       "builtWith": "Built with React & TypeScript",
       "poweredBy": "Powered by Supabase"
+    },
+    "common": {
+      "loading": "Loading...",
+      "error": "Error",
+      "retry": "Retry",
+      "close": "Close",
+      "learnMore": "Learn More",
+      "viewMore": "View More",
+      "readLess": "Read Less",
+      "download": "Download",
+      "share": "Share"
     }
   },
   "bn": {
@@ -112,6 +218,8 @@
       "memberships": "সদস্যপদ",
       "coding": "কোডিং",
       "gallery": "গ্যালারি",
+      "blog": "ব্লগ",
+      "testimonials": "প্রশংসাপত্র",
       "contact": "যোগাযোগ"
     },
     "hero": {
@@ -127,7 +235,9 @@
       "subtitle": "এআই, উদ্ভাবন এবং প্রযুক্তির প্রতি আগ্রহী",
       "interests": "গবেষণা আগ্রহ",
       "languages": "ভাষা",
-      "softSkills": "সফট স্কিল"
+      "softSkills": "সফট স্কিল",
+      "profile": "পেশাদার প্রোফাইল",
+      "description": "আমি রুয়েটের কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং শিক্ষার্থী, মেশিন লার্নিং, ডিপ লার্নিং এবং কম্পিউটার ভিশনে বিশেষীকরণ করছি। আমি বাস্তব সমস্যা সমাধান এবং উদ্ভাবনী সমাধান তৈরিতে প্রযুক্তি ব্যবহারে আগ্রহী।"
     },
     "academic": {
       "title": "শিক্ষাগত পটভূমি",
@@ -153,7 +263,16 @@
     },
     "experience": {
       "title": "পেশাগত অভিজ্ঞতা",
-      "subtitle": "এআই শিক্ষা, গবেষণা এবং কমিউনিটি উদ্যোগে নেতৃত্বের ভূমিকা"
+      "subtitle": "এআই শিক্ষা, গবেষণা এবং কমিউনিটি উদ্যোগে নেতৃত্বের ভূমিকা",
+      "present": "বর্তমান",
+      "duration": "সময়কাল"
+    },
+    "industrial": {
+      "title": "শিল্প প্রশিক্ষণ",
+      "subtitle": "ব্যবহারিক শিল্প অভিজ্ঞতা এবং পেশাদার উন্নয়ন",
+      "duration": "সময়কাল",
+      "skills": "অর্জিত দক্ষতা",
+      "achievements": "প্রধান অর্জন"
     },
     "skills": {
       "title": "দক্ষতা ও বিশেষজ্ঞতা",
@@ -173,17 +292,99 @@
       "subtitle": "এআই/এমএল এবং ফুল-স্ট্যাক ডেভেলপমেন্টে উদ্ভাবনী সমাধান",
       "viewGithub": "গিটহাবে দেখুন",
       "viewDemo": "লাইভ ডেমো",
-      "allProjects": "সব প্রজেক্ট"
+      "allProjects": "সব প্রজেক্ট",
+      "featured": "বৈশিষ্ট্যযুক্ত প্রজেক্ট",
+      "technologies": "ব্যবহৃত প্রযুক্তি",
+      "year": "বছর",
+      "type": "প্রজেক্ট ধরন"
+    },
+    "research": {
+      "title": "গবেষণা ও প্রকাশনা",
+      "subtitle": "মেশিন লার্নিং এবং এআইতে একাডেমিক অবদান",
+      "publications": "প্রকাশনা",
+      "interests": "গবেষণা আগ্রহ",
+      "conference": "সম্মেলন",
+      "year": "বছর",
+      "type": "ধরন",
+      "keywords": "মূলশব্দ",
+      "viewPaper": "পেপার দেখুন",
+      "abstract": "সারসংক্ষেপ"
+    },
+    "certifications": {
+      "title": "সার্টিফিকেট",
+      "subtitle": "পেশাদার সার্টিফিকেশন এবং ক্রমাগত শিক্ষা",
+      "issuer": "প্রদানকারী",
+      "date": "তারিখ",
+      "credentialId": "শংসাপত্র আইডি",
+      "verify": "যাচাই করুন",
+      "skills": "দক্ষতা",
+      "viewAll": "সব সার্টিফিকেট দেখুন"
+    },
+    "achievements": {
+      "title": "অর্জন",
+      "subtitle": "স্বীকৃতি এবং সাফল্য",
+      "category": "শ্রেণী",
+      "date": "তারিখ",
+      "viewDetails": "বিস্তারিত দেখুন"
+    },
+    "memberships": {
+      "title": "পেশাদার সদস্যপদ",
+      "subtitle": "প্রযুক্তি সম্প্রদায় এবং পেশাদার সংস্থায় সক্রিয় অংশগ্রহণ",
+      "role": "ভূমিকা",
+      "organization": "সংস্থা",
+      "active": "সক্রিয় সদস্য"
+    },
+    "coding": {
+      "title": "কোডিং প্রোফাইল",
+      "subtitle": "প্রতিযোগিতামূলক প্রোগ্রামিং এবং সমস্যা সমাধানের যাত্রা",
+      "problems": "সমাধান করা সমস্যা",
+      "rank": "র‍্যাঙ্ক",
+      "contributions": "অবদান",
+      "viewProfile": "প্রোফাইল দেখুন",
+      "github": "গিটহাব কার্যকলাপ"
+    },
+    "gallery": {
+      "title": "গ্যালারি",
+      "subtitle": "ইভেন্ট, ওয়ার্কশপ এবং অর্জন থেকে ধারণকৃত মুহূর্ত",
+      "event": "ইভেন্ট",
+      "date": "তারিখ",
+      "location": "অবস্থান",
+      "viewAll": "সব দেখুন"
+    },
+    "blog": {
+      "title": "ব্লগ",
+      "subtitle": "প্রযুক্তি সম্পর্কে চিন্তা, টিউটোরিয়াল এবং অন্তর্দৃষ্টি",
+      "readMore": "আরও পড়ুন",
+      "author": "লেখক",
+      "published": "প্রকাশিত",
+      "tags": "ট্যাগ",
+      "allPosts": "সব পোস্ট"
+    },
+    "testimonials": {
+      "title": "প্রশংসাপত্র",
+      "subtitle": "আমার সাথে কাজ করার বিষয়ে মানুষ যা বলে",
+      "company": "কোম্পানি",
+      "position": "পদবী"
     },
     "contact": {
       "title": "যোগাযোগ করুন",
       "subtitle": "আপনার পরবর্তী প্রকল্প বা সহযোগিতা নিয়ে আলোচনা করি",
       "name": "নাম",
+      "namePlaceholder": "আপনার নাম লিখুন",
       "email": "ইমেইল",
+      "emailPlaceholder": "আপনার ইমেইল লিখুন",
       "subject": "বিষয়",
+      "subjectPlaceholder": "এটি কী সম্পর্কে?",
       "message": "বার্তা",
+      "messagePlaceholder": "আপনার বার্তা এখানে...",
       "send": "বার্তা পাঠান",
-      "sending": "পাঠানো হচ্ছে..."
+      "sending": "পাঠানো হচ্ছে...",
+      "success": "বার্তা সফলভাবে পাঠানো হয়েছে!",
+      "error": "বার্তা পাঠাতে ব্যর্থ। আবার চেষ্টা করুন।",
+      "location": "অবস্থান",
+      "phone": "ফোন",
+      "emailAddress": "ইমেইল",
+      "followMe": "আমাকে ফলো করুন"
     },
     "footer": {
       "about": "মেশিন লার্নিং ও এআই প্রশিক্ষক | কম্পিউটার সায়েন্স ইঞ্জিনিয়ার যিনি এআই গবেষণা, ফুল-স্ট্যাক ডেভেলপমেন্ট এবং উদ্ভাবনী প্রযুক্তি সমাধানে বিশেষজ্ঞ। সামাজিক প্রভাব এবং শিক্ষার জন্য প্রযুক্তি ব্যবহারে আগ্রহী।",
@@ -193,6 +394,17 @@
       "copyright": "উদ্ভাবনের জন্য নিখুঁততার সাথে তৈরি।",
       "builtWith": "রিঅ্যাক্ট ও টাইপস্ক্রিপ্ট দিয়ে তৈরি",
       "poweredBy": "সুপাবেস দ্বারা চালিত"
+    },
+    "common": {
+      "loading": "লোড হচ্ছে...",
+      "error": "ত্রুটি",
+      "retry": "পুনরায় চেষ্টা করুন",
+      "close": "বন্ধ করুন",
+      "learnMore": "আরও জানুন",
+      "viewMore": "আরও দেখুন",
+      "readLess": "কম পড়ুন",
+      "download": "ডাউনলোড",
+      "share": "শেয়ার করুন"
     }
   }
 }
