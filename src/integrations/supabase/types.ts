@@ -10,256 +10,20 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
+    PostgrestVersion: "14.5"
   }
   public: {
     Tables: {
-      analytics: {
-        Row: {
-          created_at: string
-          event_type: string
-          id: string
-          ip_address: unknown
-          metadata: Json | null
-          page_path: string | null
-          user_agent: string | null
-        }
-        Insert: {
-          created_at?: string
-          event_type: string
-          id?: string
-          ip_address?: unknown
-          metadata?: Json | null
-          page_path?: string | null
-          user_agent?: string | null
-        }
-        Update: {
-          created_at?: string
-          event_type?: string
-          id?: string
-          ip_address?: unknown
-          metadata?: Json | null
-          page_path?: string | null
-          user_agent?: string | null
-        }
-        Relationships: []
-      }
-      blog_posts: {
-        Row: {
-          content: string
-          created_at: string
-          excerpt: string | null
-          featured_image: string | null
-          id: string
-          published: boolean | null
-          slug: string
-          tags: string[] | null
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          content: string
-          created_at?: string
-          excerpt?: string | null
-          featured_image?: string | null
-          id?: string
-          published?: boolean | null
-          slug: string
-          tags?: string[] | null
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          content?: string
-          created_at?: string
-          excerpt?: string | null
-          featured_image?: string | null
-          id?: string
-          published?: boolean | null
-          slug?: string
-          tags?: string[] | null
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      contacts: {
-        Row: {
-          created_at: string
-          email: string
-          id: string
-          message: string
-          name: string
-          status: string | null
-          subject: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          email: string
-          id?: string
-          message: string
-          name: string
-          status?: string | null
-          subject: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          email?: string
-          id?: string
-          message?: string
-          name?: string
-          status?: string | null
-          subject?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      messages: {
-        Row: {
-          created_at: string | null
-          email: string
-          id: string
-          message: string
-          name: string
-          subject: string
-        }
-        Insert: {
-          created_at?: string | null
-          email: string
-          id?: string
-          message: string
-          name: string
-          subject: string
-        }
-        Update: {
-          created_at?: string | null
-          email?: string
-          id?: string
-          message?: string
-          name?: string
-          subject?: string
-        }
-        Relationships: []
-      }
-      projects: {
-        Row: {
-          created_at: string
-          demo_url: string | null
-          description: string
-          featured: boolean | null
-          github_url: string | null
-          id: string
-          image_url: string | null
-          project_type: string
-          technologies: string[]
-          title: string
-          updated_at: string
-          year: string
-        }
-        Insert: {
-          created_at?: string
-          demo_url?: string | null
-          description: string
-          featured?: boolean | null
-          github_url?: string | null
-          id?: string
-          image_url?: string | null
-          project_type: string
-          technologies: string[]
-          title: string
-          updated_at?: string
-          year: string
-        }
-        Update: {
-          created_at?: string
-          demo_url?: string | null
-          description?: string
-          featured?: boolean | null
-          github_url?: string | null
-          id?: string
-          image_url?: string | null
-          project_type?: string
-          technologies?: string[]
-          title?: string
-          updated_at?: string
-          year?: string
-        }
-        Relationships: []
-      }
-      testimonials: {
-        Row: {
-          avatar_url: string | null
-          company: string
-          content: string
-          created_at: string
-          id: string
-          name: string
-          position: string
-          published: boolean | null
-          rating: number | null
-        }
-        Insert: {
-          avatar_url?: string | null
-          company: string
-          content: string
-          created_at?: string
-          id?: string
-          name: string
-          position: string
-          published?: boolean | null
-          rating?: number | null
-        }
-        Update: {
-          avatar_url?: string | null
-          company?: string
-          content?: string
-          created_at?: string
-          id?: string
-          name?: string
-          position?: string
-          published?: boolean | null
-          rating?: number | null
-        }
-        Relationships: []
-      }
-      user_roles: {
-        Row: {
-          created_at: string | null
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          created_at?: string | null
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          created_at?: string | null
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -386,8 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-    },
+    Enums: {},
   },
 } as const

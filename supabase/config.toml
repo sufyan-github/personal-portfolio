@@ -1,7 +1,1 @@
-project_id = "uzvvwvmzphwtxobwmftv"
-
-[functions.send-contact-email]
-verify_jwt = false
-
-[functions.portfolio-chat]
-verify_jwt = false
+project_id = "xxulvfpdvemsvvyrdxim"
