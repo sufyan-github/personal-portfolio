@@ -3,58 +3,59 @@
     "title": "Programming & Web Development",
     "icon": "code",
     "skills": [
-      { "name": "Python", "level": 90 },
-      { "name": "JavaScript", "level": 85 },
-      { "name": "React", "level": 85 },
-      { "name": "Node.js", "level": 80 },
-      { "name": "HTML5/CSS3", "level": 90 },
-      { "name": "TailwindCSS", "level": 90 }
+      { "name": "Python" },
+      { "name": "JavaScript" },
+      { "name": "React" },
+      { "name": "Node.js" },
+      { "name": "HTML5/CSS3" },
+      { "name": "TailwindCSS" }
     ]
   },
   {
     "title": "Machine Learning & AI",
     "icon": "brain",
     "skills": [
-      { "name": "Machine Learning", "level": 90 },
-      { "name": "Deep Learning", "level": 85 },
-      { "name": "Computer Vision", "level": 85 },
-      { "name": "NLP", "level": 80 },
-      { "name": "TensorFlow/PyTorch", "level": 85 },
-      { "name": "Data Science", "level": 85 }
+      { "name": "Machine Learning" },
+      { "name": "Deep Learning" },
+      { "name": "Computer Vision" },
+      { "name": "NLP" },
+      { "name": "TensorFlow/PyTorch" },
+      { "name": "Data Science" }
     ]
   },
   {
     "title": "Databases & Backend",
     "icon": "database",
     "skills": [
-      { "name": "MySQL", "level": 85 },
-      { "name": "MongoDB", "level": 80 },
-      { "name": "Express.js", "level": 80 },
-      { "name": "PHP Laravel", "level": 75 },
-      { "name": "Firebase", "level": 80 },
-      { "name": "REST APIs", "level": 85 }
+      { "name": "MySQL" },
+      { "name": "MongoDB" },
+      { "name": "Express.js" },
+      { "name": "PHP Laravel" },
+      { "name": "Firebase" },
+      { "name": "REST APIs" }
     ]
   },
   {
     "title": "Hardware Design & VLSI",
     "icon": "cpu",
     "skills": [
-      { "name": "Verilog", "level": 75 },
-      { "name": "HDL", "level": 75 },
-      { "name": "ISA Design", "level": 70 },
-      { "name": "CPU Design", "level": 70 }
+      { "name": "Verilog" },
+      { "name": "HDL" },
+      { "name": "ISA Design" },
+      { "name": "CPU Design" }
     ]
   },
   {
     "title": "Tools & Platforms",
     "icon": "wrench",
     "skills": [
-      { "name": "Git/GitHub", "level": 90 },
-      { "name": "VS Code", "level": 95 },
-      { "name": "Postman", "level": 85 },
-      { "name": "Firebase Console", "level": 80 },
-      { "name": "Figma", "level": 70 },
-      { "name": "Git CLI", "level": 85 }
+      { "name": "Git/GitHub" },
+      { "name": "VS Code" },
+      { "name": "Postman" },
+      { "name": "Firebase Console" },
+      { "name": "Figma" },
+      { "name": "Docker" },
+      { "name": "Linux" }
     ]
   }
 ]
