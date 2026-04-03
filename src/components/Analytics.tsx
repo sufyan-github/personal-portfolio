@@ -9,7 +9,7 @@ const Analytics = () => {
     // Track page view
     const trackPageView = async () => {
       try {
-        await supabase.from("analytics").insert([
+        await (supabase.from as any)("analytics").insert([
           {
             session_id: sessionId,
             event_type: "page_view",

@@ -26,8 +26,7 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const { data, error } = await supabase
-        .from('blog_posts')
+      const { data, error } = await (supabase.from as any)('blog_posts')
         .select('*')
         .eq('published', true)
         .order('created_at', { ascending: false });

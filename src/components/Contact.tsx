@@ -41,7 +41,7 @@ const Contact = () => {
     try {
       const validatedData = contactSchema.parse(formData);
 
-      const { error } = await supabase.from('contacts').insert([{
+      const { error } = await (supabase.from as any)('contacts').insert([{
         name: validatedData.name,
         email: validatedData.email,
         subject: validatedData.subject,

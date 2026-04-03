@@ -41,7 +41,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const t = (key: string): string => {
     try {
       // Import translations dynamically
-      const translations = require('@/data/translations.json');
+      const translations = (await import('@/data/translations.json')).default;
       const keys = key.split('.');
       let value: any = translations[language];
       
