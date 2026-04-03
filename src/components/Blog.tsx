@@ -160,7 +160,7 @@ const Blog = () => {
                   className="w-full glow-border hover-lift"
                   onClick={() => {
                     // Track analytics
-                    supabase.from('analytics').insert([
+                    (supabase.from as any)('analytics').insert([
                       {
                         event_type: 'blog_post_view',
                         metadata: { post_id: post.id, post_title: post.title }

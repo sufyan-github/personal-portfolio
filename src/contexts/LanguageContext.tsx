@@ -40,10 +40,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // Translation function with nested key support
   const t = (key: string): string => {
     try {
-      // Import translations dynamically
-      const translations = (await import('@/data/translations.json')).default;
+      const translationsData = translations as Record<string, any>;
       const keys = key.split('.');
-      let value: any = translations[language];
+      let value: any = translationsData[language];
       
       for (const k of keys) {
         if (value && typeof value === 'object' && k in value) {
