@@ -1,43 +1,26 @@
-// {
-//   "files": [],
-//   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
-//   "compilerOptions": {
-//     "baseUrl": ".",
-//     "paths": {
-//       "@/*": ["./src/*"]
-//     },
-//     "resolveJsonModule": true,
-//     "esModuleInterop": true,
-//     "noImplicitAny": false,
-//     "noUnusedParameters": false,
-//     "skipLibCheck": true,
-//     "allowJs": true,
-//     "noUnusedLocals": false,
-//     "strictNullChecks": false
-//   }
-// }
-
-
 {
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false
+  },
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
+    {
+      "path": "./tsconfig.app.json"
     },
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "noUnusedLocals": false,
-    "strictNullChecks": false,
-
-    // ✅ Needed for JSON imports
-    "resolveJsonModule": true,
-    "esModuleInterop": true
-  }
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

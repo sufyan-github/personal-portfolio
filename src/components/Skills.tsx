@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Code, Database, Brain, Wrench, Sparkles, Award, TrendingUp, CheckCircle2, Trophy, Cpu } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
-import skills from "@/data/skills.json" assert { type: "json" };
-import certifications from "@/data/certifications.json" assert { type: "json" };
+import skills from "@/data/skills.json";
+import certifications from "@/data/certifications.json";
 
 // ===============================
 // Type Definitions
