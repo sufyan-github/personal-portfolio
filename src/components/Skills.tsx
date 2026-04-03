@@ -1,7 +1,7 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code, Database, Brain, Wrench, Sparkles, Award, TrendingUp, CheckCircle2, Trophy, Cpu } from "lucide-react";
+import { Code, Database, Brain, Wrench, Sparkles, Award, CheckCircle2, Trophy, Cpu } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
 import skills from "@/data/skills.json";
@@ -10,7 +10,7 @@ import certifications from "@/data/certifications.json";
 // ===============================
 // Type Definitions
 // ===============================
-export type SkillItem = { name: string; level: number };
+export type SkillItem = { name: string };
 export type SkillCategory = {
   title: string;
   icon: "code" | "brain" | "database" | "wrench" | "cpu";
@@ -99,7 +99,7 @@ const TechLogo = ({ name }: { name: string }) => {
     name.toLowerCase().includes(k)
   );
   return (
-    <span className="text-2xl mr-3 transition-transform duration-300 hover:scale-125">
+    <span className="text-xl transition-transform duration-300 hover:scale-125">
       {key ? techIconMap[key] : "💻"}
     </span>
   );
@@ -114,60 +114,7 @@ const Skills: React.FC = () => {
   const { language } = useLanguage();
   const t = (translations as any)[language].skills;
 
-  // Calculate certification counts for each skill
-  const skillCertCount = useMemo(() => {
-    const counts: Record<string, number> = {};
-    certs.forEach((cert) => {
-      cert.skills?.forEach((skill) => {
-        const normalizedSkill = skill.toLowerCase();
-        counts[normalizedSkill] = (counts[normalizedSkill] || 0) + 1;
-      });
-    });
-    return counts;
-  }, [certs]);
-
-  // Helper function to get cert count for a skill
-  const getCertCount = (skillName: string): number => {
-    const normalized = skillName.toLowerCase();
-    // Check exact match or partial match
-    let count = skillCertCount[normalized] || 0;
-    
-    // Check for partial matches
-    Object.keys(skillCertCount).forEach((key) => {
-      if (normalized.includes(key) || key.includes(normalized)) {
-        count = Math.max(count, skillCertCount[key]);
-      }
-    });
-    
-    return count;
-  };
-
-  // Get proficiency label
-  const getProficiencyLabel = (level: number): string => {
-    if (level >= 90) return t.expert;
-    if (level >= 80) return t.advanced;
-    if (level >= 70) return t.proficient;
-    if (level >= 60) return t.intermediate;
-    return "Beginner";
-  };
-
-  // Get proficiency color
-  const getProficiencyColor = (level: number): string => {
-    if (level >= 90) return "from-emerald-500 to-green-500";
-    if (level >= 80) return "from-blue-500 to-cyan-500";
-    if (level >= 70) return "from-purple-500 to-pink-500";
-    if (level >= 60) return "from-orange-500 to-yellow-500";
-    return "from-gray-500 to-slate-500";
-  };
-
-  // Calculate stats
   const totalSkills = skillCategories.reduce((sum, cat) => sum + cat.skills.length, 0);
-  const avgLevel = Math.round(
-    skillCategories.reduce(
-      (sum, cat) => sum + cat.skills.reduce((s, sk) => s + sk.level, 0),
-      0
-    ) / totalSkills
-  );
   const totalCertifications = certs.length;
 
   return (
@@ -197,7 +144,7 @@ const Skills: React.FC = () => {
         </div>
 
         {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-primary/20">
             <CardContent className="p-6">
               <Code className="h-10 w-10 mx-auto mb-3 text-primary" />
@@ -207,14 +154,7 @@ const Skills: React.FC = () => {
           </Card>
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-accent/20">
             <CardContent className="p-6">
-              <TrendingUp className="h-10 w-10 mx-auto mb-3 text-accent" />
-              <div className="text-3xl font-bold gradient-text mb-1">{avgLevel}%</div>
-              <div className="text-sm text-muted-foreground font-medium">{t.avgProficiency}</div>
-            </CardContent>
-          </Card>
-          <Card className="text-center hover-lift glow-border bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-green-500/20">
-            <CardContent className="p-6">
-              <Trophy className="h-10 w-10 mx-auto mb-3 text-green-500" />
+              <Trophy className="h-10 w-10 mx-auto mb-3 text-accent" />
               <div className="text-3xl font-bold gradient-text mb-1">{totalCertifications}</div>
               <div className="text-sm text-muted-foreground font-medium">{t.certifications}</div>
             </CardContent>
@@ -229,116 +169,43 @@ const Skills: React.FC = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {skillCategories.map((category, index) => {
             const Icon = iconMap[category.icon] ?? Code;
             return (
               <Card
                 key={category.title + index}
-                className="hover:shadow-2xl hover:border-primary/50 transition-all duration-500 bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-3xl border-2 border-border/50 group overflow-hidden animate-fade-in"
-                style={{ animationDelay: `${index * 0.15}s` }}
+                className="hover:shadow-2xl hover:border-primary/50 transition-all duration-500 bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-xl rounded-2xl border border-border/50 group overflow-hidden animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Card Header with Gradient Background */}
-                <div className="relative p-6 pb-4 overflow-hidden">
+                {/* Card Header */}
+                <div className="relative p-5 pb-3 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-primary opacity-5 group-hover:opacity-10 transition-opacity" />
-                  <div className="relative flex items-center space-x-4">
+                  <div className="relative flex items-center space-x-3">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-lg group-hover:blur-xl transition-all" />
-                      <div className="relative p-3 rounded-2xl bg-gradient-primary shadow-lg">
-                        <Icon className="h-7 w-7 text-white" />
+                      <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg group-hover:blur-xl transition-all" />
+                      <div className="relative p-2.5 rounded-xl bg-gradient-primary shadow-lg">
+                        <Icon className="h-5 w-5 text-white" />
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold gradient-text font-display">
+                    <h3 className="text-lg font-bold gradient-text font-display">
                       {category.title}
                     </h3>
                   </div>
                 </div>
 
-                <CardContent className="px-6 pb-6">
-                  <div className="space-y-5">
-                    {category.skills.map((skill, skillIndex) => {
-                      const certCount = getCertCount(skill.name);
-                      const proficiencyLabel = getProficiencyLabel(skill.level);
-                      const gradientColor = getProficiencyColor(skill.level);
-                      
-                      return (
-                        <div key={skill.name + skillIndex} className="space-y-2 group/skill">
-                          {/* Skill Header */}
-                          <div className="flex justify-between items-start gap-3">
-                            <div className="flex items-center gap-3 flex-1 min-w-0">
-                              <TechLogo name={skill.name} />
-                              <div className="flex-1 min-w-0">
-                                <div className="font-semibold text-base text-foreground truncate">
-                                  {skill.name}
-                                </div>
-                                <div className="flex items-center gap-2 mt-0.5">
-                                  <span className="text-xs text-muted-foreground">
-                                    {proficiencyLabel}
-                                  </span>
-                                  {certCount > 0 && (
-                                    <div className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
-                                      <CheckCircle2 className="h-3 w-3" />
-                                      <span className="font-medium">{certCount} cert{certCount > 1 ? 's' : ''}</span>
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-                            <Badge 
-                              className="bg-primary/10 text-primary border-primary/30 px-2.5 py-1 text-sm font-bold flex-shrink-0"
-                            >
-                              {skill.level}%
-                            </Badge>
-                          </div>
-                          
-                          {/* Enhanced Progress Bar */}
-                          <div className="relative">
-                            {/* Background track */}
-                            <div className="h-2.5 bg-muted/50 rounded-full overflow-hidden shadow-inner">
-                              {/* Animated progress fill */}
-                              <div
-                                className={`h-full bg-gradient-to-r ${gradientColor} rounded-full transition-all duration-1000 ease-out relative overflow-hidden`}
-                                style={{ 
-                                  width: `${skill.level}%`,
-                                  animationDelay: `${(index * 3 + skillIndex) * 0.1}s`
-                                }}
-                              >
-                                {/* Shimmer effect */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
-                                
-                                {/* Glow effect on hover */}
-                                <div className="absolute inset-0 opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300">
-                                  <div className={`absolute inset-0 bg-gradient-to-r ${gradientColor} blur-sm`} />
-                                </div>
-                              </div>
-                            </div>
-                            
-                            {/* Progress indicator dots */}
-                            <div className="absolute inset-0 flex items-center pointer-events-none">
-                              {[25, 50, 75].map((milestone) => (
-                                <div
-                                  key={milestone}
-                                  className={`absolute w-1 h-1 rounded-full ${
-                                    skill.level >= milestone ? 'bg-white' : 'bg-muted-foreground/30'
-                                  }`}
-                                  style={{ left: `${milestone}%`, transform: 'translateX(-50%)' }}
-                                />
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Endorsement badges for high-level skills */}
-                          {skill.level >= 85 && (
-                            <div className="flex items-center gap-1.5 pt-1">
-                              <Trophy className="h-3 w-3 text-yellow-500" />
-                              <span className="text-xs text-yellow-600 dark:text-yellow-400 font-medium">
-                                {t.endorsed}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
+                <CardContent className="px-5 pb-5 pt-2">
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <Badge
+                        key={skill.name + skillIndex}
+                        variant="secondary"
+                        className="px-3 py-1.5 text-sm font-medium bg-muted/60 hover:bg-primary/10 hover:text-primary border border-border/50 hover:border-primary/30 transition-all duration-300 cursor-default flex items-center gap-2"
+                      >
+                        <TechLogo name={skill.name} />
+                        {skill.name}
+                      </Badge>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
@@ -359,10 +226,6 @@ const Skills: React.FC = () => {
             <div className="flex items-center gap-2 text-sm">
               <Trophy className="h-4 w-4 text-yellow-500" />
               <span className="text-muted-foreground">Endorsed Expertise</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-              <TrendingUp className="h-4 w-4 text-blue-500" />
-              <span className="text-muted-foreground">Continuous Growth</span>
             </div>
           </div>
         </div>
