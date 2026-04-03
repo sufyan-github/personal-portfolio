@@ -26,8 +26,7 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const { data, error } = await supabase
-        .from('blog_posts')
+      const { data, error } = await (supabase.from as any)('blog_posts')
         .select('*')
         .eq('published', true)
         .order('created_at', { ascending: false });
@@ -161,7 +160,7 @@ const Blog = () => {
                   className="w-full glow-border hover-lift"
                   onClick={() => {
                     // Track analytics
-                    supabase.from('analytics').insert([
+                    (supabase.from as any)('analytics').insert([
                       {
                         event_type: 'blog_post_view',
                         metadata: { post_id: post.id, post_title: post.title }

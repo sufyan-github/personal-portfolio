@@ -28,7 +28,7 @@ const Certifications: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [selectedCert, setSelectedCert] = useState<Cert | null>(null);
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const certifications = React.useMemo<Cert[]>(
     () =>

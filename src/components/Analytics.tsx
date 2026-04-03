@@ -9,7 +9,7 @@ const Analytics = () => {
     // Track page view
     const trackPageView = async () => {
       try {
-        await supabase.from("analytics").insert([
+        await (supabase.from as any)("analytics").insert([
           {
             session_id: sessionId,
             event_type: "page_view",
@@ -41,7 +41,7 @@ const Analytics = () => {
 
       if (scrollPercent > maxScrollDepth && scrollPercent % 25 === 0) {
         maxScrollDepth = scrollPercent;
-        supabase.from("analytics").insert([
+        (supabase.from as any)("analytics").insert([
           {
             session_id: sessionId,
             event_type: "scroll_depth",
@@ -60,7 +60,7 @@ const Analytics = () => {
       const timeSpent = Math.round((Date.now() - startTime) / 1000);
       if (timeSpent > 30) {
         try {
-          await supabase.from("analytics").insert([
+          await (supabase.from as any)("analytics").insert([
             {
               session_id: sessionId,
               event_type: "time_on_page",

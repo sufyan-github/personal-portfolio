@@ -25,8 +25,7 @@ const Testimonials = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const { data, error } = await supabase
-        .from('testimonials')
+      const { data, error } = await (supabase.from as any)('testimonials')
         .select('*')
         .eq('published', true)
         .order('created_at', { ascending: false });

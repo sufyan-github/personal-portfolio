@@ -42,7 +42,7 @@ const Gallery = () => {
   const events = galleryData.events as Event[];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Auto-play functionality - wait for all images to cycle before moving to next event
   useEffect(() => {

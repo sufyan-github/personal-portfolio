@@ -9,7 +9,7 @@ const ResumeDownload = () => {
   const handleDownload = async () => {
     try {
       // Track download analytics
-      await supabase.from("analytics").insert([
+      await (supabase.from as any)("analytics").insert([
         {
           event_type: "resume_download",
           metadata: {
