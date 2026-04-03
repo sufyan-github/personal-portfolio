@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import translations from "@/data/translations.json";
 
 type Language = "en" | "bn";
 
