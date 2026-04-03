@@ -41,7 +41,7 @@ const Analytics = () => {
 
       if (scrollPercent > maxScrollDepth && scrollPercent % 25 === 0) {
         maxScrollDepth = scrollPercent;
-        supabase.from("analytics").insert([
+        (supabase.from as any)("analytics").insert([
           {
             session_id: sessionId,
             event_type: "scroll_depth",
