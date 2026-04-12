@@ -64,6 +64,13 @@ import {
   SiJavascript,
   SiFirebase,
   SiPostman,
+  SiFlutter,
+  SiDart,
+  SiScikitlearn,
+  SiPandas,
+  SiNumpy,
+  SiJupyter,
+  SiCplusplus,
 } from "react-icons/si";
 
 const techIconMap: Record<string, JSX.Element> = {
@@ -91,6 +98,19 @@ const techIconMap: Record<string, JSX.Element> = {
   postman: <SiPostman className="text-orange-500" />,
   figma: <FaFigma className="text-pink-500" />,
   linux: <FaLinux className="text-black" />,
+  flutter: <SiFlutter className="text-sky-500" />,
+  dart: <SiDart className="text-blue-600" />,
+  "scikit-learn": <SiScikitlearn className="text-orange-500" />,
+  pandas: <SiPandas className="text-blue-800" />,
+  numpy: <SiNumpy className="text-blue-500" />,
+  jupyter: <SiJupyter className="text-orange-500" />,
+  "c++": <SiCplusplus className="text-blue-600" />,
+  sql: <FaDatabase className="text-blue-500" />,
+  "deep learning": <SiPytorch className="text-red-500" />,
+  "computer vision": <SiTensorflow className="text-orange-400" />,
+  nlp: <SiTensorflow className="text-green-500" />,
+  riverpod: <SiFlutter className="text-sky-500" />,
+};
 };
 
 // ===============================
