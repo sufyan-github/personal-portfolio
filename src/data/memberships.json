@@ -4,39 +4,51 @@
   "memberships": [
     {
       "name": "RUET Computing Society",
-      "role": "Member",
+      "role": "President & Founding Member",
       "logo": "/assets/logo/research.jpeg",
-      "description": "Active member contributing to computing initiatives and tech events"
+      "description": "Leading strategic initiatives to promote computing research, innovation, and collaborative learning"
     },
     {
       "name": "RUET IoT Club",
-      "role": "Member",
+      "role": "President",
       "logo": "/assets/logo/iot_club.png",
-      "description": "Engaged in IoT projects and research activities"
+      "description": "Organizing workshops and events on IoT, smart technologies, and innovation"
     },
     {
-      "name": "Volunteer For Bangladesh",
-      "role": "Volunteer",
-      "logo": "/assets/logo/futurenation.jpeg",
-      "description": "Contributing to social welfare and community development"
-    },
-    {
-      "name": "Futurenation",
-      "role": "Member",
-      "logo": "/assets/logo/futurenation.jpeg",
-      "description": "Participating in future-focused tech initiatives"
-    },
-    {
-      "name": "Programming Hero",
-      "role": "Active Learner",
-      "logo": "/assets/logo/research.jpeg",
-      "description": "Continuous learning and skill development"
-    },
-    {
-      "name": "WSDA New Zealand",
-      "role": "Member",
+      "name": "Artificial Intelligence Bangladesh",
+      "role": "ML & AI Instructor",
       "logo": "/assets/logo/aibd.jpeg",
-      "description": "International web and software development association"
+      "description": "Conducting hands-on training on ML, Deep Learning, and Data Science"
+    },
+    {
+      "name": "FutureNation (UNDP)",
+      "role": "Campus Representative",
+      "logo": "/assets/logo/futurenation.jpeg",
+      "description": "Facilitating skill-building and youth empowerment programs at RUET"
+    },
+    {
+      "name": "Aachol Foundation",
+      "role": "Executive Member, HR Management",
+      "logo": "/assets/logo/research.jpeg",
+      "description": "Supporting volunteer onboarding, awareness campaigns, and community projects"
+    },
+    {
+      "name": "Volunteer for Bangladesh (VBD)",
+      "role": "Human Resource Officer",
+      "logo": "/assets/logo/futurenation.jpeg",
+      "description": "Led environmental drives, tree plantation campaigns, and SDG-aligned community projects"
+    },
+    {
+      "name": "Manus Manusher Jonnya Foundation",
+      "role": "Campus Volunteer",
+      "logo": "/assets/logo/research.jpeg",
+      "description": "Contributing to disaster relief, education, and youth empowerment initiatives"
+    },
+    {
+      "name": "JAAGO Foundation Trust",
+      "role": "Youth Trainer",
+      "logo": "/assets/logo/research.jpeg",
+      "description": "Delivered civic awareness and youth empowerment training sessions"
     }
   ]
 }

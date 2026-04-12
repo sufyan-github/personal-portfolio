@@ -15,6 +15,49 @@
     "featured": true
   },
   {
+    "title": "Machine Learning Intern",
+    "company": "Brain Station 23",
+    "logo": "/assets/logo/research.jpeg",
+    "location": "Dhaka, Bangladesh",
+    "period": "2025",
+    "website": "",
+    "description": [
+      "Worked on ML/DL applications including dataset preprocessing, training, and evaluation",
+      "Built computer vision models and optimized real-time performance",
+      "Contributed to full ML pipeline: data preparation → experimentation → deployment",
+      "Maintained reproducible workflows using Git and documentation"
+    ],
+    "featured": true
+  },
+  {
+    "title": "President & Founding Member",
+    "company": "RUET Computing Society",
+    "logo": "/assets/logo/research.jpeg",
+    "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
+    "period": "January 2026 – Present",
+    "website": "https://ruetcs.org",
+    "description": [
+      "Leading strategic initiatives to promote computing research, innovation, and collaborative learning",
+      "Organizing seminars, hackathons, and awareness programs related to technology for social good",
+      "Coordinating interdisciplinary student teams to work on community-driven technical projects"
+    ],
+    "featured": true
+  },
+  {
+    "title": "Director, Project Nexus",
+    "company": "RUET IoT Club",
+    "logo": "/assets/logo/iot_club.png",
+    "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
+    "period": "2025 – Present",
+    "website": "https://ruetiotclub.org",
+    "description": [
+      "Leading an IoT-based initiative focused on clean water monitoring and sustainable environmental solutions",
+      "Designing smart sensing and data-driven systems to analyze water quality parameters",
+      "Coordinating research, prototype development, and awareness activities related to environmental sustainability"
+    ],
+    "featured": true
+  },
+  {
     "title": "Campus Representative",
     "company": "FutureNation Volunteer",
     "logo": "/assets/logo/futurenation.jpeg",
@@ -25,8 +68,7 @@
       "Organized and facilitated FutureNation programs and workshops within the RUET campus",
       "Led university-level initiatives to engage students in FutureNation's skill-building and youth empowerment projects",
       "Collaborated with FutureNation teams and partner organizations to ensure impactful program execution"
-    ],
-    "featured": true
+    ]
   },
   {
     "title": "President",
@@ -39,8 +81,7 @@
       "Organized workshops and events on IoT and smart technologies",
       "Coordinated technical sessions focusing on innovation, automation, and advanced IoT applications",
       "Collaborated with student bodies to enhance hands-on learning and technical collaboration"
-    ],
-    "featured": true
+    ]
   },
   {
     "title": "Research Assistant",
@@ -53,8 +94,8 @@
     "description": [
       "Engaged in machine learning research with a focus on sentiment analysis and predictive modeling",
       "Co-authored papers accepted at ICCiT 2024 on social media bias and time-series forecasting",
-      "Developed ML/DL models for detecting sentiment and geopolitical bias in social media content",
-      "Built sophisticated forecasting models using LSTM, GRU, and ensemble methods for health analytics"
+      "Preprocessed datasets and implemented ML/DL models for research experiments",
+      "Conducted research on sentiment analysis and time-series forecasting"
     ],
     "featured": true
   },
@@ -72,29 +113,16 @@
     ]
   },
   {
-    "title": "Founding Member",
-    "company": "RUET Computing Society",
-    "logo": "/assets/logo/research.jpeg",
-    "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
-    "period": "August 2025 – Present",
-    "website": "https://ruetcs.org",
-    "description": [
-      "Played a key role in establishing the Computing Society at RUET",
-      "Organized coding competitions, seminars, and collaborative projects to promote computing knowledge",
-      "Worked with fellow founding members to draft the society's structure and roadmap"
-    ]
-  },
-  {
     "title": "Human Resource Officer",
     "company": "Volunteer for Bangladesh (VBD)",
     "logo": "/assets/logo/futurenation.jpeg",
     "location": "Rajshahi District, Bangladesh",
-    "period": "September 2024 – Present",
+    "period": "December 2024 – December 2025",
     "website": "https://vbd.com.bd",
     "description": [
-      "Managed volunteer recruitment and training programs for social initiatives",
-      "Organized campaigns on public health and environmental awareness",
-      "Coordinated with NGOs and local authorities to implement SDG-aligned community projects"
+      "Led environmental cleaning drives, tree plantation campaigns, and community awareness programs aligned with SDGs",
+      "Managed volunteer teams and coordinated with local authorities and NGOs for social impact initiatives",
+      "Organized campaigns on public health and environmental awareness"
     ]
   },
   {

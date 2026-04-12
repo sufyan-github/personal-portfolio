@@ -134,11 +134,11 @@
   {
     "id": 13,
     "title": "Certified Associate in Project Management (CAPM)® Certification Course",
-    "issuer": "Project Management Institute (PMI)",
+    "issuer": "Simplilearn SkillUp",
     "date": "2024-12-14",
     "description": "Completed a certification course on project management principles, methodologies, and best practices according to PMI standards.",
     "image": "/certs/capm_course_2024.png",
-    "credentialId": "PMI-CAPM-2024-001",
+    "credentialId": "",
     "verificationUrl": "#",
     "skills": ["Project Management", "Risk Assessment", "Stakeholder Management", "PMI Standards"]
   },
@@ -240,5 +240,27 @@
     "credentialId": "",
     "verificationUrl": "#",
     "skills": ["Typing", "Productivity"]
+  },
+  {
+    "id": 23,
+    "title": "Campus Volunteer Recognition",
+    "issuer": "FutureNation, UNDP",
+    "date": "2026-02",
+    "description": "Recognized for contribution to youth upskilling and community development initiatives.",
+    "image": "/certs/futurenation_volunteer_recognition.png",
+    "credentialId": "",
+    "verificationUrl": "#",
+    "skills": ["Volunteering", "Youth Development", "Community Impact"]
+  },
+  {
+    "id": 24,
+    "title": "Youth Trainer — Ekannor Jaagoron Initiative",
+    "issuer": "JAAGO Foundation Trust",
+    "date": "2025-12",
+    "description": "Delivered civic awareness and youth empowerment training sessions across divisions.",
+    "image": "/certs/jaago_youth_trainer.png",
+    "credentialId": "",
+    "verificationUrl": "#",
+    "skills": ["Training", "Youth Empowerment", "Civic Awareness"]
   }
 ]

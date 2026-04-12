@@ -7,13 +7,16 @@
   "interests": [
     "Machine Learning",
     "Deep Learning",
-    "Artificial Intelligence",
-    "Bioinformatics",
-    "Medical Imaging"
+    "Computer Vision",
+    "Sentiment Analysis",
+    "Time-Series Forecasting",
+    "Predictive Modeling",
+    "Natural Language Processing",
+    "AI for Social Good"
   ],
   "languages": [
-    { "name": "Bangla", "level": 90 },
-    { "name": "English", "level": 80 }
+    { "name": "Bangla", "level": 95 },
+    { "name": "English", "level": 85 }
   ],
   "softSkills": [
     "Team Leadership",
@@ -21,6 +24,8 @@
     "Public Speaking",
     "Project Planning",
     "Event Management",
-    "Problem Solving"
+    "Problem Solving",
+    "Documentation",
+    "Team Collaboration"
   ]
 }

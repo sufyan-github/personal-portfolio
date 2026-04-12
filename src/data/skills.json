@@ -1,14 +1,14 @@
 [
   {
-    "title": "Programming & Web Development",
+    "title": "Programming Languages",
     "icon": "code",
     "skills": [
       { "name": "Python" },
+      { "name": "C" },
+      { "name": "C++" },
       { "name": "JavaScript" },
-      { "name": "React" },
-      { "name": "Node.js" },
-      { "name": "HTML5/CSS3" },
-      { "name": "TailwindCSS" }
+      { "name": "SQL" },
+      { "name": "Dart" }
     ]
   },
   {
@@ -19,8 +19,34 @@
       { "name": "Deep Learning" },
       { "name": "Computer Vision" },
       { "name": "NLP" },
-      { "name": "TensorFlow/PyTorch" },
-      { "name": "Data Science" }
+      { "name": "TensorFlow" },
+      { "name": "PyTorch" },
+      { "name": "Scikit-learn" },
+      { "name": "Pandas" },
+      { "name": "NumPy" }
+    ]
+  },
+  {
+    "title": "Web Development",
+    "icon": "globe",
+    "skills": [
+      { "name": "React" },
+      { "name": "HTML5/CSS3" },
+      { "name": "TailwindCSS" },
+      { "name": "Node.js" },
+      { "name": "Express.js" },
+      { "name": "PHP (Laravel 11)" },
+      { "name": "REST APIs" }
+    ]
+  },
+  {
+    "title": "Mobile Development",
+    "icon": "smartphone",
+    "skills": [
+      { "name": "Flutter" },
+      { "name": "Dart" },
+      { "name": "Firebase" },
+      { "name": "Riverpod" }
     ]
   },
   {
@@ -29,8 +55,6 @@
     "skills": [
       { "name": "MySQL" },
       { "name": "MongoDB" },
-      { "name": "Express.js" },
-      { "name": "PHP Laravel" },
       { "name": "Firebase" },
       { "name": "REST APIs" }
     ]
@@ -55,7 +79,8 @@
       { "name": "Firebase Console" },
       { "name": "Figma" },
       { "name": "Docker" },
-      { "name": "Linux" }
+      { "name": "Linux CLI" },
+      { "name": "Jupyter Notebooks" }
     ]
   }
 ]

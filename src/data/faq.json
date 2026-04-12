@@ -5,15 +5,15 @@
       "questions": [
         {
           "q": "What is your educational background?",
-          "a": "I am currently pursuing a Bachelor of Science in Computer Science and Engineering at Varendra University, Rajshahi, with a CGPA of 3.85/4.00 (expected graduation: March 2026)."
+          "a": "I completed my Bachelor of Science in Computer Science & Engineering at Rajshahi University of Engineering & Technology (RUET), Bangladesh, with a CGPA of 3.68/4.00 (Mar 2021 – 2025)."
         },
         {
           "q": "What are your main technical interests?",
-          "a": "My main interests include Machine Learning, Deep Learning, IoT, Embedded Systems, Web Development, and Mobile App Development."
+          "a": "My main interests include Machine Learning, Deep Learning, Computer Vision, Sentiment Analysis, Time-Series Forecasting, NLP, and AI for Social Good."
         },
         {
           "q": "What programming languages do you know?",
-          "a": "I'm proficient in Python, C/C++, Dart (Flutter), PHP, JavaScript, and have experience with various frameworks and technologies."
+          "a": "I'm proficient in Python, C, C++, JavaScript, SQL, and Dart. I also work with frameworks like React, Node.js, Express.js, Laravel, Flutter, TensorFlow, and PyTorch."
         }
       ]
     },
@@ -22,11 +22,11 @@
       "questions": [
         {
           "q": "What work experience do you have?",
-          "a": "I have worked as a Research Assistant at Varendra University, focusing on Deep Learning and Neural Networks for Bangla Language Processing, and as an IoT Software Engineer Intern at Kaal iSolutions Ltd."
+          "a": "I work as a Machine Learning & AI Instructor at AI Bangladesh, served as an ML Intern at Brain Station 23, and am a Research Assistant at RUET's ML Research Group. I also serve as President of RUET IoT Club and RUET Computing Society."
         },
         {
           "q": "What projects have you worked on?",
-          "a": "I've worked on various projects including a Health Tracker app with ML-powered predictions, Traffic Sign Recognition system using CNN, Sentiment Analysis for Bangla text, and IoT-based projects."
+          "a": "Key projects include a Traffic Sign Detection System (YOLOv8/MobileNet/ResNet), Sentiment Analysis & Bias Detection in Social Media, Monkeypox Outbreak Prediction using time-series ML models, an Attendance Management App (Flutter), and various full-stack web applications."
         }
       ]
     },
@@ -35,11 +35,11 @@
       "questions": [
         {
           "q": "What certifications do you have?",
-          "a": "I have multiple certifications including Machine Learning (Kaggle), Deep Learning, Agile Scrum Foundation, Prompt Engineering, Python, PHP Laravel, and various other technical certifications."
+          "a": "I have 20+ certifications including CAPM® (Simplilearn), Machine Learning & Deep Learning (Kaggle), Agile Scrum Foundation, Flutter Development (Ostad), PHP Laravel (EDGE Project), SDG Primer (UNDP), and more."
         },
         {
           "q": "What are your core technical skills?",
-          "a": "Machine Learning & AI (TensorFlow, PyTorch, Scikit-learn), Web Development (React, PHP Laravel), Mobile Development (Flutter), IoT & Embedded Systems (Arduino, ESP32, Raspberry Pi), and Database Management (MySQL, PostgreSQL, Supabase)."
+          "a": "Machine Learning & AI (TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy), Web Development (React, Node.js, Express.js, Laravel), Mobile Development (Flutter/Dart), Hardware Design (Verilog, HDL), and Database Management (MySQL, MongoDB, Firebase)."
         }
       ]
     },
@@ -52,7 +52,7 @@
         },
         {
           "q": "Are you available for projects or collaboration?",
-          "a": "Yes! I'm open to collaboration on ML/AI projects, IoT solutions, and web/mobile development. Feel free to reach out through the contact form or email."
+          "a": "Yes! I'm open to research collaborations, AI/ML consulting, technical mentoring, speaking engagements, and full-time opportunities. Feel free to reach out through the contact form or email."
         },
         {
           "q": "What is your location?",
@@ -61,5 +61,5 @@
       ]
     }
   ],
-  "systemPrompt": "You are an AI assistant for Md Abu Sufyan's portfolio website. Abu Sufyan is a Computer Science and Engineering student at Varendra University with expertise in Machine Learning, Deep Learning, IoT, and Full-Stack Development. Be helpful, professional, and friendly. Answer questions about his background, skills, projects, experience, and how to contact him. If you don't know something specific, politely say so and suggest checking the portfolio sections or contacting directly. Keep responses concise and informative."
+  "systemPrompt": "You are an AI assistant for Md. Abu Sufyan's portfolio website. Abu Sufyan is a BSc CSE graduate from RUET (CGPA 3.68/4.00) with expertise in Machine Learning, Deep Learning, Computer Vision, and Full-Stack Development. He works as an ML & AI Instructor at AI Bangladesh, served as ML Intern at Brain Station 23, and is a Research Assistant at RUET. He is President of both RUET IoT Club and RUET Computing Society. He has 2 published conference papers at ICCiT 2024. Be helpful, professional, and friendly. Answer questions about his background, skills, projects, experience, and how to contact him. If you don't know something specific, politely say so and suggest checking the portfolio sections or contacting directly. Keep responses concise and informative."
 }
