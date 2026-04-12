@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code, Database, Brain, Wrench, Sparkles, Award, CheckCircle2, Trophy, Cpu } from "lucide-react";
+import { Code, Database, Brain, Wrench, Sparkles, Award, CheckCircle2, Trophy, Cpu, Globe, Smartphone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
 import skills from "@/data/skills.json";
@@ -13,7 +13,7 @@ import certifications from "@/data/certifications.json";
 export type SkillItem = { name: string };
 export type SkillCategory = {
   title: string;
-  icon: "code" | "brain" | "database" | "wrench" | "cpu";
+  icon: "code" | "brain" | "database" | "wrench" | "cpu" | "globe" | "smartphone";
   skills: SkillItem[];
 };
 
@@ -34,6 +34,8 @@ const iconMap = {
   database: Database,
   wrench: Wrench,
   cpu: Cpu,
+  globe: Globe,
+  smartphone: Smartphone,
 } as const;
 
 // ===============================
