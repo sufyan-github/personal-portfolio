@@ -111,7 +111,6 @@ const techIconMap: Record<string, JSX.Element> = {
   nlp: <SiTensorflow className="text-green-500" />,
   riverpod: <SiFlutter className="text-sky-500" />,
 };
-};
 
 // ===============================
 // Tech Logo Component
