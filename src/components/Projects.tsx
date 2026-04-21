@@ -39,16 +39,16 @@ const getTypeColor = (type: string) => {
 
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>("all");
+  const { value: projectsList } = useContent<Project[]>("projects", projectsData as Project[]);
 
   const projects = useMemo(() => {
-    const projectsList = projectsData as Project[];
     return projectsList.map(project => ({
       ...project,
       image_url: project.id === "p01" ? demoTrafficImage : 
                  project.id === "p02" ? demoHealthTrackerImage : 
                  project.image_url || "/projects/placeholder.jpg"
     }));
-  }, []);
+  }, [projectsList]);
 
   const filteredProjects = filter === "all" 
     ? projects 
