@@ -8,6 +8,7 @@ import ResumeDownload from "@/components/ResumeDownload";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
 import heroData from "@/data/hero.json";
+import { useContent } from "@/lib/contentClient";
 
 type Social = { label: string; type: "email" | "linkedin" | "github" | "custom"; href: string };
 
