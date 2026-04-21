@@ -31,6 +31,7 @@ const Certifications: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<Cert | null>(null);
   const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const { value: rawCerts } = useContent<RawCert[]>("certifications", rawCertsFallback as RawCert[]);
   const certifications = React.useMemo<Cert[]>(
     () =>
       (rawCerts as RawCert[]).map((c) => ({
@@ -39,7 +40,7 @@ const Certifications: React.FC = () => {
           center: c.images?.center ?? c.image ?? PLACEHOLDER,
         },
       })),
-    []
+    [rawCerts]
   );
 
   // Auto-play functionality

@@ -25,6 +25,8 @@ const iconsMap: Record<string, any> = {
 };
 
 const Contact = () => {
+  const { value: contactInfoData } = useContent<typeof contactInfoFallback>("contactInfo", contactInfoFallback);
+  const { value: availabilityData } = useContent<typeof availabilityFallback>("availability", availabilityFallback);
   const [formData, setFormData] = useState({
     name: '', email: '', subject: '', message: '',
   });

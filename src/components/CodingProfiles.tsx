@@ -27,6 +27,7 @@ const getPlatformIcon = (platform: string) => {
 };
 
 const CodingProfiles = () => {
+  const { value: codingData } = useContent<typeof codingFallback>("coding_profiles", codingFallback);
   const profiles = codingData.profiles as Profile[];
 
   const containerVariants = {

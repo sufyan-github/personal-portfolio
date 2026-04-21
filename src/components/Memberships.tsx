@@ -6,6 +6,7 @@ import membershipFallback from "@/data/memberships.json";
 import { useContent } from "@/lib/contentClient";
 
 const Memberships: React.FC = () => {
+  const { value: membershipData } = useContent<typeof membershipFallback>("memberships", membershipFallback);
   return (
     <section id="memberships" className="py-20 bg-gradient-to-b from-background via-background to-muted/20">
       <div className="container mx-auto px-6">

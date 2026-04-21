@@ -40,6 +40,7 @@ const getCategoryColor = (category: string) => {
 };
 
 const Gallery = () => {
+  const { value: galleryData } = useContent<typeof galleryFallback>("gallery", galleryFallback);
   const events = galleryData.events as Event[];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);

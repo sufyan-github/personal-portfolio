@@ -43,9 +43,12 @@ export type RAProfile = {
 };
 
 const Research: React.FC = () => {
-  const pubs = publications as Publication[];
-  const interests = researchInterests as string[];
-  const ra = raInfo as RAProfile;
+  const { value: publications } = useContent<Publication[]>("publications", publicationsFallback as Publication[]);
+  const { value: researchInterests } = useContent<string[]>("research_interests", researchInterestsFallback as string[]);
+  const { value: raInfo } = useContent<RAProfile>("ra_profile", raInfoFallback as RAProfile);
+  const pubs = publications;
+  const interests = researchInterests;
+  const ra = raInfo;
 
   return (
     <section id="research" className="py-20 bg-gradient-secondary">
