@@ -110,6 +110,30 @@ export type Database = {
         }
         Relationships: []
       }
+      site_content: {
+        Row: {
+          content_key: string
+          content_value: Json
+          created_at: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          content_key: string
+          content_value: Json
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Update: {
+          content_key?: string
+          content_value?: Json
+          created_at?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           avatar_url: string | null
