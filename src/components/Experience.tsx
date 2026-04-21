@@ -5,6 +5,7 @@ import { Calendar, MapPin, Building } from 'lucide-react';
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
 import experienceData from '@/data/experience.json';
+import { useContent } from "@/lib/contentClient";
 
 type ExperienceItem = {
   title: string;
@@ -25,7 +26,8 @@ const toUrl = (site?: string) => {
 };
 
 const Experience: React.FC = () => {
-  const experiences = useMemo(() => experienceData as ExperienceItem[], []);
+  const fallback = useMemo(() => experienceData as ExperienceItem[], []);
+  const { value: experiences } = useContent<ExperienceItem[]>("experience", fallback);
   const { language } = useLanguage();
   const t = (translations as any)[language].experience;
 
