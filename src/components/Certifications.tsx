@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Award, Calendar, Building, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-import rawCerts from "@/data/certifications.json";
+import rawCertsFallback from "@/data/certifications.json";
+import { useContent } from "@/lib/contentClient";
 
 type RawCert = {
   id: number | string;
@@ -30,6 +31,7 @@ const Certifications: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<Cert | null>(null);
   const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const { value: rawCerts } = useContent<RawCert[]>("certifications", rawCertsFallback as RawCert[]);
   const certifications = React.useMemo<Cert[]>(
     () =>
       (rawCerts as RawCert[]).map((c) => ({
@@ -38,7 +40,7 @@ const Certifications: React.FC = () => {
           center: c.images?.center ?? c.image ?? PLACEHOLDER,
         },
       })),
-    []
+    [rawCerts]
   );
 
   // Auto-play functionality

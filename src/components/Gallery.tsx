@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
-import galleryData from "@/data/gallery.json";
+import galleryFallback from "@/data/gallery.json";
+import { useContent } from "@/lib/contentClient";
 import {
   Carousel,
   CarouselContent,
@@ -39,6 +40,7 @@ const getCategoryColor = (category: string) => {
 };
 
 const Gallery = () => {
+  const { value: galleryData } = useContent<typeof galleryFallback>("gallery", galleryFallback);
   const events = galleryData.events as Event[];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);

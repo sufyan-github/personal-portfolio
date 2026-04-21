@@ -7,6 +7,7 @@ import { Github, ExternalLink, Calendar, Tag } from "lucide-react";
 import demoTrafficImage from "@/assets/demo-traffic.jpg";
 import demoHealthTrackerImage from "@/assets/demo-healthtracker.png";
 import projectsData from "@/data/projects.json";
+import { useContent } from "@/lib/contentClient";
 
 interface Project {
   id: string;
@@ -38,16 +39,16 @@ const getTypeColor = (type: string) => {
 
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>("all");
+  const { value: projectsList } = useContent<Project[]>("projects", projectsData as Project[]);
 
   const projects = useMemo(() => {
-    const projectsList = projectsData as Project[];
     return projectsList.map(project => ({
       ...project,
       image_url: project.id === "p01" ? demoTrafficImage : 
                  project.id === "p02" ? demoHealthTrackerImage : 
                  project.image_url || "/projects/placeholder.jpg"
     }));
-  }, []);
+  }, [projectsList]);
 
   const filteredProjects = filter === "all" 
     ? projects 

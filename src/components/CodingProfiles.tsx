@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Trophy, Star, Award } from "lucide-react";
-import codingData from "@/data/coding_profiles.json";
+import codingFallback from "@/data/coding_profiles.json";
+import { useContent } from "@/lib/contentClient";
 
 interface Profile {
   platform: string;
@@ -26,6 +27,7 @@ const getPlatformIcon = (platform: string) => {
 };
 
 const CodingProfiles = () => {
+  const { value: codingData } = useContent<typeof codingFallback>("coding_profiles", codingFallback);
   const profiles = codingData.profiles as Profile[];
 
   const containerVariants = {

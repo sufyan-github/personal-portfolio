@@ -15,9 +15,10 @@ import { FileText, ExternalLink, Users, Calendar } from "lucide-react";
 //   - src/data/ra_profile.json
 // =====================================================
 
-import publications from "@/data/publications.json";
-import researchInterests from "@/data/research_interests.json";
-import raInfo from "@/data/ra_profile.json";
+import publicationsFallback from "@/data/publications.json";
+import researchInterestsFallback from "@/data/research_interests.json";
+import raInfoFallback from "@/data/ra_profile.json";
+import { useContent } from "@/lib/contentClient";
 
 // ===== Types that mirror the JSON shape =====
 export type Publication = {
@@ -42,9 +43,12 @@ export type RAProfile = {
 };
 
 const Research: React.FC = () => {
-  const pubs = publications as Publication[];
-  const interests = researchInterests as string[];
-  const ra = raInfo as RAProfile;
+  const { value: publications } = useContent<Publication[]>("publications", publicationsFallback as Publication[]);
+  const { value: researchInterests } = useContent<string[]>("research_interests", researchInterestsFallback as string[]);
+  const { value: raInfo } = useContent<RAProfile>("ra_profile", raInfoFallback as RAProfile);
+  const pubs = publications;
+  const interests = researchInterests;
+  const ra = raInfo;
 
   return (
     <section id="research" className="py-20 bg-gradient-secondary">

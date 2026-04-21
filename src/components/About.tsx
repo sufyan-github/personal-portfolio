@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Brain, Code, Cpu, Zap, Sparkles } from "lucide-react";
 import aboutData from "@/data/about.json";
+import { useContent } from "@/lib/contentClient";
 
 const highlights = [
   {
@@ -58,8 +59,8 @@ const DiamondShape = ({ className = "", delay = 0 }: { className?: string; delay
 );
 
 const About: React.FC = () => {
-  const { personal } = aboutData;
-
+  const { value: data } = useContent<typeof aboutData>("about", aboutData);
+  const { personal } = data;
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

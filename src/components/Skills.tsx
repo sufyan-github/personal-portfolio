@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
 import skills from "@/data/skills.json";
 import certifications from "@/data/certifications.json";
+import { useContent } from "@/lib/contentClient";
 
 // ===============================
 // Type Definitions
@@ -130,8 +131,8 @@ const TechLogo = ({ name }: { name: string }) => {
 // Skills Component
 // ===============================
 const Skills: React.FC = () => {
-  const skillCategories = skills as SkillCategory[];
-  const certs = certifications as Certification[];
+  const { value: skillCategories } = useContent<SkillCategory[]>("skills", skills as SkillCategory[]);
+  const { value: certs } = useContent<Certification[]>("certifications", certifications as Certification[]);
   const { language } = useLanguage();
   const t = (translations as any)[language].skills;
 

@@ -8,6 +8,7 @@ import ResumeDownload from "@/components/ResumeDownload";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
 import heroData from "@/data/hero.json";
+import { useContent } from "@/lib/contentClient";
 
 type Social = { label: string; type: "email" | "linkedin" | "github" | "custom"; href: string };
 
@@ -98,7 +99,8 @@ const scrollToId = (id: string) => {
 };
 
 const Hero: React.FC = () => {
-  const cfg = useMemo(() => heroData as HeroConfig, []);
+  const fallback = useMemo(() => heroData as HeroConfig, []);
+  const { value: cfg } = useContent<HeroConfig>("hero", fallback);
   const { language } = useLanguage();
   const t = (translations as any)[language].hero;
 

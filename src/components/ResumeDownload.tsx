@@ -1,15 +1,26 @@
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, FileText } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { fetchContent } from "@/lib/contentClient";
+
+const FALLBACK_URL = "/assets/cv/Abu_Sufyan_CV.pdf";
 
 const ResumeDownload = () => {
   const { toast } = useToast();
+  const [pdfUrl, setPdfUrl] = useState<string>(FALLBACK_URL);
+
+  useEffect(() => {
+    fetchContent<{ url?: string }>("cv_url", {}).then((v) => {
+      if (v?.url) setPdfUrl(v.url);
+    });
+  }, []);
 
   const handleDownload = async () => {
     try {
-      // Track download analytics
-      await (supabase.from as any)("analytics").insert([
+      // Track download analytics (best-effort)
+      (supabase.from as any)("analytics").insert([
         {
           event_type: "resume_download",
           metadata: {
@@ -19,13 +30,11 @@ const ResumeDownload = () => {
         },
       ]);
 
-      // Path to your PDF (must be in /public/assets/cv/)
-      const pdfUrl = "./assets/cv/Abu_Sufyan_CV.pdf";
-
-      // Create an <a> element for direct download
       const link = document.createElement("a");
       link.href = pdfUrl;
-      link.download = "Abu_Sufyan_CV.pdf"; // Suggested download filename
+      link.download = "Abu_Sufyan_CV.pdf";
+      link.target = "_blank";
+      link.rel = "noopener";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -48,9 +57,9 @@ const ResumeDownload = () => {
     <Button
       onClick={handleDownload}
       size="lg"
-      className="bg-gradient-primary hover:shadow-glow animate-pulse-glow group"
+      className="bg-gradient-primary hover:shadow-glow transition-all duration-300 group"
     >
-      <Download className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+      <Download className="h-5 w-5 mr-2 transition-transform group-hover:translate-y-0.5" />
       <FileText className="h-5 w-5 mr-2" />
       Download Resume
     </Button>
