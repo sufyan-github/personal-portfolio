@@ -3,6 +3,22 @@
   "subtitle": "Moments from hackathons, workshops, and tech community events",
   "events": [
     {
+      "id": "ev00",
+      "title": "ML & AI Workshop at Varendra University",
+      "description": "Conducted a hands-on workshop on Machine Learning and Artificial Intelligence as ML Instructor from AI Bangladesh, in collaboration with the Department of CSE, Varendra University. Received Token of Appreciation for delivering practical ML training sessions.",
+      "date": "October 30, 2025",
+      "location": "Department of CSE, Varendra University, Rajshahi",
+      "category": "Workshop",
+      "images": [
+        "/gallery/vu-ml-workshop-1.jpg",
+        "/gallery/vu-ml-workshop-2.jpg",
+        "/gallery/vu-ml-workshop-3.jpg",
+        "/gallery/vu-ml-workshop-4.jpg",
+        "/gallery/vu-ml-workshop-5.jpg",
+        "/gallery/vu-ml-workshop-6.jpg"
+      ]
+    },
+    {
       "id": "ev01",
       "title": "ICCiT 2024 Conference",
       "description": "Presented two research papers on sentiment analysis and health analytics at the International Conference on Computer and Information Technology",
