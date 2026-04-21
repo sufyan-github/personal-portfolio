@@ -42,12 +42,16 @@ const Projects: React.FC = () => {
   const { value: projectsList } = useContent<Project[]>("projects", projectsData as Project[]);
 
   const projects = useMemo(() => {
-    return projectsList.map(project => ({
-      ...project,
-      image_url: project.id === "p01" ? demoTrafficImage : 
-                 project.id === "p02" ? demoHealthTrackerImage : 
-                 project.image_url || "/projects/placeholder.jpg"
-    }));
+    return projectsList.map(project => {
+      // Use imported assets for fixed IDs if they exist
+      let image = project.image_url;
+      if (project.id === "p01" && !image?.includes("/projects/")) image = demoTrafficImage;
+      
+      return {
+        ...project,
+        image_url: image || "/projects/placeholder.jpg"
+      };
+    });
   }, [projectsList]);
 
   const filteredProjects = filter === "all" 
@@ -224,7 +228,7 @@ const Projects: React.FC = () => {
                       >
                         <Badge
                           variant="secondary"
-                          className="text-xs bg-secondary/30 backdrop-blur-sm hover:bg-secondary/50 transition-colors border border-secondary/30"
+                          className="text-xs bg-secondary/20 text-blue-300 font-medium backdrop-blur-sm hover:bg-secondary/40 transition-colors border border-secondary/30"
                         >
                           {tech}
                         </Badge>

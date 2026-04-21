@@ -14,6 +14,8 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 const TOKEN_TTL_MS = 1000 * 60 * 60 * 8; // 8 hours
+const MAX_PHOTO_SIZE = 5 * 1024 * 1024;   // 5 MB
+const ALLOWED_CATEGORIES = ["gallery", "hero", "profile"];
 
 // --- Token helpers (HMAC-signed) ---
 async function hmac(message: string): Promise<string> {
@@ -85,7 +87,6 @@ Deno.serve(async (req) => {
   if (action === "login") {
     const passphrase = String(body?.passphrase ?? "");
     if (passphrase !== ADMIN_PASSPHRASE) {
-      // small delay to slow brute force
       await new Promise((r) => setTimeout(r, 500));
       return json({ error: "Invalid passphrase" }, 401);
     }
@@ -108,7 +109,7 @@ Deno.serve(async (req) => {
     return json({ items: data });
   }
 
-  // --- GET ONE ---
+  // --- GET ONE CONTENT KEY---
   if (action === "get") {
     const key = String(body?.key ?? "");
     if (!key) return json({ error: "Missing key" }, 400);
@@ -155,7 +156,6 @@ Deno.serve(async (req) => {
       });
     if (error) return json({ error: error.message }, 500);
     const { data: pub } = supabase.storage.from("site-assets").getPublicUrl(path);
-    // store URL in site_content for the frontend to read
     await supabase
       .from("site_content")
       .upsert(
@@ -163,6 +163,133 @@ Deno.serve(async (req) => {
         { onConflict: "content_key" },
       );
     return json({ ok: true, url: pub.publicUrl });
+  }
+
+  // ─── PHOTO ACTIONS ─────────────────────────────────────────────────────────
+
+  // --- UPLOAD PHOTO (base64 image) ---
+  if (action === "upload_photo") {
+    const base64     = String(body?.fileBase64 ?? "");
+    const caption    = String(body?.caption ?? "").trim();
+    const tagline    = String(body?.tagline ?? "").trim();
+    const category   = String(body?.category ?? "gallery");
+    const eventName  = String(body?.eventName ?? "").trim() || null;
+    const mimeType   = String(body?.mimeType ?? "image/jpeg");
+
+    if (!base64)       return json({ error: "Missing file" }, 400);
+    if (!ALLOWED_CATEGORIES.includes(category)) {
+      return json({ error: "Invalid category" }, 400);
+    }
+
+    const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+    if (bytes.length > MAX_PHOTO_SIZE) {
+      return json({ error: "File too large (max 5MB)" }, 400);
+    }
+
+    const ext      = mimeType.split("/")[1] || "jpg";
+    const filename = `${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
+    const path     = `photos/${category}/${filename}`;
+
+    const { error: uploadErr } = await supabase.storage
+      .from("site-assets")
+      .upload(path, bytes, { contentType: mimeType, upsert: false });
+    if (uploadErr) return json({ error: uploadErr.message }, 500);
+
+    const { data: pub } = supabase.storage.from("site-assets").getPublicUrl(path);
+
+    // Get current max display_order for this category
+    const { data: orderData } = await supabase
+      .from("portfolio_photos")
+      .select("display_order")
+      .eq("category", category)
+      .order("display_order", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    const nextOrder = (orderData?.display_order ?? 0) + 1;
+
+    const { data: insertedRow, error: dbErr } = await supabase
+      .from("portfolio_photos")
+      .insert({
+        url:           pub.publicUrl,
+        caption,
+        tagline,
+        category,
+        event_name:    eventName,
+        display_order: nextOrder,
+        published:     true,
+      })
+      .select()
+      .single();
+    if (dbErr) {
+      // Cleanup orphan storage file if DB fails
+      await supabase.storage.from("site-assets").remove([path]);
+      return json({ error: dbErr.message }, 500);
+    }
+
+    return json({ ok: true, photo: insertedRow });
+  }
+
+  // --- LIST PHOTOS ---
+  if (action === "list_photos") {
+    const category = body?.category as string | undefined;
+    let query = supabase
+      .from("portfolio_photos")
+      .select("*")
+      .order("category")
+      .order("display_order");
+    if (category && ALLOWED_CATEGORIES.includes(category)) {
+      query = query.eq("category", category);
+    }
+    const { data, error } = await query;
+    if (error) return json({ error: error.message }, 500);
+    return json({ photos: data });
+  }
+
+  // --- DELETE PHOTO ---
+  if (action === "delete_photo") {
+    const id = String(body?.id ?? "");
+    if (!id) return json({ error: "Missing id" }, 400);
+
+    // Fetch the row to get storage path (if it's from our storage)
+    const { data: row, error: fetchErr } = await supabase
+      .from("portfolio_photos")
+      .select("url")
+      .eq("id", id)
+      .maybeSingle();
+    if (fetchErr || !row) return json({ error: "Photo not found" }, 404);
+
+    // Try to remove from storage if it's a Supabase Storage URL
+    const urlObj = new URL(row.url);
+    const storagePrefix = "/storage/v1/object/public/site-assets/";
+    if (urlObj.pathname.startsWith(storagePrefix)) {
+      const storagePath = urlObj.pathname.slice(storagePrefix.length);
+      await supabase.storage.from("site-assets").remove([storagePath]);
+    }
+
+    const { error: delErr } = await supabase
+      .from("portfolio_photos")
+      .delete()
+      .eq("id", id);
+    if (delErr) return json({ error: delErr.message }, 500);
+    return json({ ok: true });
+  }
+
+  // --- UPDATE PHOTO (caption, tagline, published) ---
+  if (action === "update_photo") {
+    const id = String(body?.id ?? "");
+    if (!id) return json({ error: "Missing id" }, 400);
+    const updates: Record<string, unknown> = {};
+    if (body?.caption   !== undefined) updates.caption    = String(body.caption).trim();
+    if (body?.tagline   !== undefined) updates.tagline    = String(body.tagline).trim();
+    if (body?.published !== undefined) updates.published = Boolean(body.published);
+    if (body?.display_order !== undefined) updates.display_order = Number(body.display_order);
+
+    const { error } = await supabase
+      .from("portfolio_photos")
+      .update(updates)
+      .eq("id", id);
+    if (error) return json({ error: error.message }, 500);
+    return json({ ok: true });
   }
 
   return json({ error: "Unknown action" }, 400);

@@ -69,6 +69,21 @@
         "/gallery/hackathon-2.jpg",
         "/gallery/hackathon-3.jpg"
       ]
+    },
+    {
+      "id": "ev05",
+      "title": "Tree Plantation Drive",
+      "description": "Actively participating in a campus-wide tree plantation drive to promote environmental sustainability and community engagement.",
+      "date": "August 2024",
+      "location": "Campus Green initiative",
+      "category": "Environmental",
+      "images": [
+        "/gallery/tree-plantation-1.jpg",
+        "/gallery/tree-plantation-2.jpg",
+        "/gallery/tree-plantation-3.jpg",
+        "/gallery/tree-plantation-4.jpg",
+        "/gallery/tree-plantation-5.jpg"
+      ]
     }
   ]
 }

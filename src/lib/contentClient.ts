@@ -37,7 +37,7 @@ export function useContent<T>(key: string, fallback: T) {
   return { value, loading };
 }
 
-// Admin client — calls the edge function
+// ─── Admin client — calls the edge function ────────────────────────────────
 const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-api`;
 const TOKEN_KEY = "admin_token";
 
@@ -65,6 +65,7 @@ async function adminCall(body: Record<string, unknown>) {
   return json;
 }
 
+// ─── Content management ────────────────────────────────────────────────────
 export async function adminLogin(passphrase: string) {
   const r = await adminCall({ action: "login", passphrase });
   setAdminToken(r.token);
@@ -86,4 +87,85 @@ export async function adminUploadCV(file: File) {
   for (let i = 0; i < bin.length; i++) str += String.fromCharCode(bin[i]);
   const base64 = btoa(str);
   return await adminCall({ action: "upload_cv", fileBase64: base64 });
+}
+
+// ─── Photo management ──────────────────────────────────────────────────────
+export type PhotoCategory = "gallery" | "hero" | "profile";
+
+export interface PortfolioPhoto {
+  id: string;
+  url: string;
+  caption: string;
+  tagline: string;
+  category: PhotoCategory;
+  event_name: string | null;
+  display_order: number;
+  published: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+async function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      // Strip the data URL prefix (e.g. "data:image/jpeg;base64,")
+      resolve(result.split(",")[1]);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+export async function adminUploadPhoto(
+  file: File,
+  caption: string,
+  tagline: string,
+  category: PhotoCategory,
+  eventName?: string,
+): Promise<{ ok: boolean; photo: PortfolioPhoto }> {
+  if (file.size > 5 * 1024 * 1024) throw new Error("File too large (max 5MB)");
+  const base64 = await fileToBase64(file);
+  return await adminCall({
+    action:     "upload_photo",
+    fileBase64: base64,
+    mimeType:   file.type,
+    caption,
+    tagline,
+    category,
+    eventName:  eventName ?? "",
+  }) as { ok: boolean; photo: PortfolioPhoto };
+}
+
+export async function adminListPhotos(category?: PhotoCategory): Promise<PortfolioPhoto[]> {
+  const r = await adminCall({ action: "list_photos", ...(category ? { category } : {}) });
+  return r.photos as PortfolioPhoto[];
+}
+
+export async function adminDeletePhoto(id: string): Promise<void> {
+  await adminCall({ action: "delete_photo", id });
+}
+
+export async function adminUpdatePhoto(
+  id: string,
+  updates: Partial<Pick<PortfolioPhoto, "caption" | "tagline" | "published" | "display_order">>,
+): Promise<void> {
+  await adminCall({ action: "update_photo", id, ...updates });
+}
+
+// ─── Public photo fetcher (no auth needed — uses RLS public SELECT) ────────
+export async function fetchPublicPhotos(category?: PhotoCategory): Promise<PortfolioPhoto[]> {
+  try {
+    let query = (supabase.from as any)("portfolio_photos")
+      .select("*")
+      .eq("published", true)
+      .order("display_order", { ascending: true });
+    if (category) query = query.eq("category", category);
+    const { data, error } = await query;
+    if (error || !data) return [];
+    return data as PortfolioPhoto[];
+  } catch {
+    return [];
+  }
 }

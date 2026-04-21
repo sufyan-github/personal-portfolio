@@ -1,112 +1,285 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
-import galleryFallback from "@/data/gallery.json";
-import { useContent } from "@/lib/contentClient";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
+  Camera,
+  Calendar,
+  MapPin,
+  Images,
+  Sparkles,
+} from "lucide-react";
+import { fetchPublicPhotos, PortfolioPhoto } from "@/lib/contentClient";
+import galleryFallback from "@/data/gallery.json";
 
-interface Event {
+// ─── Types ─────────────────────────────────────────────────────────────────
+
+type GalleryItem = {
   id: string;
-  title: string;
-  description: string;
-  date: string;
-  location: string;
+  url: string;
+  caption: string;
+  tagline: string;
   category: string;
-  images: string[];
-}
-
-const getCategoryColor = (category: string) => {
-  switch (category) {
-    case "Conference":
-      return "bg-primary/20 text-primary border-primary/50";
-    case "Workshop":
-      return "bg-secondary/20 text-secondary border-secondary/50";
-    case "Exhibition":
-      return "bg-accent/20 text-accent border-accent/50";
-    case "Hackathon":
-      return "bg-purple-500/20 text-purple-300 border-purple-500/50";
-    default:
-      return "bg-muted/20 text-muted-foreground border-border";
-  }
+  event_name: string | null;
 };
 
-const Gallery = () => {
-  const { value: galleryData } = useContent<typeof galleryFallback>("gallery", galleryFallback);
-  const events = galleryData.events as Event[];
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+// ─── Static fallback derived from gallery.json events ─────────────────────
 
-  // Auto-play functionality - wait for all images to cycle before moving to next event
-  useEffect(() => {
-    if (isHovered || events.length === 0) {
-      if (autoPlayRef.current) {
-        clearTimeout(autoPlayRef.current);
-      }
-      return;
-    }
-
-    // Calculate delay based on number of images in current event
-    // Each image shows for 3 seconds, so total delay = images * 3000ms
-    const currentEvent = events[currentIndex];
-    const imageCount = currentEvent?.images?.length || 1;
-    const totalDelay = imageCount * 3000; // 3 seconds per image
-
-    autoPlayRef.current = setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % events.length);
-    }, totalDelay);
-
-    return () => {
-      if (autoPlayRef.current) {
-        clearTimeout(autoPlayRef.current);
-      }
-    };
-  }, [isHovered, events.length, currentIndex, events]);
-
-  const nextEvent = () => {
-    setCurrentIndex((prev) => (prev + 1) % events.length);
-  };
-
-  const prevEvent = () => {
-    setCurrentIndex((prev) => (prev - 1 + events.length) % events.length);
-  };
-
-  const getVisibleEvents = () => {
-    const visible = [];
-    const totalEvents = events.length;
-    
-    // Show 5 events: 2 left + 1 center + 2 right
-    for (let i = -2; i <= 2; i++) {
-      const index = (currentIndex + i + totalEvents) % totalEvents;
-      visible.push({
-        event: events[index],
-        position: i,
-        index
+function buildFallbackItems(): GalleryItem[] {
+  const items: GalleryItem[] = [];
+  galleryFallback.events.forEach((event, ei) => {
+    event.images.forEach((img, ii) => {
+      items.push({
+        id:         `static-${ei}-${ii}`,
+        url:        img,
+        caption:    event.title,
+        tagline:    event.description,
+        category:   event.category,
+        event_name: event.title,
       });
-    }
-    return visible;
-  };
+    });
+  });
+  return items;
+}
+
+// ─── Category colour helpers ───────────────────────────────────────────────
+
+const CATEGORY_COLOURS: Record<string, string> = {
+  Workshop:   "bg-blue-500/20 text-blue-300 border-blue-500/40",
+  Conference: "bg-purple-500/20 text-purple-300 border-purple-500/40",
+  Award:      "bg-yellow-500/20 text-yellow-300 border-yellow-500/40",
+  Exhibition: "bg-green-500/20 text-green-300 border-green-500/40",
+  Hackathon:  "bg-red-500/20 text-red-300 border-red-500/40",
+  gallery:    "bg-primary/20 text-primary border-primary/40",
+  hero:       "bg-accent/20 text-accent border-accent/40",
+};
+const catColour = (c: string) =>
+  CATEGORY_COLOURS[c] ?? "bg-muted/20 text-muted-foreground border-border";
+
+// ─── Lightbox ──────────────────────────────────────────────────────────────
+
+interface LightboxProps {
+  items: GalleryItem[];
+  index: number;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}
+
+const Lightbox: React.FC<LightboxProps> = ({ items, index, onClose, onPrev, onNext }) => {
+  const item = items[index];
+
+  // Keyboard nav
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose, onPrev, onNext]);
 
   return (
-    <section className="py-20 bg-gradient-secondary relative overflow-hidden">
-      {/* Background decoration */}
+    <motion.div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      {/* Close */}
+      <button
+        className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all"
+        onClick={onClose}
+        aria-label="Close lightbox"
+      >
+        <X className="h-6 w-6" />
+      </button>
+
+      {/* Counter */}
+      <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full bg-black/50 text-white/80 text-sm backdrop-blur-sm">
+        {index + 1} / {items.length}
+      </div>
+
+      {/* Image + caption */}
+      <motion.div
+        className="relative max-w-5xl w-full max-h-[85vh] flex flex-col items-center gap-4"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={index}
+            src={item.url}
+            alt={item.caption}
+            className="max-h-[65vh] w-auto max-w-full object-contain rounded-xl shadow-2xl"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.3 }}
+          />
+        </AnimatePresence>
+
+        {/* Caption panel */}
+        <div className="w-full max-w-2xl bg-black/60 backdrop-blur rounded-xl p-4 text-center">
+          <h3 className="text-white font-bold text-lg mb-1">{item.caption}</h3>
+          <p className="text-white/70 text-sm leading-relaxed">{item.tagline}</p>
+          {item.event_name && (
+            <Badge className={`mt-2 text-xs ${catColour(item.category)} border`}>
+              {item.event_name}
+            </Badge>
+          )}
+        </div>
+      </motion.div>
+
+      {/* Prev / Next */}
+      <button
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 hover:scale-110 transition-all"
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        aria-label="Previous"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
+      <button
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 hover:scale-110 transition-all"
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        aria-label="Next"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
+    </motion.div>
+  );
+};
+
+// ─── Gallery Card ──────────────────────────────────────────────────────────
+
+interface GalleryCardProps {
+  item: GalleryItem;
+  index: number;
+  onClick: () => void;
+}
+
+const GalleryCard: React.FC<GalleryCardProps> = ({ item, index, onClick }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error,  setError]  = useState(false);
+
+  // Varying heights for masonry feel
+  const heightClass = index % 5 === 0
+    ? "h-72"
+    : index % 3 === 0
+    ? "h-56"
+    : "h-64";
+
+  return (
+    <motion.div
+      className={`relative group cursor-pointer rounded-2xl overflow-hidden ${heightClass} bg-gradient-to-br from-primary/10 to-accent/10`}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: (index % 6) * 0.07 }}
+      whileHover={{ scale: 1.02, zIndex: 10 }}
+      onClick={onClick}
+    >
+      {/* Skeleton */}
+      {!loaded && !error && (
+        <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-muted/40 to-muted/20" />
+      )}
+
+      {/* Image */}
+      {!error ? (
+        <img
+          src={item.url}
+          alt={item.caption}
+          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`}
+          onLoad={() => setLoaded(true)}
+          onError={() => { setError(true); setLoaded(true); }}
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
+          <Camera className="h-12 w-12 text-primary/40" />
+        </div>
+      )}
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+      {/* Hover content */}
+      <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <h3 className="text-white font-bold text-sm leading-tight mb-1 line-clamp-2">
+          {item.caption}
+        </h3>
+        <p className="text-white/70 text-xs line-clamp-2 leading-relaxed">
+          {item.tagline}
+        </p>
+        <Badge className={`mt-2 w-fit text-xs ${catColour(item.category)} border`}>
+          {item.event_name || item.category}
+        </Badge>
+      </div>
+
+      {/* Zoom icon top-right */}
+      <div className="absolute top-3 right-3 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110">
+        <ZoomIn className="h-4 w-4" />
+      </div>
+    </motion.div>
+  );
+};
+
+// ─── Main Gallery ──────────────────────────────────────────────────────────
+
+const Gallery: React.FC = () => {
+  const [allItems, setAllItems]       = useState<GalleryItem[]>([]);
+  const [activeCategory, setCategory] = useState("All");
+  const [lightboxIdx, setLightbox]    = useState<number | null>(null);
+
+  // Load photos from DB (or fall back to static)
+  useEffect(() => {
+    fetchPublicPhotos("gallery").then((photos) => {
+      if (photos.length > 0) {
+        setAllItems(
+          photos.map((p: PortfolioPhoto) => ({
+            id:         p.id,
+            url:        p.url,
+            caption:    p.caption,
+            tagline:    p.tagline,
+            category:   p.event_name ?? p.category,
+            event_name: p.event_name,
+          })),
+        );
+      } else {
+        setAllItems(buildFallbackItems());
+      }
+    });
+  }, []);
+
+  const categories   = ["All", ...Array.from(new Set(allItems.map((i) => i.event_name ?? i.category).filter(Boolean)))];
+  const filtered     = activeCategory === "All" ? allItems : allItems.filter((i) => (i.event_name ?? i.category) === activeCategory);
+  const lightboxItems = filtered;
+
+  const openLightbox  = useCallback((idx: number) => setLightbox(idx), []);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const prevLight     = useCallback(() => setLightbox((i) => i !== null ? (i - 1 + lightboxItems.length) % lightboxItems.length : null), [lightboxItems.length]);
+  const nextLight     = useCallback(() => setLightbox((i) => i !== null ? (i + 1) % lightboxItems.length : null), [lightboxItems.length]);
+
+  return (
+    <section id="gallery" className="py-20 relative overflow-hidden bg-gradient-to-b from-background via-muted/10 to-background">
+      {/* Decorative blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="absolute top-40 left-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 14, repeat: Infinity, delay: 3 }}
         />
       </div>
 
@@ -119,176 +292,111 @@ const Gallery = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              {galleryData.title}
-            </span>
-          </h2>
+          <div className="inline-flex items-center gap-3 mb-4">
+            <Sparkles className="h-8 w-8 text-primary animate-pulse" />
+            <h2 className="text-4xl sm:text-5xl font-extrabold font-display text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
+              Gallery & Events
+            </h2>
+            <Sparkles className="h-8 w-8 text-accent animate-pulse" />
+          </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {galleryData.subtitle}
+            Moments from workshops, conferences, and technology community events
           </p>
         </motion.div>
 
-        {/* 3D Curved Carousel */}
-        <div 
-          className="relative h-[600px] flex items-center justify-center perspective-1000 overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+        {/* Stats bar */}
+        <motion.div
+          className="flex justify-center gap-8 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <div className="relative w-full h-full flex items-center justify-center">
-            {getVisibleEvents().map(({ event, position, index }) => {
-              const isCenter = position === 0;
-              const isVisible = Math.abs(position) <= 2;
-              
-              if (!isVisible) return null;
-
-              // 3D Curved positioning
-              const angle = position * 28; // Degrees
-              const radius = 350; // Distance from center
-              const translateX = Math.sin((angle * Math.PI) / 180) * radius;
-              const translateZ = Math.cos((angle * Math.PI) / 180) * radius - radius;
-              const rotateY = -angle;
-              const scale = isCenter ? 1 : 0.8 - Math.abs(position) * 0.08;
-              const opacity = isCenter ? 1 : 0.65 - Math.abs(position) * 0.12;
-              
-              return (
-                <div
-                  key={`${event.id}-${index}`}
-                  className={`absolute transition-all duration-700 ease-out cursor-pointer ${
-                    isCenter ? 'z-30' : 'z-10'
-                  }`}
-                  style={{
-                    transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
-                    opacity,
-                  }}
-                  onClick={() => {
-                    if (!isCenter) {
-                      if (position > 0) {
-                        nextEvent();
-                      } else {
-                        prevEvent();
-                      }
-                    }
-                  }}
-                >
-                  <Card className={`w-[420px] h-[520px] overflow-hidden bg-card/80 backdrop-blur-xl border-2 border-primary/20 hover:border-primary/60 transition-all duration-300 flex flex-col ${
-                    isCenter ? 'shadow-2xl shadow-primary/30' : 'shadow-lg shadow-black/10'
-                  }`}>
-                    {/* Title and Badge */}
-                    <div className="p-4 pb-2 flex items-start justify-between border-b border-border/50">
-                      <h3 className={`${isCenter ? 'text-lg' : 'text-base'} font-bold text-foreground line-clamp-2 flex-1 pr-2`}>
-                        {event.title}
-                      </h3>
-                      <Badge className={`${getCategoryColor(event.category)} border-2 shrink-0`}>
-                        {event.category}
-                      </Badge>
-                    </div>
-
-                    {/* Nested Images Carousel */}
-                    <div className="relative w-full flex-shrink-0">
-                      <Carousel
-                        opts={{
-                          align: "center",
-                          loop: true,
-                        }}
-                        plugins={[
-                          Autoplay({
-                            delay: 3000,
-                            stopOnInteraction: false,
-                          }),
-                        ]}
-                        className="w-full"
-                      >
-                        <CarouselContent>
-                          {event.images.map((image, idx) => (
-                            <CarouselItem key={idx}>
-                              <div className="relative w-full h-52 overflow-hidden bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20">
-                                <motion.div
-                                  className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent"
-                                  animate={{
-                                    opacity: [0.3, 0.6, 0.3],
-                                    scale: [1, 1.05, 1],
-                                  }}
-                                  transition={{
-                                    duration: 4,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                  }}
-                                />
-                                <div className="absolute inset-0 flex items-center justify-center text-primary/40 font-semibold text-sm">
-                                  Photo {idx + 1} of {event.images.length}
-                                </div>
-                              </div>
-                            </CarouselItem>
-                          ))}
-                        </CarouselContent>
-                        {isCenter && (
-                          <>
-                            <CarouselPrevious className="left-2 h-7 w-7 border-primary/50 bg-background/90 backdrop-blur-sm hover:bg-primary/20" />
-                            <CarouselNext className="right-2 h-7 w-7 border-primary/50 bg-background/90 backdrop-blur-sm hover:bg-primary/20" />
-                          </>
-                        )}
-                      </Carousel>
-                    </div>
-
-                    {/* Event Info */}
-                    <CardContent className="p-4 flex-1 flex flex-col">
-                      <p className={`text-muted-foreground ${isCenter ? 'text-sm' : 'text-xs'} leading-relaxed line-clamp-3 mb-4 flex-1`}>
-                        {event.description}
-                      </p>
-
-                      <div className={`flex flex-col gap-2 ${isCenter ? 'text-sm' : 'text-xs'} text-muted-foreground`}>
-                        <div className="flex items-center gap-2">
-                          <Calendar className={`${isCenter ? 'h-4 w-4' : 'h-3 w-3'} text-primary shrink-0`} />
-                          <span>{event.date}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin className={`${isCenter ? 'h-4 w-4' : 'h-3 w-3'} text-primary shrink-0`} />
-                          <span>{event.location}</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              );
-            })}
+          <div className="text-center">
+            <div className="text-3xl font-bold gradient-text">{allItems.length}</div>
+            <div className="text-xs text-muted-foreground">Photos</div>
           </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold gradient-text">{categories.length - 1}</div>
+            <div className="text-xs text-muted-foreground">Events</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold gradient-text">3+</div>
+            <div className="text-xs text-muted-foreground">Years Active</div>
+          </div>
+        </motion.div>
 
-          {/* Navigation buttons */}
-          <button
-            onClick={prevEvent}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-lg hover:bg-background transition-all"
+        {/* Category filter */}
+        {categories.length > 1 && (
+          <motion.div
+            className="flex flex-wrap justify-center gap-2 mb-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            onClick={nextEvent}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-lg hover:bg-background transition-all"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-        </div>
+            {categories.map((cat) => (
+              <motion.button
+                key={cat}
+                onClick={() => setCategory(cat)}
+                className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
+                  activeCategory === cat
+                    ? "bg-gradient-to-r from-primary to-secondary text-white border-transparent shadow-lg shadow-primary/30"
+                    : "bg-card/60 text-muted-foreground border-border/50 hover:border-primary/50 hover:text-primary backdrop-blur-sm"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                {cat}
+              </motion.button>
+            ))}
+          </motion.div>
+        )}
 
-        {/* Dots indicator */}
-        <div className="flex justify-center mt-6 space-x-1">
-          {events.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentIndex ? 'bg-primary' : 'bg-primary/30 hover:bg-primary/50'
-              }`}
-            />
-          ))}
-        </div>
+        {/* Masonry grid */}
+        {filtered.length > 0 ? (
+          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+            {filtered.map((item, idx) => (
+              <div key={item.id} className="break-inside-avoid mb-4">
+                <GalleryCard
+                  item={item}
+                  index={idx}
+                  onClick={() => openLightbox(idx)}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20">
+            <Images className="h-16 w-16 mx-auto mb-4 text-muted-foreground/40" />
+            <p className="text-muted-foreground">No photos in this category yet</p>
+          </div>
+        )}
 
-        {/* Event count */}
-        <div className="text-center mt-4">
-          <p className="text-sm text-muted-foreground">
-            {currentIndex + 1} of {events.length} events
-          </p>
-        </div>
+        {/* Caption */}
+        <motion.p
+          className="text-center text-muted-foreground text-sm mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <Camera className="inline h-4 w-4 mr-1 mb-0.5" />
+          Click any photo to view full size
+        </motion.p>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIdx !== null && (
+          <Lightbox
+            items={lightboxItems}
+            index={lightboxIdx}
+            onClose={closeLightbox}
+            onPrev={prevLight}
+            onNext={nextLight}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

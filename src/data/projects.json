@@ -7,56 +7,68 @@
     "project_type": "AI/ML",
     "year": "2025",
     "featured": true,
-    "github_url": "https://github.com/sufyan-github",
+    "github_url": "https://github.com/sufyan-github/plant-disease-detection-project",
     "demo_url": "#",
-    "image_url": "/src/assets/demo-traffic.jpg"
+    "image_url": "/projects/traffic.jpg"
   },
   {
     "id": "p02",
-    "title": "Sentiment Analysis and Bias Detection",
-    "description": "Developed ML/DL models for detecting sentiment and geopolitical bias in social media text. Supported academic research published in ICCiT 2024.",
-    "technologies": ["Python", "NLP", "TensorFlow", "Scikit-learn", "BERT"],
+    "title": "Gemini Health AI Assistant",
+    "description": "An AI-powered healthcare assistant that provides wellness recommendations based on health stats and user queries, using Gemini Pro API.",
+    "technologies": ["Python", "Streamlit", "Gemini API", "Data Analysis"],
     "project_type": "AI/ML",
     "year": "2024",
     "featured": true,
-    "github_url": "https://github.com/sufyan-github",
+    "github_url": "https://github.com/sufyan-github/Gemini-Health-App",
     "demo_url": "#",
-    "image_url": "/projects/sentiment.jpg"
+    "image_url": "/projects/gemini-health.png"
   },
   {
     "id": "p03",
-    "title": "Monkeypox Outbreak Prediction",
-    "description": "Built forecasting models to predict Monkeypox outbreak trends using LSTM, GRU, and ensemble ML models to improve predictive accuracy.",
-    "technologies": ["Python", "LSTM", "GRU", "Time Series", "Data Analysis"],
+    "title": "Medical Chatbot System",
+    "description": "An end-to-end medical chatbot using LangChain, Pinecone, and LLMs for accurate information retrieval and conversation.",
+    "technologies": ["Python", "LangChain", "Pinecone", "Flask", "NLP"],
     "project_type": "AI/ML",
     "year": "2024",
     "featured": true,
-    "github_url": "https://github.com/sufyan-github",
+    "github_url": "https://github.com/sufyan-github/end-to-end-medical-chatbot",
     "demo_url": "#",
-    "image_url": "/projects/monkeypox.jpg"
+    "image_url": "/projects/medical-chatbot.jpg"
   },
   {
     "id": "p04",
-    "title": "Attendance Management App",
-    "description": "Cross-platform mobile app built with Flutter and Dart. Integrated Firebase for authentication and real-time database with Riverpod for efficient state management.",
-    "technologies": ["Flutter", "Dart", "Firebase", "Riverpod"],
-    "project_type": "Mobile",
+    "title": "FoodHub - Complete Platform",
+    "description": "A high-performance food delivery platform with advanced features like secure checkout, order tracking, and provider dashboard.",
+    "technologies": ["Node.js", "Express", "MongoDB", "React", "TailwindCSS"],
+    "project_type": "Web Development",
     "year": "2024",
     "featured": true,
-    "github_url": "https://github.com/sufyan-github",
+    "github_url": "https://github.com/sufyan-github/foodhub-complete-project",
     "demo_url": "#",
-    "image_url": "/src/assets/demo-healthtracker.png"
+    "image_url": "/projects/foodhub.png"
   },
   {
     "id": "p05",
-    "title": "Full-Stack Web Development Projects",
-    "description": "Designed responsive frontends with React, TailwindCSS, and DaisyUI. Built backends with Node.js, Express.js, MySQL, and PHP (Laravel).",
-    "technologies": ["React", "TailwindCSS", "Node.js", "Express.js", "MySQL", "PHP", "Laravel"],
-    "project_type": "Web",
+    "title": "Vehicle Rental System",
+    "description": "Industy-grade vehicle rental platform with Dependency Injection, Swagger documentation, and robust middleware storage.",
+    "technologies": ["Go", "PostgreSQL", "React", "TailwindCSS", "Swagger"],
+    "project_type": "Web Development",
+    "year": "2024",
+    "featured": false,
+    "github_url": "https://github.com/sufyan-github/go-api-vehicle_rental",
+    "demo_url": "#",
+    "image_url": "/projects/vehicle-rental.png"
+  },
+  {
+    "id": "p06",
+    "title": "EduBridge - Learning Platform",
+    "description": "A comprehensive educational learning platform enabling students to access courses and track their academic journey.",
+    "technologies": ["React", "PHP", "Laravel", "MySQL", "TailwindCSS"],
+    "project_type": "Web Development",
     "year": "2023",
     "featured": false,
-    "github_url": "https://github.com/sufyan-github",
+    "github_url": "https://github.com/sufyan-github/EduBridge",
     "demo_url": "#",
-    "image_url": "/projects/fullstack.jpg"
+    "image_url": "/projects/edubridge.png"
   }
 ]
