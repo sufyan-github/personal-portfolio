@@ -98,7 +98,8 @@ const scrollToId = (id: string) => {
 };
 
 const Hero: React.FC = () => {
-  const cfg = useMemo(() => heroData as HeroConfig, []);
+  const fallback = useMemo(() => heroData as HeroConfig, []);
+  const { value: cfg } = useContent<HeroConfig>("hero", fallback);
   const { language } = useLanguage();
   const t = (translations as any)[language].hero;
 
