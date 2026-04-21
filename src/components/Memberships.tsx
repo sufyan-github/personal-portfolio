@@ -2,7 +2,8 @@ import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Award } from "lucide-react";
-import membershipData from "@/data/memberships.json";
+import membershipFallback from "@/data/memberships.json";
+import { useContent } from "@/lib/contentClient";
 
 const Memberships: React.FC = () => {
   return (

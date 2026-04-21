@@ -7,6 +7,7 @@ import { Github, ExternalLink, Calendar, Tag } from "lucide-react";
 import demoTrafficImage from "@/assets/demo-traffic.jpg";
 import demoHealthTrackerImage from "@/assets/demo-healthtracker.png";
 import projectsData from "@/data/projects.json";
+import { useContent } from "@/lib/contentClient";
 
 interface Project {
   id: string;

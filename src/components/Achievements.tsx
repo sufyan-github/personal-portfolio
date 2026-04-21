@@ -15,6 +15,7 @@ import {
   Zap,
 } from 'lucide-react';
 import achievementsData from '@/data/achievements.json';
+import { useContent } from "@/lib/contentClient";
 
 // Icon map to match string names in JSON with real Lucide icons
 const iconMap: Record<string, React.ElementType> = {
@@ -31,7 +32,8 @@ const iconMap: Record<string, React.ElementType> = {
 const Achievements = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   
-  const achievements = achievementsData.map(a => ({
+  const { value: source } = useContent<typeof achievementsData>("achievements", achievementsData);
+  const achievements = source.map(a => ({
     ...a,
     icon: iconMap[a.icon as keyof typeof iconMap] || Trophy,
   }));

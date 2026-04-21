@@ -9,8 +9,9 @@ import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
-import contactInfoData from '@/data/contactInfo.json';
-import availabilityData from '@/data/availability.json';
+import contactInfoFallback from '@/data/contactInfo.json';
+import availabilityFallback from '@/data/availability.json';
+import { useContent } from "@/lib/contentClient";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, 'Name is required').max(100),

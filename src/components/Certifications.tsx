@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Award, Calendar, Building, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-import rawCerts from "@/data/certifications.json";
+import rawCertsFallback from "@/data/certifications.json";
+import { useContent } from "@/lib/contentClient";
 
 type RawCert = {
   id: number | string;
