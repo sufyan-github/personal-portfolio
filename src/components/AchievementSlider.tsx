@@ -151,7 +151,7 @@ const AchievementSlider: React.FC = () => {
 
   const slide = slides[current];
 
-  const slideVariants = {
+  const slideVariants: import("framer-motion").Variants = {
     enter: (dir: number) => ({
       x: dir > 0 ? "100%" : "-100%",
       opacity: 0,
@@ -161,7 +161,7 @@ const AchievementSlider: React.FC = () => {
       x: 0,
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
     },
     exit: (dir: number) => ({
       x: dir > 0 ? "-100%" : "100%",
