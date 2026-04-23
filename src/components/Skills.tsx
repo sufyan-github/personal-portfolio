@@ -222,7 +222,7 @@ const Skills: React.FC = () => {
                       <Badge
                         key={skill.name + skillIndex}
                         variant="secondary"
-                        className="px-3 py-1.5 text-sm font-semibold bg-background/80 text-foreground hover:bg-primary/15 hover:text-primary border border-border hover:border-primary/40 transition-all duration-300 cursor-default flex items-center gap-2 shadow-sm"
+                        className="px-3 py-1.5 text-xs sm:text-sm font-semibold bg-card text-foreground hover:bg-primary hover:text-primary-foreground border border-border hover:border-primary transition-all duration-300 cursor-default flex items-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5"
                       >
                         <TechLogo name={skill.name} />
                         {skill.name}
