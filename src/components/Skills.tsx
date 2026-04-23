@@ -216,16 +216,16 @@ const Skills: React.FC = () => {
                   </div>
                 </div>
 
-                <CardContent className="px-5 pb-5 pt-2">
-                  <div className="flex flex-wrap gap-2">
+                <CardContent className="px-4 sm:px-5 pb-5 pt-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {category.skills.map((skill, skillIndex) => (
                       <Badge
                         key={skill.name + skillIndex}
                         variant="secondary"
-                        className="px-3 py-1.5 text-xs sm:text-sm font-semibold bg-card text-foreground hover:bg-primary hover:text-primary-foreground border border-border hover:border-primary transition-all duration-300 cursor-default flex items-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                        className="px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm font-semibold bg-card text-foreground hover:bg-primary hover:text-primary-foreground border border-border hover:border-primary transition-all duration-300 cursor-default inline-flex items-center gap-1.5 sm:gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 max-w-full whitespace-normal break-words leading-tight"
                       >
                         <TechLogo name={skill.name} />
-                        {skill.name}
+                        <span className="break-words">{skill.name}</span>
                       </Badge>
                     ))}
                   </div>
