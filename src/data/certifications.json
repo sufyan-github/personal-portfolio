@@ -245,22 +245,22 @@
     "id": 23,
     "title": "Campus Volunteer Recognition",
     "issuer": "FutureNation, UNDP",
-    "date": "2026-02",
-    "description": "Recognized for contribution to youth upskilling and community development initiatives.",
-    "image": "/certs/futurenation_volunteer_recognition.png",
+    "date": "2026-02-16",
+    "description": "Recognized for outstanding dedication and commitment as a Campus Volunteer for Futurenation, contributing to youth upskilling and community development initiatives.",
+    "image": "/certs/futurenation_volunteer_recognition.jpg",
     "credentialId": "",
     "verificationUrl": "#",
-    "skills": ["Volunteering", "Youth Development", "Community Impact"]
+    "skills": ["Volunteering", "Youth Development", "Community Impact", "UNDP"]
   },
   {
     "id": 24,
     "title": "Youth Trainer — Ekannor Jaagoron Initiative",
     "issuer": "JAAGO Foundation Trust",
     "date": "2025-12",
-    "description": "Delivered civic awareness and youth empowerment training sessions across divisions.",
-    "image": "/certs/jaago_youth_trainer.png",
+    "description": "Successfully participated in the Divisional Level Youth Training Session as Trainer conducted under the 'Ekannor Jaagoron (Rise of 51)' initiative to empower youth and women.",
+    "image": "/certs/jaago_youth_trainer.jpg",
     "credentialId": "",
     "verificationUrl": "#",
-    "skills": ["Training", "Youth Empowerment", "Civic Awareness"]
+    "skills": ["Training", "Youth Empowerment", "Civic Awareness", "Social Impact"]
   }
 ]

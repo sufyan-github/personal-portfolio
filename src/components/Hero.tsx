@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 py-12 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Content */}
-          <div className="text-left">
+          <div className="flex flex-col items-center text-center">
             {/* Profile Picture */}
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
@@ -231,7 +231,7 @@ const Hero: React.FC = () => {
             {/* Specialization Chips */}
             {cfg.chips?.length > 0 && (
               <motion.div 
-                className="flex flex-wrap gap-3 mb-10"
+                className="flex flex-wrap justify-center gap-3 mb-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -258,7 +258,7 @@ const Hero: React.FC = () => {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 mb-10"
+              className="flex flex-col sm:flex-row gap-4 mb-10 justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -282,7 +282,7 @@ const Hero: React.FC = () => {
             {/* Social Links - Compact */}
             {cfg.socials?.length > 0 && (
               <motion.div 
-                className="flex flex-wrap gap-3"
+                className="flex flex-wrap gap-3 justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.7 }}

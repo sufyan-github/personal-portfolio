@@ -4,11 +4,11 @@
   "events": [
     {
       "id": "ev00",
-      "title": "ML & AI Workshop at Varendra University",
+      "title": "Machine Learning Instructional Session - Varendra University",
       "description": "Conducted a hands-on workshop on Machine Learning and Artificial Intelligence as ML Instructor from AI Bangladesh, in collaboration with the Department of CSE, Varendra University. Received Token of Appreciation for delivering practical ML training sessions.",
       "date": "October 30, 2025",
       "location": "Department of CSE, Varendra University, Rajshahi",
-      "category": "Workshop",
+      "category": "Machine Learning",
       "images": [
         "/gallery/vu-ml-workshop-1.jpg",
         "/gallery/vu-ml-workshop-2.jpg",
@@ -33,11 +33,11 @@
     },
     {
       "id": "ev02",
-      "title": "AI/ML Workshop",
+      "title": "Machine Learning Fundamentals Workshop - RUET",
       "description": "Conducted hands-on workshop on Machine Learning fundamentals and practical implementation for students",
       "date": "November 2024",
       "location": "RUET Campus",
-      "category": "Workshop",
+      "category": "Machine Learning",
       "images": [
         "/gallery/ml-workshop-1.jpg",
         "/gallery/ml-workshop-2.jpg",
@@ -83,6 +83,59 @@
         "/gallery/tree-plantation-3.jpg",
         "/gallery/tree-plantation-4.jpg",
         "/gallery/tree-plantation-5.jpg"
+      ]
+    },
+    {
+      "id": "ev06",
+      "title": "Pedal for Planet",
+      "description": "Participated in the 'Pedal for Planet' cycling event to raise awareness about environmental issues and promote sustainable transportation.",
+      "date": "November 2024",
+      "location": "Rajshahi, Bangladesh",
+      "category": "Environmental",
+      "images": [
+        "/gallery/pedal-for-planet-1.jpg",
+        "/gallery/pedal-for-planet-2.jpg",
+        "/gallery/pedal-for-planet-3.jpg"
+      ]
+    },
+    {
+      "id": "ev07",
+      "title": "VBD Volunteers Meetup & Great Kindness Day",
+      "description": "Join the Great Kindness Day celebration and volunteer meetup with the VBD (Volunteer for Bangladesh) team to discuss social impact projects.",
+      "date": "February 2025",
+      "location": "VBD Regional Office",
+      "category": "Social",
+      "images": [
+        "/gallery/vbd-volunteers-1.jpg",
+        "/gallery/vbd-volunteers-2.jpg"
+      ]
+    },
+    {
+      "id": "ev08",
+      "title": "Machine Learning Session - RUET Computing Society",
+      "description": "Instructional session on Machine Learning and AI conducted for the RUET Computing Society, focusing on real-world applications and engineering fundamentals.",
+      "date": "March 2025",
+      "location": "RUET Computing Society Hall",
+      "category": "Machine Learning",
+      "images": [
+        "/gallery/ruet-ml-session-1.jpg",
+        "/gallery/ruet-ml-session-2.jpg",
+        "/gallery/ruet-ml-session-3.jpg"
+      ]
+    },
+    {
+      "id": "ev09",
+      "title": "Members Orientation - RUET Computing Society",
+      "description": "Presided over the Members Orientation program for the RUET Computing Society. Welcomed new members and shared the vision for technological growth and community building specialized in programming and AI.",
+      "date": "April 2025",
+      "location": "RUET Cafeteria / Auditorium",
+      "category": "Orientation",
+      "images": [
+        "/gallery/ruet-cs-orientation-1.jpg",
+        "/gallery/ruet-cs-orientation-2.jpg",
+        "/gallery/ruet-cs-orientation-3.jpg",
+        "/gallery/ruet-cs-orientation-4.jpg",
+        "/gallery/ruet-cs-orientation-5.jpg"
       ]
     }
   ]

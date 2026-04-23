@@ -104,6 +104,15 @@ const FALLBACK_SLIDES: Omit<PortfolioPhoto, "id" | "created_at" | "updated_at">[
     display_order: 11,
     published: true,
   },
+  {
+    url: "/gallery/ruet-cs-orientation-5.jpg",
+    caption: "President – RUET Computing Society",
+    tagline: "Presiding over the Members Orientation program, welcoming 100+ new tech enthusiasts to the society",
+    category: "hero",
+    event_name: "RUET CS Orientation 2025",
+    display_order: 12,
+    published: true,
+  },
 ];
 
 const SLIDE_INTERVAL = 5000; // 5 seconds
