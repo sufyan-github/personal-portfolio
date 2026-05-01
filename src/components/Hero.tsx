@@ -152,6 +152,31 @@ const Hero: React.FC = () => {
       )}
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10 py-12 lg:py-24">
+        {/* Bismillah - Top Center */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center justify-center mb-10 sm:mb-14"
+          aria-label="Bismillah ir-Rahman ir-Raheem"
+        >
+          <div className="flex items-center gap-3 sm:gap-4 w-full max-w-xl justify-center">
+            <span className="hidden sm:block h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-primary/70" />
+            <span
+              dir="rtl"
+              lang="ar"
+              className="text-2xl sm:text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent font-semibold tracking-wide leading-loose select-none"
+              style={{ fontFamily: '"Amiri Quran", "Amiri", "Scheherazade New", "Noto Naskh Arabic", serif' }}
+            >
+              بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+            </span>
+            <span className="hidden sm:block h-px flex-1 bg-gradient-to-l from-transparent via-primary/50 to-primary/70" />
+          </div>
+          <p className="mt-2 text-[11px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            In the name of Allah, the Most Gracious, the Most Merciful
+          </p>
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Content */}
           <div className="flex flex-col items-center text-center">
