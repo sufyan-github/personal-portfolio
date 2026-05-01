@@ -105,6 +105,20 @@ const Hero: React.FC = () => {
   const { language } = useLanguage();
   const t = (translations as any)[language].hero;
 
+  // Compute reduced-motion + particle seeds ONCE per mount (avoids re-render thrash)
+  const reducedMotion = useMemo(prefersReducedMotion, []);
+  const particles = useMemo(() => {
+    if (reducedMotion || typeof window === "undefined") return [];
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    return Array.from({ length: 5 }, (_, i) => ({
+      id: i,
+      x: Math.random() * w,
+      y: Math.random() * h,
+      duration: 10 + i * 2,
+    }));
+  }, [reducedMotion]);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-hero pb-16">
       {/* Enhanced Animated Grid Background */}
@@ -112,7 +126,7 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
         <motion.div 
           className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-[size:4rem_4rem]"
-          animate={{
+          animate={reducedMotion ? undefined : {
             backgroundPosition: ["0px 0px", "64px 64px"],
           }}
           transition={{
@@ -125,27 +139,24 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Floating particles */}
-      {!prefersReducedMotion() && (
+      {particles.length > 0 && (
         <>
-          {[...Array(5)].map((_, i) => (
+          {particles.map((p) => (
             <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-primary rounded-full"
-              initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                opacity: 0.3,
-              }}
+              key={p.id}
+              className="absolute w-2 h-2 bg-primary rounded-full pointer-events-none will-change-transform"
+              initial={{ x: p.x, y: p.y, opacity: 0.3 }}
               animate={{
                 y: [null, -100, 100, -50, 0],
                 x: [null, 50, -50, 30, -30],
                 opacity: [0.3, 0.6, 0.3, 0.7, 0.3],
               }}
               transition={{
-                duration: 10 + i * 2,
+                duration: p.duration,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
+              aria-hidden
             />
           ))}
         </>
