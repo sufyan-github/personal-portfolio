@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail, Brain, Cpu, Database, Sparkles } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Brain, Cpu, Database } from "lucide-react";
 import Lottie from "lottie-react";
 import { TypeAnimation } from "react-type-animation";
 import ResumeDownload from "@/components/ResumeDownload";
