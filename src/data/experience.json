@@ -1,5 +1,20 @@
 [
   {
+    "title": "Top Trainer — Python & AI/ML Instructor",
+    "company": "Bangladesh Computer Council (BCC), Rajshahi",
+    "logo": "/assets/logo/research.jpeg",
+    "location": "Rajshahi, Bangladesh",
+    "period": "2026 – Present",
+    "website": "https://bcc.gov.bd",
+    "description": [
+      "Selected as a Top Trainer under Bangladesh Computer Council (BCC), Rajshahi to deliver national-level training programs",
+      "Designed and delivered structured curricula on Python programming and Artificial Intelligence / Machine Learning",
+      "Led hands-on lab sessions, capstone projects, and assessments for students, professionals, and government trainees",
+      "Promoted applied AI literacy and digital skill development across the Rajshahi region under ICT Division initiatives"
+    ],
+    "featured": true
+  },
+  {
     "title": "Machine Learning & AI Instructor",
     "company": "Artificial Intelligence Bangladesh",
     "logo": "/assets/logo/aibd.jpeg",
