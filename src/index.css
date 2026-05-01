@@ -141,10 +141,10 @@ All colors MUST be HSL.
   .bismillah-text {
     font-family: "Amiri Quran", "Amiri", "Scheherazade New", "Noto Naskh Arabic", "Traditional Arabic", serif;
     font-weight: 400;
-    /* Fluid responsive sizing: 1.75rem → 2.75rem */
-    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
+    /* Fluid responsive sizing: 1.25rem → 1.875rem */
+    font-size: clamp(1.25rem, 0.95rem + 1.4vw, 1.875rem);
     /* Arabic needs generous line-height for diacritics (harakat) */
-    line-height: 1.9;
+    line-height: 1.85;
     letter-spacing: 0;
     /* Better Arabic shaping & ligatures */
     font-feature-settings: "liga" 1, "calt" 1, "ccmp" 1, "mark" 1, "mkmk" 1;
