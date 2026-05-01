@@ -168,7 +168,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex flex-col items-center justify-center mb-10 sm:mb-14 px-2"
+          className="flex flex-col items-center justify-center mb-6 sm:mb-10 px-2"
           aria-label="Bismillah ir-Rahman ir-Raheem"
         >
           <div className="flex items-center gap-3 sm:gap-4 w-full max-w-2xl justify-center">
