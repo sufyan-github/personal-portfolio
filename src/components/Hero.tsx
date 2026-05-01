@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail, Brain, Cpu, Database, Sparkles } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Brain, Cpu, Database } from "lucide-react";
 import Lottie from "lottie-react";
 import { TypeAnimation } from "react-type-animation";
 import ResumeDownload from "@/components/ResumeDownload";
@@ -180,26 +180,6 @@ const Hero: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Content */}
           <div className="flex flex-col items-center text-center">
-            {/* Profile Picture */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <motion.div
-                className="relative w-24 h-24"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="absolute inset-0 bg-gradient-primary rounded-full blur-xl opacity-50 animate-pulse" />
-                <div className="relative w-full h-full rounded-full bg-gradient-primary p-1 shadow-glow border-2 border-primary/20">
-                  <div className="w-full h-full rounded-full bg-card flex items-center justify-center overflow-hidden">
-                    <Sparkles className="h-12 w-12 text-primary" />
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
 
             {/* Main Headline */}
             <motion.h1 
