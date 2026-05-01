@@ -105,6 +105,20 @@ const Hero: React.FC = () => {
   const { language } = useLanguage();
   const t = (translations as any)[language].hero;
 
+  // Compute reduced-motion + particle seeds ONCE per mount (avoids re-render thrash)
+  const reducedMotion = useMemo(prefersReducedMotion, []);
+  const particles = useMemo(() => {
+    if (reducedMotion || typeof window === "undefined") return [];
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    return Array.from({ length: 5 }, (_, i) => ({
+      id: i,
+      x: Math.random() * w,
+      y: Math.random() * h,
+      duration: 10 + i * 2,
+    }));
+  }, [reducedMotion]);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-hero pb-16">
       {/* Enhanced Animated Grid Background */}
@@ -112,7 +126,7 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background"></div>
         <motion.div 
           className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-[size:4rem_4rem]"
-          animate={{
+          animate={reducedMotion ? undefined : {
             backgroundPosition: ["0px 0px", "64px 64px"],
           }}
           transition={{
@@ -125,27 +139,24 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Floating particles */}
-      {!prefersReducedMotion() && (
+      {particles.length > 0 && (
         <>
-          {[...Array(5)].map((_, i) => (
+          {particles.map((p) => (
             <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-primary rounded-full"
-              initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-                opacity: 0.3,
-              }}
+              key={p.id}
+              className="absolute w-2 h-2 bg-primary rounded-full pointer-events-none will-change-transform"
+              initial={{ x: p.x, y: p.y, opacity: 0.3 }}
               animate={{
                 y: [null, -100, 100, -50, 0],
                 x: [null, 50, -50, 30, -30],
                 opacity: [0.3, 0.6, 0.3, 0.7, 0.3],
               }}
               transition={{
-                duration: 10 + i * 2,
+                duration: p.duration,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
+              aria-hidden
             />
           ))}
         </>
@@ -154,25 +165,24 @@ const Hero: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 py-12 lg:py-24">
         {/* Bismillah - Top Center */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center justify-center mb-10 sm:mb-14"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="flex flex-col items-center justify-center mb-10 sm:mb-14 px-2"
           aria-label="Bismillah ir-Rahman ir-Raheem"
         >
-          <div className="flex items-center gap-3 sm:gap-4 w-full max-w-xl justify-center">
-            <span className="hidden sm:block h-px flex-1 bg-gradient-to-r from-transparent via-primary/50 to-primary/70" />
+          <div className="flex items-center gap-3 sm:gap-4 w-full max-w-2xl justify-center">
+            <span aria-hidden className="hidden sm:block h-px flex-1 bg-gradient-to-r from-transparent via-primary/40 to-primary/60" />
             <span
               dir="rtl"
               lang="ar"
-              className="text-2xl sm:text-3xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent font-semibold tracking-wide leading-loose select-none"
-              style={{ fontFamily: '"Amiri Quran", "Amiri", "Scheherazade New", "Noto Naskh Arabic", serif' }}
+              className="bismillah-text text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent select-none"
             >
               بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
             </span>
-            <span className="hidden sm:block h-px flex-1 bg-gradient-to-l from-transparent via-primary/50 to-primary/70" />
+            <span aria-hidden className="hidden sm:block h-px flex-1 bg-gradient-to-l from-transparent via-primary/40 to-primary/60" />
           </div>
-          <p className="mt-2 text-[11px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <p className="mt-3 text-[10px] sm:text-xs uppercase tracking-[0.28em] text-muted-foreground/90 text-center">
             In the name of Allah, the Most Gracious, the Most Merciful
           </p>
         </motion.div>
