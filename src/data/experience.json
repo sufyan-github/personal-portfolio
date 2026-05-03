@@ -4,13 +4,13 @@
     "company": "Bangladesh Computer Council (BCC), Rajshahi",
     "logo": "/assets/logo/research.jpeg",
     "location": "Rajshahi, Bangladesh",
-    "period": "2026 – Present",
+    "period": "Jan 2026 – Present",
     "website": "https://bcc.gov.bd",
     "description": [
-      "Selected as a Top Trainer under Bangladesh Computer Council (BCC), Rajshahi to deliver national-level training programs",
-      "Designed and delivered structured curricula on Python programming and Artificial Intelligence / Machine Learning",
-      "Led hands-on lab sessions, capstone projects, and assessments for students, professionals, and government trainees",
-      "Promoted applied AI literacy and digital skill development across the Rajshahi region under ICT Division initiatives"
+      "Trained 100+ students and professionals in Python, ML, and AI fundamentals under the ICT Division's national skill program",
+      "Designed structured curricula and hands-on labs covering supervised/unsupervised learning, model evaluation, and deployment",
+      "Mentored learners through capstone projects (MNIST classification, regression pipelines, CV demos) with real-world datasets",
+      "Conducted multiple workshops and assessment cycles, raising applied AI literacy across the Rajshahi region"
     ],
     "featured": true
   },

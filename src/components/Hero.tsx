@@ -176,13 +176,13 @@ const Hero: React.FC = () => {
             <span
               dir="rtl"
               lang="ar"
-              className="bismillah-text text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent select-none"
+              className="bismillah-text text-transparent bg-clip-text bg-gradient-to-r from-primary/70 via-secondary/70 to-accent/70 select-none opacity-80"
             >
               بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
             </span>
-            <span aria-hidden className="hidden sm:block h-px flex-1 bg-gradient-to-l from-transparent via-primary/40 to-primary/60" />
+            <span aria-hidden className="hidden sm:block h-px flex-1 bg-gradient-to-l from-transparent via-primary/30 to-primary/50" />
           </div>
-          <p className="mt-3 text-[10px] sm:text-xs uppercase tracking-[0.28em] text-muted-foreground/90 text-center">
+          <p className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.28em] text-muted-foreground/70 text-center">
             In the name of Allah, the Most Gracious, the Most Merciful
           </p>
         </motion.div>
