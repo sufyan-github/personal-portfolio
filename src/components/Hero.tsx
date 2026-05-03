@@ -233,12 +233,35 @@ const Hero: React.FC = () => {
               />
             </motion.div>
             
+            {/* Professional Hook - Headline */}
+            <motion.p
+              className="text-base sm:text-lg lg:text-xl font-semibold mb-2 max-w-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+            >
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                AI/ML Trainer & Full-Stack Developer
+              </span>
+              <span className="text-foreground/80"> — Building Scalable Tech & Impact Systems</span>
+            </motion.p>
+
+            {/* Sub-line: BCC credibility */}
+            <motion.p
+              className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              Trainer at <span className="text-primary font-medium">Bangladesh Computer Council (BCC), Rajshahi</span> · 100+ learners mentored
+            </motion.p>
+
             {/* Subheading */}
             <motion.p 
               className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-xl leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
             >
               {t.subtitle}
             </motion.p>
