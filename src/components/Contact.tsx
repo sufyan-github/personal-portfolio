@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -171,6 +171,36 @@ const Contact = () => {
                     </motion.div>
                   );
                 })}
+              </CardContent>
+            </Card>
+
+            {/* Quick Actions: Email + WhatsApp */}
+            <Card className="bg-card/80 backdrop-blur-xl border-2 border-primary/30 shadow-xl shadow-primary/10">
+              <CardHeader>
+                <CardTitle className="text-xl text-foreground">Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Button
+                  asChild
+                  className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white border-0"
+                >
+                  <a href="mailto:abusufyan.cse20@gmail.com">
+                    <Mail className="h-4 w-4 mr-2" /> Email Me
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-2 border-green-500/50 hover:border-green-500 hover:bg-green-500/10 text-foreground"
+                >
+                  <a
+                    href="https://wa.me/8801580352238"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="h-4 w-4 mr-2 text-green-500" /> WhatsApp
+                  </a>
+                </Button>
               </CardContent>
             </Card>
 

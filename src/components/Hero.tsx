@@ -176,13 +176,13 @@ const Hero: React.FC = () => {
             <span
               dir="rtl"
               lang="ar"
-              className="bismillah-text text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent select-none"
+              className="bismillah-text text-transparent bg-clip-text bg-gradient-to-r from-primary/70 via-secondary/70 to-accent/70 select-none opacity-80"
             >
               بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
             </span>
-            <span aria-hidden className="hidden sm:block h-px flex-1 bg-gradient-to-l from-transparent via-primary/40 to-primary/60" />
+            <span aria-hidden className="hidden sm:block h-px flex-1 bg-gradient-to-l from-transparent via-primary/30 to-primary/50" />
           </div>
-          <p className="mt-3 text-[10px] sm:text-xs uppercase tracking-[0.28em] text-muted-foreground/90 text-center">
+          <p className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.28em] text-muted-foreground/70 text-center">
             In the name of Allah, the Most Gracious, the Most Merciful
           </p>
         </motion.div>
@@ -233,12 +233,35 @@ const Hero: React.FC = () => {
               />
             </motion.div>
             
+            {/* Professional Hook - Headline */}
+            <motion.p
+              className="text-base sm:text-lg lg:text-xl font-semibold mb-2 max-w-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+            >
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                AI/ML Trainer & Full-Stack Developer
+              </span>
+              <span className="text-foreground/80"> — Building Scalable Tech & Impact Systems</span>
+            </motion.p>
+
+            {/* Sub-line: BCC credibility */}
+            <motion.p
+              className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              Trainer at <span className="text-primary font-medium">Bangladesh Computer Council (BCC), Rajshahi</span> · 100+ learners mentored
+            </motion.p>
+
             {/* Subheading */}
             <motion.p 
               className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-xl leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
             >
               {t.subtitle}
             </motion.p>
