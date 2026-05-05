@@ -18,6 +18,7 @@ import Achievements from "@/components/Achievements";
 import Memberships from "@/components/Memberships";
 import { PortfolioChatbot } from "@/components/PortfolioChatbot";
 import ImpactStats from "@/components/ImpactStats";
+import OrgLogos from "@/components/OrgLogos";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
 import Gallery from "@/components/Gallery";
@@ -62,6 +63,7 @@ const Index = () => {
             <Hero />
           </div>
           <ImpactStats />
+          <OrgLogos />
           <div id="about">
             <About />
           </div>
