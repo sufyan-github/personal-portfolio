@@ -13,6 +13,7 @@ interface Project {
   id: string;
   title: string;
   description: string;
+  impact?: string[];
   technologies: string[];
   project_type: string;
   year: string;
@@ -215,9 +216,23 @@ const Projects: React.FC = () => {
                 </CardHeader>
 
                 <CardContent className="pt-0">
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-muted-foreground mb-4 leading-relaxed text-sm sm:text-base">
                     {project.description}
                   </p>
+
+                  {/* Impact metrics */}
+                  {project.impact && project.impact.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {project.impact.map((m, i) => (
+                        <span
+                          key={`${project.id}-impact-${i}`}
+                          className="text-xs font-semibold px-2.5 py-1 rounded-md bg-primary/10 text-primary border border-primary/30"
+                        >
+                          ✓ {m}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">

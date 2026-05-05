@@ -12,10 +12,10 @@ type Message = {
 };
 
 const SUGGESTED_QUESTIONS = [
-  "What are your technical skills?",
-  "Tell me about your projects",
-  "What's your experience?",
-  "How can I contact you?",
+  "What does Abu Sufyan teach at BCC Rajshahi?",
+  "Show me his strongest AI/ML projects",
+  "What's his research & publications?",
+  "How can I hire or collaborate with him?",
 ];
 
 export const PortfolioChatbot: React.FC = () => {
