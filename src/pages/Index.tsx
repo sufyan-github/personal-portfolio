@@ -1,60 +1,50 @@
-import IndustrialAttachment from "@/components/IndustrialAttachment";
+import { lazy, Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import LanguagesSkills from "@/components/LanguagesSkills";
-import Academic from "@/components/Academic";
-import Experience from "@/components/Experience";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import Research from "@/components/Research";
-import Contact from "@/components/Contact";
-import Analytics from "@/components/Analytics";
-import ParticleBackground from "@/components/ParticleBackground";
-import FloatingTechElements from "@/components/FloatingTechElements";
-import GitHubHeatmap from "@/components/GitHubHeatmap";
-import Certifications from "@/components/Certifications";
-import Achievements from "@/components/Achievements";
-import Memberships from "@/components/Memberships";
-import { PortfolioChatbot } from "@/components/PortfolioChatbot";
-import ImpactStats from "@/components/ImpactStats";
-import OrgLogos from "@/components/OrgLogos";
+import ProfessionalBackground from "@/components/ProfessionalBackground";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
-import Gallery from "@/components/Gallery";
-import CodingProfiles from "@/components/CodingProfiles";
 import { Toaster } from "@/components/ui/toaster";
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
+
+// Lazy-load below-the-fold sections to speed up initial paint & TTI
+const ImpactStats = lazy(() => import("@/components/ImpactStats"));
+const OrgLogos = lazy(() => import("@/components/OrgLogos"));
+const LanguagesSkills = lazy(() => import("@/components/LanguagesSkills"));
+const Academic = lazy(() => import("@/components/Academic"));
+const Experience = lazy(() => import("@/components/Experience"));
+const Skills = lazy(() => import("@/components/Skills"));
+const Projects = lazy(() => import("@/components/Projects"));
+const Research = lazy(() => import("@/components/Research"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Analytics = lazy(() => import("@/components/Analytics"));
+const GitHubHeatmap = lazy(() => import("@/components/GitHubHeatmap"));
+const Certifications = lazy(() => import("@/components/Certifications"));
+const Achievements = lazy(() => import("@/components/Achievements"));
+const Memberships = lazy(() => import("@/components/Memberships"));
+const PortfolioChatbot = lazy(() =>
+  import("@/components/PortfolioChatbot").then((m) => ({ default: m.PortfolioChatbot }))
+);
+const IndustrialAttachment = lazy(() => import("@/components/IndustrialAttachment"));
+const Gallery = lazy(() => import("@/components/Gallery"));
+const CodingProfiles = lazy(() => import("@/components/CodingProfiles"));
+
+const SectionFallback = () => <div className="min-h-[200px]" aria-hidden />;
 
 const Index = () => {
   const { language } = useLanguage();
   const t = (translations as any)[language];
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
-      {/* 3D Particle Background Animation */}
-      <ParticleBackground
-  density={1}          // 0.5–1.2 is comfy
-  speed={1}            // 0.8 for calmer
-  maxDepth={250}
-  interactive={true}
-  blendMode="screen"   // or "lighter"
-  colors={[
-    "hsl(212, 100%, 65%)",
-    "hsl(270, 60%, 45%)",
-    "hsl(189, 100%, 60%)",
-  ]}
-  icons={["🧠","💻","🤖","⚡","🌐"]}
-/>
+      {/* Lightweight professional animated background */}
+      <ProfessionalBackground />
 
-      
-      {/* Floating Tech Elements */}
-      <FloatingTechElements />
-      
       {/* Scroll Progress Bar */}
       <ScrollProgress />
-      
+
       {/* Content */}
       <div className="relative z-10">
         <Navigation />
@@ -62,51 +52,53 @@ const Index = () => {
           <div id="home">
             <Hero />
           </div>
-          <ImpactStats />
-          <OrgLogos />
-          <div id="about">
-            <About />
-          </div>
-          <div id="academic">
-            <Academic />
-          </div>
-          <div id="experience">
-            <Experience />
-          </div>
-          <div id="industrial-attachment">
-            <IndustrialAttachment />
-          </div>
-          <div id="skills">
-            <Skills />
-            <LanguagesSkills />
-            <GitHubHeatmap />
-          </div>
-          <div id="projects">
-            <Projects />
-          </div>
-          <div id="research">
-            <Research />
-          </div>
-          <div id="certifications">
-            <Certifications />
-          </div>
-          <div id="achievements">
-            <Achievements />
-          </div>
-          <div id="memberships">
-            <Memberships />
-          </div>
-          <div id="coding">
-            <CodingProfiles />
-          </div>
-          <div id="gallery">
-            <Gallery />
-          </div>
-          <div id="contact">
-            <Contact />
-          </div>
+          <Suspense fallback={<SectionFallback />}>
+            <ImpactStats />
+            <OrgLogos />
+            <div id="about">
+              <About />
+            </div>
+            <div id="academic">
+              <Academic />
+            </div>
+            <div id="experience">
+              <Experience />
+            </div>
+            <div id="industrial-attachment">
+              <IndustrialAttachment />
+            </div>
+            <div id="skills">
+              <Skills />
+              <LanguagesSkills />
+              <GitHubHeatmap />
+            </div>
+            <div id="projects">
+              <Projects />
+            </div>
+            <div id="research">
+              <Research />
+            </div>
+            <div id="certifications">
+              <Certifications />
+            </div>
+            <div id="achievements">
+              <Achievements />
+            </div>
+            <div id="memberships">
+              <Memberships />
+            </div>
+            <div id="coding">
+              <CodingProfiles />
+            </div>
+            <div id="gallery">
+              <Gallery />
+            </div>
+            <div id="contact">
+              <Contact />
+            </div>
+          </Suspense>
         </main>
-        
+
         {/* Enhanced Footer with Quick Links Navigation */}
         <footer className="relative bg-gradient-to-b from-background to-card/30 backdrop-blur-sm border-t border-border py-16">
           <div className="container mx-auto px-6">
@@ -302,12 +294,12 @@ const Index = () => {
         </footer>
       </div>
       
-      {/* Analytics Component */}
-      <Analytics />
-      
-      {/* AI Chatbot */}
-      <PortfolioChatbot />
-      
+      {/* Analytics + AI Chatbot (lazy) */}
+      <Suspense fallback={null}>
+        <Analytics />
+        <PortfolioChatbot />
+      </Suspense>
+
       {/* Back to Top Button */}
       <BackToTop />
       
