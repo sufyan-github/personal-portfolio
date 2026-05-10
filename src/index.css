@@ -366,4 +366,49 @@ All colors MUST be HSL.
     background-size: 200% 100%;
     animation: shimmer 3s infinite;
   }
+
+  /* Professional aurora background orbs (GPU-accelerated, lightweight) */
+  .aurora-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.35;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+  .aurora-orb-1 {
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.55), transparent 70%);
+    top: -120px; left: -120px;
+    animation: aurora-drift-1 24s ease-in-out infinite alternate;
+  }
+  .aurora-orb-2 {
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, hsl(var(--accent) / 0.45), transparent 70%);
+    bottom: -140px; right: -100px;
+    animation: aurora-drift-2 28s ease-in-out infinite alternate;
+  }
+  .aurora-orb-3 {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, hsl(var(--secondary) / 0.35), transparent 70%);
+    top: 40%; left: 55%;
+    animation: aurora-drift-3 32s ease-in-out infinite alternate;
+  }
+
+  @keyframes aurora-drift-1 {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(80px, 60px, 0) scale(1.1); }
+  }
+  @keyframes aurora-drift-2 {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-100px, -50px, 0) scale(1.15); }
+  }
+  @keyframes aurora-drift-3 {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-60px, 80px, 0) scale(0.9); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora-orb { animation: none !important; }
+  }
 }
