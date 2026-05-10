@@ -1,32 +1,38 @@
-import IndustrialAttachment from "@/components/IndustrialAttachment";
+import { lazy, Suspense } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import LanguagesSkills from "@/components/LanguagesSkills";
-import Academic from "@/components/Academic";
-import Experience from "@/components/Experience";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import Research from "@/components/Research";
-import Contact from "@/components/Contact";
-import Analytics from "@/components/Analytics";
-import ParticleBackground from "@/components/ParticleBackground";
-import FloatingTechElements from "@/components/FloatingTechElements";
-import GitHubHeatmap from "@/components/GitHubHeatmap";
-import Certifications from "@/components/Certifications";
-import Achievements from "@/components/Achievements";
-import Memberships from "@/components/Memberships";
-import { PortfolioChatbot } from "@/components/PortfolioChatbot";
-import ImpactStats from "@/components/ImpactStats";
-import OrgLogos from "@/components/OrgLogos";
+import ProfessionalBackground from "@/components/ProfessionalBackground";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
-import Gallery from "@/components/Gallery";
-import CodingProfiles from "@/components/CodingProfiles";
 import { Toaster } from "@/components/ui/toaster";
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import translations from "@/data/translations.json";
+
+// Lazy-load below-the-fold sections to speed up initial paint & TTI
+const ImpactStats = lazy(() => import("@/components/ImpactStats"));
+const OrgLogos = lazy(() => import("@/components/OrgLogos"));
+const LanguagesSkills = lazy(() => import("@/components/LanguagesSkills"));
+const Academic = lazy(() => import("@/components/Academic"));
+const Experience = lazy(() => import("@/components/Experience"));
+const Skills = lazy(() => import("@/components/Skills"));
+const Projects = lazy(() => import("@/components/Projects"));
+const Research = lazy(() => import("@/components/Research"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Analytics = lazy(() => import("@/components/Analytics"));
+const GitHubHeatmap = lazy(() => import("@/components/GitHubHeatmap"));
+const Certifications = lazy(() => import("@/components/Certifications"));
+const Achievements = lazy(() => import("@/components/Achievements"));
+const Memberships = lazy(() => import("@/components/Memberships"));
+const PortfolioChatbot = lazy(() =>
+  import("@/components/PortfolioChatbot").then((m) => ({ default: m.PortfolioChatbot }))
+);
+const IndustrialAttachment = lazy(() => import("@/components/IndustrialAttachment"));
+const Gallery = lazy(() => import("@/components/Gallery"));
+const CodingProfiles = lazy(() => import("@/components/CodingProfiles"));
+
+const SectionFallback = () => <div className="min-h-[200px]" aria-hidden />;
 
 const Index = () => {
   const { language } = useLanguage();
