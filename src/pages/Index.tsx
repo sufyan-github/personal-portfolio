@@ -39,28 +39,12 @@ const Index = () => {
   const t = (translations as any)[language];
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
-      {/* 3D Particle Background Animation */}
-      <ParticleBackground
-  density={1}          // 0.5–1.2 is comfy
-  speed={1}            // 0.8 for calmer
-  maxDepth={250}
-  interactive={true}
-  blendMode="screen"   // or "lighter"
-  colors={[
-    "hsl(212, 100%, 65%)",
-    "hsl(270, 60%, 45%)",
-    "hsl(189, 100%, 60%)",
-  ]}
-  icons={["🧠","💻","🤖","⚡","🌐"]}
-/>
+      {/* Lightweight professional animated background */}
+      <ProfessionalBackground />
 
-      
-      {/* Floating Tech Elements */}
-      <FloatingTechElements />
-      
       {/* Scroll Progress Bar */}
       <ScrollProgress />
-      
+
       {/* Content */}
       <div className="relative z-10">
         <Navigation />
@@ -68,51 +52,53 @@ const Index = () => {
           <div id="home">
             <Hero />
           </div>
-          <ImpactStats />
-          <OrgLogos />
-          <div id="about">
-            <About />
-          </div>
-          <div id="academic">
-            <Academic />
-          </div>
-          <div id="experience">
-            <Experience />
-          </div>
-          <div id="industrial-attachment">
-            <IndustrialAttachment />
-          </div>
-          <div id="skills">
-            <Skills />
-            <LanguagesSkills />
-            <GitHubHeatmap />
-          </div>
-          <div id="projects">
-            <Projects />
-          </div>
-          <div id="research">
-            <Research />
-          </div>
-          <div id="certifications">
-            <Certifications />
-          </div>
-          <div id="achievements">
-            <Achievements />
-          </div>
-          <div id="memberships">
-            <Memberships />
-          </div>
-          <div id="coding">
-            <CodingProfiles />
-          </div>
-          <div id="gallery">
-            <Gallery />
-          </div>
-          <div id="contact">
-            <Contact />
-          </div>
+          <Suspense fallback={<SectionFallback />}>
+            <ImpactStats />
+            <OrgLogos />
+            <div id="about">
+              <About />
+            </div>
+            <div id="academic">
+              <Academic />
+            </div>
+            <div id="experience">
+              <Experience />
+            </div>
+            <div id="industrial-attachment">
+              <IndustrialAttachment />
+            </div>
+            <div id="skills">
+              <Skills />
+              <LanguagesSkills />
+              <GitHubHeatmap />
+            </div>
+            <div id="projects">
+              <Projects />
+            </div>
+            <div id="research">
+              <Research />
+            </div>
+            <div id="certifications">
+              <Certifications />
+            </div>
+            <div id="achievements">
+              <Achievements />
+            </div>
+            <div id="memberships">
+              <Memberships />
+            </div>
+            <div id="coding">
+              <CodingProfiles />
+            </div>
+            <div id="gallery">
+              <Gallery />
+            </div>
+            <div id="contact">
+              <Contact />
+            </div>
+          </Suspense>
         </main>
-        
+
         {/* Enhanced Footer with Quick Links Navigation */}
         <footer className="relative bg-gradient-to-b from-background to-card/30 backdrop-blur-sm border-t border-border py-16">
           <div className="container mx-auto px-6">
