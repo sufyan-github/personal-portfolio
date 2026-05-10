@@ -294,12 +294,12 @@ const Index = () => {
         </footer>
       </div>
       
-      {/* Analytics Component */}
-      <Analytics />
-      
-      {/* AI Chatbot */}
-      <PortfolioChatbot />
-      
+      {/* Analytics + AI Chatbot (lazy) */}
+      <Suspense fallback={null}>
+        <Analytics />
+        <PortfolioChatbot />
+      </Suspense>
+
       {/* Back to Top Button */}
       <BackToTop />
       
