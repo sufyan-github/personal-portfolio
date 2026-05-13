@@ -41,27 +41,19 @@ const LanguagesSkills: React.FC = () => {
                 <h3 className="text-2xl font-bold gradient-text font-display">Languages</h3>
               </div>
 
-              <div className="space-y-6">
-                {languages.map((lang: any, index: number) => (
-                  <div key={lang.name} className="group">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-semibold text-lg">{lang.name}</span>
-                      <Badge
-                        variant="secondary"
-                        className="bg-primary/10 text-primary border-primary/20"
-                      >
-                        {lang.level}%
-                      </Badge>
-                    </div>
-                    <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-1000 group-hover:animate-pulse"
-                        style={{
-                          width: `${lang.level}%`,
-                          animationDelay: `${index * 0.2}s`,
-                        }}
-                      />
-                    </div>
+              <div className="space-y-4">
+                {languages.map((lang: any) => (
+                  <div
+                    key={lang.name}
+                    className="flex items-center justify-between p-4 rounded-lg bg-card/40 border border-border hover:border-primary/40 transition-colors"
+                  >
+                    <span className="font-semibold text-lg">{lang.name}</span>
+                    <Badge
+                      variant="secondary"
+                      className="bg-primary/10 text-primary border-primary/30 text-sm font-medium"
+                    >
+                      {lang.proficiency ?? lang.level}
+                    </Badge>
                   </div>
                 ))}
               </div>

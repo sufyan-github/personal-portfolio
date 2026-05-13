@@ -2,7 +2,7 @@
   {
     "id": "p01",
     "title": "Traffic Sign Detection System",
-    "description": "Problem: Drivers and ADAS prototypes need fast, accurate road‑sign recognition in varied lighting. Role: Lead ML engineer — dataset prep, model training, web deployment. Stack: Python, YOLOv8, MobileNet, ResNet, Flask, OpenCV. Result: Real‑time detection at ~30 FPS with 92%+ mAP across 40+ sign classes, deployed as a live web demo.",
+    "description": "Context: ADAS prototypes need fast, accurate road-sign recognition across varied lighting and weather. Contribution: Led dataset curation, model training and web deployment using YOLOv8 + MobileNet/ResNet backbones served via Flask. Impact: Real-time detection at ~30 FPS with 92%+ mAP across 40+ sign classes, deployed as a live web demo.",
     "impact": ["92%+ mAP", "~30 FPS realtime", "40+ sign classes"],
     "technologies": ["Python", "YOLOv8", "MobileNet", "ResNet", "Flask", "OpenCV"],
     "project_type": "AI/ML",
@@ -15,7 +15,7 @@
   {
     "id": "p02",
     "title": "Gemini Health AI Assistant",
-    "description": "Problem: People struggle to interpret raw health metrics into actionable wellness advice. Role: Sole developer — prompt design, UX, Gemini integration. Stack: Python, Streamlit, Gemini Pro API. Result: Personalised wellness recommendations from BMI, vitals and natural‑language queries, used by 50+ beta testers.",
+    "description": "Context: People struggle to translate raw vitals and BMI numbers into actionable wellness guidance. Contribution: Sole developer — designed prompts, UX and the Gemini Pro integration on a Streamlit front end. Impact: Personalised wellness recommendations adopted by 50+ beta testers, reducing time-to-insight from minutes to seconds.",
     "impact": ["50+ beta users", "Gemini Pro powered", "Streamlit UI"],
     "technologies": ["Python", "Streamlit", "Gemini API", "Data Analysis"],
     "project_type": "AI/ML",
@@ -28,7 +28,7 @@
   {
     "id": "p03",
     "title": "Medical Chatbot (RAG)",
-    "description": "Problem: Generic LLMs hallucinate on medical questions. Role: Built end‑to‑end RAG pipeline. Stack: Python, LangChain, Pinecone vector DB, Flask, HuggingFace embeddings. Result: Grounded answers from a 700+ page medical corpus with source citations and <2s response time.",
+    "description": "Context: Generic LLMs hallucinate on clinical questions, limiting trust in patient-facing assistants. Contribution: Built an end-to-end retrieval-augmented pipeline with LangChain, Pinecone vector store and HuggingFace embeddings served via Flask. Impact: Source-cited answers from a 700+ page medical corpus with sub-2-second latency.",
     "impact": ["RAG with citations", "<2s response", "700+ page corpus"],
     "technologies": ["Python", "LangChain", "Pinecone", "Flask", "NLP"],
     "project_type": "AI/ML",
@@ -41,8 +41,8 @@
   {
     "id": "p04",
     "title": "FoodHub — Food Delivery Platform",
-    "description": "Problem: Local restaurants needed an affordable end‑to‑end ordering platform. Role: Full‑stack lead — auth, checkout, order tracking, provider dashboard. Stack: Node.js, Express, MongoDB, React, TailwindCSS. Result: Production‑ready platform handling concurrent orders with secure JWT auth and a real‑time tracking flow.",
-    "impact": ["Real‑time tracking", "Secure JWT auth", "Provider dashboard"],
+    "description": "Context: Local restaurants needed an affordable end-to-end ordering and tracking platform. Contribution: Full-stack lead across auth, checkout, order tracking and the provider dashboard on a MERN stack. Impact: Production-ready platform handling concurrent orders with secure JWT auth and real-time order tracking.",
+    "impact": ["Real-time tracking", "Secure JWT auth", "Provider dashboard"],
     "technologies": ["Node.js", "Express", "MongoDB", "React", "TailwindCSS"],
     "project_type": "Web Development",
     "year": "2024",
@@ -54,7 +54,7 @@
   {
     "id": "p05",
     "title": "Vehicle Rental REST API",
-    "description": "Problem: Rental businesses lacked a clean, documented backend for fleet operations. Role: Backend engineer — DI architecture, middleware, API design. Stack: Go, PostgreSQL, Swagger, React, TailwindCSS. Result: Industry‑grade API with dependency injection, full Swagger docs and JWT‑secured endpoints.",
+    "description": "Context: Rental businesses lacked a clean, well-documented backend for fleet operations. Contribution: Backend engineer — designed dependency-injection architecture, middleware, API surface and Swagger docs in Go. Impact: Industry-grade API with JWT-secured endpoints and full Swagger documentation for partners.",
     "impact": ["Swagger documented", "Dependency Injection", "JWT secured"],
     "technologies": ["Go", "PostgreSQL", "React", "TailwindCSS", "Swagger"],
     "project_type": "Web Development",
@@ -67,8 +67,8 @@
   {
     "id": "p06",
     "title": "EduBridge — Learning Platform",
-    "description": "Problem: Students needed a single hub for course content and progress tracking. Role: Full‑stack developer — auth, course module, progress dashboard. Stack: React, PHP/Laravel, MySQL, TailwindCSS. Result: Multi‑role learning platform with course enrolment, progress tracking and an admin panel.",
-    "impact": ["Multi‑role auth", "Progress tracking", "Admin panel"],
+    "description": "Context: Students needed a single hub for course content, enrolment and progress tracking. Contribution: Full-stack developer across auth, course module and progress dashboard on a React + Laravel stack. Impact: Multi-role learning platform with course enrolment, progress tracking and an admin panel.",
+    "impact": ["Multi-role auth", "Progress tracking", "Admin panel"],
     "technologies": ["React", "PHP", "Laravel", "MySQL", "TailwindCSS"],
     "project_type": "Web Development",
     "year": "2023",

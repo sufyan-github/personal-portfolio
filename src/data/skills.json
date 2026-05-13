@@ -1,18 +1,6 @@
 [
   {
-    "title": "Programming Languages",
-    "icon": "code",
-    "skills": [
-      { "name": "Python" },
-      { "name": "C" },
-      { "name": "C++" },
-      { "name": "JavaScript" },
-      { "name": "SQL" },
-      { "name": "Dart" }
-    ]
-  },
-  {
-    "title": "Machine Learning & AI",
+    "title": "Core Intelligence (ML / DL / Research)",
     "icon": "brain",
     "skills": [
       { "name": "Machine Learning" },
@@ -23,64 +11,44 @@
       { "name": "PyTorch" },
       { "name": "Scikit-learn" },
       { "name": "Pandas" },
-      { "name": "NumPy" }
+      { "name": "NumPy" },
+      { "name": "Jupyter" }
     ]
   },
   {
-    "title": "Web Development",
+    "title": "Full-Stack Ecosystem",
     "icon": "globe",
     "skills": [
       { "name": "React" },
-      { "name": "HTML5/CSS3" },
-      { "name": "TailwindCSS" },
       { "name": "Node.js" },
       { "name": "Express.js" },
       { "name": "PHP (Laravel 11)" },
-      { "name": "REST APIs" }
-    ]
-  },
-  {
-    "title": "Mobile Development",
-    "icon": "smartphone",
-    "skills": [
-      { "name": "Flutter" },
-      { "name": "Dart" },
-      { "name": "Firebase" },
-      { "name": "Riverpod" }
-    ]
-  },
-  {
-    "title": "Databases & Backend",
-    "icon": "database",
-    "skills": [
+      { "name": "REST APIs" },
+      { "name": "TailwindCSS" },
+      { "name": "HTML5/CSS3" },
+      { "name": "JavaScript" },
       { "name": "MySQL" },
       { "name": "MongoDB" },
       { "name": "Firebase" },
-      { "name": "REST APIs" }
+      { "name": "Flutter" },
+      { "name": "Dart" }
     ]
   },
   {
-    "title": "Hardware Design & VLSI",
+    "title": "Low-Level Systems & Hardware",
     "icon": "cpu",
     "skills": [
+      { "name": "C" },
+      { "name": "C++" },
+      { "name": "Python" },
+      { "name": "SQL" },
       { "name": "Verilog" },
       { "name": "HDL" },
       { "name": "ISA Design" },
-      { "name": "CPU Design" }
-    ]
-  },
-  {
-    "title": "Tools & Platforms",
-    "icon": "wrench",
-    "skills": [
-      { "name": "Git/GitHub" },
-      { "name": "VS Code" },
-      { "name": "Postman" },
-      { "name": "Firebase Console" },
-      { "name": "Figma" },
-      { "name": "Docker" },
+      { "name": "CPU Design" },
       { "name": "Linux CLI" },
-      { "name": "Jupyter Notebooks" }
+      { "name": "Docker" },
+      { "name": "Git/GitHub" }
     ]
   }
 ]

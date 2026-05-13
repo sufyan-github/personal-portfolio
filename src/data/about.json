@@ -15,8 +15,8 @@
     "AI for Social Good"
   ],
   "languages": [
-    { "name": "Bangla", "level": 95 },
-    { "name": "English", "level": 85 }
+    { "name": "Bangla", "proficiency": "Native" },
+    { "name": "English", "proficiency": "Professional Working Proficiency" }
   ],
   "softSkills": [
     "Team Leadership",

@@ -7,10 +7,10 @@
     "period": "Jan 2026 – Present",
     "website": "https://bcc.gov.bd",
     "description": [
-      "Trained 100+ students and professionals in Python, ML, and AI fundamentals under the ICT Division's national skill program",
-      "Designed structured curricula and hands-on labs covering supervised/unsupervised learning, model evaluation, and deployment",
-      "Mentored learners through capstone projects (MNIST classification, regression pipelines, CV demos) with real-world datasets",
-      "Conducted multiple workshops and assessment cycles, raising applied AI literacy across the Rajshahi region"
+      "Orchestrated technical curricula for 100+ learners under the ICT Division's national skill program, facilitating adoption of production-grade ML workflows",
+      "Architected hands-on labs covering supervised/unsupervised learning, model evaluation pipelines, and deployment patterns",
+      "Led capstone mentorship across MNIST classification, regression pipelines and CV demos with real-world datasets",
+      "Drove regional applied-AI literacy through structured workshops and assessment cycles across Rajshahi"
     ],
     "featured": true
   },
@@ -66,9 +66,9 @@
     "period": "2025 – Present",
     "website": "https://ruetiotclub.org",
     "description": [
-      "Leading an IoT-based initiative focused on clean water monitoring and sustainable environmental solutions",
-      "Designing smart sensing and data-driven systems to analyze water quality parameters",
-      "Coordinating research, prototype development, and awareness activities related to environmental sustainability"
+      "Directing a sustainable-engineering initiative integrating IoT hardware and ML-driven analytics for clean-water monitoring",
+      "Designing edge-sensing systems and data pipelines that translate raw water-quality telemetry into actionable insights",
+      "Coordinating cross-disciplinary research, prototype development and stakeholder outreach for environmental impact"
     ],
     "featured": true
   },
