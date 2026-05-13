@@ -26,11 +26,14 @@ export type Publication = {
   conference: string;
   location?: string;
   year: string;
-  type: string; // e.g., "Conference Paper"
+  type: string;
   description: string;
+  problem?: string;
+  methodology?: string;
+  impact?: string;
   keywords?: string[];
-  paperUrl?: string;       // optional: link to PDF or arXiv
-  conferenceUrl?: string;  // optional: link to conference page
+  paperUrl?: string;
+  conferenceUrl?: string;
 };
 
 export type RAProfile = {
@@ -94,7 +97,30 @@ const Research: React.FC = () => {
               </CardHeader>
 
               <CardContent>
-                <p className="text-muted-foreground mb-6 leading-relaxed">{paper.description}</p>
+                {(paper.problem || paper.methodology || paper.impact) ? (
+                  <div className="grid md:grid-cols-3 gap-4 mb-6">
+                    {paper.problem && (
+                      <div className="p-4 rounded-lg bg-card/60 border border-border">
+                        <div className="text-xs uppercase tracking-wider text-primary font-semibold mb-2">Problem</div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{paper.problem}</p>
+                      </div>
+                    )}
+                    {paper.methodology && (
+                      <div className="p-4 rounded-lg bg-card/60 border border-border">
+                        <div className="text-xs uppercase tracking-wider text-primary font-semibold mb-2">Methodology</div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{paper.methodology}</p>
+                      </div>
+                    )}
+                    {paper.impact && (
+                      <div className="p-4 rounded-lg bg-card/60 border border-border">
+                        <div className="text-xs uppercase tracking-wider text-primary font-semibold mb-2">Impact</div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{paper.impact}</p>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{paper.description}</p>
+                )}
 
                 {paper.keywords && paper.keywords.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-6">

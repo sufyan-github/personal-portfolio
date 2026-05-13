@@ -5,7 +5,10 @@
     "location": "Cox's Bazar, Bangladesh",
     "year": "2024",
     "type": "Conference Paper",
-    "description": "Developed advanced ML/DL models for detecting sentiment and geopolitical bias in social media content, providing insights into information warfare and public opinion manipulation during conflicts.",
+    "problem": "During geopolitical conflicts, social-media discourse is contaminated by sentiment polarisation and systemic bias, making impartial situational awareness extremely difficult.",
+    "methodology": "Built a cross-analysing ML/DL pipeline combining transformer-based sentiment classifiers with bias-detection heuristics over multilingual Twitter corpora, evaluated against human-annotated benchmarks.",
+    "impact": "Surfaced quantifiable bias signals in conflict-era narratives and provided a reusable evaluation framework for information-warfare research.",
+    "description": "Cross-analysing pipeline for sentiment and bias in geopolitical social-media discourse — surfacing measurable bias signals during conflict events.",
     "keywords": ["Sentiment Analysis", "Bias Detection", "Social Media", "Machine Learning", "NLP"],
     "paperUrl": "",
     "conferenceUrl": ""
@@ -16,7 +19,10 @@
     "location": "Cox's Bazar, Bangladesh",
     "year": "2024",
     "type": "Conference Paper",
-    "description": "Built sophisticated forecasting models using LSTM, GRU, and ensemble methods to predict Monkeypox outbreak trends, contributing to public health preparedness and response strategies.",
+    "problem": "Public-health agencies needed earlier, more reliable forecasts of Monkeypox outbreak trajectories to plan response and allocation.",
+    "methodology": "Trained and benchmarked LSTM, GRU and ensemble forecasting models on WHO outbreak time-series, with rolling cross-validation and uncertainty quantification.",
+    "impact": "Produced forecast curves that improved short-horizon outbreak prediction over baseline statistical models, contributing to data-driven public-health preparedness.",
+    "description": "LSTM/GRU/ensemble forecasting of Monkeypox case trajectories — improving short-horizon outbreak prediction for public-health response.",
     "keywords": ["Time Series Forecasting", "LSTM", "GRU", "Healthcare Analytics", "Predictive Modeling"],
     "paperUrl": "",
     "conferenceUrl": ""

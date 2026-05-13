@@ -235,15 +235,17 @@ const Hero: React.FC = () => {
             
             {/* Professional Hook - Headline */}
             <motion.p
-              className="text-base sm:text-lg lg:text-xl font-semibold mb-2 max-w-2xl"
+              className="text-base sm:text-lg lg:text-xl font-semibold mb-3 max-w-2xl leading-snug"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
             >
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                AI/ML Trainer & Full-Stack Developer
+                Bridging Artificial Intelligence and Scalable Systems.
               </span>
-              <span className="text-foreground/80"> — Building Scalable Tech & Impact Systems</span>
+              <span className="block text-foreground/85 text-sm sm:text-base lg:text-lg font-normal mt-2">
+                CSE Graduate from RUET specializing in Computer Vision, ML Research, and Full-Stack Engineering.
+              </span>
             </motion.p>
 
             {/* Sub-line: BCC credibility */}
@@ -253,7 +255,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Trainer at <span className="text-primary font-medium">Bangladesh Computer Council (BCC), Rajshahi</span> · 100+ learners mentored
+              Trainer — Python, ML & AI at <span className="text-primary font-medium">Bangladesh Computer Council (BCC), Rajshahi</span> · 100+ learners mentored
             </motion.p>
 
             {/* Subheading */}
