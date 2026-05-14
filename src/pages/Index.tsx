@@ -31,6 +31,7 @@ const PortfolioChatbot = lazy(() =>
 const IndustrialAttachment = lazy(() => import("@/components/IndustrialAttachment"));
 const Gallery = lazy(() => import("@/components/Gallery"));
 const CodingProfiles = lazy(() => import("@/components/CodingProfiles"));
+const TechnicalFootprint = lazy(() => import("@/components/TechnicalFootprint"));
 
 const SectionFallback = () => <div className="min-h-[200px]" aria-hidden />;
 
@@ -89,6 +90,7 @@ const Index = () => {
             </div>
             <div id="coding">
               <CodingProfiles />
+              <TechnicalFootprint />
             </div>
             <div id="gallery">
               <Gallery />
