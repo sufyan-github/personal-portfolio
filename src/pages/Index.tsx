@@ -90,6 +90,7 @@ const Index = () => {
             </div>
             <div id="coding">
               <CodingProfiles />
+              <TechnicalFootprint />
             </div>
             <div id="gallery">
               <Gallery />
