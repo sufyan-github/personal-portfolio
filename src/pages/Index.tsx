@@ -31,6 +31,7 @@ const PortfolioChatbot = lazy(() =>
 const IndustrialAttachment = lazy(() => import("@/components/IndustrialAttachment"));
 const Gallery = lazy(() => import("@/components/Gallery"));
 const CodingProfiles = lazy(() => import("@/components/CodingProfiles"));
+const TechnicalFootprint = lazy(() => import("@/components/TechnicalFootprint"));
 
 const SectionFallback = () => <div className="min-h-[200px]" aria-hidden />;
 
