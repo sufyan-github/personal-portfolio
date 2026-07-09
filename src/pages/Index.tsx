@@ -65,12 +65,14 @@ const Index = () => {
             <div id="about">
               <About />
             </div>
+            <CareerTimeline />
             <div id="academic">
               <Academic />
             </div>
             <div id="experience">
               <Experience />
             </div>
+            <Leadership />
             <div id="industrial-attachment">
               <IndustrialAttachment />
             </div>
@@ -94,6 +96,7 @@ const Index = () => {
             <div id="memberships">
               <Memberships />
             </div>
+            <CommunityImpact />
             <div id="coding">
               <CodingProfiles />
               <TechnicalFootprint />
@@ -101,11 +104,34 @@ const Index = () => {
             <div id="gallery">
               <Gallery />
             </div>
+            <div id="testimonials">
+              <Testimonials />
+            </div>
+            <div id="blog">
+              <Blog />
+            </div>
+            {/* Resume CTA banner */}
+            <section id="resume" className="py-16">
+              <div className="container mx-auto px-6">
+                <div className="max-w-3xl mx-auto text-center bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 md:p-12">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-3 gradient-text">
+                    Explore My Full CV
+                  </h2>
+                  <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                    A detailed record of my academic path, research, industry work and leadership — ideal for scholarship, PhD and recruitment review.
+                  </p>
+                  <div className="flex justify-center">
+                    <ResumeDownload />
+                  </div>
+                </div>
+              </div>
+            </section>
             <div id="contact">
               <Contact />
             </div>
           </Suspense>
         </main>
+
 
         {/* Enhanced Footer with Quick Links Navigation */}
         <footer className="relative bg-gradient-to-b from-background to-card/30 backdrop-blur-sm border-t border-border py-16">
