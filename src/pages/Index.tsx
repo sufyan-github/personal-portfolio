@@ -32,6 +32,14 @@ const IndustrialAttachment = lazy(() => import("@/components/IndustrialAttachmen
 const Gallery = lazy(() => import("@/components/Gallery"));
 const CodingProfiles = lazy(() => import("@/components/CodingProfiles"));
 const TechnicalFootprint = lazy(() => import("@/components/TechnicalFootprint"));
+const CareerTimeline = lazy(() => import("@/components/CareerTimeline"));
+const Leadership = lazy(() => import("@/components/Leadership"));
+const CommunityImpact = lazy(() => import("@/components/CommunityImpact"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const Blog = lazy(() => import("@/components/Blog"));
+const ResumeDownload = lazy(() =>
+  import("@/components/ResumeDownload").then((m) => ({ default: (m as any).default ?? (m as any).ResumeDownload }))
+);
 
 const SectionFallback = () => <div className="min-h-[200px]" aria-hidden />;
 
