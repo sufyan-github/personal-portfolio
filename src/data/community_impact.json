@@ -1,0 +1,34 @@
+{
+  "headline": "Community Impact",
+  "subtitle": "Events organized, learners reached and initiatives led across Bangladesh.",
+  "stats": [
+    { "label": "Learners Trained", "value": "100+", "context": "BCC + AI Bangladesh curricula" },
+    { "label": "Workshops & Seminars", "value": "20+", "context": "IoT, AI/ML and career sessions" },
+    { "label": "Volunteer Hours", "value": "500+", "context": "Across VBD, Jaagoo, Aachol & FutureNation" },
+    { "label": "Events Organized", "value": "15+", "context": "Hackathons, Climate Camps, tech fests" },
+    { "label": "Organizations", "value": "10+", "context": "Active memberships and leadership roles" },
+    { "label": "Trees Planted", "value": "300+", "context": "Environmental drives with VBD" }
+  ],
+  "initiatives": [
+    {
+      "title": "Climate Camp",
+      "description": "Youth-focused workshops on climate action and sustainable engineering.",
+      "org": "The Earth Society · Youth for CARE"
+    },
+    {
+      "title": "IoT & AI Workshops",
+      "description": "Hands-on labs introducing embedded ML and edge computing to undergraduates.",
+      "org": "RUET IoT Club"
+    },
+    {
+      "title": "Public Health Awareness",
+      "description": "Community drives on mental health and preventive care.",
+      "org": "Aachol Foundation · Manus Manusher Jonnya"
+    },
+    {
+      "title": "Tree Plantation & Cleanup",
+      "description": "Environmental campaigns aligned with UN Sustainable Development Goals.",
+      "org": "Volunteer for Bangladesh (VBD)"
+    }
+  ]
+}
