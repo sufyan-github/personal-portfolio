@@ -37,9 +37,8 @@ const Leadership = lazy(() => import("@/components/Leadership"));
 const CommunityImpact = lazy(() => import("@/components/CommunityImpact"));
 const Testimonials = lazy(() => import("@/components/Testimonials"));
 const Blog = lazy(() => import("@/components/Blog"));
-const ResumeDownload = lazy(() =>
-  import("@/components/ResumeDownload").then((m) => ({ default: (m as any).default ?? (m as any).ResumeDownload }))
-);
+const Blog = lazy(() => import("@/components/Blog"));
+const ResumeDownload = lazy(() => import("@/components/ResumeDownload"));
 
 const SectionFallback = () => <div className="min-h-[200px]" aria-hidden />;
 
