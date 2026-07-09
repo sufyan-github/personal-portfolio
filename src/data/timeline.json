@@ -1,0 +1,74 @@
+[
+  {
+    "year": "2013 – 2018",
+    "phase": "Foundation",
+    "title": "Secondary School Certificate (SSC)",
+    "org": "Alhaj Amir Uddin High School, Kishorganj",
+    "description": "Built strong fundamentals in mathematics, science and early programming curiosity.",
+    "icon": "graduation-cap"
+  },
+  {
+    "year": "2018 – 2020",
+    "phase": "College",
+    "title": "Higher Secondary Certificate (HSC)",
+    "org": "Gurudoyal Govt College, Kishorganj",
+    "description": "Science group with Mathematics, Physics, Chemistry and ICT — first exposure to programming logic.",
+    "icon": "book-open"
+  },
+  {
+    "year": "2021",
+    "phase": "University",
+    "title": "Enrolled at RUET, Department of CSE",
+    "org": "Rajshahi University of Engineering & Technology",
+    "description": "Started BSc in Computer Science & Engineering, focus on algorithms, systems and AI.",
+    "icon": "cpu"
+  },
+  {
+    "year": "2023",
+    "phase": "Volunteer Journey",
+    "title": "Joined Volunteer for Bangladesh & Jaagoo Foundation",
+    "org": "VBD · Jaagoo Foundation",
+    "description": "Began community leadership through public-health drives, tree plantation and awareness campaigns.",
+    "icon": "users"
+  },
+  {
+    "year": "2024",
+    "phase": "Research Journey",
+    "title": "Research Assistant — ML Research Group, RUET",
+    "org": "Supervisor: Asst. Prof. SM Mehedi Hasan",
+    "description": "Co-authored two ICCiT 2024 papers on social-media bias analysis and time-series forecasting.",
+    "icon": "flask-conical"
+  },
+  {
+    "year": "2024 – 2025",
+    "phase": "Industry",
+    "title": "AI/ML Instructor & ML Intern",
+    "org": "AI Bangladesh · Brain Station 23",
+    "description": "Delivered production-grade ML curricula and contributed to CV pipelines during industrial attachment.",
+    "icon": "briefcase"
+  },
+  {
+    "year": "2025",
+    "phase": "Leadership",
+    "title": "President — RUET IoT Club · Director — Project Nexus",
+    "org": "RUET",
+    "description": "Founded initiatives combining IoT + ML for clean-water monitoring and sustainable engineering.",
+    "icon": "crown"
+  },
+  {
+    "year": "2025 – Present",
+    "phase": "National Impact",
+    "title": "Contractual Trainer — Python, ML & AI",
+    "org": "Bangladesh Computer Council (BCC), ICT Division",
+    "description": "Training 100+ learners under the national skill program on production-grade ML workflows.",
+    "icon": "sparkles"
+  },
+  {
+    "year": "Next",
+    "phase": "Current Goals",
+    "title": "MS / PhD in AI & Applied ML",
+    "org": "Target: Fall 2026 intake",
+    "description": "Pursuing research at the intersection of Computer Vision, Explainable AI and Human-Centered Systems.",
+    "icon": "target"
+  }
+]

@@ -40,17 +40,20 @@ const Navigation: React.FC = () => {
   const navItems = [
     { name: t.nav.home, href: "#home" },
     { name: t.nav.about, href: "#about" },
+    { name: "Journey", href: "#journey" },
     { name: t.nav.academic, href: "#academic" },
     { name: t.nav.experience, href: "#experience" },
-    { name: t.nav.industrial, href: "#industrial-attachment" },
+    { name: "Leadership", href: "#leadership" },
     { name: t.nav.skills, href: "#skills" },
     { name: t.nav.projects, href: "#projects" },
     { name: t.nav.research, href: "#research" },
     { name: t.nav.certifications, href: "#certifications" },
     { name: t.nav.achievements, href: "#achievements" },
-    { name: t.nav.memberships, href: "#memberships" },
+    { name: "Community", href: "#community" },
     { name: t.nav.coding, href: "#coding" },
     { name: t.nav.gallery, href: "#gallery" },
+    { name: t.nav.testimonials || "Testimonials", href: "#testimonials" },
+    { name: t.nav.blog || "Blog", href: "#blog" },
     { name: t.nav.contact, href: "#contact" }
   ];
 
