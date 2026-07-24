@@ -1,13 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Download, ExternalLink } from "lucide-react";
+import { ArrowLeft, Download, ExternalLink, Loader2 } from "lucide-react";
 import { fetchContent } from "@/lib/contentClient";
+
+// Load pdf.js worker from CDN (matches the installed pdfjs-dist version).
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const FALLBACK_URL = "/assets/cv/Abu_Sufyan_CV.pdf";
 
 const Resume = () => {
   const [pdfUrl, setPdfUrl] = useState<string>(FALLBACK_URL);
+  const [numPages, setNumPages] = useState<number>(0);
+  const [width, setWidth] = useState<number>(800);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = "Resume — Md. Abu Sufyan";
@@ -16,7 +25,18 @@ const Resume = () => {
     });
   }, []);
 
-  const handleDownload = () => {
+  useEffect(() => {
+    const compute = () => {
+      const container = document.getElementById("pdf-container");
+      const w = container ? container.clientWidth : window.innerWidth;
+      setWidth(Math.min(1000, w - 32));
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
+  const handleDownload = useCallback(() => {
     const link = document.createElement("a");
     link.href = pdfUrl;
     link.download = "Abu_Sufyan_CV.pdf";
@@ -24,7 +44,7 @@ const Resume = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
+  }, [pdfUrl]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -56,29 +76,65 @@ const Resume = () => {
         </div>
       </header>
 
-      <main className="flex-1 container mx-auto px-2 sm:px-4 py-4">
-        <div className="w-full h-[calc(100vh-8rem)] rounded-lg overflow-hidden border shadow-sm bg-muted">
-          <object
-            data={`${pdfUrl}#view=FitH`}
-            type="application/pdf"
-            className="w-full h-full"
-            aria-label="Md. Abu Sufyan Resume PDF"
+      <main className="flex-1">
+        <div
+          id="pdf-container"
+          className="container mx-auto px-4 py-6 flex flex-col items-center gap-4"
+        >
+          <Document
+            file={pdfUrl}
+            onLoadSuccess={({ numPages }) => {
+              setNumPages(numPages);
+              setLoadError(null);
+            }}
+            onLoadError={(err) => {
+              console.error("PDF load error:", err);
+              setLoadError(err?.message || "Failed to load PDF");
+            }}
+            loading={
+              <div className="flex items-center gap-2 text-muted-foreground py-16">
+                <Loader2 className="h-5 w-5 animate-spin" />
+                Loading resume...
+              </div>
+            }
+            error={
+              <div className="text-center py-16">
+                <p className="mb-4 text-muted-foreground">
+                  Couldn't display the PDF in this browser.
+                  {loadError ? ` (${loadError})` : ""}
+                </p>
+                <div className="flex justify-center gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      window.open(pdfUrl, "_blank", "noopener,noreferrer")
+                    }
+                  >
+                    <ExternalLink className="h-4 w-4 mr-1" />
+                    Open in new tab
+                  </Button>
+                  <Button onClick={handleDownload}>
+                    <Download className="h-4 w-4 mr-1" />
+                    Download PDF
+                  </Button>
+                </div>
+              </div>
+            }
           >
-            <iframe
-              src={`${pdfUrl}#view=FitH`}
-              title="Resume PDF"
-              className="w-full h-full border-0"
-            />
-            <div className="p-8 text-center">
-              <p className="mb-4 text-muted-foreground">
-                Your browser can't display the PDF inline.
-              </p>
-              <Button onClick={handleDownload}>
-                <Download className="h-4 w-4 mr-2" />
-                Download Resume
-              </Button>
-            </div>
-          </object>
+            {Array.from({ length: numPages }, (_, i) => (
+              <div
+                key={`page_${i + 1}`}
+                className="mb-4 shadow-lg rounded-md overflow-hidden bg-white"
+              >
+                <Page
+                  pageNumber={i + 1}
+                  width={width}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                />
+              </div>
+            ))}
+          </Document>
         </div>
       </main>
     </div>
