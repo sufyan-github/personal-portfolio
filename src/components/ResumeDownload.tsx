@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Eye, Download } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useEffect, useState } from "react";
 import { fetchContent } from "@/lib/contentClient";
 
 const FALLBACK_URL = "/assets/cv/Abu_Sufyan_CV.pdf";
@@ -29,13 +29,14 @@ const ResumeDownload = () => {
         },
       ]);
     } catch {
-      /* best-effort analytics */
+      /* best-effort */
     }
   };
 
   const handleView = () => {
     trackEvent("resume_view");
-    window.open(pdfUrl, "_blank", "noopener,noreferrer");
+    // Open the in-app viewer in a new tab (same-origin, not blocked by ad blockers).
+    window.open("/resume", "_blank", "noopener,noreferrer");
   };
 
   const handleDownload = () => {
