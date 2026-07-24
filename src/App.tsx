@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Sitemap from "./pages/Sitemap";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import Resume from "./pages/Resume";
 
 const queryClient = new QueryClient();
 
