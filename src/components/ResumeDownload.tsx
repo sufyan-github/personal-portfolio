@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, FileText } from "lucide-react";
+import { Eye, Download } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { fetchContent } from "@/lib/contentClient";
@@ -17,34 +17,42 @@ const ResumeDownload = () => {
     });
   }, []);
 
-  const handleDownload = async () => {
+  const trackEvent = (event_type: string) => {
     try {
-      // Track download analytics (best-effort)
       (supabase.from as any)("analytics").insert([
         {
-          event_type: "resume_download",
+          event_type,
           metadata: {
-            download_time: new Date().toISOString(),
+            time: new Date().toISOString(),
             user_agent: navigator.userAgent,
           },
         },
       ]);
+    } catch {
+      /* best-effort analytics */
+    }
+  };
 
+  const handleView = () => {
+    trackEvent("resume_view");
+    window.open(pdfUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const handleDownload = () => {
+    try {
+      trackEvent("resume_download");
       const link = document.createElement("a");
       link.href = pdfUrl;
       link.download = "Abu_Sufyan_CV.pdf";
-      link.target = "_blank";
       link.rel = "noopener";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
       toast({
-        title: "Resume Downloaded!",
-        description:
-          "Thank you for your interest. The resume has been downloaded.",
+        title: "Downloading Resume",
+        description: "Thanks for your interest — the CV is downloading.",
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Download Error",
         description: "Failed to download resume. Please try again.",
@@ -54,15 +62,26 @@ const ResumeDownload = () => {
   };
 
   return (
-    <Button
-      onClick={handleDownload}
-      size="lg"
-      className="bg-gradient-primary hover:shadow-glow transition-all duration-300 group"
-    >
-      <Download className="h-5 w-5 mr-2 transition-transform group-hover:translate-y-0.5" />
-      <FileText className="h-5 w-5 mr-2" />
-      Download Resume
-    </Button>
+    <div className="flex flex-wrap items-center gap-3">
+      <Button
+        onClick={handleView}
+        size="lg"
+        className="bg-gradient-primary hover:shadow-glow transition-all duration-300 group"
+      >
+        <Eye className="h-5 w-5 mr-2 transition-transform group-hover:scale-110" />
+        View Resume
+      </Button>
+      <Button
+        onClick={handleDownload}
+        size="lg"
+        variant="outline"
+        className="group"
+        aria-label="Download Resume PDF"
+      >
+        <Download className="h-5 w-5 mr-2 transition-transform group-hover:translate-y-0.5" />
+        Download
+      </Button>
+    </div>
   );
 };
 
