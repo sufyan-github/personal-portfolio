@@ -116,12 +116,64 @@ All colors MUST be HSL.
     overflow-x: hidden;
   }
   
+  /* Editorial serif headings — Instrument Serif ships a single weight,
+     so we normalise weight/tracking instead of faux-bolding. */
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+
+  h1 { letter-spacing: -0.025em; }
+
+  /* Instrument Serif has one weight — avoid ugly faux-bold from font-bold utilities */
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-synthesis-weight: none;
+  }
+
+  body {
+    font-weight: 400;
+    letter-spacing: 0.005em;
   }
 }
 
 @layer components {
+  /* ── Narrative spine: one continuous story thread down the page ── */
+  .narrative {
+    position: relative;
+  }
+
+  .narrative::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      hsl(var(--primary) / 0.28) 12%,
+      hsl(var(--primary) / 0.1) 50%,
+      hsl(var(--primary) / 0.28) 88%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 1023px) {
+    .narrative::before { display: none; }
+  }
+
+  /* Keep every section on one readable centred column */
+  .narrative > * {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Bismillah - Arabic calligraphy with proper typography */
   .bismillah-text {
     font-family: "Amiri Quran", "Amiri", "Scheherazade New", "Noto Naskh Arabic", "Traditional Arabic", serif;
