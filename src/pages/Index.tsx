@@ -55,7 +55,7 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-10">
         <Navigation />
-        <main>
+        <main className="narrative">
           <div id="home">
             <Hero />
           </div>
