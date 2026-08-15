@@ -116,8 +116,20 @@ All colors MUST be HSL.
     overflow-x: hidden;
   }
   
+  /* Editorial serif headings — Instrument Serif ships a single weight,
+     so we normalise weight/tracking instead of faux-bolding. */
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+
+  h1 { letter-spacing: -0.025em; }
+
+  body {
+    font-weight: 400;
+    letter-spacing: 0.005em;
   }
 }
 
