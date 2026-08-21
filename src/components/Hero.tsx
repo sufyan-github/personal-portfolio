@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail, Brain, Cpu, Database } from "lucide-react";
-import Lottie from "lottie-react";
 import { TypeAnimation } from "react-type-animation";
 import ResumeDownload from "@/components/ResumeDownload";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -10,6 +9,7 @@ import translations from "@/data/translations.json";
 import heroData from "@/data/hero.json";
 import { useContent } from "@/lib/contentClient";
 import AchievementSlider from "@/components/AchievementSlider";
+
 
 type Social = { label: string; type: "email" | "linkedin" | "github" | "custom"; href: string };
 
