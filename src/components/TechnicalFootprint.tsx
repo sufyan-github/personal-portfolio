@@ -64,20 +64,13 @@ const TechnicalFootprint = () => {
       }
     };
 
+    // NOTE: the previous LeetCode stats endpoint (leetcode-stats-api.herokuapp.com)
+    // is offline and has no CORS headers — it produced a console error on every
+    // page load. Values now come from the curated profile data instead.
     const loadLeetCode = async () => {
-      try {
-        const res = await fetch(`https://leetcode-stats-api.herokuapp.com/${LEETCODE_USER}`);
-        if (!res.ok) return;
-        const data = await res.json();
-        if (cancelled || data.status !== "success") return;
-        if (data.totalSolved) setLcSolved(`${data.totalSolved}`);
-        if (typeof data.ranking === "number") {
-          setLcRank(`Rank #${fmt(data.ranking)}`);
-        }
-      } catch {
-        /* keep defaults */
-      }
+      /* intentionally static */
     };
+
 
     const loadCodeforces = async () => {
       try {
