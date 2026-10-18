@@ -3,52 +3,201 @@
     "title": "Core Intelligence (ML / DL / Research)",
     "icon": "brain",
     "skills": [
-      { "name": "Machine Learning" },
-      { "name": "Deep Learning" },
-      { "name": "Computer Vision" },
-      { "name": "NLP" },
-      { "name": "TensorFlow" },
-      { "name": "PyTorch" },
-      { "name": "Scikit-learn" },
-      { "name": "Pandas" },
-      { "name": "NumPy" },
-      { "name": "Jupyter" }
+      {
+        "name": "Machine Learning"
+      },
+      {
+        "name": "Deep Learning"
+      },
+      {
+        "name": "Computer Vision"
+      },
+      {
+        "name": "NLP"
+      },
+      {
+        "name": "TensorFlow"
+      },
+      {
+        "name": "PyTorch"
+      },
+      {
+        "name": "Scikit-learn"
+      },
+      {
+        "name": "Pandas"
+      },
+      {
+        "name": "NumPy"
+      },
+      {
+        "name": "Jupyter"
+      },
+      {
+        "name": "XGBoost"
+      },
+      {
+        "name": "Prophet"
+      },
+      {
+        "name": "BERT"
+      },
+      {
+        "name": "GloVe"
+      },
+      {
+        "name": "SHAP"
+      },
+      {
+        "name": "Adversarial ML"
+      },
+      {
+        "name": "IBM ART"
+      }
     ]
   },
   {
     "title": "Full-Stack Ecosystem",
     "icon": "globe",
     "skills": [
-      { "name": "React" },
-      { "name": "Node.js" },
-      { "name": "Express.js" },
-      { "name": "PHP (Laravel 11)" },
-      { "name": "REST APIs" },
-      { "name": "TailwindCSS" },
-      { "name": "HTML5/CSS3" },
-      { "name": "JavaScript" },
-      { "name": "MySQL" },
-      { "name": "MongoDB" },
-      { "name": "Firebase" },
-      { "name": "Flutter" },
-      { "name": "Dart" }
+      {
+        "name": "React"
+      },
+      {
+        "name": "Node.js"
+      },
+      {
+        "name": "Express.js"
+      },
+      {
+        "name": "PHP (Laravel 11)"
+      },
+      {
+        "name": "REST APIs"
+      },
+      {
+        "name": "TailwindCSS"
+      },
+      {
+        "name": "HTML5/CSS3"
+      },
+      {
+        "name": "JavaScript"
+      },
+      {
+        "name": "MySQL"
+      },
+      {
+        "name": "MongoDB"
+      },
+      {
+        "name": "Firebase"
+      },
+      {
+        "name": "Flutter"
+      },
+      {
+        "name": "Dart"
+      },
+      {
+        "name": "Go"
+      },
+      {
+        "name": "Echo"
+      },
+      {
+        "name": "GORM"
+      },
+      {
+        "name": "PostgreSQL"
+      },
+      {
+        "name": "Riverpod"
+      }
     ]
   },
   {
-    "title": "Low-Level Systems & Hardware",
+    "title": "Programming, Systems & Hardware Foundations",
     "icon": "cpu",
     "skills": [
-      { "name": "C" },
-      { "name": "C++" },
-      { "name": "Python" },
-      { "name": "SQL" },
-      { "name": "Verilog" },
-      { "name": "HDL" },
-      { "name": "ISA Design" },
-      { "name": "CPU Design" },
-      { "name": "Linux CLI" },
-      { "name": "Docker" },
-      { "name": "Git/GitHub" }
+      {
+        "name": "C"
+      },
+      {
+        "name": "C++"
+      },
+      {
+        "name": "Python"
+      },
+      {
+        "name": "SQL"
+      },
+      {
+        "name": "Verilog (foundational)"
+      },
+      {
+        "name": "SystemVerilog (introductory)"
+      },
+      {
+        "name": "Computer Architecture"
+      },
+      {
+        "name": "Linux CLI"
+      },
+      {
+        "name": "Docker"
+      },
+      {
+        "name": "Git/GitHub"
+      }
+    ]
+  },
+  {
+    "title": "Currently Learning & Exploring",
+    "icon": "brain",
+    "skills": [
+      {
+        "name": "LLMs"
+      },
+      {
+        "name": "RAG"
+      },
+      {
+        "name": "LangChain"
+      },
+      {
+        "name": "LangGraph"
+      },
+      {
+        "name": "FAISS"
+      },
+      {
+        "name": "Chroma"
+      },
+      {
+        "name": "Pinecone"
+      },
+      {
+        "name": "FastAPI"
+      }
+    ]
+  },
+  {
+    "title": "Embedded Systems & IoT",
+    "icon": "cpu",
+    "skills": [
+      {
+        "name": "ESP32"
+      },
+      {
+        "name": "Sensor Integration"
+      },
+      {
+        "name": "Data Acquisition"
+      },
+      {
+        "name": "Embedded Prototyping"
+      }
     ]
   }
 ]

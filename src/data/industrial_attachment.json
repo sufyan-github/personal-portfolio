@@ -1,0 +1,22 @@
+{
+  "title": "15-Day Industrial Attachment",
+  "subtitle": "Real-Time AI Project",
+  "period": "March 2025",
+  "location": "Collaborative Office Environment with Developers & Data Scientists",
+  "description": "Developed a real-time traffic sign detection system using trained deep learning models and a web interface. Gained hands-on experience in a collaborative office setting with developers and data scientists.",
+  "highlights": [
+    "Built a web-based application integrating YOLOv8, MobileNet, and ResNet models for live video detection",
+    "Explored Generative AI for auto-annotation and dataset enhancement",
+    "Contributed to full-cycle development: model training, frontend/backend integration, and deployment",
+    "Participated in daily standups, sprint reviews, and presented project outcomes as a team"
+  ],
+  "skills": [
+    "YOLOv8",
+    "MobileNet",
+    "ResNet",
+    "Deep Learning",
+    "Web Development",
+    "Generative AI",
+    "Team Collaboration"
+  ]
+}

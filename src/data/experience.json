@@ -1,16 +1,26 @@
 [
   {
-    "title": "Contractual Trainer — Python, ML & AI",
+    "title": "Junior Software Engineer",
+    "company": "Scalius Labs",
+    "period": "September 2026 \u2013 Present",
+    "description": [
+      "Software engineering with AI-assisted development workflows using Codex and Claude."
+    ],
+    "location": "Bangladesh",
+    "logo": "/assets/logo/research.jpeg",
+    "website": "",
+    "featured": true
+  },
+  {
+    "title": "Python Trainer",
     "company": "Bangladesh Computer Council (BCC), Rajshahi",
     "logo": "/assets/logo/research.jpeg",
     "location": "Rajshahi, Bangladesh",
-    "period": "2025 – Present (Contractual)",
+    "period": "2026",
     "website": "https://bcc.gov.bd",
     "description": [
-      "Orchestrated technical curricula for 100+ learners under the ICT Division's national skill program, facilitating adoption of production-grade ML workflows",
-      "Architected hands-on labs covering supervised/unsupervised learning, model evaluation pipelines, and deployment patterns",
-      "Led capstone mentorship across MNIST classification, regression pipelines and CV demos with real-world datasets",
-      "Drove regional applied-AI literacy through structured workshops and assessment cycles across Rajshahi"
+      "Delivered Python training at Bangladesh Computer Council (BCC), Rajshahi.",
+      "Supported practical programming instruction and learner mentoring."
     ],
     "featured": true
   },
@@ -19,7 +29,7 @@
     "company": "Artificial Intelligence Bangladesh",
     "logo": "/assets/logo/aibd.jpeg",
     "location": "High Tech Park, Silicon Tower, Rajshahi, Bangladesh",
-    "period": "March 2024 – Present",
+    "period": "March 2024 \u2013 Present",
     "website": "https://aibd.ai",
     "description": [
       "Conducted hands-on training sessions on Machine Learning, Deep Learning, Computer Vision and Data Science for students and professionals",
@@ -30,31 +40,41 @@
     "featured": true
   },
   {
-    "title": "Machine Learning Intern",
-    "company": "Brain Station 23",
+    "title": "Industrial Trainee \u2014 Machine Learning",
+    "company": "BrainStation 23 PLC",
     "logo": "/assets/logo/research.jpeg",
     "location": "Dhaka, Bangladesh",
-    "period": "2025",
+    "period": "March 2025 \u00b7 15 days",
     "website": "",
     "description": [
-      "Worked on ML/DL applications including dataset preprocessing, training, and evaluation",
-      "Built computer vision models and optimized real-time performance",
-      "Contributed to full ML pipeline: data preparation → experimentation → deployment",
-      "Maintained reproducible workflows using Git and documentation"
+      "Completed the CSE 4108 industrial attachment, gaining exposure to machine learning development and industry workflows.",
+      "Worked with data preprocessing, model training and evaluation during the attachment."
     ],
     "featured": true
   },
   {
-    "title": "President & Founding Member",
+    "title": "Alumni Affairs Advisor",
+    "company": "RUET IoT Club",
+    "period": "June 2026 \u2013 Present",
+    "description": [
+      "Supports the club as Alumni Affairs Advisor after serving as president."
+    ],
+    "location": "Bangladesh",
+    "logo": "/assets/logo/research.jpeg",
+    "website": "",
+    "featured": false
+  },
+  {
+    "title": "Former President & Founding Member",
     "company": "RUET Computing Society",
     "logo": "/assets/logo/research.jpeg",
     "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
-    "period": "January 2026 – Present",
+    "period": "January \u2013 June 2026",
     "website": "https://ruetcs.org",
     "description": [
-      "Leading strategic initiatives to promote computing research, innovation, and collaborative learning",
-      "Organizing seminars, hackathons, and awareness programs related to technology for social good",
-      "Coordinating interdisciplinary student teams to work on community-driven technical projects"
+      "Led computing research, innovation and collaborative learning initiatives.",
+      "Organized technology seminars and coordinated student teams.",
+      "Continues as an alumni member from June 2026."
     ],
     "featured": true
   },
@@ -63,7 +83,7 @@
     "company": "RUET IoT Club",
     "logo": "/assets/logo/iot_club.png",
     "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
-    "period": "2025 – Present",
+    "period": "2025 \u2013 Present",
     "website": "https://ruetiotclub.org",
     "description": [
       "Directing a sustainable-engineering initiative integrating IoT hardware and ML-driven analytics for clean-water monitoring",
@@ -77,7 +97,7 @@
     "company": "FutureNation Volunteer",
     "logo": "/assets/logo/futurenation.jpeg",
     "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
-    "period": "June 2025 – Present",
+    "period": "June 2025 \u2013 Present",
     "website": "https://futurenation.gov.bd",
     "description": [
       "Organized and facilitated FutureNation programs and workshops within the RUET campus",
@@ -86,16 +106,17 @@
     ]
   },
   {
-    "title": "President",
+    "title": "Former President",
     "company": "RUET IoT Club",
     "logo": "/assets/logo/iot_club.png",
     "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
-    "period": "February 2025 – Present",
+    "period": "February 2025 \u2013 June 2026",
     "website": "https://ruetiotclub.org",
     "description": [
       "Organized workshops and events on IoT and smart technologies",
       "Coordinated technical sessions focusing on innovation, automation, and advanced IoT applications",
-      "Collaborated with student bodies to enhance hands-on learning and technical collaboration"
+      "Collaborated with student bodies to enhance hands-on learning and technical collaboration",
+      "Previously served as Joint Organizing Secretary; dates not specified in source CVs."
     ]
   },
   {
@@ -103,8 +124,8 @@
     "company": "Machine Learning Research Group",
     "logo": "/assets/logo/research.jpeg",
     "location": "Department of Computer Science & Engineering, RUET, Rajshahi-6204, Bangladesh",
-    "period": "July 2024 – Present",
-    "supervisor": "Assistant Prof. SM Mehedi Hasan",
+    "period": "July 2024 \u2013 Present",
+    "supervisor": "Assistant Prof. S. M. Mahedy Hasan",
     "website": "",
     "description": [
       "Engaged in machine learning research with a focus on sentiment analysis and predictive modeling",
@@ -115,11 +136,11 @@
     "featured": true
   },
   {
-    "title": "Executive Member, Human Resource Management",
+    "title": "Former Executive Member, Human Resource Management",
     "company": "Aachol Foundation",
     "logo": "/assets/logo/research.jpeg",
     "location": "Dhaka, Bangladesh",
-    "period": "July 2025 – Present",
+    "period": "July 2025 \u2013 June 2026",
     "website": "https://aacholfoundation.com",
     "description": [
       "Supported human resource activities, including volunteer onboarding and member coordination",
@@ -132,7 +153,7 @@
     "company": "Volunteer for Bangladesh (VBD)",
     "logo": "/assets/logo/futurenation.jpeg",
     "location": "Rajshahi District, Bangladesh",
-    "period": "December 2024 – December 2025",
+    "period": "January \u2013 December 2025",
     "website": "https://vbd.com.bd",
     "description": [
       "Led environmental cleaning drives, tree plantation campaigns, and community awareness programs aligned with SDGs",
@@ -145,7 +166,7 @@
     "company": "Manus Manusher Jonnya Foundation",
     "logo": "/assets/logo/research.jpeg",
     "location": "RUET Campus, Rajshahi, Bangladesh",
-    "period": "January 2021 – Present",
+    "period": "January 2021 \u2013 Present",
     "website": "",
     "description": [
       "Contributed to disaster relief, education, and youth empowerment initiatives",
@@ -155,15 +176,40 @@
   },
   {
     "title": "Committee Member",
-    "company": "Volunteer for Bangladesh (Jagoo Foundation)",
+    "company": "Volunteer for Bangladesh (JAAGO Foundation)",
     "logo": "/assets/logo/futurenation.jpeg",
     "location": "Rajshahi, Bangladesh",
-    "period": "June 2023 – Present",
+    "period": "June 2023 \u2013 Present",
     "website": "",
     "description": [
       "Organized public health, environmental campaigns, and youth development projects",
       "Participated in community service initiatives aligned with sustainable development goals",
       "Engaged in educational programs and awareness drives"
     ]
+  },
+  {
+    "title": "Youth Trainer \u2014 Ekannor Jaagoron",
+    "company": "JAAGO Foundation Trust",
+    "period": "December 2025",
+    "description": [
+      "Participated as a trainer in the divisional youth training session on civic awareness and youth empowerment."
+    ],
+    "location": "Bangladesh",
+    "logo": "/assets/logo/research.jpeg",
+    "website": "",
+    "featured": false
+  },
+  {
+    "title": "Independent Teacher & Course Instructor",
+    "company": "Academic & Programming Instruction",
+    "period": "Dates not specified",
+    "description": [
+      "Taught Mathematics, Physics, Chemistry and ICT across school, admission and university levels.",
+      "Delivered programming and web development instruction."
+    ],
+    "location": "Bangladesh",
+    "logo": "/assets/logo/research.jpeg",
+    "website": "",
+    "featured": false
   }
 ]

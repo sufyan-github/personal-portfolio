@@ -1,1 +1,12 @@
-project_id = "xxulvfpdvemsvvyrdxim"
+project_id = "onedszkviytisunlmoip"
+
+# Public visitor endpoints perform their own validation/rate limiting.
+# Admin uses ADMIN_PASSPHRASE and signed x-admin-token, not Supabase Auth JWTs.
+[functions.admin-api]
+verify_jwt = false
+
+[functions.send-contact-email]
+verify_jwt = false
+
+[functions.portfolio-chat]
+verify_jwt = false

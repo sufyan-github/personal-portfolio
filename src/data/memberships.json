@@ -1,18 +1,18 @@
 {
-  "title": "Professional Memberships",
-  "subtitle": "Active participation in tech communities and professional organizations",
+  "title": "Communities & Professional Engagement",
+  "subtitle": "Current affiliations, former leadership, campus outreach and service",
   "memberships": [
     {
       "name": "RUET Computing Society",
-      "role": "President & Founding Member",
+      "role": "Alumni Member · Former President & Founding Member",
       "logo": "/assets/logo/research.jpeg",
-      "description": "Leading strategic initiatives to promote computing research, innovation, and collaborative learning"
+      "description": "President January–June 2026; alumni member from June 2026."
     },
     {
       "name": "RUET IoT Club",
-      "role": "President",
+      "role": "Alumni Affairs Advisor · Former President",
       "logo": "/assets/logo/iot_club.png",
-      "description": "Organizing workshops and events on IoT, smart technologies, and innovation"
+      "description": "President February 2025–June 2026; Alumni Affairs Advisor from June 2026."
     },
     {
       "name": "Artificial Intelligence Bangladesh",
@@ -28,15 +28,15 @@
     },
     {
       "name": "Aachol Foundation",
-      "role": "Executive Member, HR Management",
+      "role": "Former HR Executive",
       "logo": "/assets/logo/research.jpeg",
-      "description": "Supporting volunteer onboarding, awareness campaigns, and community projects"
+      "description": "Supported volunteer onboarding and community projects, July 2025–June 2026."
     },
     {
       "name": "Volunteer for Bangladesh (VBD)",
-      "role": "Human Resource Officer",
+      "role": "Former Human Resource Officer (2025)",
       "logo": "/assets/logo/futurenation.jpeg",
-      "description": "Led environmental drives, tree plantation campaigns, and SDG-aligned community projects"
+      "description": "Recognized for service as HR Officer during 2025; appreciation issued 1 January 2026."
     },
     {
       "name": "Manus Manusher Jonnya Foundation",
@@ -49,6 +49,42 @@
       "role": "Youth Trainer",
       "logo": "/assets/logo/research.jpeg",
       "description": "Delivered civic awareness and youth empowerment training sessions"
+    },
+    {
+      "name": "Programming Hero",
+      "role": "Campus Ambassador",
+      "description": "Student outreach, programme promotion and campus community engagement. Dates not specified.",
+      "logo": "/assets/logo/research.jpeg"
+    },
+    {
+      "name": "weDevs Academy",
+      "role": "Campus Ambassador",
+      "description": "Student outreach, programme promotion and campus community engagement. Dates not specified.",
+      "logo": "/assets/logo/research.jpeg"
+    },
+    {
+      "name": "WSDA New Zealand",
+      "role": "Campus Ambassador — BPO Summit",
+      "description": "Student outreach, programme promotion and campus community engagement. Dates not specified.",
+      "logo": "/assets/logo/research.jpeg"
+    },
+    {
+      "name": "International Computer Science Competition (ICSC)",
+      "role": "Campus Ambassador",
+      "description": "Student outreach, programme promotion and campus community engagement. Dates not specified.",
+      "logo": "/assets/logo/research.jpeg"
+    },
+    {
+      "name": "RUET CSE · Session 2020–2021",
+      "role": "Class Representative",
+      "description": "Class representative for RUET CSE, academic session 2020–2021.",
+      "logo": "/assets/logo/research.jpeg"
+    },
+    {
+      "name": "3ZERO Leadership Challenge",
+      "role": "Participant",
+      "description": "Participated in the youth leadership initiative focused on zero poverty, zero unemployment and zero net carbon emissions.",
+      "logo": "/assets/logo/research.jpeg"
     }
   ]
 }

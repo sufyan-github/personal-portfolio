@@ -1,3 +1,25 @@
+> **Production (19 October 2026):** https://abusufyan.online · Admin: https://abusufyan.online/admin
+> Frontend: Cloudflare Pages project `abusufyan-portfolio`. Backend: owner-controlled Supabase project `onedszkviytisunlmoip` (Singapore).
+> The older Lovable Cloud backend `xxulvfpdvemsvvyrdxim` is preserved but is no longer the production target. Historical private messages were not exported from it.
+
+### Operating the current portfolio
+
+Sign in at `/admin` using the owner passphrase. Content collections use field-based editing with an advanced JSON option. Changes save to Supabase and appear after refreshing the public site. The portal includes education, skills, experience, projects, research, credentials, achievements, community content, navigation, translations, portfolio assistant knowledge, and feature settings. Media controls support uploads, captions, ordering, visibility, and disposable-image deletion. Choose the asset category for certificate/project images, copy their URL, and paste it into the relevant content field. CV uploads replace the public resume. Inbox messages are private. Blog posts and testimonials start as drafts and require explicit publishing.
+
+The live assistant uses a Cloudflare Pages Function at `/api/assistant` with the native Workers AI binding (`@cf/meta/llama-3.1-8b-instruct-fp8`). It streams generated answers using the admin-managed `ai_profile` collection from Supabase. `VITE_ASSISTANT_URL` points the frontend to this route. The accurate Supabase portfolio guide remains the fallback if inference is unavailable or quota-limited; no separate AI provider key is required for the live Cloudflare setup. The Supabase function also supports optional `OPENAI_API_KEY` / `OPENAI_MODEL` or `LOVABLE_API_KEY` if an alternate provider is configured later. See https://developers.cloudflare.com/pages/functions/bindings/#workers-ai for binding operations and https://developers.cloudflare.com/workers-ai/platform/pricing/ for usage limits.
+
+Contact messages save once to the private inbox and send two transactional emails through Resend: an owner notification to `abusufyan.cse20@gmail.com` and a visitor confirmation. The verified sender is `Md. Abu Sufyan <portfolio@notifications.abusufyan.online>`. The domain-restricted, sending-only `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` are configured only in Supabase secrets. Owner notifications reply to the visitor; confirmations reply to the owner. Each delivery is attempted independently, and email failure never reports an already-saved contact as failed. Per-delivery acceptance is recorded in contact analytics; final delivery events are available in Resend.
+
+Resend remains on the Free transactional plan (3,000 emails/month, 100/day), with pay-as-you-go disabled and no billing details added. Two emails per submission means up to 50 submissions/day and 1,500/month if no other email consumes the allowance. If the quota is exhausted, messages remain available in the admin inbox even when email cannot be sent. Do not enable paid upgrades or overages without owner approval.
+
+Verified on 19 October 2026 using the live website contact form: exactly one contact submission, with both owner notification and visitor confirmation marked delivered by Resend. Automated tests cover HTML escaping, reply-to routing, missing configuration, storage failures, and failure of either delivery independently.
+
+Build with `npm ci && npm run build`, check with `npm test`, `npm run lint`, and `npx tsc --noEmit -p tsconfig.app.json`. Deploy only `dist` using `npx wrangler pages deploy dist --project-name abusufyan-portfolio --branch main --commit-dirty=true`. Cloudflare Pages native SPA routing preserves `/admin` and `/resume`; do not add rewrites to `/index.html`.
+
+The new backend was provisioned with `supabase/bootstrap-standalone.sql`, then `supabase/migrations/20261019000000_repair_portfolio_photos.sql`, then `supabase/seed-reviewed-content.sql`. **Do not replay the historical migrations or bootstrap on this live database.** The reviewed seed only inserts absent content; it does not overwrite admin edits. Deploy named functions with `npx supabase functions deploy admin-api send-contact-email portfolio-chat --project-ref onedszkviytisunlmoip --no-verify-jwt --use-api`. Admin endpoints still require signed admin tokens. Keep all secrets in Supabase secrets, never Vite variables or the Git repository.
+
+---
+
 # Personal Portfolio - Md. Abu Sufyan
 
 A modern, professional portfolio website showcasing AI/ML expertise, projects, research, and professional experience. Built with React, TypeScript, and Tailwind CSS for optimal performance and user experience.

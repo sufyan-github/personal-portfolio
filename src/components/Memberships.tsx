@@ -65,7 +65,7 @@ const Memberships: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20">
             <Users className="h-5 w-5 text-primary" />
             <span className="text-sm font-medium text-foreground">
-              Active in {membershipData.memberships.length} Professional Organizations
+              {membershipData.memberships.length} Documented Community & Outreach Entries
             </span>
           </div>
         </div>

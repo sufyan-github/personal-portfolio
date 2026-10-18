@@ -1,0 +1,12 @@
+{
+  "name": "abusufyan-portfolio",
+  "compatibility_date": "2026-10-01",
+  "pages_build_output_dir": "dist",
+  "ai": {
+    "binding": "AI"
+  },
+  "vars": {
+    "PUBLIC_SUPABASE_URL": "https://onedszkviytisunlmoip.supabase.co",
+    "PUBLIC_SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZWRzemt2aXl0aXN1bmxtb2lwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzNDI5NjQsImV4cCI6MjEwNzkxODk2NH0.mxAWA5629dsuciy51OD5rSIaH1EYBWqKxxE93yMkibc"
+  }
+}

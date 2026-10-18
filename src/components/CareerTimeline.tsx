@@ -1,4 +1,5 @@
-import timeline from "@/data/timeline.json";
+import { useContent } from "@/lib/contentClient";
+import timelineFallback from "@/data/timeline.json";
 import {
   GraduationCap,
   BookOpen,
@@ -24,13 +25,14 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const CareerTimeline = () => {
+  const { value: timeline } = useContent("timeline", timelineFallback);
   return (
     <section id="journey" className="py-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 gradient-text">My Journey</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From foundational schooling to national-scale AI training — the milestones that shaped my path.
+            Education, research, software engineering and community service — the milestones that shaped my path.
           </p>
         </div>
 

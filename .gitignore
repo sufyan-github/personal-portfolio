@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local deployment state
+supabase/.temp/
+.wrangler/
+.dev.vars

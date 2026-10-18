@@ -1,5 +1,6 @@
+import { useContent } from "@/lib/contentClient";
 import React, { createContext, useContext, useState, useEffect } from "react";
-import translations from "@/data/translations.json";
+import translationsFallback from "@/data/translations.json";
 
 type Language = "en" | "bn";
 
@@ -24,9 +25,10 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+  const { value: translations } = useContent("translations", translationsFallback);
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem("portfolio-language");
-    return (saved as Language) || "en";
+    return saved === "bn" ? "bn" : "en";
   });
 
   useEffect(() => {
@@ -41,13 +43,13 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   // Translation function with nested key support
   const t = (key: string): string => {
     try {
-      const translationsData = translations as Record<string, any>;
+      const translationsData = translations;
       const keys = key.split('.');
-      let value: any = translationsData[language];
+      let value: unknown = translationsData[language];
       
       for (const k of keys) {
         if (value && typeof value === 'object' && k in value) {
-          value = value[k];
+          value = (value as Record<string, unknown>)[k];
         } else {
           return key; // Return key if translation not found
         }

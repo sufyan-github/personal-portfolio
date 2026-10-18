@@ -1,6 +1,7 @@
+import { useContent } from "@/lib/contentClient";
 import { useEffect, useState } from "react";
 import { Github, Code2, Trophy, GitCommit, Star, GitFork, Activity } from "lucide-react";
-import githubData from "@/data/github.json";
+import githubFallback from "@/data/github.json";
 import codingData from "@/data/coding_profiles.json";
 
 interface Stat {
@@ -12,22 +13,25 @@ interface Stat {
   live?: boolean;
 }
 
-const GITHUB_USER = githubData.username;
+
 const LEETCODE_USER = "abu_sufyan";
 const CODEFORCES_USER = "abu_sufyan_cse";
 
 const fmt = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(1)}k` : `${n}`);
 
 const TechnicalFootprint = () => {
+  const { value: githubData } = useContent("github", githubFallback);
+  const GITHUB_USER = githubData.username;
   // Defaults from JSON so the section is SEO-friendly on first paint
-  const [ghRepos, setGhRepos] = useState<string>("25+");
-  const [ghStars, setGhStars] = useState<string>("50+");
-  const [ghFollowers, setGhFollowers] = useState<string>("50+");
-  const [ghCommits, setGhCommits] = useState<string>("500+");
-  const [lcSolved, setLcSolved] = useState<string>("150+");
-  const [lcRank, setLcRank] = useState<string>("Top 25%");
-  const [cfRating, setCfRating] = useState<string>("1200+");
-  const [cfRank, setCfRank] = useState<string>("Pupil");
+  const [ghRepos, setGhRepos] = useState<string>("—");
+  const [ghStars, setGhStars] = useState<string>("—");
+  const [ghFollowers, setGhFollowers] = useState<string>("—");
+  const [ghCommits, setGhCommits] = useState<string>("—");
+  const [lcSolved, setLcSolved] = useState<string>("—");
+  const [lcRank, setLcRank] = useState<string>("—");
+  const [cfRating, setCfRating] = useState<string>("—");
+  const [cfRank, setCfRank] = useState<string>("—");
+  const [liveSources, setLiveSources] = useState<string[]>([]);
   const [updated, setUpdated] = useState<string | null>(null);
 
   useEffect(() => {
@@ -47,18 +51,22 @@ const TechnicalFootprint = () => {
         if (cancelled) return;
 
         const stars = Array.isArray(repos)
-          ? repos.reduce((s: number, r: any) => s + (r.stargazers_count || 0), 0)
+          ? repos.reduce((s: number, r: { stargazers_count?: number }) => s + (r.stargazers_count || 0), 0)
           : 0;
         const recentCommits = Array.isArray(events)
           ? events
-              .filter((e: any) => e.type === "PushEvent")
-              .reduce((s: number, e: any) => s + (e.payload?.commits?.length || 0), 0)
+              .filter((e: { type?: string; payload?: { commits?: unknown[] } }) => e.type === "PushEvent")
+              .reduce((s: number, e: { type?: string; payload?: { commits?: unknown[] } }) => s + (e.payload?.commits?.length || 0), 0)
           : 0;
 
         setGhRepos(`${user.public_repos ?? 0}`);
         setGhFollowers(`${user.followers ?? 0}`);
         setGhStars(`${stars}`);
-        if (recentCommits > 0) setGhCommits(`${recentCommits}+ / 90d`);
+        setLiveSources((sources) => [...sources, "GitHub"]);
+        if (eventsRes.ok && recentCommits > 0) {
+          setGhCommits(`${recentCommits} in recent events`);
+          setLiveSources((sources) => [...sources, "GitHub Events API"]);
+        }
       } catch {
         /* keep defaults */
       }
@@ -81,6 +89,7 @@ const TechnicalFootprint = () => {
         const data = await res.json();
         if (cancelled || data.status !== "OK" || !data.result?.[0]) return;
         const u = data.result[0];
+        setLiveSources((sources) => [...sources, "Codeforces"]);
         if (u.rating) setCfRating(`${u.rating}`);
         if (u.rank) setCfRank(u.rank.replace(/\b\w/g, (c: string) => c.toUpperCase()));
       } catch {
@@ -95,7 +104,7 @@ const TechnicalFootprint = () => {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [GITHUB_USER]);
 
   const stats: Stat[] = [
     {
@@ -104,7 +113,7 @@ const TechnicalFootprint = () => {
       href: `https://github.com/${GITHUB_USER}`,
       icon: <Github className="h-4 w-4" aria-hidden />,
       source: "GitHub",
-      live: true,
+
     },
     {
       label: "Stars Earned",
@@ -112,7 +121,7 @@ const TechnicalFootprint = () => {
       href: `https://github.com/${GITHUB_USER}?tab=repositories`,
       icon: <Star className="h-4 w-4" aria-hidden />,
       source: "GitHub",
-      live: true,
+
     },
     {
       label: "Recent Commits",
@@ -120,7 +129,7 @@ const TechnicalFootprint = () => {
       href: `https://github.com/${GITHUB_USER}`,
       icon: <GitCommit className="h-4 w-4" aria-hidden />,
       source: "GitHub Events API",
-      live: true,
+
     },
     {
       label: "GitHub Followers",
@@ -128,7 +137,7 @@ const TechnicalFootprint = () => {
       href: `https://github.com/${GITHUB_USER}`,
       icon: <GitFork className="h-4 w-4" aria-hidden />,
       source: "GitHub",
-      live: true,
+
     },
     {
       label: "LeetCode Problems Solved",
@@ -136,7 +145,7 @@ const TechnicalFootprint = () => {
       href: `https://leetcode.com/${LEETCODE_USER}`,
       icon: <Code2 className="h-4 w-4" aria-hidden />,
       source: "LeetCode",
-      live: true,
+
     },
     {
       label: "LeetCode Standing",
@@ -151,7 +160,7 @@ const TechnicalFootprint = () => {
       href: `https://codeforces.com/profile/${CODEFORCES_USER}`,
       icon: <Activity className="h-4 w-4" aria-hidden />,
       source: "Codeforces",
-      live: true,
+
     },
     {
       label: "Codeforces Rank",
@@ -159,7 +168,7 @@ const TechnicalFootprint = () => {
       href: `https://codeforces.com/profile/${CODEFORCES_USER}`,
       icon: <Trophy className="h-4 w-4" aria-hidden />,
       source: "Codeforces",
-      live: true,
+
     },
   ];
 
@@ -172,7 +181,7 @@ const TechnicalFootprint = () => {
       <div className="container mx-auto max-w-6xl">
         <header className="text-center mb-10">
           <p className="text-xs uppercase tracking-[0.2em] text-primary/80 mb-3">
-            Live · Updated automatically
+            Public profiles & activity
           </p>
           <h2
             id="technical-footprint-heading"
@@ -181,8 +190,7 @@ const TechnicalFootprint = () => {
             Technical Footprint
           </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl mx-auto text-sm md:text-base">
-            Verifiable engineering activity across GitHub, LeetCode, and Codeforces — refreshed
-            from public APIs on each visit.
+            Engineering activity across GitHub, LeetCode, and Codeforces. Available public APIs refresh automatically; unverified metrics remain blank.
           </p>
         </header>
 
@@ -192,7 +200,7 @@ const TechnicalFootprint = () => {
           itemType="https://schema.org/ItemList"
         >
           {stats.map((s, i) => {
-            const Wrapper: any = s.href ? "a" : "div";
+            const Wrapper = s.href ? "a" : "div";
             const wrapperProps = s.href
               ? { href: s.href, target: "_blank", rel: "noopener noreferrer" }
               : {};
@@ -214,12 +222,12 @@ const TechnicalFootprint = () => {
                       {s.icon}
                       {s.source}
                     </span>
-                    {s.live && (
+                    {liveSources.includes(s.source) ? (
                       <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider text-primary">
                         <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                         Live
                       </span>
-                    )}
+                    ) : <span className="text-[10px] text-muted-foreground">Unavailable</span>}
                   </div>
                   <div
                     className="text-2xl md:text-3xl font-bold text-foreground font-display"
@@ -238,7 +246,7 @@ const TechnicalFootprint = () => {
 
         {updated && (
           <p className="text-center text-xs text-muted-foreground mt-6">
-            Last synced {updated} · Data sourced from public GitHub, LeetCode &amp; Codeforces APIs
+            Last checked {updated} · Live badges indicate successful API updates
           </p>
         )}
       </div>

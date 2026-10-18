@@ -34,16 +34,7 @@ CREATE TRIGGER update_portfolio_photos_updated_at
 CREATE INDEX idx_portfolio_photos_category ON public.portfolio_photos(category, display_order);
 CREATE INDEX idx_portfolio_photos_published ON public.portfolio_photos(published, category);
 
--- Storage policy: allow admin (service role) to upload photos
-CREATE POLICY "Admin can upload photos"
-  ON storage.objects
-  FOR INSERT
-  WITH CHECK (bucket_id = 'site-assets' AND (storage.foldername(name))[1] = 'photos');
-
-CREATE POLICY "Admin can delete photos"
-  ON storage.objects
-  FOR DELETE
-  USING (bucket_id = 'site-assets' AND (storage.foldername(name))[1] = 'photos');
+-- Photo writes use the admin edge function service role; no public write policies.
 
 -- Seed initial workshop photos (VU ML/AI Workshop Oct 30, 2025)
 -- 6 images exist: vu-ml-workshop-1.jpg through vu-ml-workshop-6.jpg

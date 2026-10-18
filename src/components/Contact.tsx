@@ -20,7 +20,7 @@ const contactSchema = z.object({
   message: z.string().trim().min(10, 'Message must be at least 10 characters').max(2000),
 });
 
-const iconsMap: Record<string, any> = {
+const iconsMap: Record<string, React.ElementType> = {
   Mail, Phone, MapPin, Linkedin, Github,
 };
 
@@ -44,21 +44,14 @@ const Contact = () => {
     try {
       const validatedData = contactSchema.parse(formData);
 
-      const { error } = await (supabase.from as any)('contacts').insert([{
-        name: validatedData.name,
-        email: validatedData.email,
-        subject: validatedData.subject,
-        message: validatedData.message,
-      }]);
-
-      if (error) throw error;
-
-      await supabase.functions.invoke('send-contact-email', {
+      // The edge function owns persistence; inserting here created duplicate messages.
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: validatedData,
       });
+      if (error || !data?.success) throw error || new Error('Message delivery failed');
 
       toast({
-        title: 'Message sent successfully!',
+        title: 'Message received!',
         description: "Thanks for reaching out. I'll respond soon.",
       });
 

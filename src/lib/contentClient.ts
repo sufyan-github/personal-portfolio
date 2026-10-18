@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 // Falls back to bundled JSON if the DB row doesn't exist yet.
 export async function fetchContent<T>(key: string, fallback: T): Promise<T> {
   try {
-    const { data, error } = await (supabase.from as any)("site_content")
+    const { data, error } = await supabase.from("site_content")
       .select("content_value")
       .eq("content_key", key)
       .maybeSingle();
@@ -16,25 +16,15 @@ export async function fetchContent<T>(key: string, fallback: T): Promise<T> {
 }
 
 // React hook
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export function useContent<T>(key: string, fallback: T) {
-  const [value, setValue] = useState<T>(fallback);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    let cancelled = false;
-    fetchContent<T>(key, fallback).then((v) => {
-      if (!cancelled) {
-        setValue(v);
-        setLoading(false);
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
-  return { value, loading };
+  const { data, isPending } = useQuery({
+    queryKey: ['site-content', key],
+    queryFn: () => fetchContent<T>(key, fallback),
+    staleTime: 30_000,
+  });
+  return { value: data ?? fallback, loading: isPending };
 }
 
 // ─── Admin client — calls the edge function ────────────────────────────────
@@ -61,6 +51,7 @@ async function adminCall(body: Record<string, unknown>) {
     body: JSON.stringify(body),
   });
   const json = await res.json().catch(() => ({}));
+  if (res.status === 401) { setAdminToken(null); window.dispatchEvent(new Event('admin-session-expired')); }
   if (!res.ok) throw new Error(json.error || `Request failed (${res.status})`);
   return json;
 }
@@ -90,7 +81,7 @@ export async function adminUploadCV(file: File) {
 }
 
 // ─── Photo management ──────────────────────────────────────────────────────
-export type PhotoCategory = "gallery" | "hero" | "profile";
+export type PhotoCategory = "gallery" | "hero" | "profile" | "asset";
 
 export interface PortfolioPhoto {
   id: string;
@@ -155,17 +146,24 @@ export async function adminUpdatePhoto(
 }
 
 // ─── Public photo fetcher (no auth needed — uses RLS public SELECT) ────────
-export async function fetchPublicPhotos(category?: PhotoCategory): Promise<PortfolioPhoto[]> {
+export async function fetchPublicPhotos(category?: PhotoCategory): Promise<PortfolioPhoto[] | null> {
   try {
-    let query = (supabase.from as any)("portfolio_photos")
+    let query = supabase.from("portfolio_photos")
       .select("*")
       .eq("published", true)
       .order("display_order", { ascending: true });
     if (category) query = query.eq("category", category);
     const { data, error } = await query;
-    if (error || !data) return [];
+    if (error || !data) return null;
     return data as PortfolioPhoto[];
   } catch {
-    return [];
+    return null;
   }
+}
+
+export async function adminRecords(table: string) {
+  return (await adminCall({ action: "list_records", table })).records;
+}
+export async function adminSaveRecord(table: string, value: unknown) {
+  return adminCall({ action: "save_record", table, value });
 }

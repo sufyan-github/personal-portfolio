@@ -145,11 +145,9 @@ const Research: React.FC = () => {
                       </a>
                     </Button>
                   )}
-                  <Button asChild variant="outline" size="sm" className="glow-border hover-lift">
-                    <a href="#" onClick={(e) => { e.preventDefault(); /* Add reading functionality */ }}>
-                      <FileText className="h-4 w-4 mr-2" /> Read Online
-                    </a>
-                  </Button>
+                  {!paper.paperUrl && (
+                    <p className="text-sm text-muted-foreground">Paper link coming soon.</p>
+                  )}
                   {paper.conferenceUrl && paper.conferenceUrl !== "" && (
                     <Button asChild variant="outline" size="sm" className="glow-border hover-lift">
                       <a href={paper.conferenceUrl} target="_blank" rel="noreferrer">

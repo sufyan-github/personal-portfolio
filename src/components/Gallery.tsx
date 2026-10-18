@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -12,7 +12,7 @@ import {
   Images,
   Sparkles,
 } from "lucide-react";
-import { fetchPublicPhotos, PortfolioPhoto } from "@/lib/contentClient";
+import { fetchPublicPhotos, PortfolioPhoto, useContent } from "@/lib/contentClient";
 import galleryFallback from "@/data/gallery.json";
 
 // ─── Types ─────────────────────────────────────────────────────────────────
@@ -26,12 +26,14 @@ type GalleryItem = {
   event_name: string | null;
 };
 
+const bundledImages = new Set(Object.keys(import.meta.glob("/public/gallery/*")).map((path) => path.replace("/public", "")));
+
 // ─── Static fallback derived from gallery.json events ─────────────────────
 
-function buildFallbackItems(): GalleryItem[] {
+function buildFallbackItems(galleryData: typeof galleryFallback): GalleryItem[] {
   const items: GalleryItem[] = [];
-  galleryFallback.events.forEach((event, ei) => {
-    event.images.forEach((img, ii) => {
+  galleryData.events.forEach((event, ei) => {
+    event.images.filter((img) => bundledImages.has(img)).forEach((img, ii) => {
       items.push({
         id:         `static-${ei}-${ii}`,
         url:        img,
@@ -71,16 +73,35 @@ interface LightboxProps {
 
 const Lightbox: React.FC<LightboxProps> = ({ items, index, onClose, onPrev, onNext }) => {
   const item = items[index];
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
+    dialogRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    return () => opener?.focus();
+  }, []);
 
   // Keyboard nav
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      if (e.key === "Tab") {
+        const buttons = dialogRef.current?.querySelectorAll<HTMLButtonElement>("button");
+        const first = buttons?.[0];
+        const last = buttons?.[buttons.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") onPrev();
       if (e.key === "ArrowRight") onNext();
     };
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    return () => {
+      document.body.style.overflow = overflow;
+      window.removeEventListener("keydown", handler);
+    };
   }, [onClose, onPrev, onNext]);
 
   return (
@@ -90,6 +111,8 @@ const Lightbox: React.FC<LightboxProps> = ({ items, index, onClose, onPrev, onNe
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
+      ref={dialogRef}
+      role="dialog" aria-modal="true" aria-label="Photo viewer"
     >
       {/* Close */}
       <button
@@ -186,6 +209,13 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ item, index, onClick }) => {
       transition={{ duration: 0.5, delay: (index % 6) * 0.07 }}
       whileHover={{ scale: 1.02, zIndex: 10 }}
       onClick={onClick}
+      role="button" tabIndex={0} aria-label={`View photo: ${item.caption}`}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onClick();
+        }
+      }}
     >
       {/* Skeleton */}
       {!loaded && !error && (
@@ -234,6 +264,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ item, index, onClick }) => {
 // ─── Main Gallery ──────────────────────────────────────────────────────────
 
 const Gallery: React.FC = () => {
+  const { value: galleryData } = useContent("gallery", galleryFallback);
   const [allItems, setAllItems]       = useState<GalleryItem[]>([]);
   const [activeCategory, setCategory] = useState("All");
   const [lightboxIdx, setLightbox]    = useState<number | null>(null);
@@ -241,7 +272,7 @@ const Gallery: React.FC = () => {
   // Load photos from DB (or fall back to static)
   useEffect(() => {
     fetchPublicPhotos("gallery").then((photos) => {
-      if (photos.length > 0) {
+      if (photos !== null) {
         setAllItems(
           photos.map((p: PortfolioPhoto) => ({
             id:         p.id,
@@ -253,10 +284,10 @@ const Gallery: React.FC = () => {
           })),
         );
       } else {
-        setAllItems(buildFallbackItems());
+        setAllItems(buildFallbackItems(galleryData));
       }
     });
-  }, []);
+  }, [galleryData]);
 
   const categories   = ["All", ...Array.from(new Set(allItems.map((i) => i.event_name ?? i.category).filter(Boolean)))];
   const filtered     = activeCategory === "All" ? allItems : allItems.filter((i) => (i.event_name ?? i.category) === activeCategory);
@@ -321,8 +352,8 @@ const Gallery: React.FC = () => {
             <div className="text-xs text-muted-foreground">Events</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold gradient-text">3+</div>
-            <div className="text-xs text-muted-foreground">Years Active</div>
+            <div className="text-3xl font-bold gradient-text">Community</div>
+            <div className="text-xs text-muted-foreground">Learning &amp; Outreach</div>
           </div>
         </motion.div>
 

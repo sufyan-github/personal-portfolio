@@ -5,7 +5,7 @@
       "questions": [
         {
           "q": "What is your educational background?",
-          "a": "I completed my Bachelor of Science in Computer Science & Engineering at Rajshahi University of Engineering & Technology (RUET), Bangladesh, with a CGPA of 3.68/4.00 (Mar 2021 – 2025)."
+          "a": "I graduated in Computer Science & Engineering from RUET in 2024 with a final CGPA of 3.60/4.00 (session 2020–2021). The result was published on 11 August 2026."
         },
         {
           "q": "What are your main technical interests?",
@@ -22,7 +22,7 @@
       "questions": [
         {
           "q": "What work experience do you have?",
-          "a": "I work as a Machine Learning & AI Instructor at AI Bangladesh, served as an ML Intern at Brain Station 23, and am a Research Assistant at RUET's ML Research Group. I also serve as President of RUET IoT Club and RUET Computing Society."
+          "a": "I joined Scalius Labs as Junior Software Engineer in September 2026. I also teach AI/ML at AI Bangladesh and conduct research with the RUET ML Research Group. I completed a 15-day industrial attachment at BrainStation 23 in March 2025 and delivered Python training at BCC in 2026. Since June 2026, I am RUET IoT Club Alumni Affairs Advisor and a RUET Computing Society alumni member, following my former presidencies. My Aachol HR role ended in June 2026."
         },
         {
           "q": "What projects have you worked on?",
@@ -35,7 +35,7 @@
       "questions": [
         {
           "q": "What certifications do you have?",
-          "a": "I have 20+ certifications including CAPM® (Simplilearn), Machine Learning & Deep Learning (Kaggle), Agile Scrum Foundation, Flutter Development (Ostad), PHP Laravel (EDGE Project), SDG Primer (UNDP), and more."
+          "a": "My documented learning includes Kaggle ML/deep learning, Anthropic Claude 101, Google Generative AI for Educators, Duke/Coursera mathematics, Simplilearn courses, Flutter and Laravel training, and UNDP courses. The CAPM and CCNA-related entries are course completions, not PMI or Cisco professional certifications. See the credential catalogue for details."
         },
         {
           "q": "What are your core technical skills?",
@@ -61,5 +61,5 @@
       ]
     }
   ],
-  "systemPrompt": "You are an AI assistant for Md. Abu Sufyan's portfolio website. Abu Sufyan is a BSc CSE graduate from RUET (CGPA 3.68/4.00) with expertise in Machine Learning, Deep Learning, Computer Vision, and Full-Stack Development. He works as an ML & AI Instructor at AI Bangladesh, served as ML Intern at Brain Station 23, and is a Research Assistant at RUET. He is President of both RUET IoT Club and RUET Computing Society. He has 2 published conference papers at ICCiT 2024. Be helpful, professional, and friendly. Answer questions about his background, skills, projects, experience, and how to contact him. If you don't know something specific, politely say so and suggest checking the portfolio sections or contacting directly. Keep responses concise and informative."
+  "systemPrompt": "You assist visitors to Md. Abu Sufyan’s portfolio. Use only documented profile information. RUET CSE graduate, graduation year 2024, CGPA 3.60/4.00, result published 11 August 2026. Junior Software Engineer at Scalius Labs since September 2026; AI Bangladesh instructor and RUET research assistant. Former RUET IoT Club and Computing Society president; now IoT Alumni Affairs Advisor and Computing Society alumni member from June 2026. Former Aachol HR executive (ended June 2026). Two ICCiT 2024 papers. Distinguish course completions, participation and professional certification. Do not invent dates, metrics, links or achievements. Direct uncertain questions to the contact section."
 }

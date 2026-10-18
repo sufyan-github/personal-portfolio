@@ -1,22 +1,88 @@
 {
   "siteTitle": "Abu Sufyan",
-  "cvUrl": "/cv/Abu_Sufyan_CV.pdf",
+  "cvUrl": "/assets/cv/Abu_Sufyan_CV.pdf",
   "cvFileName": "Abu_Sufyan_CV.pdf",
   "enableActiveHighlight": true,
   "items": [
-    { "name": "Home", "href": "#home" },
-    { "name": "About", "href": "#about" },
-    { "name": "Academic", "href": "#academic" },
-    { "name": "Experience", "href": "#experience" },
-    { "name": "Industrial Training", "href": "#industrial-attachment" },
-    { "name": "Skills", "href": "#skills" },
-    { "name": "Projects", "href": "#projects" },
-    { "name": "Research", "href": "#research" },
-    { "name": "Certifications", "href": "#certifications" },
-    { "name": "Achievements", "href": "#achievements" },
-    { "name": "Memberships", "href": "#memberships" },
-    { "name": "Coding", "href": "#coding" },
-    { "name": "Gallery", "href": "#gallery" },
-    { "name": "Contact", "href": "#contact" }
+    {
+      "name": "Home",
+      "href": "#home"
+    },
+    {
+      "name": "About",
+      "href": "#about"
+    },
+    {
+      "name": "Academic",
+      "href": "#academic"
+    },
+    {
+      "name": "Experience",
+      "href": "#experience"
+    },
+    {
+      "name": "Industrial Training",
+      "href": "#industrial-attachment"
+    },
+    {
+      "name": "Skills",
+      "href": "#skills"
+    },
+    {
+      "name": "Projects",
+      "href": "#projects"
+    },
+    {
+      "name": "Research",
+      "href": "#research"
+    },
+    {
+      "name": "Certifications",
+      "href": "#certifications"
+    },
+    {
+      "name": "Achievements",
+      "href": "#achievements"
+    },
+    {
+      "name": "Memberships",
+      "href": "#memberships"
+    },
+    {
+      "name": "Coding",
+      "href": "#coding"
+    },
+    {
+      "name": "Gallery",
+      "href": "#gallery"
+    },
+    {
+      "name": "Contact",
+      "href": "#contact"
+    },
+    {
+      "name": "Journey",
+      "href": "#journey"
+    },
+    {
+      "name": "Leadership",
+      "href": "#leadership"
+    },
+    {
+      "name": "Community",
+      "href": "#community"
+    },
+    {
+      "name": "Resume",
+      "href": "#resume"
+    },
+    {
+      "name": "Testimonials",
+      "href": "#testimonials"
+    },
+    {
+      "name": "Blog",
+      "href": "#blog"
+    }
   ]
 }

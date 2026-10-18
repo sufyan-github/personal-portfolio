@@ -6,10 +6,16 @@
     "year": "2024",
     "type": "Conference Paper",
     "problem": "During geopolitical conflicts, social-media discourse is contaminated by sentiment polarisation and systemic bias, making impartial situational awareness extremely difficult.",
-    "methodology": "Built a cross-analysing ML/DL pipeline combining transformer-based sentiment classifiers with bias-detection heuristics over multilingual Twitter corpora, evaluated against human-annotated benchmarks.",
-    "impact": "Surfaced quantifiable bias signals in conflict-era narratives and provided a reusable evaluation framework for information-warfare research.",
+    "methodology": "Compared BERT and BiLSTM approaches for sentiment and bias detection in social-media discourse about geopolitical conflicts, using WordPiece and GloVe representations.",
+    "impact": "The paper reports comparative results for sentiment classification and bias detection, highlighting the different strengths of the two approaches.",
     "description": "Cross-analysing pipeline for sentiment and bias in geopolitical social-media discourse — surfacing measurable bias signals during conflict events.",
-    "keywords": ["Sentiment Analysis", "Bias Detection", "Social Media", "Machine Learning", "NLP"],
+    "keywords": [
+      "Sentiment Analysis",
+      "Bias Detection",
+      "Social Media",
+      "Machine Learning",
+      "NLP"
+    ],
     "paperUrl": "",
     "conferenceUrl": ""
   },
@@ -20,10 +26,16 @@
     "year": "2024",
     "type": "Conference Paper",
     "problem": "Public-health agencies needed earlier, more reliable forecasts of Monkeypox outbreak trajectories to plan response and allocation.",
-    "methodology": "Trained and benchmarked LSTM, GRU and ensemble forecasting models on WHO outbreak time-series, with rolling cross-validation and uncertainty quantification.",
-    "impact": "Produced forecast curves that improved short-horizon outbreak prediction over baseline statistical models, contributing to data-driven public-health preparedness.",
-    "description": "LSTM/GRU/ensemble forecasting of Monkeypox case trajectories — improving short-horizon outbreak prediction for public-health response.",
-    "keywords": ["Time Series Forecasting", "LSTM", "GRU", "Healthcare Analytics", "Predictive Modeling"],
+    "methodology": "Compared XGBoost, LSTM and Prophet on monkeypox death time-series data from 2019–2023, with lag and rolling-window features.",
+    "impact": "The study reports the lowest mean squared error among the compared models for Prophet (0.4175), within its experimental setup.",
+    "description": "Comparative time-series forecasting of monkeypox deaths using XGBoost, LSTM and Prophet.",
+    "keywords": [
+      "Time-Series Forecasting",
+      "XGBoost",
+      "LSTM",
+      "Prophet",
+      "Healthcare Analytics"
+    ],
     "paperUrl": "",
     "conferenceUrl": ""
   }

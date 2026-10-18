@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ExternalLink, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -19,6 +20,9 @@ interface BlogPost {
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchPosts();
@@ -26,7 +30,7 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const { data, error } = await (supabase.from as any)('blog_posts')
+      const { data, error } = await supabase.from('blog_posts')
         .select('*')
         .eq('published', true)
         .order('created_at', { ascending: false });
@@ -34,6 +38,7 @@ const Blog = () => {
       if (error) throw error;
       setPosts(data || []);
     } catch (error) {
+      setError(true);
       console.error('Error fetching blog posts:', error);
     } finally {
       setLoading(false);
@@ -81,7 +86,7 @@ const Blog = () => {
           </div>
           <div className="text-center">
             <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <p className="text-lg text-muted-foreground">More articles coming soon!</p>
+            <p className="text-lg text-muted-foreground">{error ? "Articles are temporarily unavailable. Please try again later." : "More articles coming soon!"}</p>
           </div>
         </div>
       </section>
@@ -99,7 +104,7 @@ const Blog = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post, index) => (
+          {(showAll ? posts : posts.slice(0, 3)).map((post, index) => (
             <Card 
               key={post.id}
               className="hover-lift glow-border bg-card/50 backdrop-blur-sm animate-scale-in h-full flex flex-col"
@@ -159,13 +164,13 @@ const Blog = () => {
                   variant="outline" 
                   className="w-full glow-border hover-lift"
                   onClick={() => {
-                    // Track analytics
-                    (supabase.from as any)('analytics').insert([
+                    setSelectedPost(post);
+                    void supabase.from('analytics').insert([
                       {
                         event_type: 'blog_post_view',
                         metadata: { post_id: post.id, post_title: post.title }
                       }
-                    ]);
+                    ]).then(() => {}, () => {});
                   }}
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
@@ -176,12 +181,21 @@ const Blog = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="glow-border hover-lift">
+        {posts.length > 3 && <div className="text-center mt-12">
+          <Button size="lg" variant="outline" className="glow-border hover-lift" onClick={() => setShowAll(!showAll)}>
             <BookOpen className="h-5 w-5 mr-2" />
-            View All Articles
+            {showAll ? "Show Recent Articles" : "View All Articles"}
           </Button>
-        </div>
+        </div>}
+        <Dialog open={!!selectedPost} onOpenChange={(open) => { if (!open) setSelectedPost(null); }}>
+          <DialogContent className="max-w-3xl max-h-[85dvh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>{selectedPost?.title}</DialogTitle>
+              <DialogDescription>{selectedPost && formatDate(selectedPost.created_at)}</DialogDescription>
+            </DialogHeader>
+            <article className="whitespace-pre-wrap break-words leading-relaxed">{selectedPost?.content}</article>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

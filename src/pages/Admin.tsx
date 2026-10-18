@@ -1,3 +1,5 @@
+import { RecordManager } from "@/components/admin/RecordManager";
+import { ContentFields, type ContentValue } from "@/components/admin/ContentFields";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -23,6 +25,7 @@ import {
   adminUploadPhoto,
   adminListPhotos,
   adminDeletePhoto,
+  adminUpdatePhoto,
   getAdminToken,
   setAdminToken,
   type PortfolioPhoto,
@@ -44,27 +47,8 @@ import {
 } from "lucide-react";
 
 // ─── Content sections the admin can edit ──────────────────────────────────
-const CONTENT_KEYS = [
-  "hero",
-  "about",
-  "experience",
-  "skills",
-  "projects",
-  "certifications",
-  "achievements",
-  "memberships",
-  "publications",
-  "research_interests",
-  "ra_profile",
-  "gallery",
-  "faq",
-  "availability",
-  "coding_profiles",
-  "contactInfo",
-  "github",
-  "navigation",
-  "translations",
-];
+const CONTENT_KEYS = Object.keys(import.meta.glob('../data/*.json'))
+  .map(path => path.split('/').pop()!.replace('.json', '')).sort();
 
 async function loadFallback(key: string): Promise<unknown> {
   try {
@@ -130,6 +114,7 @@ const LoginCard = ({
                 className="pr-10"
               />
               <button
+                aria-label={show ? "Hide passphrase" : "Show passphrase"}
                 type="button"
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 onClick={() => setShow((s) => !s)}
@@ -153,6 +138,9 @@ const PhotoManager = () => {
   const { toast }    = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const [editingPhoto, setEditingPhoto] = useState<PortfolioPhoto | null>(null);
+  const editingPhotoId = editingPhoto?.id;
+  useEffect(() => { if (editingPhotoId) document.getElementById('photo-editor')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, [editingPhotoId]);
   const [photos,      setPhotos]      = useState<PortfolioPhoto[]>([]);
   const [loading,     setLoading]     = useState(false);
   const [uploading,   setUploading]   = useState(false);
@@ -181,8 +169,7 @@ const PhotoManager = () => {
 
   useEffect(() => { loadPhotos(); }, []);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0] ?? null;
+  const selectPhoto = (f: File | null) => {
     setFile(f);
     if (f) {
       const url = URL.createObjectURL(f);
@@ -191,6 +178,8 @@ const PhotoManager = () => {
       setPreview(null);
     }
   };
+
+  useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
 
   const handleUpload = async () => {
     if (!file) return;
@@ -249,6 +238,12 @@ const PhotoManager = () => {
             <div className="space-y-3">
               <div
                 className="relative border-2 border-dashed border-border/60 hover:border-primary/50 rounded-xl flex flex-col items-center justify-center h-48 cursor-pointer transition-all group"
+                role="button"
+                tabIndex={0}
+                aria-label="Choose photo"
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInputRef.current?.click(); } }}
+                onDragOver={e => e.preventDefault()}
+                onDrop={e => { e.preventDefault(); selectPhoto(e.dataTransfer.files?.[0] ?? null); }}
                 onClick={() => fileInputRef.current?.click()}
               >
                 {preview ? (
@@ -265,7 +260,7 @@ const PhotoManager = () => {
                   type="file"
                   accept="image/jpeg,image/png,image/webp"
                   className="hidden"
-                  onChange={handleFileChange}
+                  onChange={e => selectPhoto(e.target.files?.[0] ?? null)}
                 />
               </div>
               {file && (
@@ -306,6 +301,7 @@ const PhotoManager = () => {
                       <SelectItem value="gallery">Gallery</SelectItem>
                       <SelectItem value="hero">Hero / Achievements</SelectItem>
                       <SelectItem value="profile">Profile</SelectItem>
+                      <SelectItem value="asset">Certificate / project asset</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -335,9 +331,13 @@ const PhotoManager = () => {
         </CardContent>
       </Card>
 
+      {editingPhoto && <Card id="photo-editor"><CardHeader><CardTitle>Edit photo</CardTitle></CardHeader><CardContent className="space-y-4">
+        <ContentFields value={{ caption: editingPhoto.caption, tagline: editingPhoto.tagline, published: editingPhoto.published, display_order: editingPhoto.display_order }} onChange={value => setEditingPhoto({ ...editingPhoto, ...(value as object) })} />
+        <div className="flex gap-2"><Button onClick={async () => { try { await adminUpdatePhoto(editingPhoto.id, editingPhoto); setEditingPhoto(null); await loadPhotos(); toast({ title: 'Photo updated' }); } catch (e) { toast({ title: 'Photo update failed', description: (e as Error).message, variant: 'destructive' }); } }}>Save photo</Button><Button variant="ghost" onClick={() => setEditingPhoto(null)}>Cancel</Button></div>
+      </CardContent></Card>}
       {/* Photo Grid */}
       <Card className="border-border/50">
-        <CardHeader className="flex flex-row items-center justify-between">
+        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
             <CardTitle className="text-base flex items-center gap-2">
               <ImageIcon className="h-4 w-4 text-primary" />
@@ -356,6 +356,7 @@ const PhotoManager = () => {
                 <SelectItem value="gallery">Gallery</SelectItem>
                 <SelectItem value="hero">Hero</SelectItem>
                 <SelectItem value="profile">Profile</SelectItem>
+                      <SelectItem value="asset">Certificate / project asset</SelectItem>
               </SelectContent>
             </Select>
             <Button variant="ghost" size="sm" onClick={loadPhotos} disabled={loading}>
@@ -378,13 +379,13 @@ const PhotoManager = () => {
               {displayed.map((photo) => (
                 <motion.div
                   key={photo.id}
-                  className="relative group rounded-xl overflow-hidden aspect-square bg-muted/20"
+                  className="relative group rounded-xl overflow-hidden border bg-card"
                   whileHover={{ scale: 1.03 }}
                 >
                   <img
                     src={photo.url}
                     alt={photo.caption}
-                    className="w-full h-full object-cover"
+                    className="w-full aspect-square object-cover"
                   />
 
                   {/* Category badge */}
@@ -399,13 +400,15 @@ const PhotoManager = () => {
                   </div>
 
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 p-2">
-                    <p className="text-white text-xs font-medium text-center line-clamp-2 leading-tight">
+                  <div className="flex flex-col items-center gap-2 p-2">
+                    <p className="text-foreground text-xs font-medium text-center line-clamp-2 leading-tight">
                       {photo.caption}
                     </p>
                     {photo.event_name && (
-                      <p className="text-white/60 text-[10px] text-center">{photo.event_name}</p>
+                      <p className="text-muted-foreground text-[10px] text-center">{photo.event_name}</p>
                     )}
+                    <Button variant="secondary" size="sm" onClick={() => setEditingPhoto(photo)}>Edit photo</Button>
+                    <Button variant="secondary" size="sm" onClick={async () => { try { await navigator.clipboard.writeText(new URL(photo.url, window.location.origin).href); toast({ title: 'Image URL copied', description: 'Paste into a certificate, project, or blog image field.' }); } catch { toast({ title: 'Could not copy URL', variant: 'destructive' }); } }}>Copy image URL</Button>
                     <Button
                       variant="destructive"
                       size="sm"
@@ -436,6 +439,10 @@ const Admin = () => {
   const { toast } = useToast();
   const [authed,     setAuthed]     = useState<boolean>(!!getAdminToken());
   const [activeKey,  setActiveKey]  = useState<string>("hero");
+  const [editorTemplate, setEditorTemplate] = useState<ContentValue | undefined>();
+  const [search, setSearch] = useState("");
+  const [mode, setMode] = useState<"form" | "json">("form");
+  const [original, setOriginal] = useState("");
   const [editor,     setEditor]     = useState<string>("");
   const [loading,    setLoading]    = useState(false);
   const [saving,     setSaving]     = useState(false);
@@ -452,26 +459,43 @@ const Admin = () => {
 
   useEffect(() => {
     if (!authed) return;
+    let cancelled = false;
     setLoading(true);
     (async () => {
       try {
-        const r     = await adminGet(activeKey);
-        let value   = r.value;
-        if (value == null) value = await loadFallback(activeKey);
-        setEditor(JSON.stringify(value ?? {}, null, 2));
+        const [r, fallback] = await Promise.all([adminGet(activeKey), loadFallback(activeKey)]);
+        let value = r.value;
+        if (value == null) value = fallback;
+        if (cancelled) return;
+        const text = JSON.stringify(value ?? {}, null, 2);
+        setEditor(text);
+        setOriginal(text);
+        setEditorTemplate(fallback as ContentValue);
       } catch (e) {
         toast({ title: "Failed to load", description: (e as Error).message, variant: "destructive" });
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     })();
+    return () => { cancelled = true; };
   }, [activeKey, authed, toast]);
+
+  useEffect(() => {
+    const protect = (event: BeforeUnloadEvent) => { if (editor !== original) { event.preventDefault(); event.returnValue = ''; } };
+    const expire = () => setAuthed(false);
+    window.addEventListener('beforeunload', protect);
+    window.addEventListener('admin-session-expired', expire);
+    return () => { window.removeEventListener('beforeunload', protect); window.removeEventListener('admin-session-expired', expire); };
+  }, [editor, original]);
 
   const handleSave = async () => {
     setSaving(true);
     try {
       const parsed = JSON.parse(editor);
+      const fallback = await loadFallback(activeKey);
+      if (Array.isArray(fallback) !== Array.isArray(parsed) || (fallback && typeof fallback === 'object' && (!parsed || typeof parsed !== 'object'))) throw new Error('Keep the original collection structure. Use Edit fields for safer updates.');
       await adminSave(activeKey, parsed);
+      setOriginal(editor);
       setSavedKeys((s) => new Set(s).add(activeKey));
       toast({ title: "Saved", description: `'${activeKey}' updated. Refresh the public site.` });
     } catch (err) {
@@ -495,14 +519,14 @@ const Admin = () => {
     }
   };
 
-  const handleLogout = () => { setAdminToken(null); setAuthed(false); };
+  const handleLogout = () => { if (editor !== original && !confirm("Discard unsaved changes and sign out?")) return; setAdminToken(null); setAuthed(false); };
 
   if (!authed) {
     return <LoginCard onLogin={() => setAuthed(true)} />;
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       {/* Sticky header */}
       <header className="border-b border-border/50 bg-card/50 backdrop-blur sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -512,7 +536,7 @@ const Admin = () => {
             </div>
             <div>
               <h1 className="font-semibold text-foreground">Portfolio Admin</h1>
-              <p className="text-xs text-muted-foreground">Edit content, manage photos & CV</p>
+              <p className="text-xs text-muted-foreground">Your publishing workspace · Content, media & resume</p>
             </div>
           </div>
           <Button variant="ghost" size="sm" onClick={handleLogout}>
@@ -522,15 +546,25 @@ const Admin = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6">
+      <main className="container mx-auto px-4 py-8 max-w-7xl">
+        <div className="mb-8 flex flex-wrap justify-between items-end gap-4">
+          <div><p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold mb-2">Portfolio studio</p><h2 className="text-3xl font-bold tracking-tight">Make your next update.</h2><p className="text-muted-foreground mt-2">Edit your story, organize your work, and keep your portfolio current.</p></div>
+          <a href="/" target="_blank" rel="noreferrer" className="rounded-lg border px-4 py-2 text-sm hover:bg-muted">Open public portfolio ↗</a>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+          {[['Content collections', CONTENT_KEYS.length], ['Published overrides', savedKeys.size], ['Editing', activeKey.replace(/_/g, ' ')]].map(([label, value]) => <div key={label} className="rounded-xl border bg-card/70 p-4"><p className="text-xs text-muted-foreground">{label}</p><p className="font-semibold mt-1 capitalize truncate">{value}</p></div>)}
+        </div>
         <Tabs defaultValue="content" className="space-y-6">
-          <TabsList>
+          <TabsList className="h-auto flex flex-wrap justify-start gap-1">
             <TabsTrigger value="content">Content sections</TabsTrigger>
             <TabsTrigger value="photos">
               <Camera className="h-4 w-4 mr-1.5" />
               Photos
             </TabsTrigger>
             <TabsTrigger value="cv">CV / Resume</TabsTrigger>
+            <TabsTrigger value="contacts">Inbox</TabsTrigger>
+            <TabsTrigger value="blog">Blog</TabsTrigger>
+            <TabsTrigger value="testimonials">Testimonials</TabsTrigger>
           </TabsList>
 
           {/* ── Content Editor ── */}
@@ -539,13 +573,14 @@ const Admin = () => {
               {/* Sidebar */}
               <Card className="col-span-12 lg:col-span-3 border-border/50">
                 <CardHeader>
-                  <CardTitle className="text-sm">Sections</CardTitle>
+                  <CardTitle className="text-sm">Content library</CardTitle>
+                  <Input aria-label="Search content sections" placeholder="Find a section…" value={search} onChange={e => setSearch(e.target.value)} />
                 </CardHeader>
                 <CardContent className="space-y-1 max-h-[60vh] overflow-y-auto">
-                  {CONTENT_KEYS.map((k) => (
+                  {CONTENT_KEYS.filter(k => k.toLowerCase().includes(search.toLowerCase())).map((k) => (
                     <button
                       key={k}
-                      onClick={() => setActiveKey(k)}
+                      onClick={() => { if (editor !== original && !confirm("Discard unsaved changes?")) return; setActiveKey(k); }}
                       className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors flex items-center justify-between ${
                         activeKey === k
                           ? "bg-primary/10 text-primary font-medium"
@@ -569,21 +604,30 @@ const Admin = () => {
                       {activeKey.replace(/_/g, " ")}
                     </CardTitle>
                     <p className="text-xs text-muted-foreground mt-1">
-                      Edit the JSON below and save. Invalid JSON will be rejected.
+                      Use the form to edit fields, or switch to JSON for advanced changes.
                     </p>
                   </div>
-                  <Button onClick={handleSave} disabled={saving || loading}>
+                  <Button onClick={handleSave} disabled={saving || loading || editor === original}>
                     {saving ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <Save className="h-4 w-4 mr-2" />}
                     Save changes
                   </Button>
                 </CardHeader>
                 <CardContent>
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <Button variant={mode === 'form' ? 'secondary' : 'ghost'} size="sm" onClick={() => setMode('form')}>Edit fields</Button>
+                    <Button variant={mode === 'json' ? 'secondary' : 'ghost'} size="sm" onClick={() => setMode('json')}>JSON</Button>
+                    <Button variant="ghost" size="sm" disabled={editor === original} onClick={() => setEditor(original)}>Discard changes</Button>
+                    <span role="status" className="text-xs text-muted-foreground ml-auto">{editor === original ? 'All changes saved' : 'Unsaved changes'}</span>
+                  </div>
                   {loading ? (
                     <div className="flex items-center justify-center h-[60vh] text-muted-foreground">
                       <Loader2 className="h-6 w-6 animate-spin" />
                     </div>
+                  ) : mode === 'form' ? (
+                    <div className="max-h-[65vh] overflow-y-auto p-1">{(() => { try { return <ContentFields template={editorTemplate} value={JSON.parse(editor) as ContentValue} onChange={v => setEditor(JSON.stringify(v, null, 2))} />; } catch { return <p role="alert" className="text-destructive">Invalid JSON. Switch to JSON to correct it before saving.</p>; } })()}</div>
                   ) : (
                     <Textarea
+                      aria-label="Content JSON"
                       value={editor}
                       onChange={(e) => setEditor(e.target.value)}
                       className="font-mono text-xs h-[60vh] resize-none"
@@ -595,6 +639,9 @@ const Admin = () => {
             </div>
           </TabsContent>
 
+          <TabsContent value="contacts"><RecordManager table="contacts" /></TabsContent>
+          <TabsContent value="blog"><RecordManager table="blog_posts" /></TabsContent>
+          <TabsContent value="testimonials"><RecordManager table="testimonials" /></TabsContent>
           {/* ── Photo Manager ── */}
           <TabsContent value="photos">
             <PhotoManager />

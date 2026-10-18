@@ -200,7 +200,7 @@ const About: React.FC = () => {
 
               <CardContent className="pt-8 space-y-6 text-foreground leading-relaxed relative z-10">
                 <p className="text-lg">
-                  I am <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">{personal.name}</span>, a {personal.degree} graduate from {personal.university}. My expertise centers on <span className="text-primary font-semibold">Machine Learning</span>, <span className="text-secondary font-semibold">Deep Learning</span>, and <span className="text-accent font-semibold">Artificial Intelligence</span>—with applications in Bioinformatics, Medical Imaging, and emerging tech domains.
+                  I am <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">{personal.name}</span>, a {personal.degree} graduate from {personal.university}. My expertise centers on <span className="text-primary font-semibold">Machine Learning</span>, <span className="text-secondary font-semibold">Deep Learning</span>, and <span className="text-accent font-semibold">Artificial Intelligence</span>—with research in sentiment analysis, time-series forecasting and explainable intrusion detection.
                 </p>
 
                 <p className="text-base text-muted-foreground">
@@ -208,7 +208,7 @@ const About: React.FC = () => {
                 </p>
 
                 <p className="text-base text-muted-foreground">
-                  As an R&D Engineer and active community leader, I'm committed to advancing the field of AI through continuous learning, mentorship, and collaboration. I'm eager to pursue higher studies and contribute to cutting-edge research that shapes the future of technology.
+                  As a Junior Software Engineer at Scalius Labs, AI instructor and research assistant, I connect practical software development with research and education. I also support RUET IoT Club as Alumni Affairs Advisor after my presidency ended in June 2026. My career goals include further study and collaborative research in explainable and trustworthy AI.
                 </p>
               </CardContent>
             </Card>

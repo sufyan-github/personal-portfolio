@@ -1,14 +1,18 @@
-import { lazy, Suspense } from "react";
+import heroFallback from "@/data/hero.json";
+import contactFallback from "@/data/contactInfo.json";
+import settingsFallback from "@/data/site_settings.json";
+import { useContent } from "@/lib/contentClient";
+import { lazy, Suspense, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ProfessionalBackground from "@/components/ProfessionalBackground";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackToTop } from "@/components/BackToTop";
-import { Toaster } from "@/components/ui/toaster";
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import translations from "@/data/translations.json";
+import translationsFallback from "@/data/translations.json";
 
 // Lazy-load below-the-fold sections to speed up initial paint & TTI
 const ImpactStats = lazy(() => import("@/components/ImpactStats"));
@@ -41,13 +45,32 @@ const ResumeDownload = lazy(() => import("@/components/ResumeDownload"));
 
 const SectionFallback = () => <div className="min-h-[200px]" aria-hidden />;
 
+const SectionHashScroll = () => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (!hash) return;
+    const frame = requestAnimationFrame(() => {
+      const target = document.getElementById(hash.slice(1));
+      target?.scrollIntoView({ block: "start", behavior: "auto" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [hash]);
+  return null;
+};
+
 const Index = () => {
+  const { value: hero } = useContent("hero", heroFallback);
+  const { value: contacts } = useContent("contactInfo", contactFallback);
+  const contactLink = (icon: string) => contacts.find(item => item.icon === icon)?.link || '#contact';
+  const contactValue = (icon: string) => contacts.find(item => item.icon === icon)?.value || '';
+  const { value: settings } = useContent("site_settings", settingsFallback);
+  const { value: translations } = useContent("translations", translationsFallback);
   const { language } = useLanguage();
-  const t = (translations as any)[language];
+  const t = translations[language];
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
       {/* Lightweight professional animated background */}
-      <ProfessionalBackground />
+      {settings.animatedBackground && <ProfessionalBackground />}
 
       {/* Scroll Progress Bar */}
       <ScrollProgress />
@@ -55,45 +78,45 @@ const Index = () => {
       {/* Content */}
       <div className="relative z-10">
         <Navigation />
-        <main>
+        <main id="main" tabIndex={-1}>
           <div id="home">
             <Hero />
           </div>
           <Suspense fallback={<SectionFallback />}>
             <ImpactStats />
             <OrgLogos />
-            <div id="about">
+            <div>
               <About />
             </div>
             <CareerTimeline />
             <div id="academic">
               <Academic />
             </div>
-            <div id="experience">
+            <div>
               <Experience />
             </div>
             <Leadership />
-            <div id="industrial-attachment">
+            <div>
               <IndustrialAttachment />
             </div>
-            <div id="skills">
+            <div>
               <Skills />
               <LanguagesSkills />
               <GitHubHeatmap />
             </div>
-            <div id="projects">
+            <div>
               <Projects />
             </div>
-            <div id="research">
+            <div>
               <Research />
             </div>
-            <div id="certifications">
+            <div>
               <Certifications />
             </div>
-            <div id="achievements">
+            <div>
               <Achievements />
             </div>
-            <div id="memberships">
+            <div>
               <Memberships />
             </div>
             <CommunityImpact />
@@ -101,13 +124,13 @@ const Index = () => {
               <CodingProfiles />
               <TechnicalFootprint />
             </div>
-            <div id="gallery">
+            <div>
               <Gallery />
             </div>
             <div id="testimonials">
               <Testimonials />
             </div>
-            <div id="blog">
+            <div>
               <Blog />
             </div>
             {/* Resume CTA banner */}
@@ -126,9 +149,10 @@ const Index = () => {
                 </div>
               </div>
             </section>
-            <div id="contact">
+            <div>
               <Contact />
             </div>
+            <SectionHashScroll />
           </Suspense>
         </main>
 
@@ -139,13 +163,13 @@ const Index = () => {
             <div className="grid md:grid-cols-12 gap-8 lg:gap-12 mb-12">
               {/* About Section */}
               <div className="md:col-span-12 lg:col-span-4">
-                <h3 className="text-2xl font-bold gradient-text mb-4 font-display">Md. Abu Sufyan</h3>
+                <h3 className="text-2xl font-bold gradient-text mb-4 font-display">{hero.name}</h3>
                 <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
                   {t.footer.about}
                 </p>
                 <div className="flex gap-3">
                   <a
-                    href="https://github.com/sufyan-github"
+                    href={contactLink("Github")}
                     target="_blank"
                     rel="noreferrer"
                     className="p-3 rounded-lg bg-muted hover:bg-primary/20 border border-border hover:border-primary/50 transition-all hover:scale-110"
@@ -154,7 +178,7 @@ const Index = () => {
                     <Github className="h-5 w-5" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/md-abu-sufyan"
+                    href={contactLink("Linkedin")}
                     target="_blank"
                     rel="noreferrer"
                     className="p-3 rounded-lg bg-muted hover:bg-primary/20 border border-border hover:border-primary/50 transition-all hover:scale-110"
@@ -163,7 +187,7 @@ const Index = () => {
                     <Linkedin className="h-5 w-5" />
                   </a>
                   <a
-                    href="mailto:abusufyan.cse20@gmail.com"
+                    href={contactLink("Mail")}
                     className="p-3 rounded-lg bg-muted hover:bg-primary/20 border border-border hover:border-primary/50 transition-all hover:scale-110"
                     aria-label="Email"
                   >
@@ -268,14 +292,14 @@ const Index = () => {
                 <h3 className="text-lg font-semibold mb-4 text-foreground">{t.footer.getInTouch}</h3>
                 <div className="space-y-3 text-sm">
                   <a 
-                    href="mailto:abusufyan.cse20@gmail.com"
+                    href={contactLink("Mail")}
                     className="flex items-start text-muted-foreground hover:text-primary transition-colors group"
                   >
                     <Mail className="h-4 w-4 mr-2 mt-0.5 text-primary group-hover:scale-110 transition-transform" />
                     <span className="break-all">abusufyan.cse20@gmail.com</span>
                   </a>
                   <a 
-                    href="tel:+8801580352238"
+                    href={contactLink("Phone")}
                     className="flex items-start text-muted-foreground hover:text-primary transition-colors group"
                   >
                     <Phone className="h-4 w-4 mr-2 mt-0.5 text-primary group-hover:scale-110 transition-transform" />
@@ -283,7 +307,7 @@ const Index = () => {
                   </a>
                   <div className="flex items-start text-muted-foreground">
                     <MapPin className="h-4 w-4 mr-2 mt-0.5 text-primary" />
-                    <span>Rajshahi, Bangladesh</span>
+                    <span>{contactValue("MapPin")}</span>
                   </div>
                   
                   {/* Additional Info */}
@@ -311,7 +335,7 @@ const Index = () => {
             <div className="pt-8 border-t border-border">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-sm text-muted-foreground text-center md:text-left">
-                  © {new Date().getFullYear()} Md. Abu Sufyan. {t.footer.copyright}
+                  © {new Date().getFullYear()} {hero.name}. {t.footer.copyright}
                 </p>
                 <div className="flex items-center gap-4 text-xs text-muted-foreground">
                   <a href="/sitemap" className="hover:text-primary transition-colors">
@@ -330,15 +354,14 @@ const Index = () => {
       
       {/* Analytics + AI Chatbot (lazy) */}
       <Suspense fallback={null}>
-        <Analytics />
-        <PortfolioChatbot />
+        {settings.analyticsEnabled && <Analytics />}
+        {settings.assistantEnabled && <PortfolioChatbot />}
       </Suspense>
 
       {/* Back to Top Button */}
       <BackToTop />
       
-      {/* Toast Notifications */}
-      <Toaster />
+
     </div>
   );
 };

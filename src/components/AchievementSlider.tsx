@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Trophy, Pause, Play } from "lucide-react";
 import { fetchPublicPhotos, PortfolioPhoto } from "@/lib/contentClient";
 
@@ -106,8 +106,8 @@ const FALLBACK_SLIDES: Omit<PortfolioPhoto, "id" | "created_at" | "updated_at">[
   },
   {
     url: "/gallery/ruet-cs-orientation-5.jpg",
-    caption: "President – RUET Computing Society",
-    tagline: "Presiding over the Members Orientation program, welcoming 100+ new tech enthusiasts to the society",
+    caption: "Former President – RUET Computing Society",
+    tagline: "Presiding over the Members Orientation program, welcoming new members to the society",
     category: "hero",
     event_name: "RUET CS Orientation 2025",
     display_order: 12,
@@ -121,55 +121,39 @@ const AchievementSlider: React.FC = () => {
   const [slides, setSlides] = useState<(PortfolioPhoto | typeof FALLBACK_SLIDES[0])[]>(FALLBACK_SLIDES);
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const autoplayPaused = paused || hovered || focused || !!reducedMotion;
   const [imgErrors, setImgErrors] = useState<Set<number>>(new Set());
 
   // Load from DB (falls back to static if empty)
   useEffect(() => {
     fetchPublicPhotos("hero").then((photos) => {
-      if (photos.length > 0) setSlides(photos);
+      if (photos !== null) { setSlides(photos); setCurrent(0); }
     });
   }, []);
 
   const goTo = useCallback(
-    (index: number, dir: number) => {
-      setDirection(dir);
+    (index: number) => {
       setCurrent((index + slides.length) % slides.length);
     },
     [slides.length],
   );
 
-  const next = useCallback(() => goTo(current + 1, 1), [current, goTo]);
-  const prev = useCallback(() => goTo(current - 1, -1), [current, goTo]);
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
 
   // Auto-advance
   useEffect(() => {
-    if (paused || slides.length <= 1) return;
+    if (autoplayPaused || slides.length <= 1) return;
     const timer = setInterval(next, SLIDE_INTERVAL);
     return () => clearInterval(timer);
-  }, [paused, next, slides.length]);
+  }, [autoplayPaused, next, slides.length]);
 
   const slide = slides[current];
+  if (!slide) return null;
 
-  const slideVariants: import("framer-motion").Variants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? "100%" : "-100%",
-      opacity: 0,
-      scale: 0.95,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-    },
-    exit: (dir: number) => ({
-      x: dir > 0 ? "-100%" : "100%",
-      opacity: 0,
-      scale: 0.95,
-      transition: { duration: 0.5, ease: "easeIn" },
-    }),
-  };
 
   return (
     <div className="w-full">
@@ -179,21 +163,15 @@ const AchievementSlider: React.FC = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.5 }}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onFocusCapture={() => setFocused(true)}
+        onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false); }}
       >
         {/* Main slide area */}
         <div className="relative rounded-2xl overflow-hidden aspect-[16/10] bg-gradient-to-br from-card/80 to-card/40 ring-2 ring-primary/20 shadow-2xl shadow-primary/30">
-          <AnimatePresence custom={direction} mode="wait">
-            <motion.div
-              key={current}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              className="absolute inset-0"
-            >
+          {/* Keep active media visible independently of animation lifecycle state. */}
+          <div key={current} className="absolute inset-0">
               {!imgErrors.has(current) ? (
                 <img
                   src={slide.url}
@@ -214,11 +192,7 @@ const AchievementSlider: React.FC = () => {
 
               {/* Caption text */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
+                <div>
                   {slide.event_name && (
                     <span className="inline-block mb-2 px-3 py-1 rounded-full bg-primary/30 backdrop-blur-sm text-primary text-xs font-semibold border border-primary/40">
                       {slide.event_name}
@@ -230,10 +204,9 @@ const AchievementSlider: React.FC = () => {
                   <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl drop-shadow">
                     {slide.tagline}
                   </p>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+          </div>
 
           {/* Prev / Next buttons */}
           <button
@@ -255,6 +228,7 @@ const AchievementSlider: React.FC = () => {
           <button
             onClick={() => setPaused((p) => !p)}
             aria-label={paused ? "Resume autoplay" : "Pause autoplay"}
+            aria-pressed={paused}
             className="absolute top-3 right-3 z-20 p-2 rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-black/60 transition-all border border-white/10"
           >
             {paused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
@@ -266,7 +240,7 @@ const AchievementSlider: React.FC = () => {
           {slides.map((s, i) => (
             <motion.button
               key={i}
-              onClick={() => goTo(i, i > current ? 1 : -1)}
+              onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               className={`relative rounded-full transition-all duration-300 overflow-hidden ${
                 i === current
@@ -280,7 +254,7 @@ const AchievementSlider: React.FC = () => {
         </div>
 
         {/* Progress bar */}
-        {!paused && (
+        {!autoplayPaused && (
           <motion.div
             className="absolute bottom-0 left-0 h-0.5 bg-primary rounded-full"
             initial={{ width: "0%" }}

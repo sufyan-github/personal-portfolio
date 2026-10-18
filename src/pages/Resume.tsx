@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Download, ExternalLink, Loader2 } from "lucide-react";
 import { fetchContent } from "@/lib/contentClient";
 
-// Load pdf.js worker from CDN (matches the installed pdfjs-dist version).
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+// Bundle a matching pdf.js worker so the preview does not depend on a CDN.
+pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString();
 
 const FALLBACK_URL = "/assets/cv/Abu_Sufyan_CV.pdf";
 

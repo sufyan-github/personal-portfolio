@@ -12,7 +12,7 @@ type Message = {
 };
 
 const SUGGESTED_QUESTIONS = [
-  "What does Abu Sufyan teach at BCC Rajshahi?",
+  "What are Abu Sufyan’s current professional roles?",
   "Show me his strongest AI/ML projects",
   "What's his research & publications?",
   "How can I hire or collaborate with him?",
@@ -23,7 +23,7 @@ export const PortfolioChatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm Abu Sufyan's AI assistant. Ask me anything about his background, skills, projects, or experience! 👋",
+      content: "Hi! I’m Abu Sufyan’s portfolio guide. I can share reviewed details about his background, skills, projects, and experience. 👋",
     },
   ]);
   const [input, setInput] = useState("");
@@ -33,7 +33,8 @@ export const PortfolioChatbot: React.FC = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      const viewport = scrollRef.current.querySelector("[data-radix-scroll-area-viewport]");
+      if (viewport) viewport.scrollTop = viewport.scrollHeight;
     }
   }, [messages]);
 
@@ -49,7 +50,7 @@ export const PortfolioChatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/portfolio-chat`;
+      const CHAT_URL = import.meta.env.VITE_ASSISTANT_URL || `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/portfolio-chat`;
       
       const resp = await fetch(CHAT_URL, {
         method: "POST",
@@ -57,7 +58,7 @@ export const PortfolioChatbot: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({ messages: newMessages.slice(-20) }),
       });
 
       if (!resp.ok) {
@@ -125,7 +126,7 @@ export const PortfolioChatbot: React.FC = () => {
     } catch (error) {
       console.error("Chat error:", error);
       toast.error("Failed to get response. Please try again.");
-      setMessages((prev) => prev.slice(0, -1));
+      setMessages((prev) => prev.filter((message) => message.content !== ""));
     } finally {
       setIsLoading(false);
     }
@@ -151,7 +152,7 @@ export const PortfolioChatbot: React.FC = () => {
           onClick={() => setIsOpen(true)}
           size="lg"
           className="fixed bottom-6 right-6 h-12 w-12 rounded-full shadow-glow bg-gradient-primary hover:scale-110 transition-transform z-50 group"
-          aria-label="Open AI Assistant"
+          aria-label="Open Portfolio Assistant"
         >
           <MessageCircle className="h-5 w-5 text-white" />
           <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-yellow-300 animate-pulse" />
@@ -160,7 +161,7 @@ export const PortfolioChatbot: React.FC = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-96 h-[600px] shadow-2xl border-2 border-primary/20 bg-background/95 backdrop-blur-xl z-50 flex flex-col animate-scale-in overflow-hidden">
+        <Card className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 max-h-[calc(100dvh-2rem)] h-[600px] shadow-2xl border-2 border-primary/20 bg-background/95 backdrop-blur-xl z-50 flex flex-col animate-scale-in overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-primary p-4 flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -169,13 +170,14 @@ export const PortfolioChatbot: React.FC = () => {
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
               </div>
               <div className="text-white">
-                <h3 className="font-bold">AI Assistant</h3>
-                <p className="text-xs opacity-90">Powered by Gemini</p>
+                <h3 className="font-bold">Portfolio Assistant</h3>
+                <p className="text-xs opacity-90">Portfolio guide</p>
               </div>
             </div>
             <Button
               variant="ghost"
               size="sm"
+              aria-label="Close Portfolio Assistant"
               onClick={() => setIsOpen(false)}
               className="text-white hover:bg-white/20"
             >
@@ -244,11 +246,14 @@ export const PortfolioChatbot: React.FC = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                aria-label="Message to Portfolio Assistant"
+                maxLength={2000}
                 placeholder="Ask me anything..."
                 disabled={isLoading}
-                className="flex-1 px-4 py-2 rounded-full bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+                className="min-w-0 flex-1 px-4 py-2 rounded-full bg-muted border border-border focus:outline-none focus:ring-2 focus:ring-primary text-sm"
               />
               <Button
+                aria-label="Send chat message"
                 type="submit"
                 size="sm"
                 disabled={!input.trim() || isLoading}

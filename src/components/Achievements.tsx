@@ -14,6 +14,9 @@ import {
   TrendingUp,
   Zap,
 } from 'lucide-react';
+import certificationsData from "@/data/certifications.json";
+import publicationsData from "@/data/publications.json";
+import communityData from "@/data/community_impact.json";
 import achievementsData from '@/data/achievements.json';
 import { useContent } from "@/lib/contentClient";
 
@@ -33,6 +36,8 @@ const Achievements = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   
   const { value: source } = useContent<typeof achievementsData>("achievements", achievementsData);
+  const { value: certifications } = useContent("certifications", certificationsData);
+  const { value: publications } = useContent("publications", publicationsData);
   const achievements = source.map(a => ({
     ...a,
     icon: iconMap[a.icon as keyof typeof iconMap] || Trophy,
@@ -72,7 +77,7 @@ const Achievements = () => {
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-yellow-500/10 to-yellow-500/5 backdrop-blur-sm border-yellow-500/20 group">
             <CardContent className="p-4 md:p-6">
               <Trophy className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 md:mb-3 text-yellow-500 group-hover:scale-110 transition-transform" />
-              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">8+</div>
+              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{achievements.length}</div>
               <div className="text-xs md:text-sm text-muted-foreground font-medium">
                 Achievements
               </div>
@@ -82,9 +87,9 @@ const Achievements = () => {
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-blue-500/10 to-blue-500/5 backdrop-blur-sm border-blue-500/20 group">
             <CardContent className="p-4 md:p-6">
               <Award className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 md:mb-3 text-blue-500 group-hover:scale-110 transition-transform" />
-              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">7+</div>
+              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{certifications.length}</div>
               <div className="text-xs md:text-sm text-muted-foreground font-medium">
-                Certifications
+                Learning & Credential Records
               </div>
             </CardContent>
           </Card>
@@ -92,7 +97,7 @@ const Achievements = () => {
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-purple-500/10 to-purple-500/5 backdrop-blur-sm border-purple-500/20 group">
             <CardContent className="p-4 md:p-6">
               <Star className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 md:mb-3 text-purple-500 group-hover:scale-110 transition-transform" />
-              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">3</div>
+              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{publications.length}</div>
               <div className="text-xs md:text-sm text-muted-foreground font-medium">
                 Publications
               </div>
@@ -102,9 +107,9 @@ const Achievements = () => {
           <Card className="text-center hover-lift glow-border bg-gradient-to-br from-green-500/10 to-green-500/5 backdrop-blur-sm border-green-500/20 group">
             <CardContent className="p-4 md:p-6">
               <Users className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 md:mb-3 text-green-500 group-hover:scale-110 transition-transform" />
-              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">50+</div>
+              <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{communityData.stats[0].value}</div>
               <div className="text-xs md:text-sm text-muted-foreground font-medium">
-                Students Mentored
+                Teaching Focus
               </div>
             </CardContent>
           </Card>
@@ -116,6 +121,8 @@ const Achievements = () => {
             <Badge
               key={category}
               variant={activeCategory === category ? "default" : "outline"}
+              role="button" tabIndex={0}
+              onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveCategory(category); } }}
               className={`cursor-pointer hover-lift px-5 py-2.5 text-sm font-medium transition-all ${
                 activeCategory === category
                   ? 'bg-gradient-primary text-white shadow-lg shadow-primary/50'

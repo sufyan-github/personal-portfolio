@@ -1,7 +1,9 @@
-import data from "@/data/community_impact.json";
+import { useContent } from "@/lib/contentClient";
+import communityFallback from "@/data/community_impact.json";
 import { HeartHandshake } from "lucide-react";
 
 const CommunityImpact = () => {
+  const { value: data } = useContent("community_impact", communityFallback);
   return (
     <section id="community" className="py-20">
       <div className="container mx-auto px-6">

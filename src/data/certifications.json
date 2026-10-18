@@ -5,10 +5,15 @@
     "issuer": "Bangladesh Chemical Society",
     "date": "2021-08-27",
     "description": "Secured 22nd (19) position jointly in the 11th Bangladesh Chemistry Olympiad 2020 (Preliminary Round) from Gurudoyal Govt College, Kishorganj.",
-    "image": "/certs/chemistry_olympiad.png",
+    "image": "/certs/reviewed-1.jpg",
     "credentialId": "11thBdChO2020/Preli/03-12-2021-3282",
-    "verificationUrl": "#",
-    "skills": ["Chemistry", "Olympiad", "Problem Solving"]
+    "verificationUrl": "",
+    "skills": [
+      "Chemistry",
+      "Olympiad",
+      "Problem Solving"
+    ],
+    "kind": "Recognition"
   },
   {
     "id": 2,
@@ -16,32 +21,48 @@
     "issuer": "Duke University (Coursera)",
     "date": "2025-02-16",
     "description": "Successfully completed Data Science Math Skills — an online course authorized by Duke University and offered through Coursera.",
-    "image": "/certs/data_science_math_skill.png",
+    "image": "/certs/reviewed-2.jpg",
     "credentialId": "",
     "verificationUrl": "https://coursera.org/verify/M7FR7S3Y9N20",
-    "skills": ["Mathematics", "Data Science", "Statistics"]
+    "skills": [
+      "Mathematics",
+      "Data Science",
+      "Statistics"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 3,
     "title": "Crash Course on Python",
     "issuer": "Interactive Cares",
-    "date": "2024",
+    "date": "Not stated",
     "description": "Crash course covering Python fundamentals and practical problem solving.",
-    "image": "/certs/python_crash_course.png",
+    "image": "/certs/reviewed-3.jpg",
     "credentialId": "b7e46dc9-cbdb-4698-8a74-137156404f09",
-    "verificationUrl": "#",
-    "skills": ["Python", "Programming Basics"]
+    "verificationUrl": "",
+    "skills": [
+      "Python",
+      "Programming Basics"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 4,
-    "title": "Basic Networking Exam",
+    "title": "Networking Basics — Knowledge Check",
     "issuer": "Cisco Networking Academy",
-    "date": "2024",
-    "description": "Successfully completed a fundamental networking exam covering networking concepts, protocols, and troubleshooting.",
-    "image": "/certs/cisco_basic_networking.png",
+    "date": "2024-10-13",
+    "description": "Cisco Networking Academy knowledge-check result: score 82. This is an assessment result, not a Cisco professional certification.",
+    "image": "/certs/summary-4.svg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Networking", "TCP/IP", "Routing", "Security", "Troubleshooting"]
+    "verificationUrl": "",
+    "skills": [
+      "Networking",
+      "TCP/IP",
+      "Routing",
+      "Security",
+      "Troubleshooting"
+    ],
+    "kind": "Assessment"
   },
   {
     "id": 5,
@@ -49,10 +70,15 @@
     "issuer": "RUET CSE / BCC EDGE Project",
     "date": "2025-02-17",
     "description": "Completed 80-hour PHP (Laravel) training held May 2024–Feb 2025 under the EDGE Project.",
-    "image": "/certs/edge_php_laravel_2025.png",
+    "image": "/certs/reviewed-5.jpg",
     "credentialId": "EDGE-DSTS-116-6652-00007",
-    "verificationUrl": "#",
-    "skills": ["PHP", "Laravel", "Web Development"]
+    "verificationUrl": "",
+    "skills": [
+      "PHP",
+      "Laravel",
+      "Web Development"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 6,
@@ -60,87 +86,128 @@
     "issuer": "Simplilearn SkillUp",
     "date": "2025-06-11",
     "description": "Foundation of Agile values, Scrum roles, events and artifacts.",
-    "image": "/certs/agile_scrum_foundation_2025.png",
+    "image": "/certs/reviewed-6.jpg",
     "credentialId": "8453784",
-    "verificationUrl": "#",
-    "skills": ["Agile", "Scrum", "Project Management"]
+    "verificationUrl": "",
+    "skills": [
+      "Agile",
+      "Scrum",
+      "Project Management"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 7,
     "title": "Introduction to Machine Learning",
     "issuer": "Kaggle",
     "date": "2024-06-30",
-    "description": "Completed an introductory course on machine learning, covering supervised and unsupervised learning techniques, algorithms, and model evaluation.",
-    "image": "/certs/kaggle_intro_ml_2024-06-30.png",
+    "description": "Completed the Kaggle Intro to Machine Learning course on 30 June 2024 and again on 9 July 2024. Recorded once to avoid counting duplicate course completions.",
+    "image": "/certs/reviewed-7.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Machine Learning", "Supervised Learning", "Unsupervised Learning", "Model Evaluation"]
+    "verificationUrl": "",
+    "skills": [
+      "Machine Learning",
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Model Evaluation"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 8,
     "title": "Intro to Deep Learning",
     "issuer": "Kaggle",
-    "date": "2024-07-09",
-    "description": "Completed the Intro to Deep Learning course (second completion).",
-    "image": "/certs/kaggle_intro_dl.png",
+    "date": "2025-09-21",
+    "description": "Completed the Kaggle Intro to Deep Learning course.",
+    "image": "/certs/reviewed-8.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Deep Learning", "Modeling", "Neural Network"]
+    "verificationUrl": "",
+    "skills": [
+      "Deep Learning",
+      "Modeling",
+      "Neural Network"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 9,
     "title": "Prompt Engineering Applications",
     "issuer": "Simplilearn SkillUp",
-    "date": "2025-06-12",
-    "description": "Online course on prompt engineering techniques and applications.",
-    "image": "/certs/prompt_engineering_2025.png",
-    "credentialId": "8456834",
-    "verificationUrl": "#",
-    "skills": ["Prompt Engineering", "LLMs"]
+    "date": "2025-09-29",
+    "description": "Course completions dated 12 June and 29 September 2025; consolidated as one course.",
+    "image": "/certs/reviewed-9.jpg",
+    "credentialId": "9070891; earlier completion 8456834",
+    "verificationUrl": "",
+    "skills": [
+      "Prompt Engineering",
+      "LLMs"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 10,
-    "title": "AI Agent for Beginners",
-    "issuer": "—",
-    "date": "2025",
+    "title": "AI Agents for Beginners",
+    "issuer": "Simplilearn SkillUp",
+    "date": "2025-05-26",
     "description": "Introductory certificate on building and understanding AI agents.",
-    "image": "/certs/ai_agent_beginners.png",
-    "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["AI Agents", "GenAI"]
+    "image": "/certs/reviewed-10.jpg",
+    "credentialId": "8392866",
+    "verificationUrl": "",
+    "skills": [
+      "AI Agents",
+      "GenAI"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 11,
     "title": "Generative AI for Educators",
     "issuer": "Google",
-    "date": "2025",
+    "date": "2025-07-04",
     "description": "Certificate for the Generative AI for Educators program.",
-    "image": "/certs/gen_ai_educators_google.png",
+    "image": "/certs/reviewed-11.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Generative AI", "Education Technology"]
+    "verificationUrl": "",
+    "skills": [
+      "Generative AI",
+      "Education Technology"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 12,
     "title": "App Development with Flutter",
     "issuer": "Ostad",
-    "date": "2024",
+    "date": "Not stated",
     "description": "Successfully completed a hands-on course on Flutter app development, covering UI/UX design, state management, and backend integration.",
-    "image": "/certs/flutter_ostad_2024.png",
+    "image": "/certs/reviewed-12.jpg",
     "credentialId": "C11352",
-    "verificationUrl": "#",
-    "skills": ["Flutter", "Dart", "Mobile Development", "UI/UX", "State Management"]
+    "verificationUrl": "",
+    "skills": [
+      "Flutter",
+      "Dart",
+      "Mobile Development",
+      "UI/UX",
+      "State Management"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 13,
     "title": "Certified Associate in Project Management (CAPM)® Certification Course",
     "issuer": "Simplilearn SkillUp",
     "date": "2024-12-14",
-    "description": "Completed a certification course on project management principles, methodologies, and best practices according to PMI standards.",
-    "image": "/certs/capm_course_2024.png",
-    "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Project Management", "Risk Assessment", "Stakeholder Management", "PMI Standards"]
+    "description": "Simplilearn SkillUp course completion in project management. This is not the PMI CAPM professional certification.",
+    "image": "/certs/reviewed-13.jpg",
+    "credentialId": "7669704",
+    "verificationUrl": "",
+    "skills": [
+      "Project Management",
+      "Risk Assessment",
+      "Stakeholder Management",
+      "PMI Standards"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 14,
@@ -148,10 +215,16 @@
     "issuer": "Passport to Earning Bangladesh (Generation Unlimited)",
     "date": "2024-05-21",
     "description": "Learned key skills in workplace communication, professional etiquette, and effective collaboration in business environments.",
-    "image": "/certs/workplace_communication_essentials_2024.png",
+    "image": "/certs/reviewed-14.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Communication", "Professional Etiquette", "Collaboration", "Business Communication"]
+    "verificationUrl": "",
+    "skills": [
+      "Communication",
+      "Professional Etiquette",
+      "Collaboration",
+      "Business Communication"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 15,
@@ -159,10 +232,17 @@
     "issuer": "Passport to Earning Bangladesh (Generation Unlimited)",
     "date": "2024-12-17",
     "description": "Focused on problem-solving techniques, critical thinking, and structuring problems effectively for optimal solutions.",
-    "image": "/certs/art_of_problem_definition_2024.png",
+    "image": "/certs/reviewed-15.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Problem Solving", "Critical Thinking", "Analysis", "Strategy", "Problem Structuring"]
+    "verificationUrl": "",
+    "skills": [
+      "Problem Solving",
+      "Critical Thinking",
+      "Analysis",
+      "Strategy",
+      "Problem Structuring"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 16,
@@ -170,21 +250,33 @@
     "issuer": "UNDP Bangladesh",
     "date": "2025-02-05",
     "description": "Gained knowledge about the Sustainable Development Goals (SDGs), their implementation, and impact on global development.",
-    "image": "/certs/sdg_primer_2025.png",
+    "image": "/certs/reviewed-16.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["SDGs", "Policy", "Social Impact", "Global Development", "Sustainability"]
+    "verificationUrl": "",
+    "skills": [
+      "SDGs",
+      "Policy",
+      "Social Impact",
+      "Global Development",
+      "Sustainability"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 17,
     "title": "Certificate of Registration — BEAR Summit & National Semiconductor Symposium 2025",
     "issuer": "BEAR Summit / National Semiconductor Symposium",
-    "date": "2025-07-17",
+    "date": "2025",
     "description": "Registration completed for the BEAR Summit and National Semiconductor Symposium 2025 at NST Complex, Dhaka (16–17 July 2025).",
-    "image": "/certs/semiconductor_2025.png",
+    "image": "/certs/reviewed-17.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Semiconductor", "Conference", "Registration"]
+    "verificationUrl": "",
+    "skills": [
+      "Semiconductor",
+      "Conference",
+      "Registration"
+    ],
+    "kind": "Registration"
   },
   {
     "id": 18,
@@ -192,10 +284,14 @@
     "issuer": "ICT Olympiad Bangladesh",
     "date": "2025",
     "description": "Participation certificate based on active and significant learning.",
-    "image": "/certs/ict_olympiad_participant.png",
+    "image": "/certs/summary-18.svg",
     "credentialId": "2025579056",
-    "verificationUrl": "#",
-    "skills": ["Community", "Engagement"]
+    "verificationUrl": "",
+    "skills": [
+      "Community",
+      "Engagement"
+    ],
+    "kind": "Participation"
   },
   {
     "id": 19,
@@ -203,10 +299,14 @@
     "issuer": "FutureNation / UNDP Bangladesh",
     "date": "2025-09-03",
     "description": "Participant certificate for the IELTS Speaking Module training.",
-    "image": "/certs/ielts_speaking_module_2025.png",
+    "image": "/certs/reviewed-19.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["IELTS Speaking", "Communication"]
+    "verificationUrl": "",
+    "skills": [
+      "IELTS Speaking",
+      "Communication"
+    ],
+    "kind": "Participation"
   },
   {
     "id": 20,
@@ -214,10 +314,15 @@
     "issuer": "Simplilearn SkillUp",
     "date": "2025-05-26",
     "description": "Using ChatGPT to enhance support workflows and customer experience.",
-    "image": "/certs/chatgpt_customer_support_2025.png",
+    "image": "/certs/reviewed-20.jpg",
     "credentialId": "8392838",
-    "verificationUrl": "#",
-    "skills": ["Customer Support", "ChatGPT", "Automation"]
+    "verificationUrl": "",
+    "skills": [
+      "Customer Support",
+      "ChatGPT",
+      "Automation"
+    ],
+    "kind": "Course completion"
   },
   {
     "id": 21,
@@ -225,21 +330,29 @@
     "issuer": "Typing.com",
     "date": "2024-11-04",
     "description": "Typing speed test result (1 minute).",
-    "image": "/certs/typing_37wpm_2024.png",
+    "image": "/certs/reviewed-21.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Typing", "Productivity"]
+    "verificationUrl": "https://www.typing.com/student/verify#320868269-162354806",
+    "skills": [
+      "Typing",
+      "Productivity"
+    ],
+    "kind": "Assessment"
   },
   {
     "id": 22,
     "title": "Typing Test — 38 WPM (94%)",
     "issuer": "Typing.com",
     "date": "2024-11-06",
-    "description": "Typing speed test result (1 minute).",
-    "image": "/certs/typing_38wpm_2024.png",
+    "description": "One-page typing test result.",
+    "image": "/certs/reviewed-22.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Typing", "Productivity"]
+    "verificationUrl": "https://www.typing.com/student/verify#321181729-162354806",
+    "skills": [
+      "Typing",
+      "Productivity"
+    ],
+    "kind": "Assessment"
   },
   {
     "id": 23,
@@ -247,10 +360,16 @@
     "issuer": "FutureNation, UNDP",
     "date": "2026-02-16",
     "description": "Recognized for outstanding dedication and commitment as a Campus Volunteer for Futurenation, contributing to youth upskilling and community development initiatives.",
-    "image": "/certs/futurenation_volunteer_recognition.jpg",
+    "image": "/certs/reviewed-23.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Volunteering", "Youth Development", "Community Impact", "UNDP"]
+    "verificationUrl": "",
+    "skills": [
+      "Volunteering",
+      "Youth Development",
+      "Community Impact",
+      "UNDP"
+    ],
+    "kind": "Recognition"
   },
   {
     "id": 24,
@@ -258,9 +377,233 @@
     "issuer": "JAAGO Foundation Trust",
     "date": "2025-12",
     "description": "Successfully participated in the Divisional Level Youth Training Session as Trainer conducted under the 'Ekannor Jaagoron (Rise of 51)' initiative to empower youth and women.",
-    "image": "/certs/jaago_youth_trainer.jpg",
+    "image": "/certs/reviewed-24.jpg",
     "credentialId": "",
-    "verificationUrl": "#",
-    "skills": ["Training", "Youth Empowerment", "Civic Awareness", "Social Impact"]
+    "verificationUrl": "",
+    "skills": [
+      "Training",
+      "Youth Empowerment",
+      "Civic Awareness",
+      "Social Impact"
+    ],
+    "kind": "Participation"
+  },
+  {
+    "id": 25,
+    "title": "Basics of Automation Anywhere",
+    "issuer": "Simplilearn SkillUp",
+    "date": "2025-09-29",
+    "credentialId": "9070860",
+    "skills": [
+      "Automation"
+    ],
+    "description": "Course completion in automation fundamentals.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-25.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 26,
+    "title": "Introduction to C++",
+    "issuer": "Simplilearn SkillUp",
+    "date": "2025-09-30",
+    "credentialId": "9075980",
+    "skills": [
+      "C++"
+    ],
+    "description": "Introductory C++ course completion.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-26.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 27,
+    "title": "Claude 101",
+    "issuer": "Anthropic",
+    "date": "Not stated",
+    "credentialId": "",
+    "skills": [
+      "Generative AI",
+      "Claude"
+    ],
+    "description": "Course completion; no issue date or credential ID stated.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-27.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 28,
+    "title": "GitHub Basics",
+    "issuer": "Simplilearn SkillUp",
+    "date": "2025-09-30",
+    "credentialId": "9073355",
+    "skills": [
+      "Git",
+      "GitHub"
+    ],
+    "description": "Course completion in GitHub fundamentals.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-28.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 29,
+    "title": "Google Sheets",
+    "issuer": "Google Cloud / Simplilearn SkillUp",
+    "date": "2025-09-30",
+    "credentialId": "9072764",
+    "skills": [
+      "Spreadsheets"
+    ],
+    "description": "Course completion in Google Sheets.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-29.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 30,
+    "title": "Ask Questions and Analyze Content with Microsoft 365 Copilot",
+    "issuer": "Microsoft",
+    "date": "2025",
+    "credentialId": "",
+    "skills": [
+      "Microsoft 365",
+      "Copilot"
+    ],
+    "description": "Course completion. Copies show 12 June and 2 July 2025; year shown until the date is clarified.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-30.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 31,
+    "title": "Create and Draft with Microsoft 365 Copilot",
+    "issuer": "Microsoft",
+    "date": "2025-06-12",
+    "credentialId": "",
+    "skills": [
+      "Microsoft 365",
+      "Copilot"
+    ],
+    "description": "Microsoft 365 Copilot course completion.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-31.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 32,
+    "title": "Edit and Transform with Microsoft 365 Copilot",
+    "issuer": "Microsoft",
+    "date": "2025-06-12",
+    "credentialId": "",
+    "skills": [
+      "Microsoft 365",
+      "Copilot"
+    ],
+    "description": "Microsoft 365 Copilot course completion.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-32.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 33,
+    "title": "Environmental Stewardship",
+    "issuer": "FutureNation / UNDP",
+    "date": "2026-03-17",
+    "credentialId": "",
+    "skills": [
+      "Environment",
+      "Sustainability"
+    ],
+    "description": "Environmental stewardship course completion.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-33.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 34,
+    "title": "Public Policy 101 (Jananiti 101)",
+    "issuer": "Youth for Policy / IID · MuktoPaath",
+    "date": "2026-09-28",
+    "credentialId": "",
+    "skills": [
+      "Public Policy"
+    ],
+    "description": "Public policy course completion.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-34.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 35,
+    "title": "CCNA Jumpstart — Networking Basics",
+    "issuer": "Ostad",
+    "date": "Not stated",
+    "credentialId": "C41041",
+    "skills": [
+      "Networking"
+    ],
+    "description": "Crash-course completion; not a Cisco CCNA certification.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-35.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 36,
+    "title": "Cyber Security & Ethical Hacking — Career Starter",
+    "issuer": "Ostad",
+    "date": "Not stated",
+    "credentialId": "C41042",
+    "skills": [
+      "Cybersecurity"
+    ],
+    "description": "Introductory crash-course completion.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-36.jpg",
+    "kind": "Course completion"
+  },
+  {
+    "id": 37,
+    "title": "VBD Human Resource Officer — Appreciation",
+    "issuer": "JAAGO Foundation / Volunteer for Bangladesh",
+    "date": "2026-01-01",
+    "credentialId": "JAAGO/VBD/Appreciation/2026/L-5064",
+    "skills": [
+      "Volunteering",
+      "HR"
+    ],
+    "description": "Appreciation for HR Officer service in Rajshahi District during 2025.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-37.jpg",
+    "kind": "Recognition"
+  },
+  {
+    "id": 38,
+    "title": "Typing Test — 35 WPM (92%)",
+    "issuer": "Typing.com",
+    "date": "2024-11-05",
+    "credentialId": "",
+    "skills": [
+      "Typing"
+    ],
+    "description": "One-page typing test result.",
+    "verificationUrl": "https://www.typing.com/student/verify#320984868-162354806",
+    "image": "/certs/reviewed-38.jpg",
+    "kind": "Assessment"
+  },
+  {
+    "id": 39,
+    "title": "Artificial Intelligence and Machine Learning Fundamentals",
+    "issuer": "Grameenphone Academy / CodersTrust",
+    "date": "2025-11-03",
+    "credentialId": "",
+    "skills": [
+      "AI",
+      "Machine Learning"
+    ],
+    "description": "Course completion in AI and machine learning fundamentals.",
+    "verificationUrl": "",
+    "image": "/certs/reviewed-39.jpg",
+    "kind": "Course completion"
   }
 ]

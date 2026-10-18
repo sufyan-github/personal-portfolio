@@ -1,15 +1,15 @@
 {
   "title": "Competitive Programming",
-  "subtitle": "Problem-solving achievements across various platforms",
+  "subtitle": "Public coding profiles; metrics are shown only when verified.",
   "profiles": [
     {
       "platform": "LeetCode",
       "username": "abu_sufyan",
       "profile_url": "https://leetcode.com/abu_sufyan",
       "stats": {
-        "problems_solved": "150+",
-        "ranking": "Top 25%",
-        "badges": ["50 Days Badge", "SQL Badge"]
+        "problems_solved": "—",
+        "ranking": "—",
+        "badges": []
       },
       "badge_color": "from-orange-500 to-yellow-500"
     },
@@ -18,9 +18,9 @@
       "username": "abu_sufyan_cse",
       "profile_url": "https://codeforces.com/profile/abu_sufyan_cse",
       "stats": {
-        "rating": "1200+",
-        "rank": "Pupil",
-        "contests": "25+"
+        "rating": "—",
+        "rank": "—",
+        "contests": "—"
       },
       "badge_color": "from-green-500 to-emerald-500"
     },
@@ -29,9 +29,9 @@
       "username": "abusufyan_cse20",
       "profile_url": "https://www.hackerrank.com/abusufyan_cse20",
       "stats": {
-        "stars": "5 Stars Python",
-        "badges": "Problem Solving, SQL",
-        "rank": "Gold Badge"
+        "stars": "—",
+        "badges": "—",
+        "rank": "—"
       },
       "badge_color": "from-emerald-500 to-teal-500"
     },
@@ -40,9 +40,9 @@
       "username": "sufyan-github",
       "profile_url": "https://github.com/sufyan-github",
       "stats": {
-        "repositories": "30+",
-        "contributions": "500+",
-        "followers": "50+"
+        "repositories": "—",
+        "contributions": "—",
+        "followers": "—"
       },
       "badge_color": "from-purple-500 to-indigo-500"
     }

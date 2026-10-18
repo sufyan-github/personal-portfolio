@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Code, Database, Brain, Wrench, Sparkles, Award, CheckCircle2, Trophy, Cpu, Globe, Smartphone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import translations from "@/data/translations.json";
+import translationsFallback from "@/data/translations.json";
 import skills from "@/data/skills.json";
 import certifications from "@/data/certifications.json";
 import { useContent } from "@/lib/contentClient";
@@ -131,10 +131,11 @@ const TechLogo = ({ name }: { name: string }) => {
 // Skills Component
 // ===============================
 const Skills: React.FC = () => {
+  const { value: translations } = useContent("translations", translationsFallback);
   const { value: skillCategories } = useContent<SkillCategory[]>("skills", skills as SkillCategory[]);
   const { value: certs } = useContent<Certification[]>("certifications", certifications as Certification[]);
   const { language } = useLanguage();
-  const t = (translations as any)[language].skills;
+  const t = translations[language].skills;
 
   const totalSkills = skillCategories.reduce((sum, cat) => sum + cat.skills.length, 0);
   const totalCertifications = certs.length;
@@ -243,11 +244,11 @@ const Skills: React.FC = () => {
           <div className="flex justify-center items-center gap-6 flex-wrap">
             <div className="flex items-center gap-2 text-sm">
               <CheckCircle2 className="h-4 w-4 text-green-500" />
-              <span className="text-muted-foreground">Certified Skills</span>
+              <span className="text-muted-foreground">Documented Learning</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <Trophy className="h-4 w-4 text-yellow-500" />
-              <span className="text-muted-foreground">Endorsed Expertise</span>
+              <span className="text-muted-foreground">Practical Experience</span>
             </div>
           </div>
         </div>

@@ -31,7 +31,7 @@ const Sitemap: React.FC = () => {
       id: "academic",
       title: "Academic Background",
       icon: GraduationCap,
-      description: "Educational journey from secondary school to Bachelor of Science in Computer Science & Engineering at RUET with CGPA 3.68/4.00. Timeline of academic achievements.",
+      description: "Educational journey from secondary school to Bachelor of Science in Computer Science & Engineering at RUET with CGPA 3.60/4.00. Timeline of academic achievements.",
       category: "Education",
       color: "from-green-500 to-emerald-500"
     },
@@ -39,7 +39,7 @@ const Sitemap: React.FC = () => {
       id: "experience",
       title: "Professional Experience",
       icon: Briefcase,
-      description: "Work history including ML & AI Instructor at AI Bangladesh, Campus Representative at FutureNation, President of RUET IoT Club, Research Assistant, and various volunteer positions.",
+      description: "Work history including ML & AI Instructor at AI Bangladesh, Campus Representative at FutureNation, Alumni Affairs Advisor and former President of RUET IoT Club, Research Assistant, and various volunteer positions.",
       category: "Career",
       color: "from-orange-500 to-red-500"
     },
@@ -103,7 +103,7 @@ const Sitemap: React.FC = () => {
       id: "coding",
       title: "Competitive Programming",
       icon: Github,
-      description: "Coding profiles on LeetCode (150+ problems, Top 25%), Codeforces (1200+ rating), HackerRank (5 Stars Python), and GitHub (30+ repositories, 500+ contributions).",
+      description: "Coding profiles on LeetCode, Codeforces, HackerRank and GitHub, with available live platform statistics.",
       category: "Technical",
       color: "from-violet-500 to-purple-500"
     },

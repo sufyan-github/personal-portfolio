@@ -1,10 +1,26 @@
 {
   "username": "sufyan-github",
   "stats": [
-    { "label": "Public Repos",   "value": "25+", "icon": "repos" },
-    { "label": "Total Commits",  "value": "500+", "icon": "commits" },
-    { "label": "Contributions",  "value": "365+", "icon": "contribs" },
-    { "label": "Stars Earned",   "value": "50+", "icon": "stars" }
+    {
+      "label": "Public Repos",
+      "value": "—",
+      "icon": "repos"
+    },
+    {
+      "label": "Total Commits",
+      "value": "—",
+      "icon": "commits"
+    },
+    {
+      "label": "Contributions",
+      "value": "—",
+      "icon": "contribs"
+    },
+    {
+      "label": "Stars Earned",
+      "value": "—",
+      "icon": "stars"
+    }
   ],
   "theme": "auto",
   "fontSize": 12,

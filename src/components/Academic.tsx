@@ -1,56 +1,18 @@
+import educationFallback from "@/data/education.json";
+import { useContent } from "@/lib/contentClient";
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { GraduationCap, School, BookOpen } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import translations from "@/data/translations.json";
+import translationsFallback from "@/data/translations.json";
 
 const Academic: React.FC = () => {
+  const { value: translations } = useContent("translations", translationsFallback);
   const { language } = useLanguage();
-  const t = (translations as any)[language].academic;
+  const t = translations[language].academic;
   
-  const academicData: Array<{
-    id: number;
-    title: string;
-    institution: string;
-    location?: string;
-    period: string;
-    cgpa?: string;
-    description: string;
-    icon: typeof GraduationCap;
-    type: string;
-  }> = [
-    {
-      id: 1,
-      title: language === "bn" ? t.bsc.title : "Bachelor of Science in Computer Science & Engineering",
-      institution: language === "bn" ? t.bsc.institution : "Rajshahi University of Engineering & Technology (RUET)",
-      location: language === "bn" ? t.bsc.location : "Rajshahi-6204, Bangladesh",
-      period: "March 2021 - 2025",
-      cgpa: "3.68 / 4.00",
-      description: language === "bn" ? t.bsc.description : "Specialized in Machine Learning, Deep Learning, and Computer Vision. Core competencies include algorithms, data structures, operating systems, computer networks, image processing, neural networks, signal processing, computer security, VLSI design, and hardware architecture.",
-      icon: GraduationCap,
-      type: "university"
-    },
-    {
-      id: 2,
-      title: language === "bn" ? t.hsc.title : "Higher Secondary Certificate (HSC)",
-      institution: language === "bn" ? t.hsc.institution : "Gurudoyal Govt College",
-      location: language === "bn" ? t.hsc.location : "Kishorganj, Bangladesh",
-      period: "2016 - 2018",
-      description: language === "bn" ? t.hsc.description : "Completed HSC in Science with focus on Mathematics, Physics, Chemistry, Biology, and ICT, establishing a strong foundation for advanced studies in technology and engineering.",
-      icon: School,
-      type: "college"
-    },
-    {
-      id: 3,
-      title: language === "bn" ? t.ssc.title : "Secondary School Certificate (SSC)",
-      institution: language === "bn" ? t.ssc.institution : "Alhaj Amir Uddin High School",
-      location: language === "bn" ? t.ssc.location : "Kishorganj, Bangladesh",
-      period: "2014 - 2016",
-      description: language === "bn" ? t.ssc.description : "Completed secondary education with strong fundamentals in Mathematics, Science, and technology subjects, preparing for advanced studies in engineering and computer science.",
-      icon: BookOpen,
-      type: "school"
-    }
-  ];
+  const { value: education } = useContent("education", educationFallback);
+  const academicData = education.map(item => ({ ...item, ...(language === 'bn' && ['university', 'college', 'school'].includes(item.type) ? { title: t[item.type === 'university' ? 'bsc' : item.type === 'college' ? 'hsc' : 'ssc'].title, institution: t[item.type === 'university' ? 'bsc' : item.type === 'college' ? 'hsc' : 'ssc'].institution, description: t[item.type === 'university' ? 'bsc' : item.type === 'college' ? 'hsc' : 'ssc'].description } : {}), icon: item.type === "university" ? GraduationCap : item.type === "college" ? School : BookOpen }));
 
   return (
     <section id="academics" className="py-20 bg-gradient-secondary">

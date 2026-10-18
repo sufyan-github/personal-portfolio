@@ -1,0 +1,10 @@
+{
+  "current_roles": "Junior Software Engineer at Scalius Labs (September 2026–Present); Machine Learning & AI Instructor at Artificial Intelligence Bangladesh; Research Assistant at RUET; Alumni Affairs Advisor at RUET IoT Club and Computing Society alumni member since June 2026.",
+  "past_roles": "RUET IoT Club President (February 2025–June 2026); RUET Computing Society President (January–June 2026); Aachol Foundation HR Executive (July 2025–June 2026). BCC Python training is documented for 2026; an ongoing appointment is not confirmed.",
+  "education": "B.Sc. in Computer Science & Engineering at RUET; graduation year 2024, session 2020–2021; result published 11 August 2026.",
+  "projects": "Traffic sign detection with YOLOv8, MobileNet and ResNet; Flutter/Firebase attendance management; SpotSync smart parking and EV charging API using Go, Echo, GORM and PostgreSQL; explainable adversarial intrusion detection using CNN-BiLSTM, IBM ART and SHAP. See Projects for repository links.",
+  "research": "Co-author of two ICCiT 2024 papers: A Cross-Analyzing Approach to Sentiment and Bias Detection in Social Media: Insights from Geopolitical Conflicts; Improving Monkeypox Outbreak Prediction Through Time-Series Forecasting with Machine Learning Models (XGBoost/LSTM/Prophet).",
+  "skills": "Python, C, C++, JavaScript, SQL, Dart; TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy; React, Tailwind CSS, Node.js, Laravel; Flutter, Firebase, Git, Docker, Linux.",
+  "certifications": "Course completions include Claude 101, Google GenAI for Educators, Kaggle ML/DL, Duke/Coursera, Ostad, EDGE and UNDP. CAPM preparation is not a PMI certification; CCNA Jumpstart is not a Cisco CCNA certification. See Certifications for verified details.",
+  "contact": "Use the Contact section of this portfolio for engineering work, research collaborations, mentoring or speaking opportunities."
+}

@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Calendar, Tag } from "lucide-react";
 import demoTrafficImage from "@/assets/demo-traffic.jpg";
-import demoHealthTrackerImage from "@/assets/demo-healthtracker.png";
 import projectsData from "@/data/projects.json";
 import { useContent } from "@/lib/contentClient";
 
@@ -46,11 +45,11 @@ const Projects: React.FC = () => {
     return projectsList.map(project => {
       // Use imported assets for fixed IDs if they exist
       let image = project.image_url;
-      if (project.id === "p01" && !image?.includes("/projects/")) image = demoTrafficImage;
+      if (project.id === "p01" && !image) image = demoTrafficImage;
       
       return {
         ...project,
-        image_url: image || "/projects/placeholder.jpg"
+        image_url: image || "/placeholder.svg"
       };
     });
   }, [projectsList]);
@@ -178,7 +177,7 @@ const Projects: React.FC = () => {
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.5 }}
                       onError={(e) => {
-                        e.currentTarget.src = "/projects/placeholder.jpg";
+                        e.currentTarget.src = "/placeholder.svg";
                       }}
                     />
                     {project.featured && (

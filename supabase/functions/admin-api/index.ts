@@ -14,8 +14,9 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 const TOKEN_TTL_MS = 1000 * 60 * 60 * 8; // 8 hours
+const loginAttempts = new Map<string, { count: number; until: number }>();
 const MAX_PHOTO_SIZE = 5 * 1024 * 1024;   // 5 MB
-const ALLOWED_CATEGORIES = ["gallery", "hero", "profile"];
+const ALLOWED_CATEGORIES = ["gallery", "hero", "profile", "asset"];
 
 // --- Token helpers (HMAC-signed) ---
 async function hmac(message: string): Promise<string> {
@@ -75,7 +76,7 @@ Deno.serve(async (req) => {
 
   const supabase = createClient(SUPABASE_URL, SERVICE_KEY);
 
-  let body: any = {};
+  let body: Record<string, unknown> = {};
   try {
     body = await req.json();
   } catch {
@@ -85,11 +86,17 @@ Deno.serve(async (req) => {
 
   // --- LOGIN ---
   if (action === "login") {
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    let bucket = loginAttempts.get(ip);
+    if (!bucket || bucket.until < Date.now()) { bucket = { count: 0, until: Date.now() + 15 * 60_000 }; loginAttempts.set(ip, bucket); }
+    if (bucket.count >= 8) return json({ error: 'Too many login attempts. Try again later.' }, 429);
     const passphrase = String(body?.passphrase ?? "");
     if (passphrase !== ADMIN_PASSPHRASE) {
+      bucket.count++;
       await new Promise((r) => setTimeout(r, 500));
       return json({ error: "Invalid passphrase" }, 401);
     }
+    loginAttempts.delete(ip);
     const token = await createToken();
     return json({ token, expiresAt: Date.now() + TOKEN_TTL_MS });
   }
@@ -98,6 +105,38 @@ Deno.serve(async (req) => {
   const token = req.headers.get("x-admin-token");
   const ok = await verifyToken(token);
   if (!ok) return json({ error: "Unauthorized" }, 401);
+
+  if (action === "list_records") {
+    const table = String(body?.table ?? "");
+    if (!["contacts", "blog_posts", "testimonials"].includes(table)) return json({ error: "Unknown collection" }, 400);
+    const { data, error } = await supabase.from(table).select("*").order("created_at", { ascending: false }).limit(100);
+    if (error) return json({ error: error.message }, 500);
+    return json({ records: data });
+  }
+  if (action === "save_record") {
+    const table = String(body?.table ?? "");
+    const columns: Record<string, string[]> = {
+      blog_posts: ["title", "slug", "excerpt", "content", "featured_image", "tags", "published"],
+      testimonials: ["name", "position", "company", "content", "avatar_url", "rating", "published"],
+    };
+    if (!columns[table]) return json({ error: "This collection is read-only or unknown" }, 400);
+    const value = body?.value;
+    if (!value || typeof value !== "object" || Array.isArray(value)) return json({ error: "Invalid record" }, 400);
+    const row = Object.fromEntries(columns[table].filter(key => key in value).map(key => [key, value[key]]));
+    if (typeof row.content !== "string" || !row.content.trim()) return json({ error: "Content is required" }, 400);
+    const titleKey = table === "blog_posts" ? "title" : "name";
+    if (typeof row[titleKey] !== "string" || !(row[titleKey] as string).trim()) return json({ error: "Title or name is required" }, 400);
+    if (table === "blog_posts" && (typeof row.slug !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(row.slug))) return json({ error: "Use a lowercase hyphenated slug" }, 400);
+    if (table === 'testimonials' && row.rating !== undefined && (!Number.isInteger(row.rating) || Number(row.rating) < 1 || Number(row.rating) > 5)) return json({ error: 'Rating must be between 1 and 5' }, 400);
+    if (table === 'blog_posts' && row.tags !== undefined && (!Array.isArray(row.tags) || !row.tags.every(tag => typeof tag === 'string'))) return json({ error: 'Tags must be a list of text values' }, 400);
+    if (row.published !== undefined && typeof row.published !== "boolean") return json({ error: "Published must be true or false" }, 400);
+    if (value.id) {
+      const { error } = await supabase.from(table).update({ ...row, updated_at: new Date().toISOString() }).eq("id", value.id);
+      return error ? json({ error: error.message }, 500) : json({ ok: true });
+    }
+    const { error } = await supabase.from(table).insert(row);
+    return error ? json({ error: error.message }, 500) : json({ ok: true });
+  }
 
   // --- LIST CONTENT KEYS ---
   if (action === "list") {
@@ -147,6 +186,7 @@ Deno.serve(async (req) => {
     if (bytes.length > 10 * 1024 * 1024) {
       return json({ error: "File too large (max 10MB)" }, 400);
     }
+    if (new TextDecoder().decode(bytes.slice(0, 5)) !== '%PDF-') return json({ error: 'A valid PDF is required' }, 400);
     const path = "cv/Abu_Sufyan_CV.pdf";
     const { error } = await supabase.storage
       .from("site-assets")
@@ -186,7 +226,12 @@ Deno.serve(async (req) => {
       return json({ error: "File too large (max 5MB)" }, 400);
     }
 
-    const ext      = mimeType.split("/")[1] || "jpg";
+    const validImage = mimeType === 'image/png' ? bytes[0] === 137 && bytes[1] === 80 && bytes[2] === 78 && bytes[3] === 71
+      : mimeType === 'image/jpeg' ? bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255
+      : mimeType === 'image/webp' ? new TextDecoder().decode(bytes.slice(0, 4)) === 'RIFF' && new TextDecoder().decode(bytes.slice(8, 12)) === 'WEBP' : false;
+    if (!validImage) return json({ error: 'Upload a valid JPG, PNG, or WebP image' }, 400);
+    if (!caption) return json({ error: 'Caption required' }, 400);
+    const ext = mimeType === 'image/jpeg' ? 'jpg' : mimeType.split('/')[1];
     const filename = `${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
     const path     = `photos/${category}/${filename}`;
 
@@ -259,7 +304,7 @@ Deno.serve(async (req) => {
     if (fetchErr || !row) return json({ error: "Photo not found" }, 404);
 
     // Try to remove from storage if it's a Supabase Storage URL
-    const urlObj = new URL(row.url);
+    const urlObj = new URL(row.url, SUPABASE_URL);
     const storagePrefix = "/storage/v1/object/public/site-assets/";
     if (urlObj.pathname.startsWith(storagePrefix)) {
       const storagePath = urlObj.pathname.slice(storagePrefix.length);

@@ -5,7 +5,7 @@ import { ArrowDown, Github, Linkedin, Mail, Brain, Cpu, Database } from "lucide-
 import { TypeAnimation } from "react-type-animation";
 import ResumeDownload from "@/components/ResumeDownload";
 import { useLanguage } from "@/contexts/LanguageContext";
-import translations from "@/data/translations.json";
+import translationsFallback from "@/data/translations.json";
 import heroData from "@/data/hero.json";
 import { useContent } from "@/lib/contentClient";
 import AchievementSlider from "@/components/AchievementSlider";
@@ -49,10 +49,11 @@ const fade = (delay: number) => ({
 });
 
 const Hero: React.FC = () => {
+  const { value: translations } = useContent("translations", translationsFallback);
   const fallback = useMemo(() => heroData as HeroConfig, []);
   const { value: cfg } = useContent<HeroConfig>("hero", fallback);
   const { language } = useLanguage();
-  const t = (translations as Record<string, any>)[language].hero;
+  const t = translations[language].hero;
 
   return (
     <section className="relative flex flex-col justify-center overflow-hidden pt-28 pb-16 lg:pt-32 lg:pb-24">
@@ -104,7 +105,7 @@ const Hero: React.FC = () => {
             >
               <TypeAnimation
                 sequence={[
-                  "Machine Learning Engineer",
+                  "Junior Software Engineer",
                   2000,
                   "AI & ML Instructor",
                   2000,
@@ -123,12 +124,7 @@ const Hero: React.FC = () => {
               {...fade(0.2)}
               className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed mb-6"
             >
-              CSE graduate from RUET working across computer vision, ML research and
-              full-stack engineering. Trainer — Python, ML &amp; AI at{" "}
-              <span className="text-foreground font-medium">
-                Bangladesh Computer Council (BCC), Rajshahi
-              </span>
-              , with 100+ learners mentored.
+              {cfg.summary}
             </motion.p>
 
             {cfg.chips?.length > 0 && (

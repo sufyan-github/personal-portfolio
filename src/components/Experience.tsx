@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin, Building } from 'lucide-react';
 import { useLanguage } from "@/contexts/LanguageContext";
-import translations from "@/data/translations.json";
+import translationsFallback from "@/data/translations.json";
 import experienceData from '@/data/experience.json';
 import { useContent } from "@/lib/contentClient";
 
@@ -26,10 +26,11 @@ const toUrl = (site?: string) => {
 };
 
 const Experience: React.FC = () => {
+  const { value: translations } = useContent("translations", translationsFallback);
   const fallback = useMemo(() => experienceData as ExperienceItem[], []);
   const { value: experiences } = useContent<ExperienceItem[]>("experience", fallback);
   const { language } = useLanguage();
-  const t = (translations as any)[language].experience;
+  const t = translations[language].experience;
 
   return (
     <section id="experience" className="py-20">

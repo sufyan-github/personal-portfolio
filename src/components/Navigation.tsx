@@ -1,3 +1,4 @@
+import { useContent } from "@/lib/contentClient";
 import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -9,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import translations from "@/data/translations.json";
+import translationsFallback from "@/data/translations.json";
 
 import navData from "@/data/navigation.json";
 
@@ -25,9 +26,10 @@ const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 const Navigation: React.FC = () => {
-  const cfg = navData as NavConfig;
+  const { value: translations } = useContent("translations", translationsFallback);
+  const { value: cfg } = useContent<NavConfig>("navigation", navData as NavConfig);
   const { language } = useLanguage();
-  const t = (translations as Record<string, any>)[language];
+  const t = translations[language];
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -49,6 +51,8 @@ const Navigation: React.FC = () => {
     { name: "Journey", href: "#journey" },
     { name: t.nav.academic, href: "#academic" },
     { name: "Leadership", href: "#leadership" },
+    { name: t.nav.industrial, href: "#industrial-attachment" },
+    { name: "Resume", href: "#resume" },
     { name: t.nav.certifications, href: "#certifications" },
     { name: t.nav.achievements, href: "#achievements" },
     { name: t.nav.memberships, href: "#memberships" },
@@ -59,6 +63,10 @@ const Navigation: React.FC = () => {
     { name: t.nav.blog || "Blog", href: "#blog" },
   ];
 
+  const configuredItems = cfg.items?.filter(item => /^#[a-zA-Z][\w-]*$/.test(item.href));
+  const menuItems = configuredItems?.length ? configuredItems.filter(item => item.href !== '#home') : [...primaryItems, ...moreItems];
+  primaryItems.splice(0, primaryItems.length, ...menuItems.slice(0, 6).map(item => language === 'bn' ? { ...item, name: [...primaryItems, ...moreItems].find(old => old.href === item.href)?.name ?? item.name } : item));
+  moreItems.splice(0, moreItems.length, ...menuItems.slice(6));
   const allItems = [...primaryItems, ...moreItems];
 
   useEffect(() => {
@@ -81,7 +89,6 @@ const Navigation: React.FC = () => {
     const sections = allItems
       .map((i) => document.querySelector(i.href))
       .filter(Boolean) as Element[];
-    if (sections.length === 0) return;
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -94,7 +101,16 @@ const Navigation: React.FC = () => {
     );
 
     sections.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    // Sections mount after Suspense resolves; observe those too.
+    const mutation = new MutationObserver(() => {
+      allItems.forEach(({ href }) => {
+        const el = document.querySelector(href);
+        if (el) io.observe(el);
+      });
+      if (allItems.every(({ href }) => document.querySelector(href))) mutation.disconnect();
+    });
+    mutation.observe(document.getElementById("main")!, { childList: true, subtree: true });
+    return () => { io.disconnect(); mutation.disconnect(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cfg, language]);
 
@@ -107,6 +123,18 @@ const Navigation: React.FC = () => {
     });
     setIsMobileMenuOpen(false);
   };
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        document.querySelector<HTMLButtonElement>('[aria-controls="primary-mobile-menu"]')?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isMobileMenuOpen]);
 
   const isActive = (href: string) => activeHash === href;
   const moreActive = moreItems.some((i) => isActive(i.href));
@@ -208,8 +236,7 @@ const Navigation: React.FC = () => {
             id="primary-mobile-menu"
             ref={mobileMenuRef}
             className="lg:hidden absolute top-16 left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border shadow-lg"
-            role="dialog"
-            aria-modal="true"
+            aria-label="Mobile navigation"
           >
             <div className="px-4 py-4 grid grid-cols-2 gap-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
               {allItems.map((item) => (

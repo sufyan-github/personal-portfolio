@@ -1,0 +1,2 @@
+# Cloudflare Pages provides native SPA routing when no top-level 404.html exists.
+# Do not rewrite to /index.html: HTML canonicalization can redirect deep links to /.

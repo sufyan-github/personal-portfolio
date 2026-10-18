@@ -397,3 +397,6 @@ All colors MUST be HSL.
     .aurora-orb { animation: none !important; }
   }
 }
+
+/* Keep anchored sections visible below the fixed navigation. */
+html { scroll-padding-top: 5rem; }

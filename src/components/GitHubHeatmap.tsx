@@ -1,3 +1,4 @@
+import { useContent } from "@/lib/contentClient";
 // import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 // import { Badge } from "@/components/ui/badge";
 // import { Github, Activity, Calendar, Star } from "lucide-react";
@@ -105,7 +106,7 @@ type GitHubConfig = {
   profileUrl?: string; // optional override; defaults to https://github.com/${username}
 };
 
-const IconFor: Record<Stat["icon"], React.ComponentType<any>> = {
+const IconFor: Record<Stat["icon"], typeof Github> = {
   repos: Github,
   commits: Activity,
   contribs: CalIcon,
@@ -133,7 +134,7 @@ const useInView = (rootMargin = "-50px 0px"): [React.RefObject<HTMLDivElement>, 
 };
 
 const GitHubActivity: React.FC = () => {
-  const cfg = useMemo(() => ghConfig as GitHubConfig, []);
+  const { value: cfg } = useContent<GitHubConfig>("github", ghConfig as GitHubConfig);
   const [mountKey] = useState(() => Math.random()); // force unique render to avoid hydration mismatches
   const [rootRef, inView] = useInView();
 

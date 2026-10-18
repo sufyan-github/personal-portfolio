@@ -17,9 +17,9 @@ const ResumeDownload = () => {
     });
   }, []);
 
-  const trackEvent = (event_type: string) => {
+  const trackEvent = async (event_type: string) => {
     try {
-      (supabase.from as any)("analytics").insert([
+      await supabase.from("analytics").insert([
         {
           event_type,
           metadata: {

@@ -1,3 +1,4 @@
+import { useContent } from "@/lib/contentClient";
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -5,7 +6,8 @@ import { Languages, Brain, Users, Target, Lightbulb, MessageSquare } from "lucid
 import aboutData from "@/data/about.json";
 
 const LanguagesSkills: React.FC = () => {
-  const { languages, softSkills } = aboutData;
+  const { value: about } = useContent("about", aboutData);
+  const { languages, softSkills } = about;
 
   // Soft skills with icons & gradient colors
   const skillIcons = [
@@ -42,7 +44,7 @@ const LanguagesSkills: React.FC = () => {
               </div>
 
               <div className="space-y-4">
-                {languages.map((lang: any) => (
+                {languages.map((lang) => (
                   <div
                     key={lang.name}
                     className="flex items-center justify-between p-4 rounded-lg bg-card/40 border border-border hover:border-primary/40 transition-colors"
@@ -52,7 +54,7 @@ const LanguagesSkills: React.FC = () => {
                       variant="secondary"
                       className="bg-primary/10 text-primary border-primary/30 text-sm font-medium"
                     >
-                      {lang.proficiency ?? lang.level}
+                      {lang.proficiency}
                     </Badge>
                   </div>
                 ))}

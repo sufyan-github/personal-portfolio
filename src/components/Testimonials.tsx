@@ -25,7 +25,7 @@ const Testimonials = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const { data, error } = await (supabase.from as any)('testimonials')
+      const { data, error } = await supabase.from('testimonials')
         .select('*')
         .eq('published', true)
         .order('created_at', { ascending: false });
@@ -74,7 +74,14 @@ const Testimonials = () => {
   }
 
   if (testimonials.length === 0) {
-    return null;
+    return (
+      <section className="py-20">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold mb-4 gradient-text">What People Say</h2>
+          <p className="text-muted-foreground">Testimonials will appear here when published.</p>
+        </div>
+      </section>
+    );
   }
 
   return (

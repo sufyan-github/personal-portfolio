@@ -1,80 +1,225 @@
 [
   {
+    "id": "p07",
+    "title": "Explainable AI for Adversarial Intrusion Detection",
+    "description": "Undergraduate thesis: Explaining the Attack Surface — XAI-driven defense against adversarial perturbations in deep learning-based intrusion detection. Explored a CNN-BiLSTM detector, FGSM/PGD/C&W attacks through IBM ART, SHAP explanations and an interactive defense visualizer.",
+    "technologies": [
+      "Python",
+      "CNN-BiLSTM",
+      "SHAP",
+      "IBM ART"
+    ],
+    "project_type": "AI/ML",
+    "year": "Undergraduate thesis",
+    "featured": true,
+    "github_url": "",
+    "demo_url": "",
+    "image_url": "/projects/p07.svg",
+    "impact": []
+  },
+  {
+    "id": "p08",
+    "title": "SpotSync — Smart Parking & EV Charging API",
+    "description": "Smart parking and EV charging REST API built with Go, Echo v4, GORM and PostgreSQL. Applied STRIDE and DREAD threat modelling in a security coursework case study.",
+    "technologies": [
+      "Go",
+      "Echo v4",
+      "GORM",
+      "PostgreSQL",
+      "STRIDE",
+      "DREAD"
+    ],
+    "project_type": "Web Development",
+    "year": "Academic project",
+    "featured": true,
+    "github_url": "",
+    "demo_url": "",
+    "image_url": "/projects/p08.svg",
+    "impact": []
+  },
+  {
+    "id": "p09",
+    "title": "Attendance Management App",
+    "description": "Mobile attendance application with course selection, authentication and attendance history.",
+    "technologies": [
+      "Flutter",
+      "Dart",
+      "Firebase Auth",
+      "Realtime Database",
+      "Riverpod"
+    ],
+    "project_type": "Mobile Development",
+    "year": "2024",
+    "featured": true,
+    "github_url": "",
+    "demo_url": "",
+    "image_url": "/projects/p09.svg",
+    "impact": []
+  },
+  {
+    "id": "p10",
+    "title": "Project NEXUS — Water-Quality Monitoring",
+    "description": "IoT water-quality monitoring initiative involving sensing, data acquisition and prototype development with RUET IoT Club.",
+    "technologies": [
+      "IoT",
+      "Sensors",
+      "Data Acquisition"
+    ],
+    "project_type": "IoT",
+    "year": "2025",
+    "featured": true,
+    "github_url": "",
+    "demo_url": "",
+    "image_url": "/projects/p10.svg",
+    "impact": []
+  },
+  {
+    "id": "p11",
+    "title": "EcoHomeAI — Early-Stage Venture",
+    "description": "Founder and technical lead of an early-stage smart-home and energy-management venture, focused on AI, IoT and prototyping.",
+    "technologies": [
+      "IoT",
+      "AI",
+      "Prototyping"
+    ],
+    "project_type": "IoT",
+    "year": "2025",
+    "featured": false,
+    "github_url": "",
+    "demo_url": "",
+    "image_url": "/projects/p11.svg",
+    "impact": []
+  },
+  {
     "id": "p01",
     "title": "Traffic Sign Detection System",
-    "description": "Context: ADAS prototypes need fast, accurate road-sign recognition across varied lighting and weather. Contribution: Led dataset curation, model training and web deployment using YOLOv8 + MobileNet/ResNet backbones served via Flask. Impact: Real-time detection at ~30 FPS with 92%+ mAP across 40+ sign classes, deployed as a live web demo.",
-    "impact": ["92%+ mAP", "~30 FPS realtime", "40+ sign classes"],
-    "technologies": ["Python", "YOLOv8", "MobileNet", "ResNet", "Flask", "OpenCV"],
+    "description": "Traffic-sign recognition project using deep learning and a Flask web interface. Includes image preprocessing, model experimentation and prediction display.",
+    "impact": [],
+    "technologies": [
+      "Python",
+      "YOLOv8",
+      "MobileNet",
+      "ResNet",
+      "Flask",
+      "OpenCV"
+    ],
     "project_type": "AI/ML",
     "year": "2025",
     "featured": true,
-    "github_url": "https://github.com/sufyan-github/plant-disease-detection-project",
-    "demo_url": "#",
-    "image_url": "/projects/traffic.jpg"
+    "github_url": "",
+    "demo_url": "",
+    "image_url": ""
   },
   {
     "id": "p02",
     "title": "Gemini Health AI Assistant",
-    "description": "Context: People struggle to translate raw vitals and BMI numbers into actionable wellness guidance. Contribution: Sole developer — designed prompts, UX and the Gemini Pro integration on a Streamlit front end. Impact: Personalised wellness recommendations adopted by 50+ beta testers, reducing time-to-insight from minutes to seconds.",
-    "impact": ["50+ beta users", "Gemini Pro powered", "Streamlit UI"],
-    "technologies": ["Python", "Streamlit", "Gemini API", "Data Analysis"],
+    "description": "Experimental wellness application integrating the Gemini API with a Streamlit interface to explore personalized health guidance.",
+    "impact": [],
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "Gemini API",
+      "Data Analysis"
+    ],
     "project_type": "AI/ML",
     "year": "2024",
     "featured": true,
     "github_url": "https://github.com/sufyan-github/Gemini-Health-App",
-    "demo_url": "#",
-    "image_url": "/projects/gemini-health.png"
+    "demo_url": "",
+    "image_url": "/projects/p02.svg"
   },
   {
     "id": "p03",
     "title": "Medical Chatbot (RAG)",
-    "description": "Context: Generic LLMs hallucinate on clinical questions, limiting trust in patient-facing assistants. Contribution: Built an end-to-end retrieval-augmented pipeline with LangChain, Pinecone vector store and HuggingFace embeddings served via Flask. Impact: Source-cited answers from a 700+ page medical corpus with sub-2-second latency.",
-    "impact": ["RAG with citations", "<2s response", "700+ page corpus"],
-    "technologies": ["Python", "LangChain", "Pinecone", "Flask", "NLP"],
+    "description": "In-development medical question-answering project exploring retrieval-augmented generation with LangChain, embeddings and a vector store in a modular Python codebase.",
+    "impact": [],
+    "technologies": [
+      "Python",
+      "LangChain",
+      "Pinecone",
+      "Flask",
+      "NLP"
+    ],
     "project_type": "AI/ML",
-    "year": "2024",
+    "year": "In development",
     "featured": true,
     "github_url": "https://github.com/sufyan-github/end-to-end-medical-chatbot",
-    "demo_url": "#",
-    "image_url": "/projects/medical-chatbot.jpg"
+    "demo_url": "",
+    "image_url": "/projects/p03.svg"
   },
   {
     "id": "p04",
     "title": "FoodHub — Food Delivery Platform",
-    "description": "Context: Local restaurants needed an affordable end-to-end ordering and tracking platform. Contribution: Full-stack lead across auth, checkout, order tracking and the provider dashboard on a MERN stack. Impact: Production-ready platform handling concurrent orders with secure JWT auth and real-time order tracking.",
-    "impact": ["Real-time tracking", "Secure JWT auth", "Provider dashboard"],
-    "technologies": ["Node.js", "Express", "MongoDB", "React", "TailwindCSS"],
+    "description": "Full-stack food ordering project with authentication, order management and a provider dashboard, built with React, Node.js, Express and MongoDB.",
+    "impact": [],
+    "technologies": [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "React",
+      "TailwindCSS"
+    ],
     "project_type": "Web Development",
     "year": "2024",
     "featured": true,
     "github_url": "https://github.com/sufyan-github/foodhub-complete-project",
-    "demo_url": "#",
-    "image_url": "/projects/foodhub.png"
+    "demo_url": "",
+    "image_url": "/projects/p04.svg"
   },
   {
     "id": "p05",
     "title": "Vehicle Rental REST API",
-    "description": "Context: Rental businesses lacked a clean, well-documented backend for fleet operations. Contribution: Backend engineer — designed dependency-injection architecture, middleware, API surface and Swagger docs in Go. Impact: Industry-grade API with JWT-secured endpoints and full Swagger documentation for partners.",
-    "impact": ["Swagger documented", "Dependency Injection", "JWT secured"],
-    "technologies": ["Go", "PostgreSQL", "React", "TailwindCSS", "Swagger"],
+    "description": "Vehicle-rental backend project in Go with PostgreSQL, API documentation and authentication.",
+    "impact": [],
+    "technologies": [
+      "Go",
+      "PostgreSQL",
+      "React",
+      "TailwindCSS",
+      "Swagger"
+    ],
     "project_type": "Web Development",
     "year": "2024",
     "featured": false,
     "github_url": "https://github.com/sufyan-github/go-api-vehicle_rental",
-    "demo_url": "#",
-    "image_url": "/projects/vehicle-rental.png"
+    "demo_url": "",
+    "image_url": "/projects/p05.svg"
   },
   {
     "id": "p06",
     "title": "EduBridge — Learning Platform",
-    "description": "Context: Students needed a single hub for course content, enrolment and progress tracking. Contribution: Full-stack developer across auth, course module and progress dashboard on a React + Laravel stack. Impact: Multi-role learning platform with course enrolment, progress tracking and an admin panel.",
-    "impact": ["Multi-role auth", "Progress tracking", "Admin panel"],
-    "technologies": ["React", "PHP", "Laravel", "MySQL", "TailwindCSS"],
+    "description": "Learning platform project using React and Laravel, with course enrolment, progress tracking and an admin interface.",
+    "impact": [],
+    "technologies": [
+      "React",
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "TailwindCSS"
+    ],
     "project_type": "Web Development",
     "year": "2023",
     "featured": false,
     "github_url": "https://github.com/sufyan-github/EduBridge",
-    "demo_url": "#",
-    "image_url": "/projects/edubridge.png"
+    "demo_url": "",
+    "image_url": "/projects/p06.svg"
+  },
+  {
+    "id": "p12",
+    "title": "Verilog HDL & Processor Design",
+    "description": "Academic laboratory and project work: simulated combinational and sequential modules including multiplexers, registers, counters and finite-state machines. Explored instruction-set, datapath and control-unit design, comparing simulation waveforms with expected logic.",
+    "technologies": [
+      "Verilog",
+      "Digital Logic",
+      "Computer Architecture",
+      "Simulation"
+    ],
+    "project_type": "Hardware",
+    "year": "Academic coursework",
+    "featured": false,
+    "github_url": "",
+    "demo_url": "",
+    "image_url": "/projects/p12.svg",
+    "impact": []
   }
 ]

@@ -1,22 +1,16 @@
+import orgsFallback from "@/data/organizations.json";
+import { useContent } from "@/lib/contentClient";
 import React from "react";
 import { motion } from "framer-motion";
 import { Building2 } from "lucide-react";
 
-const orgs = [
-  { name: "Bangladesh Computer Council", short: "BCC Rajshahi" },
-  { name: "RUET", short: "RUET" },
-  { name: "Brain Station 23", short: "Brain Station 23" },
-  { name: "Artificial Intelligence Bangladesh", short: "AI Bangladesh" },
-  { name: "Aachol Foundation", short: "Aachol" },
-  { name: "FutureNation (UNDP)", short: "FutureNation · UNDP" },
-  { name: "JAAGO Foundation", short: "JAAGO" },
-  { name: "ICCiT 2024", short: "ICCiT 2024" },
-];
+
 
 const OrgLogos: React.FC = () => {
+  const { value: orgs } = useContent("organizations", orgsFallback);
   return (
     <section
-      aria-label="Trusted by and recognised by"
+      aria-label="Professional experience, education and community affiliations"
       className="py-12 border-y border-border/40 bg-card/30 backdrop-blur-sm"
     >
       <div className="container mx-auto px-6">
@@ -27,7 +21,7 @@ const OrgLogos: React.FC = () => {
           transition={{ duration: 0.4 }}
           className="text-center text-xs sm:text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6"
         >
-          Trusted · Trained · Recognised by
+          Experience · Education · Community
         </motion.p>
 
         <motion.ul

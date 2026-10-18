@@ -1,19 +1,43 @@
 {
   "name": "Md. Abu Sufyan",
-  "title": "Machine Learning & AI Instructor | Research Assistant | CSE Graduate, RUET",
-  "summary": "Driven by a passion for technology and innovation, I specialize in Machine Learning, Deep Learning, and Computer Vision. Completed BSc in Computer Science & Engineering at RUET (CGPA: 3.68/4.00) with a focus on AI research, community impact, and applied education.",
+  "title": "Junior Software Engineer at Scalius Labs | AI & ML Instructor | RUET CSE Graduate",
+  "summary": "Junior Software Engineer at Scalius Labs, AI & ML instructor, and research assistant. RUET CSE graduate (2024; CGPA 3.60/4.00), building software and exploring explainable AI, computer vision, and secure intelligent systems.",
   "chips": [
-    { "icon": "brain", "text": "AI & Machine Learning" },
-    { "icon": "cpu",   "text": "IoT Development" },
-    { "icon": "db",    "text": "Data Science" }
+    {
+      "icon": "brain",
+      "text": "AI & Machine Learning"
+    },
+    {
+      "icon": "cpu",
+      "text": "IoT Development"
+    },
+    {
+      "icon": "db",
+      "text": "Data Science"
+    }
   ],
   "socials": [
-    { "label": "Email",    "type": "email",    "href": "abusufyan.cse20@gmail.com" },
-    { "label": "LinkedIn", "type": "linkedin", "href": "https://linkedin.com/in/md-abu-sufyan" },
-    { "label": "GitHub",   "type": "github",   "href": "https://github.com/sufyan-github" }
+    {
+      "label": "Email",
+      "type": "email",
+      "href": "abusufyan.cse20@gmail.com"
+    },
+    {
+      "label": "LinkedIn",
+      "type": "linkedin",
+      "href": "https://linkedin.com/in/md-abu-sufyan"
+    },
+    {
+      "label": "GitHub",
+      "type": "github",
+      "href": "https://github.com/sufyan-github"
+    }
   ],
   "ctas": [
-    { "label": "View My Work", "targetId": "projects" }
+    {
+      "label": "View My Work",
+      "targetId": "projects"
+    }
   ],
   "showBackgroundIcons": true
 }

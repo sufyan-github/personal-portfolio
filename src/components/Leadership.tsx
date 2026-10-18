@@ -1,9 +1,11 @@
-import experience from "@/data/experience.json";
+import { useContent } from "@/lib/contentClient";
+import experienceFallback from "@/data/experience.json";
 import { Crown, MapPin, Calendar, ExternalLink } from "lucide-react";
 
 // Keywords that identify leadership roles in experience data
 const LEADERSHIP_KEYWORDS = [
   "president",
+  "advisor",
   "director",
   "founding",
   "campus representative",
@@ -14,7 +16,8 @@ const LEADERSHIP_KEYWORDS = [
 ];
 
 const Leadership = () => {
-  const roles = (experience as any[]).filter((e) =>
+  const { value: experience } = useContent("experience", experienceFallback);
+  const roles = experience.filter((e) =>
     LEADERSHIP_KEYWORDS.some((k) => e.title.toLowerCase().includes(k))
   );
 

@@ -1,21 +1,19 @@
+import impactFallback from "@/data/impact_stats.json";
+import { useContent } from "@/lib/contentClient";
 import React from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, FolderGit2, BrainCircuit, Users } from "lucide-react";
 
-const stats = [
-  { icon: GraduationCap, value: "100+", label: "Students Trained" },
-  { icon: FolderGit2, value: "20+", label: "Projects Built" },
-  { icon: BrainCircuit, value: "AI/ML", label: "Core Focus" },
-  { icon: Users, value: "5+", label: "Communities Led" },
-];
+const icons = [GraduationCap, FolderGit2, BrainCircuit, Users];
 
 const ImpactStats: React.FC = () => {
+  const { value: stats } = useContent("impact_stats", impactFallback);
   return (
     <section aria-label="Impact at a glance" className="py-10 sm:py-14 border-y border-border/40 bg-card/30 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((s, i) => {
-            const Icon = s.icon;
+            const Icon = icons[i % icons.length];
             return (
               <motion.div
                 key={s.label}

@@ -1,6 +1,6 @@
 [
   {
-    "year": "2013 – 2018",
+    "year": "2018",
     "phase": "Foundation",
     "title": "Secondary School Certificate (SSC)",
     "org": "Alhaj Amir Uddin High School, Kishorganj",
@@ -8,7 +8,7 @@
     "icon": "graduation-cap"
   },
   {
-    "year": "2018 – 2020",
+    "year": "2020",
     "phase": "College",
     "title": "Higher Secondary Certificate (HSC)",
     "org": "Gurudoyal Govt College, Kishorganj",
@@ -16,7 +16,7 @@
     "icon": "book-open"
   },
   {
-    "year": "2021",
+    "year": "Session 2020–2021",
     "phase": "University",
     "title": "Enrolled at RUET, Department of CSE",
     "org": "Rajshahi University of Engineering & Technology",
@@ -26,25 +26,33 @@
   {
     "year": "2023",
     "phase": "Volunteer Journey",
-    "title": "Joined Volunteer for Bangladesh & Jaagoo Foundation",
-    "org": "VBD · Jaagoo Foundation",
+    "title": "Joined Volunteer for Bangladesh & JAAGO Foundation",
+    "org": "VBD · JAAGO Foundation",
     "description": "Began community leadership through public-health drives, tree plantation and awareness campaigns.",
     "icon": "users"
   },
   {
     "year": "2024",
+    "phase": "Education",
+    "title": "BSc in Computer Science & Engineering",
+    "org": "RUET · CGPA 3.60/4.00",
+    "description": "Graduation year 2024; final result published 11 August 2026.",
+    "icon": "graduation-cap"
+  },
+  {
+    "year": "2024",
     "phase": "Research Journey",
     "title": "Research Assistant — ML Research Group, RUET",
-    "org": "Supervisor: Asst. Prof. SM Mehedi Hasan",
+    "org": "Machine Learning Research Group, RUET",
     "description": "Co-authored two ICCiT 2024 papers on social-media bias analysis and time-series forecasting.",
     "icon": "flask-conical"
   },
   {
     "year": "2024 – 2025",
     "phase": "Industry",
-    "title": "AI/ML Instructor & ML Intern",
+    "title": "AI/ML Instruction & Industrial Attachment",
     "org": "AI Bangladesh · Brain Station 23",
-    "description": "Delivered production-grade ML curricula and contributed to CV pipelines during industrial attachment.",
+    "description": "AI Bangladesh instruction from March 2024; a 15-day industrial attachment at BrainStation 23 in March 2025.",
     "icon": "briefcase"
   },
   {
@@ -52,23 +60,23 @@
     "phase": "Leadership",
     "title": "President — RUET IoT Club · Director — Project Nexus",
     "org": "RUET",
-    "description": "Founded initiatives combining IoT + ML for clean-water monitoring and sustainable engineering.",
+    "description": "Led RUET IoT Club and contributed to Project NEXUS water-quality monitoring prototypes.",
     "icon": "crown"
   },
   {
-    "year": "2025 – Present",
+    "year": "2026",
     "phase": "National Impact",
-    "title": "Contractual Trainer — Python, ML & AI",
-    "org": "Bangladesh Computer Council (BCC), ICT Division",
-    "description": "Training 100+ learners under the national skill program on production-grade ML workflows.",
+    "title": "Python Trainer",
+    "org": "Bangladesh Computer Council, Rajshahi",
+    "description": "Delivered Python instruction and practical learner mentoring.",
     "icon": "sparkles"
   },
   {
-    "year": "Next",
-    "phase": "Current Goals",
-    "title": "MS / PhD in AI & Applied ML",
-    "org": "Target: Fall 2026 intake",
-    "description": "Pursuing research at the intersection of Computer Vision, Explainable AI and Human-Centered Systems.",
+    "year": "2026",
+    "phase": "Career",
+    "title": "Junior Software Engineer",
+    "org": "Scalius Labs",
+    "description": "Joined in September 2026. Also serves as RUET IoT Club Alumni Affairs Advisor and RUET Computing Society alumni member.",
     "icon": "target"
   }
 ]
