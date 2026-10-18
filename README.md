@@ -265,3 +265,9 @@ Contributions, issues, and feature requests are welcome!
 ---
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
+
+## Automatic production deployment
+
+Every push to GitHub `main` runs `.github/workflows/deploy-cloudflare.yml`: clean dependency install, tests, TypeScript, lint, production build, then Wrangler deployment to the existing `abusufyan-portfolio` Cloudflare Pages project. Successful deployments automatically serve `https://abusufyan.online`. Failed checks leave the current live deployment in place. Runs are serialized to avoid overlapping production deployments. The workflow can also be run manually from the repository’s Actions tab on `main`.
+
+The repository secret `CLOUDFLARE_API_TOKEN` provides Cloudflare Pages Edit access scoped to the owning account. No Cloudflare credentials are committed. The workflow uploads only `dist` plus the Pages Functions bundle built by Wrangler. Supabase backend functions and secrets are managed separately; this workflow deploys the frontend and Cloudflare AI endpoint, and does not replay database migrations.
