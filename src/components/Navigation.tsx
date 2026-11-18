@@ -235,7 +235,7 @@ const Navigation: React.FC = () => {
           <div
             id="primary-mobile-menu"
             ref={mobileMenuRef}
-            className="lg:hidden absolute top-16 left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border shadow-lg"
+            className="lg:hidden absolute top-16 left-0 right-0 bg-background border-b border-border shadow-lg"
             aria-label="Mobile navigation"
           >
             <div className="px-4 py-4 grid grid-cols-2 gap-1 max-h-[calc(100vh-4rem)] overflow-y-auto">

@@ -31,7 +31,7 @@ const getTypeColor = (type: string) => {
     case "Mobile":
       return "bg-secondary/20 text-secondary border-secondary/50";
     case "Web Development":
-      return "bg-purple-500/20 text-purple-300 border-purple-500/50";
+      return "bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/50";
     default:
       return "bg-muted/20 text-muted-foreground border-border";
   }
@@ -242,7 +242,7 @@ const Projects: React.FC = () => {
                       >
                         <Badge
                           variant="secondary"
-                          className="text-xs bg-secondary/20 text-blue-300 font-medium backdrop-blur-sm hover:bg-secondary/40 transition-colors border border-secondary/30"
+                          className="text-xs bg-secondary/20 text-blue-700 dark:text-blue-300 font-medium backdrop-blur-sm hover:bg-secondary/40 transition-colors border border-secondary/30"
                         >
                           {tech}
                         </Badge>

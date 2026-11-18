@@ -92,17 +92,17 @@ All colors MUST be HSL.
     --card-foreground: 217 65% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 217 65% 11%;
-    --primary: 187 92% 38%;
+    --primary: 187 92% 27%;             /* 5.4:1 on white (WCAG AA) */
     --primary-foreground: 0 0% 100%;
     --secondary: 215 25% 90%;
     --secondary-foreground: 217 65% 15%;
     --muted: 215 25% 94%;
     --muted-foreground: 215 15% 40%;
-    --accent: 187 92% 38%;
+    --accent: 187 92% 27%;
     --accent-foreground: 0 0% 100%;
     --border: 215 20% 85%;
     --input: 215 25% 94%;
-    --ring: 187 92% 38%;
+    --ring: 187 92% 27%;
   }
 }
 

@@ -50,11 +50,11 @@ function buildFallbackItems(galleryData: typeof galleryFallback): GalleryItem[] 
 // ─── Category colour helpers ───────────────────────────────────────────────
 
 const CATEGORY_COLOURS: Record<string, string> = {
-  Workshop:   "bg-blue-500/20 text-blue-300 border-blue-500/40",
-  Conference: "bg-purple-500/20 text-purple-300 border-purple-500/40",
-  Award:      "bg-yellow-500/20 text-yellow-300 border-yellow-500/40",
-  Exhibition: "bg-green-500/20 text-green-300 border-green-500/40",
-  Hackathon:  "bg-red-500/20 text-red-300 border-red-500/40",
+  Workshop:   "bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/40",
+  Conference: "bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/40",
+  Award:      "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 border-yellow-500/40",
+  Exhibition: "bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/40",
+  Hackathon:  "bg-red-500/20 text-red-700 dark:text-red-300 border-red-500/40",
   gallery:    "bg-primary/20 text-primary border-primary/40",
   hero:       "bg-accent/20 text-accent border-accent/40",
 };
