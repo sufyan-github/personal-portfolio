@@ -19,7 +19,13 @@ test('public profile reflects confirmed career transitions',()=>{
  assert.equal(experience.find(e=>e.title==='Former President').period,'February 2025 – June 2026');
  assert.equal(experience.find(e=>e.title==='Alumni Affairs Advisor').period,'June 2026 – Present');
  assert.equal(experience.find(e=>e.company==='Aachol Foundation').period,'July 2025 – June 2026');
- assert.match(data('hero').summary,/2024; CGPA 3.60\/4.00/);
+ assert.equal(experience.find(e=>e.company==='RUET Computing Society').period,'November 2025 – June 2026');
+ assert.equal(experience.find(e=>e.company==='The Earth').period,'April 2026 – Present');
+ assert.match(data('hero').summary,/degree conferred August 2026; CGPA 3.60\/4.00/);
+ assert.match(data('education')[0].period,/Degree conferred 11 August 2026 · 2024 examination/);
+ for(const name of ['hero','education','achievements','timeline','faq','ai_profile','impact_stats']){
+  assert.doesNotMatch(JSON.stringify(data(name)),/[Gg]raduat(ed|ion year) 2024|graduated in .* 2024/,`${name}: outdated graduation wording`);
+ }
 });
 test('project links have no placeholders or known mismatched repository',()=>{
  for(const p of data('projects')){

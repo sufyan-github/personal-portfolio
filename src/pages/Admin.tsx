@@ -391,9 +391,9 @@ const PhotoManager = () => {
                   {/* Category badge */}
                   <div className="absolute top-1.5 left-1.5">
                     <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border ${
-                      photo.category === "hero"    ? "bg-yellow-500/20 text-yellow-300 border-yellow-500/40" :
-                      photo.category === "gallery" ? "bg-blue-500/20 text-blue-300 border-blue-500/40" :
-                      "bg-purple-500/20 text-purple-300 border-purple-500/40"
+                      photo.category === "hero"    ? "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 border-yellow-500/40" :
+                      photo.category === "gallery" ? "bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/40" :
+                      "bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/40"
                     }`}>
                       {photo.category}
                     </span>

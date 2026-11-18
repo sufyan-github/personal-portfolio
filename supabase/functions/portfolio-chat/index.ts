@@ -32,9 +32,9 @@ const BodySchema = z.object({
 });
 
 const fallbackProfile: Record<string, string> = {
-  "current_roles": "Junior Software Engineer at Scalius Labs (September 2026–Present); Machine Learning & AI Instructor at Artificial Intelligence Bangladesh; Research Assistant at RUET; Alumni Affairs Advisor at RUET IoT Club and Computing Society alumni member since June 2026.",
-  "past_roles": "RUET IoT Club President (February 2025–June 2026); RUET Computing Society President (January–June 2026); Aachol Foundation HR Executive (July 2025–June 2026). BCC Python training is documented for 2026; an ongoing appointment is not confirmed.",
-  "education": "B.Sc. in Computer Science & Engineering at RUET; graduation year 2024, session 2020–2021; result published 11 August 2026.",
+  "current_roles": "Junior Software Engineer at Scalius Labs (September 2026–Present); Machine Learning & AI Instructor at Artificial Intelligence Bangladesh; Research Assistant at RUET; Fellow at The Earth (April 2026–Present); Alumni Affairs Advisor at RUET IoT Club and Computing Society alumni member since June 2026.",
+  "past_roles": "RUET IoT Club President (February 2025–June 2026); RUET Computing Society President (November 2025–June 2026); Aachol Foundation HR Executive (July 2025–June 2026). BCC Python training is documented for 2026; an ongoing appointment is not confirmed.",
+  "education": "B.Sc. in Computer Science & Engineering at RUET; degree conferred 11 August 2026 (2024 examination); session 2020–2021.",
   "projects": "Traffic sign detection with YOLOv8, MobileNet and ResNet; Flutter/Firebase attendance management; SpotSync smart parking and EV charging API using Go, Echo, GORM and PostgreSQL; explainable adversarial intrusion detection using CNN-BiLSTM, IBM ART and SHAP. See Projects for repository links.",
   "research": "Co-author of two ICCiT 2024 papers: A Cross-Analyzing Approach to Sentiment and Bias Detection in Social Media: Insights from Geopolitical Conflicts; Improving Monkeypox Outbreak Prediction Through Time-Series Forecasting with Machine Learning Models (XGBoost/LSTM/Prophet).",
   "skills": "Python, C, C++, JavaScript, SQL, Dart; TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy; React, Tailwind CSS, Node.js, Laravel; Flutter, Firebase, Git, Docker, Linux.",
@@ -136,7 +136,7 @@ ANSWER STYLE:
 PUBLIC PROFILE DATA:
 
 Name: Md. Abu Sufyan
-Education: B.Sc. in Computer Science & Engineering, Rajshahi University of Engineering & Technology (RUET), Bangladesh (graduation year 2024; session 2020–2021; result published 11 August 2026)
+Education: B.Sc. in Computer Science & Engineering, Rajshahi University of Engineering & Technology (RUET), Bangladesh (degree conferred 11 August 2026, 2024 examination; session 2020–2021)
 Location: Rajshahi, Bangladesh
 Public links: LinkedIn (linkedin.com/in/md-abu-sufyan), GitHub (github.com/sufyan-github)
 Languages: Bangla (native), English (professional)
@@ -146,12 +146,13 @@ Current Roles:
 - Machine Learning & AI Instructor at Artificial Intelligence Bangladesh
 - Alumni Affairs Advisor, RUET IoT Club (from June 2026); Computing Society alumni member (from June 2026)
 - Research Assistant, ML Research Group, RUET
+- Fellow, The Earth (April 2026–Present)
 - Director, Project Nexus (RUET IoT Club)
 - Campus Representative, FutureNation
 
 Dated training record: Python Trainer, Bangladesh Computer Council, Rajshahi (2026); no ongoing appointment or end date is confirmed. Do not describe this dated training record as a verified current role.
 
-Past: 15-day industrial attachment at BrainStation 23 PLC in March 2025; VBD HR Officer during 2025; IoT Club president February 2025–June 2026; Computing Society president January–June 2026; Aachol HR executive July 2025–June 2026.
+Past: 15-day industrial attachment at BrainStation 23 PLC in March 2025; VBD HR Officer during 2025; IoT Club president February 2025–June 2026; Computing Society president November 2025–June 2026; Aachol HR executive July 2025–June 2026.
 
 Research Interests: Machine Learning, Deep Learning, Computer Vision, Sentiment Analysis, Time-Series Forecasting, NLP, AI for Social Good.
 

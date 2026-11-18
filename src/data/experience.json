@@ -12,6 +12,18 @@
     "featured": true
   },
   {
+    "title": "Fellow 2026",
+    "company": "The Earth",
+    "period": "April 2026 – Present",
+    "description": [
+      "Fellow in The Earth's 2026 fellowship programme."
+    ],
+    "location": "Remote · Bangladesh",
+    "logo": "/assets/logo/research.jpeg",
+    "website": "",
+    "featured": false
+  },
+  {
     "title": "Python Trainer",
     "company": "Bangladesh Computer Council (BCC), Rajshahi",
     "logo": "/assets/logo/research.jpeg",
@@ -69,7 +81,7 @@
     "company": "RUET Computing Society",
     "logo": "/assets/logo/research.jpeg",
     "location": "Rajshahi University of Engineering & Technology (RUET), Rajshahi, Bangladesh",
-    "period": "January \u2013 June 2026",
+    "period": "November 2025 \u2013 June 2026",
     "website": "https://ruetcs.org",
     "description": [
       "Led computing research, innovation and collaborative learning initiatives.",

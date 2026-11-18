@@ -18,6 +18,83 @@
     "impact": []
   },
   {
+    "id": "p13",
+    "title": "Elaka360 — Local Information Platform",
+    "description": "Bangla-first, mobile-first local-information platform for Bangladesh, in early development. A NestJS REST API over PostgreSQL and a Next.js PWA cover the administrative hierarchy from division to union, with seed data for 64 districts, 495 upazilas and 4,541 unions.",
+    "technologies": [
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "TypeScript",
+      "Tailwind CSS",
+      "Python"
+    ],
+    "project_type": "Web Development",
+    "year": "2026 · In development",
+    "featured": true,
+    "github_url": "https://github.com/sufyan-github/elaka360",
+    "demo_url": "",
+    "image_url": "/projects/p13.svg",
+    "impact": []
+  },
+  {
+    "id": "p14",
+    "title": "KAJ — Local Work & Service Marketplace",
+    "description": "Bangla-first local work and service marketplace for a Rajshahi pilot, in early development. A pnpm monorepo with a NestJS API, Prisma on PostgreSQL, Redis and shared TypeScript contracts; a Next.js admin app and a Flutter mobile app are planned.",
+    "technologies": [
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "Redis",
+      "TypeScript",
+      "Docker"
+    ],
+    "project_type": "Web Development",
+    "year": "2026 · In development",
+    "featured": true,
+    "github_url": "https://github.com/sufyan-github/KaJ-App",
+    "demo_url": "",
+    "image_url": "/projects/p14.svg",
+    "impact": []
+  },
+  {
+    "id": "p15",
+    "title": "CareMate — Medication Support App",
+    "description": "Medication-support and family-care app for Bangladesh, in development. An Android-first Flutter app with a NestJS API: phone OTP sign-in with rotating refresh tokens, patient profiles, medication records and timezone-aware dose schedules.",
+    "technologies": [
+      "Flutter",
+      "Dart",
+      "NestJS",
+      "TypeScript",
+      "libSQL/Turso"
+    ],
+    "project_type": "Mobile Development",
+    "year": "2026 · In development",
+    "featured": true,
+    "github_url": "https://github.com/sufyan-github/CareMate-App",
+    "demo_url": "",
+    "image_url": "/projects/p15.svg",
+    "impact": []
+  },
+  {
+    "id": "p16",
+    "title": "RUET IoT Club Platform",
+    "description": "Web platform for RUET IoT Club with events and registration, courses, verifiable certificates, a blog, member and team pages, and role-based admin and moderator dashboards. Built with React, TypeScript and Supabase.",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "Tailwind CSS"
+    ],
+    "project_type": "Web Development",
+    "year": "2026",
+    "featured": true,
+    "github_url": "https://github.com/sufyan-github/ruet-iot-club-75338f35",
+    "demo_url": "",
+    "image_url": "/projects/p16.svg",
+    "impact": []
+  },
+  {
     "id": "p08",
     "title": "SpotSync — Smart Parking & EV Charging API",
     "description": "Smart parking and EV charging REST API built with Go, Echo v4, GORM and PostgreSQL. Applied STRIDE and DREAD threat modelling in a security coursework case study.",
