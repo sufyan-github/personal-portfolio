@@ -33,14 +33,6 @@
   },
   {
     "year": "2024",
-    "phase": "Education",
-    "title": "BSc in Computer Science & Engineering",
-    "org": "RUET · CGPA 3.60/4.00",
-    "description": "Graduation year 2024; final result published 11 August 2026.",
-    "icon": "graduation-cap"
-  },
-  {
-    "year": "2024",
     "phase": "Research Journey",
     "title": "Research Assistant — ML Research Group, RUET",
     "org": "Machine Learning Research Group, RUET",
@@ -70,6 +62,14 @@
     "org": "Bangladesh Computer Council, Rajshahi",
     "description": "Delivered Python instruction and practical learner mentoring.",
     "icon": "sparkles"
+  },
+  {
+    "year": "August 2026",
+    "phase": "Education",
+    "title": "BSc in Computer Science & Engineering",
+    "org": "RUET · CGPA 3.60/4.00",
+    "description": "Degree conferred 11 August 2026 (2024 examination).",
+    "icon": "graduation-cap"
   },
   {
     "year": "2026",
